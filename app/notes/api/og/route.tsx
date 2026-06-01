@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from "next/og"; // bump build
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
