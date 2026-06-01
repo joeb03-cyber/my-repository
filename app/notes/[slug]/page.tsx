@@ -53,7 +53,7 @@ export async function generateMetadata({
     title: `synergetic human | ${title}`,
     openGraph: {
       images: [
-        `/notes/api/og/?title=${encodeURIComponent(title)}&emoji=${encodeURIComponent(
+        `/notes/api/og?title=${encodeURIComponent(title)}&emoji=${encodeURIComponent(
           emoji
         )}`,
       ],
