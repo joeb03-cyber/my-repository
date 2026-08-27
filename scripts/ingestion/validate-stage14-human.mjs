@@ -11,5 +11,5 @@ const { data: leakedBase, error: baseError } = await anon.from("human_entries").
 if (!baseError || (leakedBase || []).length) throw new Error("Anonymous base-table access was not denied.");
 const { data: trash } = await service.from("os_trash_records").select("title,state,visibility").in("title", ["Technique Collecting", "Perfect Plans"]);
 const sections = Object.fromEntries(["inner_life","environment","rhythms_recovery","movement","food","frontiers"].map((section) => [section, (publicRows || []).filter((row) => row.section === section).length]));
-if ((publicRows || []).length !== 22 || sections.frontiers !== 8 || (trash || []).some((item) => item.visibility !== "private" || item.state !== "active")) throw new Error("Stage 14 counts or privacy state are unexpected.");
-console.log(JSON.stringify({ publicEntries: publicRows.length, sections, publicRelationships: links.length, anonymousBaseTableDenied: true, privateTrashCandidates: trash?.length || 0 }, null, 2));
+if ((publicRows || []).length !== 22 || sections.frontiers !== 8 || (trash || []).some((item) => item.visibility !== "public" || item.state !== "trashed")) throw new Error("Stage 14 counts or Trash publication state are unexpected.");
+console.log(JSON.stringify({ publicEntries: publicRows.length, sections, publicRelationships: links.length, anonymousBaseTableDenied: true, publishedTrash: trash?.length || 0 }, null, 2));

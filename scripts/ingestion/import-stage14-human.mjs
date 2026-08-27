@@ -37,9 +37,9 @@ for (const entry of source.entries) {
 if (linkRows.length) { const { error } = await db.from("human_entry_entity_links").insert(linkRows); if (error) throw error; }
 
 const trashCandidates = [
-  { key: "technique-collecting", title: "Technique Collecting", description: "Editorial candidate: collecting methods instead of consistently practicing the few that matter." },
-  { key: "perfect-plans", title: "Perfect Plans", description: "Editorial candidate: designing immaculate systems that do not survive contact with ordinary life." },
-].map((item, index) => ({ id: uuidv5(`stage14:trash:${item.key}`, namespace), title: item.title, description: item.description, category: "editorial candidate", state: "active", visibility: "private", sort_order: 900 + index * 10 }));
+  { key: "technique-collecting", title: "Technique Collecting", description: "Learning one more method instead of doing the few things that already work." },
+  { key: "perfect-plans", title: "Perfect Plans", description: "Making a perfect plan, then not following it." },
+].map((item, index) => ({ id: uuidv5(`stage14:trash:${item.key}`, namespace), title: item.title, description: item.description, category: "habits", trashed_at: "2026-08-27", state: "trashed", visibility: "public", sort_order: 900 + index * 10 }));
 const { error: trashError } = await db.from("os_trash_records").upsert(trashCandidates, { onConflict: "id" });
 if (trashError) throw trashError;
-console.log(JSON.stringify({ humanEntries: rows.length, publicEntries: rows.length, relationships: linkRows.length, privateTrashCandidates: trashCandidates.length }, null, 2));
+console.log(JSON.stringify({ humanEntries: rows.length, publicEntries: rows.length, relationships: linkRows.length, publishedTrash: trashCandidates.length }, null, 2));
