@@ -24,6 +24,16 @@ for (const forbidden of ["private_locator", "raw_text", "summary_body", "journal
   if (serialized.includes(forbidden)) throw new Error(`Anonymous views expose forbidden marker: ${forbidden}`);
 }
 if (contacts.some((row) => row.endorsement !== false || row.curated_interest !== true)) throw new Error("Anonymous curated-interest semantics are invalid.");
+const allowedContactKeys = new Set(["id", "slug", "display_name", "sort_name", "initials", "factual_identity", "curated_interest", "endorsement", "topics", "books", "podcast_appearances"]);
+const allowedEpisodeKeys = new Set(["id", "slug", "title", "show_title", "publication_date", "duration_seconds", "original_url", "public_provenance_label", "credits"]);
+if (contacts.some((row) => Object.keys(row).some((key) => !allowedContactKeys.has(key)))) throw new Error("Anonymous Contacts view contains an unreviewed column.");
+if (episodes.some((row) => Object.keys(row).some((key) => !allowedEpisodeKeys.has(key)))) throw new Error("Anonymous podcast view contains an unreviewed column.");
+
+const protectedTables = ["people", "person_aliases", "sources", "source_people", "editorial_assertions", "source_versions", "source_fragments"];
+for (const table of protectedTables) {
+  const { error } = await anon.from(table).select("*").limit(1);
+  if (!error) throw new Error(`Anonymous role unexpectedly has direct access to ${table}.`);
+}
 
 const { count: curatedCount, error: curatedError } = await service.from("editorial_assertions").select("id", { count: "exact", head: true }).eq("assertion_type", "interesting").eq("approval_state", "approved").eq("asserted_by", "joe_burt");
 if (curatedError) throw curatedError;
@@ -31,4 +41,4 @@ const { count: leverageCount, error: leverageError } = await service.from("edito
 if (leverageError) throw leverageError;
 if (curatedCount !== 62) throw new Error(`Expected 62 curated-interest assertions, received ${curatedCount}.`);
 if (leverageCount !== 0) throw new Error(`Expected zero High Leverage assertions, received ${leverageCount}.`);
-console.log(JSON.stringify({ anonymous_contacts: contacts.length, anonymous_podcast_episodes: episodes.length, curated_interest_assertions: curatedCount, high_leverage_assertions: leverageCount, private_markers_exposed: false }, null, 2));
+console.log(JSON.stringify({ anonymous_contacts: contacts.length, anonymous_podcast_episodes: episodes.length, curated_interest_assertions: curatedCount, high_leverage_assertions: leverageCount, private_markers_exposed: false, protected_base_tables_denied: protectedTables.length }, null, 2));
