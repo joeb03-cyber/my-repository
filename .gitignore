@@ -49,3 +49,7 @@ IMPLEMENTATION.md
 # timestamps, and exact GPS. The versioned tool is safe; generated inventories
 # remain workstation-only until an explicit editorial publication step.
 /artifacts/photo-inventory/
+
+# Private Kortex/Eden archive discovery. These local reports can contain
+# sensitive filenames, excerpts, dates, and source metadata.
+/artifacts/private-archive-discovery/

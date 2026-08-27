@@ -1,0 +1,19 @@
+{
+  "schema_version": "brain-people-sources-import.v1",
+  "manual_people_count": 62,
+  "published_contact_count": 15,
+  "approved_curated_interest_count": 62,
+  "podcast_show_count": 3,
+  "podcast_episode_count": 15,
+  "source_credit_count": 32,
+  "person_topic_relationship_count": 23,
+  "high_leverage_assertion_count": 0,
+  "approved_start_here_count": 0,
+  "privacy_guards": {
+    "private_archive_text_included": false,
+    "private_locators_included": false,
+    "personal_journal_material_included": false,
+    "ai_conversations_included": false,
+    "podcast_summary_bodies_included": false
+  }
+}

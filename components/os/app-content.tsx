@@ -6,11 +6,13 @@ import type { AppId } from "@/data/prototype";
 import type { BrainBookSummary } from "@/lib/brain/types";
 import AppIcon, { iconForApp } from "./app-icon";
 import MapsApp from "./maps-app";
+import ContactsApp from "./contacts-app";
 
 export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: AppId; onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (appId: AppId) => void }) {
   if (appId === "finder") return <Finder onOpenApp={onOpenApp} />;
   if (appId === "library") return <LibraryApp onBookOpen={onBookOpen} />;
   if (appId === "atlas") return <MapsApp />;
+  if (appId === "contacts") return <ContactsApp onBookOpen={onBookOpen} />;
   if (appId === "laboratory") return <Laboratory />;
   if (appId === "messages") return <Messages />;
   if (appId === "journal") return <Journal />;
@@ -26,11 +28,11 @@ export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: Ap
 function Finder({ onOpenApp }: { onOpenApp: (appId: AppId) => void }) {
   const available: Array<{ id: AppId; label: string; detail: string }> = [
     { id: "library", label: "Books", detail: "165 books" }, { id: "atlas", label: "Maps", detail: "38 countries" },
-    { id: "journal", label: "Notes", detail: "Writing & fragments" }, { id: "photos", label: "Photos", detail: "Travel archive" },
+    { id: "contacts", label: "Contacts", detail: "15 interesting humans" }, { id: "journal", label: "Notes", detail: "Writing & fragments" }, { id: "photos", label: "Photos", detail: "Travel archive" },
     { id: "laboratory", label: "Human", detail: "Experiments" }, { id: "browser", label: "Browser", detail: "Rabbit holes" },
     { id: "practice", label: "Practice", detail: "Modalities" }, { id: "about", label: "Settings", detail: "About this human" },
   ];
-  const future = ["Contacts", "Podcasts", "Stocks", "Time Machine"];
+  const future = ["Podcasts", "Stocks", "Time Machine"];
   return <div className="finder-app system-app"><aside className="os-sidebar"><strong>Favorites</strong><button className="is-selected">Brain</button><button>Applications</button><button>Currently</button><span/><strong>Collections</strong><button>Books</button><button>Places</button><button>People</button><button>Ideas</button></aside><section className="finder-main"><div className="os-toolbar"><div><button className="toolbar-button">‹</button><button className="toolbar-button">›</button></div><strong>Synergetic Human</strong><label className="system-search"><Search/><input aria-label="Search Finder" placeholder="Search"/></label></div><div className="finder-section"><span className="section-label">APPLICATIONS</span><div className="finder-grid">{available.map((app)=><button key={app.id} onClick={()=>onOpenApp(app.id)}><AppIcon name={iconForApp[app.id] ?? "finder"}/><span><strong>{app.label}</strong><small>{app.detail}</small></span></button>)}</div></div><div className="finder-section finder-section--future"><span className="section-label">NOT YET INSTALLED</span>{future.map((name)=><div className="os-list-row is-muted" key={name}><span className="future-app-dot"/><strong>{name}</strong><small>Coming later</small></div>)}</div></section></div>;
 }
 

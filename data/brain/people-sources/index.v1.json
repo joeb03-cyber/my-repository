@@ -1,0 +1,845 @@
+{
+  "schemaVersion": "brain-people-sources.v1",
+  "generatedFrom": "public-safe Stage 10 metadata projection",
+  "contactCount": 15,
+  "podcastEpisodeCount": 15,
+  "contacts": [
+    {
+      "id": "93ef3bc7-606f-5009-b925-cd4ad69e01be",
+      "slug": "person-marizelle-arce",
+      "displayName": "Marizelle Arce",
+      "sortName": null,
+      "initials": "MA",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": [
+        {
+          "id": "13205f25-81be-512d-809b-bcfcc10554c7",
+          "slug": "marizelle-arce-germs-are-not-our-enemy-5lxisiiq-ka",
+          "title": "Marizelle Arce: Germs Are Not Our Enemy",
+          "showTitle": "Alfacast Podcast",
+          "role": "guest",
+          "publicationDate": "2025-10-23",
+          "durationSeconds": 6152
+        }
+      ]
+    },
+    {
+      "id": "a2cfaa3c-fe0a-572d-aab7-16f05e7ef673",
+      "slug": "person-zac-cupples",
+      "displayName": "Zac Cupples",
+      "sortName": null,
+      "initials": "ZC",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": []
+    },
+    {
+      "id": "2cf8b751-81c1-57fe-bcfb-f73467555d6c",
+      "slug": "person-erich-fromm",
+      "displayName": "Erich Fromm",
+      "sortName": null,
+      "initials": "EF",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "0a9dccfd-6c1a-543b-b22f-f2a0a9ca22c6",
+          "slug": "the-art-of-loving",
+          "title": "The Art of Loving",
+          "originalAuthor": "Erich Fromm",
+          "coverPath": "/book-covers/the-art-of-loving.jpg"
+        },
+        {
+          "id": "c7383f57-d96e-5d58-8a09-d0ac02048b44",
+          "slug": "to-have-or-to-be",
+          "title": "To Have or To Be?",
+          "originalAuthor": "Erich Fromm",
+          "coverPath": "/book-covers/placeholder.svg"
+        }
+      ],
+      "podcastAppearances": []
+    },
+    {
+      "id": "489d1644-2821-5a4e-9df9-51f000429b5c",
+      "slug": "person-kapil-gupta",
+      "displayName": "Kapil Gupta",
+      "sortName": null,
+      "initials": "KG",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "2e2647bc-fb22-540e-b851-ab3ded84f4a9",
+          "slug": "a-master-s-secret-whispers",
+          "title": "A Master's Secret Whispers",
+          "originalAuthor": "Kapil Gupta",
+          "coverPath": "/book-covers/a-master-s-secret-whispers.jpg"
+        },
+        {
+          "id": "b09933fc-db62-5b65-bba7-96b7fdfe4a88",
+          "slug": "atmamun",
+          "title": "Atmamun",
+          "originalAuthor": "Kapil Gupta",
+          "coverPath": "/book-covers/atmamun.jpg"
+        }
+      ],
+      "podcastAppearances": []
+    },
+    {
+      "id": "4df2f189-9497-59e1-8b3e-d6ccb07153d4",
+      "slug": "person-shamini-jain",
+      "displayName": "Shamini Jain",
+      "sortName": null,
+      "initials": "SJ",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": []
+    },
+    {
+      "id": "53a2733b-871c-5ac6-9c18-ecdb0570d547",
+      "slug": "person-aleena-kanner",
+      "displayName": "Aleena Kanner",
+      "sortName": null,
+      "initials": "AK",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": [
+        {
+          "id": "f89e6b20-3023-5c40-8e1e-9a970d37130f",
+          "slug": "aleena-kanner-7ffeav7595s",
+          "title": "Aleena Kanner",
+          "showTitle": "The Way Forward Podcast",
+          "role": "guest",
+          "publicationDate": "2025-10-29",
+          "durationSeconds": 8316
+        },
+        {
+          "id": "eff4439b-1159-5f28-b681-587e56b00201",
+          "slug": "aleen-kanner-pri-jf722ganog4",
+          "title": "Aleen Kanner PRI",
+          "showTitle": "Wonderjunkie Podcast",
+          "role": "guest",
+          "publicationDate": "2025-03-06",
+          "durationSeconds": 4219
+        }
+      ]
+    },
+    {
+      "id": "d654e2cb-80bf-559d-8082-00ee40d35686",
+      "slug": "person-peter-levine",
+      "displayName": "Peter Levine",
+      "sortName": null,
+      "initials": "PL",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "c2e6c86d-e587-5199-8d66-ab4323f9dd55",
+          "slug": "in-an-unspoken-voice",
+          "title": "In an Unspoken Voice",
+          "originalAuthor": "Peter Levine",
+          "coverPath": "/book-covers/placeholder.svg"
+        }
+      ],
+      "podcastAppearances": [
+        {
+          "id": "370e16af-2829-55c9-ad43-54e16f957187",
+          "slug": "peter-levine-somatic-experiencing-wrhckes_mla",
+          "title": "Peter Levine- Somatic Experiencing",
+          "showTitle": "Wonderjunkie Podcast",
+          "role": "guest",
+          "publicationDate": "2025-02-23",
+          "durationSeconds": 4004
+        }
+      ]
+    },
+    {
+      "id": "f43eaff5-5e17-5675-bbeb-700bb7737266",
+      "slug": "person-jacob-liberman",
+      "displayName": "Jacob Liberman",
+      "sortName": null,
+      "initials": "JL",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": [
+        {
+          "id": "6706428d-300e-57aa-8641-5d9cef906ae4",
+          "slug": "jacob-liberman-shining-the-light-of-mind-wh_sofrin54",
+          "title": "Jacob Liberman: Shining the Light of Mind",
+          "showTitle": "Alfacast Podcast",
+          "role": "guest",
+          "publicationDate": "2025-10-09",
+          "durationSeconds": 6262
+        },
+        {
+          "id": "f9545b1f-25c6-5079-8489-0a606003d360",
+          "slug": "jacob-liberman-life-is-light-rem3lxn7jvc",
+          "title": "Jacob Liberman- Life is Light",
+          "showTitle": "Wonderjunkie Podcast",
+          "role": "guest",
+          "publicationDate": "2025-07-25",
+          "durationSeconds": 6293
+        }
+      ]
+    },
+    {
+      "id": "9262fc82-362c-594e-a89f-c6d71df43153",
+      "slug": "person-irene-lyon",
+      "displayName": "Irene Lyon",
+      "sortName": null,
+      "initials": "IL",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": [
+        {
+          "id": "dea65493-5117-595e-a207-fcdceeb5c9d3",
+          "slug": "irene-lyon-wsus8ekxahi",
+          "title": "Irene Lyon",
+          "showTitle": "The Way Forward Podcast",
+          "role": "guest",
+          "publicationDate": "2024-12-31",
+          "durationSeconds": 12628
+        }
+      ]
+    },
+    {
+      "id": "9849f68e-3f37-5d8f-9cb4-97567255e101",
+      "slug": "person-chris-masterjohn",
+      "displayName": "Chris Masterjohn",
+      "sortName": null,
+      "initials": "CM",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": []
+    },
+    {
+      "id": "f36f1c56-df91-55fe-b16e-38a9bcb4bb36",
+      "slug": "person-eileen-day-mckusick",
+      "displayName": "Eileen Day McKusick",
+      "sortName": null,
+      "initials": "ED",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "150ae276-f630-59d3-bdd7-79edf915373b",
+          "slug": "tuning-the-human-biofield",
+          "title": "Tuning the human biofield",
+          "originalAuthor": "Eileen Day McKusick",
+          "coverPath": "/book-covers/tuning-the-human-biofield.jpg"
+        }
+      ],
+      "podcastAppearances": [
+        {
+          "id": "81650a69-8af5-53b8-95b6-4f7aef5e59de",
+          "slug": "eileen-mckusick-sq3jiaufn8i",
+          "title": "Eileen McKusick",
+          "showTitle": "The Way Forward Podcast",
+          "role": "guest",
+          "publicationDate": "2024-04-27",
+          "durationSeconds": 7313
+        }
+      ]
+    },
+    {
+      "id": "60742c2d-3682-5210-a322-14ed11ed9d76",
+      "slug": "person-lynne-mctaggart",
+      "displayName": "Lynne McTaggart",
+      "sortName": null,
+      "initials": "LM",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "2fe51a54-7ccf-5443-8c05-3b3b0ab17ad1",
+          "slug": "the-power-of-eight",
+          "title": "The power of eight",
+          "originalAuthor": "Lynne McTaggart",
+          "coverPath": "/book-covers/the-power-of-eight.jpg"
+        }
+      ],
+      "podcastAppearances": [
+        {
+          "id": "6184cff5-3413-5bc2-9c92-0f68d5388240",
+          "slug": "lynne-mctaggart-the-power-of-intention-for-healing-af484cweycg",
+          "title": "Lynne McTaggart- The Power of Intention for Healing",
+          "showTitle": "Wonderjunkie Podcast",
+          "role": "guest",
+          "publicationDate": "2025-09-04",
+          "durationSeconds": 3010
+        }
+      ]
+    },
+    {
+      "id": "a9b9c2d6-8242-5b02-9eda-8cfcfc2e435c",
+      "slug": "person-stephen-porges",
+      "displayName": "Stephen Porges",
+      "sortName": null,
+      "initials": "SP",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "4ecdf63c-942b-56a3-880e-40642a181da4",
+          "slug": "our-polyvagal-world",
+          "title": "Our Polyvagal World",
+          "originalAuthor": "Stephen Porges, Deb Dana",
+          "coverPath": "/book-covers/placeholder.svg"
+        }
+      ],
+      "podcastAppearances": []
+    },
+    {
+      "id": "5cf2e638-38ae-53e0-97f5-612eee1d3e13",
+      "slug": "person-daniel-roytas",
+      "displayName": "Daniel Roytas",
+      "sortName": null,
+      "initials": "DR",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": [
+        {
+          "id": "8b354df2-625b-586e-b9ec-826a84f3fa8b",
+          "slug": "daniel-roytas-7lksybnfzvc",
+          "title": "Daniel Roytas",
+          "showTitle": "The Way Forward Podcast",
+          "role": "guest",
+          "publicationDate": "2024-04-17",
+          "durationSeconds": 5465
+        }
+      ]
+    },
+    {
+      "id": "abed9714-57f9-513b-beb0-94ae700c6d95",
+      "slug": "person-madhava-setty",
+      "displayName": "Madhava Setty",
+      "sortName": null,
+      "initials": "MS",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": [
+        {
+          "id": "30fde6b4-3955-5351-b454-40f269323d1a",
+          "slug": "madhava-setty-pzx6pryof8e",
+          "title": "Madhava Setty",
+          "showTitle": "Wonderjunkie Podcast",
+          "role": "guest",
+          "publicationDate": "2025-02-19",
+          "durationSeconds": 6459
+        }
+      ]
+    }
+  ],
+  "podcastEpisodes": [
+    {
+      "id": "6706428d-300e-57aa-8641-5d9cef906ae4",
+      "slug": "jacob-liberman-shining-the-light-of-mind-wh_sofrin54",
+      "title": "Jacob Liberman: Shining the Light of Mind",
+      "showTitle": "Alfacast Podcast",
+      "publicationDate": "2025-10-09",
+      "durationSeconds": 6262,
+      "originalUrl": "https://www.youtube.com/watch?v=wh_sOFrIn54",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Mike Winner",
+          "personId": null
+        },
+        {
+          "role": "host",
+          "name": "Dr. Bear Paul Lando",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Dr. Jacob Liberman",
+          "personId": "f43eaff5-5e17-5675-bbeb-700bb7737266"
+        }
+      ]
+    },
+    {
+      "id": "13205f25-81be-512d-809b-bcfcc10554c7",
+      "slug": "marizelle-arce-germs-are-not-our-enemy-5lxisiiq-ka",
+      "title": "Marizelle Arce: Germs Are Not Our Enemy",
+      "showTitle": "Alfacast Podcast",
+      "publicationDate": "2025-10-23",
+      "durationSeconds": 6152,
+      "originalUrl": "https://www.youtube.com/watch?v=5lXiSiiQ-KA",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Mike Winner",
+          "personId": null
+        },
+        {
+          "role": "host",
+          "name": "Dr. Barre Paul Lando",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Marizelle Arce, N.D.",
+          "personId": "93ef3bc7-606f-5009-b925-cd4ad69e01be"
+        }
+      ]
+    },
+    {
+      "id": "f89e6b20-3023-5c40-8e1e-9a970d37130f",
+      "slug": "aleena-kanner-7ffeav7595s",
+      "title": "Aleena Kanner",
+      "showTitle": "The Way Forward Podcast",
+      "publicationDate": "2025-10-29",
+      "durationSeconds": 8316,
+      "originalUrl": "https://www.youtube.com/watch?v=7FfeAV7595s",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Alec Zeck",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Aleena Kanner",
+          "personId": "53a2733b-871c-5ac6-9c18-ecdb0570d547"
+        }
+      ]
+    },
+    {
+      "id": "91f385dd-0625-546f-9c91-84b5b0f40130",
+      "slug": "brandon-bozarth-5k1omthijbw",
+      "title": "Brandon Bozarth",
+      "showTitle": "The Way Forward Podcast",
+      "publicationDate": "2024-04-14",
+      "durationSeconds": 6146,
+      "originalUrl": "https://www.youtube.com/watch?v=5k1oMTHijbw",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Alec Zeck",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Brandon Bozarth",
+          "personId": "1c612bd2-a16b-5795-a3d8-4e9270e42678"
+        }
+      ]
+    },
+    {
+      "id": "8b354df2-625b-586e-b9ec-826a84f3fa8b",
+      "slug": "daniel-roytas-7lksybnfzvc",
+      "title": "Daniel Roytas",
+      "showTitle": "The Way Forward Podcast",
+      "publicationDate": "2024-04-17",
+      "durationSeconds": 5465,
+      "originalUrl": "https://www.youtube.com/watch?v=7lkSyBnFZvc",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Alec Zeck",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Daniel Roytas",
+          "personId": "5cf2e638-38ae-53e0-97f5-612eee1d3e13"
+        }
+      ]
+    },
+    {
+      "id": "dd118546-58b0-5e7f-ab5a-73e788b2c805",
+      "slug": "dr-steven-young-yoezcioumas",
+      "title": "Dr. Steven Young",
+      "showTitle": "The Way Forward Podcast",
+      "publicationDate": "2024-08-19",
+      "durationSeconds": 7668,
+      "originalUrl": "https://www.youtube.com/watch?v=YOeZcIOUMas",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Alec Zeck",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Dr. Steve Young",
+          "personId": "c9764e5d-678c-5c39-af8c-955d9c3e41bb"
+        }
+      ]
+    },
+    {
+      "id": "81650a69-8af5-53b8-95b6-4f7aef5e59de",
+      "slug": "eileen-mckusick-sq3jiaufn8i",
+      "title": "Eileen McKusick",
+      "showTitle": "The Way Forward Podcast",
+      "publicationDate": "2024-04-27",
+      "durationSeconds": 7313,
+      "originalUrl": "https://www.youtube.com/watch?v=Sq3JiaUfn8I",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Alec Zeck",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Eileen Day McKusick",
+          "personId": "f36f1c56-df91-55fe-b16e-38a9bcb4bb36"
+        }
+      ]
+    },
+    {
+      "id": "dea65493-5117-595e-a207-fcdceeb5c9d3",
+      "slug": "irene-lyon-wsus8ekxahi",
+      "title": "Irene Lyon",
+      "showTitle": "The Way Forward Podcast",
+      "publicationDate": "2024-12-31",
+      "durationSeconds": 12628,
+      "originalUrl": "https://www.youtube.com/watch?v=wsus8eKxahI",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Alec Zeck",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Irene Lyon",
+          "personId": "9262fc82-362c-594e-a89f-c6d71df43153"
+        }
+      ]
+    },
+    {
+      "id": "13f76407-4c0c-5ac1-a6e0-0d4fc31c2c47",
+      "slug": "melissa-kupsch-homeopathy-gkd0gc1xbo0",
+      "title": "Melissa Kupsch: Homeopathy",
+      "showTitle": "The Way Forward Podcast",
+      "publicationDate": "2025-04-04",
+      "durationSeconds": 10319,
+      "originalUrl": "https://www.youtube.com/watch?v=GkD0gC1XBO0",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Alec Zeck",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Melissa Kupsch",
+          "personId": "c6f8d853-0384-5fb9-8a48-400847d9c7d7"
+        }
+      ]
+    },
+    {
+      "id": "0257e6c9-808e-5594-9976-49a4991dcceb",
+      "slug": "melissa-sell-gnm-1oiiygmsrs0",
+      "title": "Melissa Sell GNM",
+      "showTitle": "The Way Forward Podcast",
+      "publicationDate": "2025-11-22",
+      "durationSeconds": 17080,
+      "originalUrl": "https://www.youtube.com/watch?v=1oIIygMsrs0",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Alec Zeck",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Dr. Melissa Sell",
+          "personId": "492e9bab-4897-5fef-bc19-f83701cb636d"
+        }
+      ]
+    },
+    {
+      "id": "eff4439b-1159-5f28-b681-587e56b00201",
+      "slug": "aleen-kanner-pri-jf722ganog4",
+      "title": "Aleen Kanner PRI",
+      "showTitle": "Wonderjunkie Podcast",
+      "publicationDate": "2025-03-06",
+      "durationSeconds": 4219,
+      "originalUrl": "https://www.youtube.com/watch?v=jF722ganOG4",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Ryan Anderson",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Aleena Kanner",
+          "personId": "53a2733b-871c-5ac6-9c18-ecdb0570d547"
+        }
+      ]
+    },
+    {
+      "id": "f9545b1f-25c6-5079-8489-0a606003d360",
+      "slug": "jacob-liberman-life-is-light-rem3lxn7jvc",
+      "title": "Jacob Liberman- Life is Light",
+      "showTitle": "Wonderjunkie Podcast",
+      "publicationDate": "2025-07-25",
+      "durationSeconds": 6293,
+      "originalUrl": "https://www.youtube.com/watch?v=ReM3lxN7JVc",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Ryan Anderson",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Dr. Jacob Israel Liberman",
+          "personId": "f43eaff5-5e17-5675-bbeb-700bb7737266"
+        }
+      ]
+    },
+    {
+      "id": "6184cff5-3413-5bc2-9c92-0f68d5388240",
+      "slug": "lynne-mctaggart-the-power-of-intention-for-healing-af484cweycg",
+      "title": "Lynne McTaggart- The Power of Intention for Healing",
+      "showTitle": "Wonderjunkie Podcast",
+      "publicationDate": "2025-09-04",
+      "durationSeconds": 3010,
+      "originalUrl": "https://www.youtube.com/watch?v=Af484cWeycg",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Ryan Anderson",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Lynne McTaggart",
+          "personId": "60742c2d-3682-5210-a322-14ed11ed9d76"
+        }
+      ]
+    },
+    {
+      "id": "30fde6b4-3955-5351-b454-40f269323d1a",
+      "slug": "madhava-setty-pzx6pryof8e",
+      "title": "Madhava Setty",
+      "showTitle": "Wonderjunkie Podcast",
+      "publicationDate": "2025-02-19",
+      "durationSeconds": 6459,
+      "originalUrl": "https://www.youtube.com/watch?v=pZx6PrYOF8E",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Ryan Anderson",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Dr. Madhava Setty",
+          "personId": "abed9714-57f9-513b-beb0-94ae700c6d95"
+        }
+      ]
+    },
+    {
+      "id": "370e16af-2829-55c9-ad43-54e16f957187",
+      "slug": "peter-levine-somatic-experiencing-wrhckes_mla",
+      "title": "Peter Levine- Somatic Experiencing",
+      "showTitle": "Wonderjunkie Podcast",
+      "publicationDate": "2025-02-23",
+      "durationSeconds": 4004,
+      "originalUrl": "https://www.youtube.com/watch?v=WrHCkES_MLA",
+      "publicProvenanceLabel": "Metadata recovered from Joe’s saved podcast archive",
+      "credits": [
+        {
+          "role": "host",
+          "name": "Ryan Anderson",
+          "personId": null
+        },
+        {
+          "role": "guest",
+          "name": "Peter A. Levine, Ph.D.",
+          "personId": "d654e2cb-80bf-559d-8082-00ee40d35686"
+        }
+      ]
+    }
+  ]
+}

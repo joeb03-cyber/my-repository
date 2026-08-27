@@ -9,6 +9,7 @@ export type AppId =
   | "practice"
   | "about"
   | "messages"
+  | "contacts"
   | "photos"
   | "browser"
   | "trash";

@@ -17,6 +17,7 @@ const apps: ReadonlyArray<{ id: AppId; label: string; icon: AppIconName; route: 
   { id: "library", label: "Books", icon: "books", route: "/library" },
   { id: "atlas", label: "Maps", icon: "maps", route: "/atlas" },
   { id: "messages", label: "Messages", icon: "messages", route: "/messages" },
+  { id: "contacts", label: "Contacts", icon: "contacts", route: "/contacts" },
   { id: "journal", label: "Notes", icon: "notes", route: "/journal" },
   { id: "photos", label: "Photos", icon: "photos", route: "/photos" },
   { id: "laboratory", label: "Human", icon: "human", route: "/laboratory" },
@@ -26,13 +27,13 @@ const apps: ReadonlyArray<{ id: AppId; label: string; icon: AppIconName; route: 
 ] as const;
 
 const appNames: Record<AppId, string> = {
-  finder: "Finder", library: "Books", atlas: "Maps", messages: "Messages", journal: "Notes",
+  finder: "Finder", library: "Books", atlas: "Maps", messages: "Messages", contacts: "Contacts", journal: "Notes",
   photos: "Photos", laboratory: "Human", browser: "Browser", about: "Settings", trash: "Trash",
   practice: "Practice", reality: "Reality", archive: "Archive",
 };
 const routes: Partial<Record<AppId, string>> = Object.fromEntries(apps.map((app) => [app.id, app.route]));
 const routeApps: Record<string, AppId> = {
-  finder: "finder", library: "library", atlas: "atlas", messages: "messages", journal: "journal",
+  finder: "finder", library: "library", atlas: "atlas", messages: "messages", contacts: "contacts", journal: "journal",
   photos: "photos", laboratory: "laboratory", browser: "browser", about: "about", trash: "trash",
   practice: "practice", reality: "reality", archive: "archive",
 };
@@ -80,7 +81,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       const top = Math.max(0, ...current.map((win) => win.z)) + 1;
       if (existing) return current.map((win) => win.id === id ? { ...win, z: top, minimized: false, transition: win.minimized ? "reopening" : undefined } : win);
       const offset = current.filter((win) => win.kind === "app").length * 24;
-      return [...current, { id, appId, kind: "app", title: appNames[appId], x: 135 + offset, y: 70 + offset, width: appId === "library" ? 900 : 720, height: appId === "library" ? 650 : 520, z: top, transition: "opening" }];
+      const isLargeApp = appId === "library" || appId === "contacts";
+      return [...current, { id, appId, kind: "app", title: appNames[appId], x: 135 + offset, y: 70 + offset, width: isLargeApp ? 900 : 720, height: isLargeApp ? 650 : 520, z: top, transition: "opening" }];
     });
     setLaunchingApp(appId);
     window.setTimeout(() => {
@@ -226,6 +228,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
               <MenuAction label="Finder" onClick={() => { openApp("finder"); closeMenus(); }} />
               <MenuAction label="Books" onClick={() => { openApp("library"); closeMenus(); }} />
               <MenuAction label="Maps" onClick={() => { openApp("atlas"); closeMenus(); }} />
+              <MenuAction label="Contacts" onClick={() => { openApp("contacts"); closeMenus(); }} />
               <MenuAction label="Browser" onClick={() => { openApp("browser"); closeMenus(); }} />
             </SystemMenu>
             <SystemMenu label="View" open={activeMenu === "view"} onToggle={() => setActiveMenu(activeMenu === "view" ? null : "view")}>

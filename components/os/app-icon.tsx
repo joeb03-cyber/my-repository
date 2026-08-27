@@ -6,6 +6,7 @@ export type AppIconName =
   | "books"
   | "maps"
   | "messages"
+  | "contacts"
   | "notes"
   | "photos"
   | "human"
@@ -19,6 +20,7 @@ export const iconForApp: Partial<Record<AppId, AppIconName>> = {
   library: "books",
   atlas: "maps",
   messages: "messages",
+  contacts: "contacts",
   journal: "notes",
   photos: "photos",
   laboratory: "human",
@@ -38,6 +40,7 @@ function IconArtwork({ name }: { name: AppIconName }) {
   if (name === "books") return <BooksIcon id={id} />;
   if (name === "maps") return <MapsIcon id={id} />;
   if (name === "messages") return <MessagesIcon id={id} />;
+  if (name === "contacts") return <ContactsIcon id={id} />;
   if (name === "notes") return <NotesIcon id={id} />;
   if (name === "photos") return <PhotosIcon id={id} />;
   if (name === "human") return <HumanIcon id={id} />;
@@ -113,6 +116,26 @@ function MessagesIcon({ id }: { id: string }) {
     <rect width="64" height="64" rx="14" fill={`url(#${id}-shine)`}/>
     <g filter={`url(#${id}-shadow)`}><path d="M32 13.2c-14 0-25.3 8.4-25.3 18.8 0 6 3.7 11.2 9.5 14.7l-2.6 8.1 10.5-4.8c2.5.6 5.2.9 7.9.9 14 0 25.3-8.4 25.3-18.9S46 13.2 32 13.2z" fill="white"/></g>
     <path d="M14.5 21.3c7.5-6.6 24.4-8.6 35.7-1.1" fill="none" stroke="white" strokeOpacity=".58" strokeWidth="1.2"/>
+  </IconSvg>;
+}
+
+function ContactsIcon({ id }: { id: string }) {
+  return <IconSvg>
+    <defs>
+      <linearGradient id={`${id}-cover`} x1="8" y1="3" x2="56" y2="62"><stop stopColor="#d9a66d"/><stop offset=".5" stopColor="#b97c4d"/><stop offset="1" stopColor="#815035"/></linearGradient>
+      <linearGradient id={`${id}-paper`} x1="18" y1="9" x2="50" y2="56"><stop stopColor="#fffef9"/><stop offset="1" stopColor="#e8e3d9"/></linearGradient>
+      <filter id={`${id}-shadow`}><feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#482b1c" floodOpacity=".32"/></filter>
+    </defs>
+    <rect width="64" height="64" rx="14" fill={`url(#${id}-cover)`}/>
+    <path d="M0 0h64v17C46 10 23 14 0 7z" fill="white" opacity=".14"/>
+    <g filter={`url(#${id}-shadow)`}>
+      <path d="M15 9.5h36v45H15z" fill={`url(#${id}-paper)`}/>
+      <path d="M12.5 10.5h5v43h-5z" fill="#7c4a31"/>
+      <path d="M12.5 15h-3.8M12.5 23h-3.8M12.5 31h-3.8M12.5 39h-3.8M12.5 47h-3.8" stroke="#f0d4b4" strokeWidth="2.4" strokeLinecap="round"/>
+      <circle cx="34" cy="27" r="7" fill="#b4c1c5"/>
+      <path d="M22.5 47c1.2-7.1 5-10.6 11.5-10.6S44.3 40 45.5 47" fill="#b4c1c5"/>
+      <path d="M22 14.5h23" stroke="#d0cac0" strokeWidth="1"/>
+    </g>
   </IconSvg>;
 }
 
