@@ -19,7 +19,7 @@ export default function ControlLogin({ supabaseUrl, anonKey, initialError = "" }
     });
     if (error) {
       setStatus("error");
-      setMessage(error.status === 429
+      setMessage(error.status === 429 || error.code === "over_email_send_rate_limit"
         ? "Please wait a minute before requesting another sign-in link."
         : "That address is not authorized for this Control Center.");
     }
