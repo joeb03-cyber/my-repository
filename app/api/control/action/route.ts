@@ -149,6 +149,40 @@ export async function POST(request: Request) {
       const { error } = await db.from("activity_monitor_processes").update({ lifecycle_state: "archived", visibility: "private" }).eq("id", input.id);
       if (error) throw error; return NextResponse.json({ ok: true });
     }
+    if (input.action === "save-human-entry") {
+      const item = input.item || {}; const id = item.id || crypto.randomUUID();
+      const title = String(item.title || "").trim().slice(0, 160); const slug = String(item.slug || "").trim().toLowerCase();
+      const sections = ["inner_life", "environment", "rhythms_recovery", "movement", "food", "frontiers"];
+      const states = ["do_this", "do_more", "believe_matters", "exploring"];
+      const types = ["principle", "practice", "model", "tool"];
+      const publicationState = item.publicationState === "published" ? "published" : "draft";
+      if (!title || !slugPattern.test(slug) || !sections.includes(item.section) || !states.includes(item.relationshipState) || !types.includes(item.entryType)) throw new Error("Complete the title, slug, section, state, and type.");
+      if (publicationState === "published" && input.confirmPublish !== true) throw new Error("Publication must be explicitly confirmed.");
+      const { error } = await db.from("human_entries").upsert({
+        id, slug, section: item.section, relationship_state: item.relationshipState, entry_type: item.entryType,
+        title, summary: String(item.summary || "").trim().slice(0, 500), current_take: String(item.currentTake || "").trim().slice(0, 4000),
+        supporting_details: asStrings(item.supportingDetails).slice(0, 12), publication_state: publicationState,
+        visibility: publicationState === "published" ? "public" : "private", editorial_state: publicationState === "published" ? "approved" : "needs_review",
+        sort_order: Number.isFinite(item.sortOrder) ? item.sortOrder : 100,
+        provenance: item.id ? undefined : { source: "control_center", createdBy: auth.user.id },
+      });
+      if (error) throw error;
+      const { error: clearError } = await db.from("human_entry_entity_links").delete().eq("human_entry_id", id); if (clearError) throw clearError;
+      const requested = Array.isArray(item.relationships) ? item.relationships.slice(0, 12) : [];
+      if (requested.length) {
+        const ids = requested.map((link: any) => String(link.entityId));
+        const { data: allowed, error: allowedError } = await db.from("entities").select("id").in("id", ids).eq("visibility", "public").eq("lifecycle_state", "active").eq("editorial_state", "approved");
+        if (allowedError) throw allowedError; const allowedIds = new Set((allowed || []).map((entity) => entity.id));
+        const rows = requested.filter((link: any) => allowedIds.has(String(link.entityId))).map((link: any, index: number) => ({ human_entry_id: id, entity_id: String(link.entityId), relationship_label: String(link.label || "Related").slice(0, 50), sort_order: index * 10 + 10, provenance: { source: "control_center" } }));
+        if (rows.length) { const { error: linkError } = await db.from("human_entry_entity_links").insert(rows); if (linkError) throw linkError; }
+      }
+      return NextResponse.json({ ok: true, id, publicationState });
+    }
+    if (input.action === "archive-human-entry") {
+      if (!input.id || input.confirm !== true) throw new Error("Archive confirmation required.");
+      const { error } = await db.from("human_entries").update({ publication_state: "archived", visibility: "private", editorial_state: "rejected" }).eq("id", input.id);
+      if (error) throw error; return NextResponse.json({ ok: true });
+    }
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Save failed" }, { status: 400 });

@@ -8,7 +8,7 @@ export async function GET() {
   const auth = await getControlAdmin();
   if (!auth) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const db = auth.supabase;
-  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, booksIndex] = await Promise.all([
+  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, booksIndex] = await Promise.all([
     db.from("entities").select("id,slug,title,summary,visibility,lifecycle_state,editorial_state").eq("kind", "note").neq("lifecycle_state", "archived").order("updated_at", { ascending: false }),
     db.from("brain_notes").select("entity_id,folder_id,excerpt,body_markdown,publication_state,pinned,source_published_at,published_at,editorial_notice,external_links,updated_at"),
     db.from("note_folders").select("id,slug,label,sort_order").order("sort_order"),
@@ -18,9 +18,12 @@ export async function GET() {
     db.from("software_update_snapshots").select("id,version_label,new_items,exploring_items,performance_items,known_issue_items,effective_at").eq("publication_state", "published").order("effective_at", { ascending: false }).limit(1).maybeSingle(),
     db.from("os_trash_records").select("id,title,description,category,trashed_at,state,visibility,sort_order,updated_at").neq("state", "archived").order("sort_order"),
     db.from("activity_monitor_processes").select("id,name,status,detail,started_label,related_items,visibility,editorial_state,lifecycle_state,sort_order,updated_at").neq("lifecycle_state", "archived").order("sort_order"),
+    db.from("human_entries").select("id,slug,section,relationship_state,entry_type,title,summary,current_take,supporting_details,publication_state,visibility,editorial_state,sort_order,updated_at").neq("publication_state", "archived").order("section").order("sort_order"),
+    db.from("human_entry_entity_links").select("human_entry_id,entity_id,relationship_label,sort_order"),
+    db.from("entities").select("id,slug,title,kind").eq("visibility", "public").eq("lifecycle_state", "active").eq("editorial_state", "approved").in("kind", ["book", "person", "source", "note"]).order("title"),
     getBooksIndex(),
   ]);
-  const failure = [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult].find((result) => result.error);
+  const failure = [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult].find((result) => result.error);
   if (failure?.error) return NextResponse.json({ error: failure.error.message }, { status: 500 });
   const notesById = new Map((notesResult.data || []).map((note) => [note.entity_id, note]));
   const tagsById = new Map((tagsResult.data || []).map((tag) => [tag.id, tag.label]));
@@ -55,5 +58,13 @@ export async function GET() {
     } : null,
     trash: trashResult.data || [],
     activity: activityResult.data || [],
+    human: (humanResult.data || []).map((entry) => ({
+      id: entry.id, slug: entry.slug, section: entry.section, relationshipState: entry.relationship_state,
+      entryType: entry.entry_type, title: entry.title, summary: entry.summary, currentTake: entry.current_take,
+      supportingDetails: entry.supporting_details || [], publicationState: entry.publication_state,
+      sortOrder: entry.sort_order,
+      relationships: (humanLinksResult.data || []).filter((link) => link.human_entry_id === entry.id).map((link) => ({ entityId: link.entity_id, label: link.relationship_label })),
+    })),
+    humanRelationshipOptions: relationshipOptionsResult.data || [],
   }, { headers: { "Cache-Control": "private, no-store" } });
 }

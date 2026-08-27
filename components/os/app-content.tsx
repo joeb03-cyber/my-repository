@@ -1,7 +1,6 @@
 "use client";
 
-import { Activity, Archive, ArrowUpRight, ChevronRight, Clock3, FlaskConical, Orbit, Search, TerminalSquare, Wind } from "lucide-react";
-import { useState } from "react";
+import { Activity, Archive, ArrowUpRight, ChevronRight, Clock3, Orbit, Search, TerminalSquare, Wind } from "lucide-react";
 import { LibraryApp } from "./library-app";
 import type { AppId } from "@/data/prototype";
 import type { BrainBookSummary } from "@/lib/brain/types";
@@ -9,6 +8,7 @@ import AppIcon, { iconForApp } from "./app-icon";
 import MapsApp from "./maps-app";
 import ContactsApp from "./contacts-app";
 import NotesApp from "./notes-app";
+import HumanApp from "./human-app";
 import { ActivityMonitorApp, ScreenTimeApp, SettingsApp, SoftwareUpdateApp, TerminalApp, TrashApp } from "./personality-apps";
 
 export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: AppId; onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (appId: AppId) => void }) {
@@ -16,7 +16,7 @@ export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: Ap
   if (appId === "library") return <LibraryApp onBookOpen={onBookOpen} />;
   if (appId === "atlas") return <MapsApp />;
   if (appId === "contacts") return <ContactsApp onBookOpen={onBookOpen} />;
-  if (appId === "laboratory") return <Laboratory />;
+  if (appId === "laboratory") return <HumanApp onOpenApp={onOpenApp} />;
   if (appId === "messages") return <Messages />;
   if (appId === "journal") return <NotesApp />;
   if (appId === "photos") return <Photos />;
@@ -42,21 +42,6 @@ function Finder({ onOpenApp }: { onOpenApp: (appId: AppId) => void }) {
   const future = ["Podcasts", "Stocks", "Time Machine"];
   const system = [{id:"software" as AppId,label:"Software Update",detail:"Current release",icon:<ArrowUpRight/>},{id:"activity" as AppId,label:"Activity Monitor",detail:"Attention processes",icon:<Activity/>},{id:"screen-time" as AppId,label:"Screen Time",detail:"Manual snapshot",icon:<Clock3/>},{id:"terminal" as AppId,label:"Terminal",detail:"Handcrafted commands",icon:<TerminalSquare/>}];
   return <div className="finder-app system-app"><aside className="os-sidebar"><strong>Favorites</strong><button className="is-selected">Joe</button><button>Applications</button><button>Currently</button><span/><strong>Locations</strong><button>/Joe/Books</button><button>/Joe/Places</button><button>/Joe/People</button><button>/Joe/Notes</button><button>/Joe/Obsessions/Current</button></aside><section className="finder-main"><div className="os-toolbar"><div><button className="toolbar-button">‹</button><button className="toolbar-button">›</button></div><strong>/Joe</strong><label className="system-search"><Search/><input aria-label="Search Finder" placeholder="Search"/></label></div><div className="finder-section"><span className="section-label">APPLICATIONS</span><div className="finder-grid">{available.map((app)=><button key={app.id} onClick={()=>onOpenApp(app.id)}><AppIcon name={iconForApp[app.id] ?? "finder"}/><span><strong>{app.label}</strong><small>{app.detail}</small></span></button>)}</div></div><div className="finder-section finder-system-list"><span className="section-label">SYSTEM</span>{system.map((item)=><button className="os-list-row" key={item.id} onClick={()=>onOpenApp(item.id)}><span className="system-tool-icon">{item.icon}</span><strong>{item.label}</strong><small>{item.detail}</small><ChevronRight/></button>)}</div><div className="finder-section finder-section--future"><span className="section-label">NOT YET INSTALLED</span>{future.map((name)=><div className="os-list-row is-muted" key={name}><span className="future-app-dot"/><strong>{name}</strong><small>Coming later</small></div>)}</div></section></div>;
-}
-
-function Laboratory() {
-  const sections = ["Foundations", "Light", "Sleep", "Food", "Movement", "Training", "Nervous System", "Environment", "Experiments"];
-  const [section, setSection] = useState("Foundations");
-  const entries: Record<string, Array<{ title: string; state: string; note: string }>> = {
-    Foundations: [
-      { title: "Morning Light", state: "Core", note: "A practical anchor recorded from direct experience." },
-      { title: "Long Exhale", state: "Currently Testing", note: "An ongoing nervous-system practice; observations remain personal." },
-    ],
-    Light: [{ title: "Morning Light", state: "Core", note: "Get outside before the day becomes a screen." }],
-    "Nervous System": [{ title: "Long Exhale", state: "Currently Testing", note: "A small practice under active observation." }],
-  };
-  const visible = entries[section] || [];
-  return <div className="human-app system-app"><aside className="os-sidebar"><strong>Human</strong>{sections.map((item) => <button key={item} className={section === item ? "is-selected" : ""} onClick={() => setSection(item)}>{item}</button>)}</aside><section className="human-main"><header><div className="human-system-mark"><FlaskConical/></div><div><span className="app-kicker">JOE&apos;S OPERATING MANUAL</span><h2>{section}</h2><p>High-leverage practices and experiments for one particular human.</p></div></header><div className="human-state-key">{["Core", "Currently Testing", "Interesting", "Retired"].map((state) => <span className={`human-state is-${state.toLowerCase().replaceAll(" ", "-")}`} key={state}>{state}</span>)}</div>{visible.length ? <div className="human-entry-list">{visible.map((entry) => <article key={entry.title}><div><strong>{entry.title}</strong><span className={`human-state is-${entry.state.toLowerCase().replaceAll(" ", "-")}`}>{entry.state}</span></div><p>{entry.note}</p></article>)}</div> : <div className="human-empty"><FlaskConical/><strong>Nothing recorded here yet.</strong><p>This section is ready when a practice or experiment earns its place.</p></div>}<footer>Personal observations, not medical claims or objective measurements.</footer></section></div>;
 }
 
 function Messages() {
