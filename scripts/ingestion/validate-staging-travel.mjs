@@ -1,0 +1,28 @@
+import { createClient } from "@supabase/supabase-js";
+import { readFile } from "node:fs/promises";
+
+const url = process.env.SUPABASE_URL || process.env.BRAIN_SUPABASE_URL;
+const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const anonKey = process.env.BRAIN_SUPABASE_ANON_KEY;
+if (!url || !serviceKey || !anonKey) throw new Error("Staging Supabase URL, service key, and anonymous key are required.");
+const projectRef = new URL(url).hostname.split(".")[0];
+if (projectRef !== process.env.BRAIN_IMPORT_PROJECT_REF || process.env.BRAIN_IMPORT_ENVIRONMENT !== "staging") throw new Error("Refusing validation outside the explicitly matched staging project.");
+const expected = JSON.parse(await readFile("data/brain/travel/import-v1/manifest.json", "utf8")).counts;
+const service = createClient(url, serviceKey, { auth: { persistSession: false } });
+const anon = createClient(url, anonKey, { auth: { persistSession: false } });
+
+for (const [table, count] of Object.entries(expected)) {
+  const { count: actual, error } = await service.from(table).select("*", { count: "exact", head: true });
+  if (error || actual !== count) throw new Error(`${table}: expected ${count}, received ${actual}; ${error?.message || "count mismatch"}`);
+}
+for (const [view, count] of [["brain_public_places",103],["brain_public_travel_visits",110],["brain_public_travel_movements",1],["brain_public_photos",0]]) {
+  const { count: actual, error } = await anon.from(view).select("*", { count: "exact", head: true });
+  if (error || actual !== count) throw new Error(`${view}: expected anonymous count ${count}, received ${actual}; ${error?.message || "count mismatch"}`);
+}
+for (const table of ["travel_places","travel_visits","photo_private_metadata"]) {
+  const { data, error } = await anon.from(table).select("*").limit(1);
+  if (!error && data?.length) throw new Error(`${table}: anonymous base-table data unexpectedly readable`);
+}
+const { error: privateColumnError } = await anon.from("brain_public_photos").select("exact_latitude").limit(1);
+if (!privateColumnError) throw new Error("brain_public_photos unexpectedly exposes exact_latitude");
+console.log(JSON.stringify({status:"valid",projectRef,counts:expected,anonymousViews:{places:103,visits:110,movements:1,photos:0},privatePhotoGpsExposed:false},null,2));

@@ -1,0 +1,3429 @@
+{
+  "schema_version": "synergetic-travel-source.v1",
+  "source": {
+    "source_url": "https://www.synergetichuman.com/notes/what",
+    "source_id": "b47333be-940e-4933-bc0d-48c272403e24",
+    "source_slug": "what",
+    "source_title": "where i've been ",
+    "source_created_at": "2025-11-29T16:21:55.07+00:00",
+    "captured_at": "2026-08-27",
+    "visibility": "public",
+    "category": "today",
+    "emoji": "🗺️",
+    "snapshot_path": "data/brain/travel/source/what.2026-08-27.md",
+    "content_sha256": "19135544962e7be9c0aa0c77be5236d2d075bea538863e71bb0d5d5140cc9967",
+    "source_order": "reverse_chronological"
+  },
+  "intro": {
+    "traveling_since": {
+      "source_text": "september 2023",
+      "year": 2023,
+      "month": 9,
+      "precision": "month"
+    },
+    "journey_note": "been quite a journey. slept in well over 100 different beds now since I started",
+    "favorite_countries": [
+      "argentina",
+      "japan",
+      "vietnam"
+    ],
+    "favorite_places": [
+      "buenos aires",
+      "tokyo",
+      "hoi an/da nang"
+    ]
+  },
+  "record_count": 101,
+  "candidate_place_reference_count": 111,
+  "records": [
+    {
+      "id": "f31f7a83-413b-5778-ac36-20bbadf4e730",
+      "source_position": 1,
+      "source_line": 26,
+      "source_year_heading": 2026,
+      "source_month_text": "august",
+      "source_value": "warsaw",
+      "source_raw_line": "* august: warsaw",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "august",
+        "start": {
+          "year": 2026,
+          "month": 8
+        },
+        "end": {
+          "year": 2026,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "f41e0e40-913a-555e-b67d-4123848a52e8",
+          "source_name": "warsaw",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "ad08278e-6754-5aa8-b3e8-ee28fa5b81a7",
+      "source_position": 2,
+      "source_line": 27,
+      "source_year_heading": 2026,
+      "source_month_text": "august",
+      "source_value": "kaunas",
+      "source_raw_line": "* august: kaunas",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "august",
+        "start": {
+          "year": 2026,
+          "month": 8
+        },
+        "end": {
+          "year": 2026,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "8b4d5c3f-5ac1-59f2-84ea-aff24fbe7691",
+          "source_name": "kaunas",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "78a0730c-43d7-5c40-9bc3-9d616c908f54",
+      "source_position": 3,
+      "source_line": 28,
+      "source_year_heading": 2026,
+      "source_month_text": "august",
+      "source_value": "vilnius",
+      "source_raw_line": "* august: vilnius",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "august",
+        "start": {
+          "year": 2026,
+          "month": 8
+        },
+        "end": {
+          "year": 2026,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "d8e1d33d-ff11-5562-bf19-bdc927e8e8f2",
+          "source_name": "vilnius",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "38334538-d626-555e-ba75-68bf0bf2454c",
+      "source_position": 4,
+      "source_line": 29,
+      "source_year_heading": 2026,
+      "source_month_text": "august",
+      "source_value": "riga",
+      "source_raw_line": "* august: riga",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "august",
+        "start": {
+          "year": 2026,
+          "month": 8
+        },
+        "end": {
+          "year": 2026,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "950da3aa-57e6-572d-9b7f-1deb93bef218",
+          "source_name": "riga",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "df2d0459-00d9-51c6-a9e3-90050b1ddd05",
+      "source_position": 5,
+      "source_line": 30,
+      "source_year_heading": 2026,
+      "source_month_text": "july/august",
+      "source_value": "tallinn ",
+      "source_raw_line": "* july/august: tallinn ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july/august",
+        "start": {
+          "year": 2026,
+          "month": 7
+        },
+        "end": {
+          "year": 2026,
+          "month": 8
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "edcf3477-c0d3-5aac-8878-f6b6fa838918",
+          "source_name": "tallinn",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "8f9c8931-5d00-5a1c-9561-c2d5d38ffeb5",
+      "source_position": 6,
+      "source_line": 31,
+      "source_year_heading": 2026,
+      "source_month_text": "july",
+      "source_value": "helsinki",
+      "source_raw_line": "* july: helsinki",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2026,
+          "month": 7
+        },
+        "end": {
+          "year": 2026,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "17f70c7d-7bb6-51e8-840e-2afcc25e932d",
+          "source_name": "helsinki",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "904a7f38-c8c4-5d03-8e4d-1237b8f612ab",
+      "source_position": 7,
+      "source_line": 32,
+      "source_year_heading": 2026,
+      "source_month_text": "july",
+      "source_value": "stockholm",
+      "source_raw_line": "* july: stockholm",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2026,
+          "month": 7
+        },
+        "end": {
+          "year": 2026,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "1b6c121c-aa58-59a5-837b-40e0a187f5be",
+          "source_name": "stockholm",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "b710c93d-db1b-5251-9b55-8319f353fd41",
+      "source_position": 8,
+      "source_line": 33,
+      "source_year_heading": 2026,
+      "source_month_text": "july",
+      "source_value": "tivat",
+      "source_raw_line": "* july: tivat",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2026,
+          "month": 7
+        },
+        "end": {
+          "year": 2026,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "b51d05cc-c281-5b57-a74f-21c50ae20a7a",
+          "source_name": "tivat",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "8c2a227b-1106-5fab-b9cc-21eb2e6aad40",
+      "source_position": 9,
+      "source_line": 34,
+      "source_year_heading": 2026,
+      "source_month_text": "july",
+      "source_value": "ulcinj",
+      "source_raw_line": "* july: ulcinj",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2026,
+          "month": 7
+        },
+        "end": {
+          "year": 2026,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "717ead55-cbbc-539d-9809-048eb88718aa",
+          "source_name": "ulcinj",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "e3b59d80-e95a-53a9-845a-062edc67edf8",
+      "source_position": 10,
+      "source_line": 35,
+      "source_year_heading": 2026,
+      "source_month_text": "july",
+      "source_value": "pristina",
+      "source_raw_line": "* july: pristina",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2026,
+          "month": 7
+        },
+        "end": {
+          "year": 2026,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "a76c2807-aab2-5e57-8157-f7ea4ea76d76",
+          "source_name": "pristina",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "aa1ce679-453e-5c22-adb6-0807202ba4e2",
+      "source_position": 11,
+      "source_line": 36,
+      "source_year_heading": 2026,
+      "source_month_text": "july",
+      "source_value": "skopje",
+      "source_raw_line": "* july: skopje",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2026,
+          "month": 7
+        },
+        "end": {
+          "year": 2026,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "8a3d000b-cd2e-55b8-b5c6-dc115fab9780",
+          "source_name": "skopje",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "a4e49b32-df02-554d-b732-420da2ce8e1c",
+      "source_position": 12,
+      "source_line": 37,
+      "source_year_heading": 2026,
+      "source_month_text": "july",
+      "source_value": "nis",
+      "source_raw_line": "* july: nis",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2026,
+          "month": 7
+        },
+        "end": {
+          "year": 2026,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "b0623cea-4287-55e3-ab60-721ef53b0b48",
+          "source_name": "nis",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "2e2e45cb-869a-5ae0-aaf1-6cf090b7b1ba",
+      "source_position": 13,
+      "source_line": 38,
+      "source_year_heading": 2026,
+      "source_month_text": "june/july",
+      "source_value": "sofia",
+      "source_raw_line": "* june/july: sofia",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "june/july",
+        "start": {
+          "year": 2026,
+          "month": 6
+        },
+        "end": {
+          "year": 2026,
+          "month": 7
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "b686a95b-f8b3-5d65-9eef-cfb6733f6b04",
+          "source_name": "sofia",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "d6d769a8-bb0a-5154-a530-3b1c7aa479e7",
+      "source_position": 14,
+      "source_line": 39,
+      "source_year_heading": 2026,
+      "source_month_text": "june",
+      "source_value": "saranda",
+      "source_raw_line": "* june: saranda",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "june",
+        "start": {
+          "year": 2026,
+          "month": 6
+        },
+        "end": {
+          "year": 2026,
+          "month": 6
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "2fb59b97-7b7a-56b1-804a-0539286a9749",
+          "source_name": "saranda",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "db7baacc-359d-5dd1-a460-8c14e515cd01",
+      "source_position": 15,
+      "source_line": 40,
+      "source_year_heading": 2026,
+      "source_month_text": "june",
+      "source_value": "dhermi",
+      "source_raw_line": "* june: dhermi",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "june",
+        "start": {
+          "year": 2026,
+          "month": 6
+        },
+        "end": {
+          "year": 2026,
+          "month": 6
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "55c54dab-7d7b-59e3-8507-cb348c4e5063",
+          "source_name": "dhermi",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "436bb6cf-6b76-5202-9c0d-5e58c9e1c37e",
+      "source_position": 16,
+      "source_line": 41,
+      "source_year_heading": 2026,
+      "source_month_text": "june",
+      "source_value": "himare",
+      "source_raw_line": "* june: himare",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "june",
+        "start": {
+          "year": 2026,
+          "month": 6
+        },
+        "end": {
+          "year": 2026,
+          "month": 6
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "0e09be68-060c-5165-8977-446d4995d873",
+          "source_name": "himare",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "2c5b44e7-7b9d-534c-b350-6f26b09f3b8d",
+      "source_position": 17,
+      "source_line": 42,
+      "source_year_heading": 2026,
+      "source_month_text": "may/june",
+      "source_value": "vlore",
+      "source_raw_line": "* may/june: vlore",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may/june",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 6
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "528cc843-0985-54f9-a0c9-ea951da8b95e",
+          "source_name": "vlore",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "7f6002d0-bb34-56e4-a72a-e095f60cd52e",
+      "source_position": 18,
+      "source_line": 43,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "tirana",
+      "source_raw_line": "* may: tirana",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "1a528f28-adcf-5fac-93dd-8436ad347404",
+          "source_name": "tirana",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "62c4fac6-ae03-5874-b777-409c9147b9ef",
+      "source_position": 19,
+      "source_line": 44,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "bohinj",
+      "source_raw_line": "* may: bohinj",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "80648e06-5aaf-5824-ad58-bb385071cede",
+          "source_name": "bohinj",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "d4882bd4-0931-587a-8921-171f538a93fd",
+      "source_position": 20,
+      "source_line": 45,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "bled",
+      "source_raw_line": "* may: bled",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "1c272098-0307-55c2-bfcf-2bbdfbaa806d",
+          "source_name": "bled",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "fb98eda0-867b-52d2-bb31-be35bc83b154",
+      "source_position": 21,
+      "source_line": 46,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "ljubljana",
+      "source_raw_line": "* may: ljubljana",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "ca9b0180-8d00-545a-808c-663a547281e9",
+          "source_name": "ljubljana",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "61ee9bed-20ac-5631-bf2c-f825d0d5cbce",
+      "source_position": 22,
+      "source_line": 47,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "salzburg",
+      "source_raw_line": "* may: salzburg",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "1ff3b217-61b7-580a-bd40-78a5af3e3fef",
+          "source_name": "salzburg",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "275649af-ffcd-56e3-afc1-478fea4daaef",
+      "source_position": 23,
+      "source_line": 48,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "muhlbach am hochkonig",
+      "source_raw_line": "* may: muhlbach am hochkonig",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "f36415b1-f83c-58e4-a0dc-b9dd59e01629",
+          "source_name": "muhlbach am hochkonig",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "977a389a-1cff-5634-969c-2d8f59d496eb",
+      "source_position": 24,
+      "source_line": 49,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "innsbruck",
+      "source_raw_line": "* may: innsbruck",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "594b85be-6b7b-5e94-80fd-988c59a9263a",
+          "source_name": "innsbruck",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "e63f7acf-b817-57ab-9e23-5b991e5d7251",
+      "source_position": 25,
+      "source_line": 50,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "zurich",
+      "source_raw_line": "* may: zurich",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "fc4cec34-6e67-5321-8693-03d6100488da",
+          "source_name": "zurich",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "9ecea976-987d-5ef8-905e-9b5d5a7fbc92",
+      "source_position": 26,
+      "source_line": 51,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "geneva",
+      "source_raw_line": "* may: geneva",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "11b9a02a-c3c6-5cd5-a1c9-d84e222ea1ee",
+          "source_name": "geneva",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "62d78c09-559e-5964-925c-8396644fbc2d",
+      "source_position": 27,
+      "source_line": 52,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "seville",
+      "source_raw_line": "* may: seville",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "3093cc5c-520b-5e86-a4f2-6ff8d0895b01",
+          "source_name": "seville",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "12c74f25-49c1-5fd4-88c1-95334c76fd14",
+      "source_position": 28,
+      "source_line": 53,
+      "source_year_heading": 2026,
+      "source_month_text": "may",
+      "source_value": "el rompido",
+      "source_raw_line": "* may: el rompido",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2026,
+          "month": 5
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "c356f12a-f455-577f-ab59-6966681eccb1",
+          "source_name": "el rompido",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "60c9b40a-0089-5eb5-b8e9-c33f0cd39085",
+      "source_position": 29,
+      "source_line": 54,
+      "source_year_heading": 2026,
+      "source_month_text": "april/may",
+      "source_value": "marrakesh",
+      "source_raw_line": "* april/may: marrakesh",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "april/may",
+        "start": {
+          "year": 2026,
+          "month": 4
+        },
+        "end": {
+          "year": 2026,
+          "month": 5
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "2e934146-1aa3-590c-9d33-70688c94f7d7",
+          "source_name": "marrakesh",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "2e1c6369-a96a-5fb9-9b81-782f6a03f965",
+      "source_position": 30,
+      "source_line": 55,
+      "source_year_heading": 2026,
+      "source_month_text": "april",
+      "source_value": "casablanca",
+      "source_raw_line": "* april: casablanca",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "april",
+        "start": {
+          "year": 2026,
+          "month": 4
+        },
+        "end": {
+          "year": 2026,
+          "month": 4
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "206057c2-5309-56b0-b6cf-09799a7a5672",
+          "source_name": "casablanca",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "f52be027-8fe3-5d31-8bda-cd94ea3d1cd1",
+      "source_position": 31,
+      "source_line": 56,
+      "source_year_heading": 2026,
+      "source_month_text": "april",
+      "source_value": "miami",
+      "source_raw_line": "* april: miami",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "april",
+        "start": {
+          "year": 2026,
+          "month": 4
+        },
+        "end": {
+          "year": 2026,
+          "month": 4
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "12b4e499-a714-55e9-b388-f9675879b12a",
+          "source_name": "miami",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "3ab83fa9-87dc-5694-a4f6-a810c8fa75e5",
+      "source_position": 32,
+      "source_line": 57,
+      "source_year_heading": 2026,
+      "source_month_text": "mar/april",
+      "source_value": "island heights",
+      "source_raw_line": "* mar/april: island heights",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "mar/april",
+        "start": {
+          "year": 2026,
+          "month": 3
+        },
+        "end": {
+          "year": 2026,
+          "month": 4
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "cb091ebc-968d-5ace-a820-5c25000c0d7d",
+          "source_name": "island heights",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "1fe1426e-3f69-56b4-b1b5-64d94aa11a70",
+      "source_position": 33,
+      "source_line": 58,
+      "source_year_heading": 2026,
+      "source_month_text": "feb/mar",
+      "source_value": "st. petersburg",
+      "source_raw_line": "* feb/mar: st. petersburg",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb/mar",
+        "start": {
+          "year": 2026,
+          "month": 2
+        },
+        "end": {
+          "year": 2026,
+          "month": 3
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "e1d54dad-9228-5b74-8e09-ea40765083b1",
+          "source_name": "st. petersburg",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "935c02ee-0a96-56db-8468-173e15cb07f3",
+      "source_position": 34,
+      "source_line": 59,
+      "source_year_heading": 2026,
+      "source_month_text": "feb",
+      "source_value": "miami",
+      "source_raw_line": "* feb: miami",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb",
+        "start": {
+          "year": 2026,
+          "month": 2
+        },
+        "end": {
+          "year": 2026,
+          "month": 2
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "12b4e499-a714-55e9-b388-f9675879b12a",
+          "source_name": "miami",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "45d16621-02d4-5e0f-ad63-1556923f2884",
+      "source_position": 35,
+      "source_line": 60,
+      "source_year_heading": 2026,
+      "source_month_text": "feb",
+      "source_value": "aruba",
+      "source_raw_line": "* feb: aruba",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb",
+        "start": {
+          "year": 2026,
+          "month": 2
+        },
+        "end": {
+          "year": 2026,
+          "month": 2
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "12b2e4d2-ad51-5de8-bed9-32e2fda8f7dc",
+          "source_name": "aruba",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "4684d80f-51c4-5820-a995-199de001e0e3",
+      "source_position": 36,
+      "source_line": 61,
+      "source_year_heading": 2026,
+      "source_month_text": "feb",
+      "source_value": "medellin",
+      "source_raw_line": "* feb: medellin",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb",
+        "start": {
+          "year": 2026,
+          "month": 2
+        },
+        "end": {
+          "year": 2026,
+          "month": 2
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "569390f9-94f9-547f-adc3-1993cf66221b",
+          "source_name": "medellin",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "1517b5b1-0ce3-597f-bc5f-75875667b284",
+      "source_position": 37,
+      "source_line": 62,
+      "source_year_heading": 2026,
+      "source_month_text": "jan",
+      "source_value": "jardin",
+      "source_raw_line": "* jan: jardin",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "jan",
+        "start": {
+          "year": 2026,
+          "month": 1
+        },
+        "end": {
+          "year": 2026,
+          "month": 1
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "27f9bf4b-3575-5ab0-a498-00214c6e2166",
+          "source_name": "jardin",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "034b2463-3826-54b9-bcd6-5b30f38c5203",
+      "source_position": 38,
+      "source_line": 63,
+      "source_year_heading": 2026,
+      "source_month_text": "jan",
+      "source_value": "medellin",
+      "source_raw_line": "* jan: medellin",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "jan",
+        "start": {
+          "year": 2026,
+          "month": 1
+        },
+        "end": {
+          "year": 2026,
+          "month": 1
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "569390f9-94f9-547f-adc3-1993cf66221b",
+          "source_name": "medellin",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "d2913e2b-09d4-52ba-8fe2-32980aac9d17",
+      "source_position": 39,
+      "source_line": 67,
+      "source_year_heading": 2025,
+      "source_month_text": "dec",
+      "source_value": "bogota",
+      "source_raw_line": "* dec: bogota",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec",
+        "start": {
+          "year": 2025,
+          "month": 12
+        },
+        "end": {
+          "year": 2025,
+          "month": 12
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "6bedab4d-309d-56ec-82e3-c59d3fb0cb1f",
+          "source_name": "bogota",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "eaa7029d-b536-5e6a-86f4-e8756e9a901f",
+      "source_position": 40,
+      "source_line": 68,
+      "source_year_heading": 2025,
+      "source_month_text": "dec",
+      "source_value": "el paredon",
+      "source_raw_line": "* dec: el paredon",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec",
+        "start": {
+          "year": 2025,
+          "month": 12
+        },
+        "end": {
+          "year": 2025,
+          "month": 12
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "99edf05a-964a-5647-9c0a-cfbfa67c1e93",
+          "source_name": "el paredon",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "fed76e93-c045-5570-b26c-8ac642464cef",
+      "source_position": 41,
+      "source_line": 69,
+      "source_year_heading": 2025,
+      "source_month_text": "dec",
+      "source_value": "lake atitlan",
+      "source_raw_line": "* dec: lake atitlan",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec",
+        "start": {
+          "year": 2025,
+          "month": 12
+        },
+        "end": {
+          "year": 2025,
+          "month": 12
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "e438aacd-882a-573b-a355-371a1b43e472",
+          "source_name": "lake atitlan",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "1b7377d7-c206-545a-93f4-84a2a178097d",
+      "source_position": 42,
+      "source_line": 70,
+      "source_year_heading": 2025,
+      "source_month_text": "dec",
+      "source_value": "antigua",
+      "source_raw_line": "* dec: antigua",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec",
+        "start": {
+          "year": 2025,
+          "month": 12
+        },
+        "end": {
+          "year": 2025,
+          "month": 12
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "0ab33423-22ca-5395-a4b2-f5005bdee908",
+          "source_name": "antigua",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "e4b11a48-d813-5ddd-9989-0de2ac1b189a",
+      "source_position": 43,
+      "source_line": 71,
+      "source_year_heading": 2025,
+      "source_month_text": "nov/dec",
+      "source_value": "el tunco",
+      "source_raw_line": "* nov/dec: el tunco",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov/dec",
+        "start": {
+          "year": 2025,
+          "month": 11
+        },
+        "end": {
+          "year": 2025,
+          "month": 12
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "02c6744e-6d7e-5cab-b7fc-08b1514d57ff",
+          "source_name": "el tunco",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "b836ac7d-4dc4-53c3-94e1-9f29735dd901",
+      "source_position": 44,
+      "source_line": 72,
+      "source_year_heading": 2025,
+      "source_month_text": "nov",
+      "source_value": "la libertad",
+      "source_raw_line": "* nov: la libertad",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov",
+        "start": {
+          "year": 2025,
+          "month": 11
+        },
+        "end": {
+          "year": 2025,
+          "month": 11
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "c21e5cab-2004-56f6-b3e8-6e416ee7c3d5",
+          "source_name": "la libertad",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "07dc6361-914d-5514-b565-f7a26f08dfd8",
+      "source_position": 45,
+      "source_line": 73,
+      "source_year_heading": 2025,
+      "source_month_text": "nov",
+      "source_value": "san salvador",
+      "source_raw_line": "* nov: san salvador",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov",
+        "start": {
+          "year": 2025,
+          "month": 11
+        },
+        "end": {
+          "year": 2025,
+          "month": 11
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "1563599a-b41e-53f5-a5fa-7b6e6a6d273f",
+          "source_name": "san salvador",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "71f160e1-493c-5f55-8c62-684cb78c6114",
+      "source_position": 46,
+      "source_line": 74,
+      "source_year_heading": 2025,
+      "source_month_text": "nov",
+      "source_value": "tegucigalpa",
+      "source_raw_line": "* nov: tegucigalpa",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov",
+        "start": {
+          "year": 2025,
+          "month": 11
+        },
+        "end": {
+          "year": 2025,
+          "month": 11
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "fa95d568-8c68-5fa8-be76-ea7d927fc5a2",
+          "source_name": "tegucigalpa",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "d53b2f59-7073-5b94-be39-9e0b9b05377e",
+      "source_position": 47,
+      "source_line": 75,
+      "source_year_heading": 2025,
+      "source_month_text": "nov",
+      "source_value": "roatan",
+      "source_raw_line": "* nov: roatan",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov",
+        "start": {
+          "year": 2025,
+          "month": 11
+        },
+        "end": {
+          "year": 2025,
+          "month": 11
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "4396ef2d-de4a-5074-8e6e-5c33883e455c",
+          "source_name": "roatan",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "2988bc2c-b739-559d-998a-5e3442898883",
+      "source_position": 48,
+      "source_line": 76,
+      "source_year_heading": 2025,
+      "source_month_text": "oct/nov",
+      "source_value": "austin",
+      "source_raw_line": "* oct/nov: austin",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "oct/nov",
+        "start": {
+          "year": 2025,
+          "month": 10
+        },
+        "end": {
+          "year": 2025,
+          "month": 11
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "3b72a0a6-c58b-59c7-8a55-c074ce7f1136",
+          "source_name": "austin",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "eb38ab0e-9ae6-573d-afb0-0edb90ca379f",
+      "source_position": 49,
+      "source_line": 77,
+      "source_year_heading": 2025,
+      "source_month_text": "sept/oct",
+      "source_value": "puerto vallarta ",
+      "source_raw_line": "* sept/oct: puerto vallarta ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "sept/oct",
+        "start": {
+          "year": 2025,
+          "month": 9
+        },
+        "end": {
+          "year": 2025,
+          "month": 10
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "b500deda-f342-5b93-9a1c-b8465f9b0b90",
+          "source_name": "puerto vallarta",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "689ab7c2-8c6b-5386-8313-6aa696ea4e2e",
+      "source_position": 50,
+      "source_line": 78,
+      "source_year_heading": 2025,
+      "source_month_text": "sept",
+      "source_value": "guadalajara",
+      "source_raw_line": "* sept: guadalajara",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "sept",
+        "start": {
+          "year": 2025,
+          "month": 9
+        },
+        "end": {
+          "year": 2025,
+          "month": 9
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "e4fdb7bf-12f4-5816-91d7-f78c25959d7c",
+          "source_name": "guadalajara",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "fd982454-0df8-5a34-a6f8-ebc6f50b769a",
+      "source_position": 51,
+      "source_line": 79,
+      "source_year_heading": 2025,
+      "source_month_text": "sept",
+      "source_value": "san miguel de allende",
+      "source_raw_line": "* sept: san miguel de allende",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "sept",
+        "start": {
+          "year": 2025,
+          "month": 9
+        },
+        "end": {
+          "year": 2025,
+          "month": 9
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "084214db-ee10-516a-a2cb-c19fb3a7afec",
+          "source_name": "san miguel de allende",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "731dd669-20f7-50de-a5ce-db0185ffbaa3",
+      "source_position": 52,
+      "source_line": 80,
+      "source_year_heading": 2025,
+      "source_month_text": "sept",
+      "source_value": "guanajuato",
+      "source_raw_line": "* sept: guanajuato",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "sept",
+        "start": {
+          "year": 2025,
+          "month": 9
+        },
+        "end": {
+          "year": 2025,
+          "month": 9
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "39395949-765b-510b-93d4-9ebf4ede8c6b",
+          "source_name": "guanajuato",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "8b33ee0b-ed04-5cc9-877f-a81a3d393115",
+      "source_position": 53,
+      "source_line": 81,
+      "source_year_heading": 2025,
+      "source_month_text": "sept",
+      "source_value": "mexico city ",
+      "source_raw_line": "* sept: mexico city ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "sept",
+        "start": {
+          "year": 2025,
+          "month": 9
+        },
+        "end": {
+          "year": 2025,
+          "month": 9
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "2f996f47-40be-50b7-8de6-58a076d75684",
+          "source_name": "mexico city",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "55f196af-e4ed-515d-b06f-f93311c172fb",
+      "source_position": 54,
+      "source_line": 82,
+      "source_year_heading": 2025,
+      "source_month_text": "aug",
+      "source_value": "island heights ",
+      "source_raw_line": "* aug: island heights ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "aug",
+        "start": {
+          "year": 2025,
+          "month": 8
+        },
+        "end": {
+          "year": 2025,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "cb091ebc-968d-5ace-a820-5c25000c0d7d",
+          "source_name": "island heights",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "c7c93ffe-69a6-5be8-8174-76155a6afec1",
+      "source_position": 55,
+      "source_line": 83,
+      "source_year_heading": 2025,
+      "source_month_text": "aug",
+      "source_value": "montreal ",
+      "source_raw_line": "* aug: montreal ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "aug",
+        "start": {
+          "year": 2025,
+          "month": 8
+        },
+        "end": {
+          "year": 2025,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "0f8997ac-f12e-5c7c-9627-af1a69d34d17",
+          "source_name": "montreal",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "889f7ae3-4da1-5cbb-9a06-b6d9868fcdb1",
+      "source_position": 56,
+      "source_line": 84,
+      "source_year_heading": 2025,
+      "source_month_text": "aug",
+      "source_value": "new york city",
+      "source_raw_line": "* aug: new york city",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "aug",
+        "start": {
+          "year": 2025,
+          "month": 8
+        },
+        "end": {
+          "year": 2025,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "2561b599-3637-5c00-b199-9975af177819",
+          "source_name": "new york city",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "7b28765d-21cb-5839-91b7-1b99c85af32b",
+      "source_position": 57,
+      "source_line": 85,
+      "source_year_heading": 2025,
+      "source_month_text": "july",
+      "source_value": "tokyo",
+      "source_raw_line": "* july: tokyo",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2025,
+          "month": 7
+        },
+        "end": {
+          "year": 2025,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "cfc192c1-d487-5aca-98c2-da6b7190eb8e",
+          "source_name": "tokyo",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "be6514ba-72b6-509c-985d-83c3e60c6262",
+      "source_position": 58,
+      "source_line": 86,
+      "source_year_heading": 2025,
+      "source_month_text": "july",
+      "source_value": "kyoto",
+      "source_raw_line": "* july: kyoto",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2025,
+          "month": 7
+        },
+        "end": {
+          "year": 2025,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "0575c4f6-e65a-565d-96af-ebcf4443f593",
+          "source_name": "kyoto",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "11f3a5cc-04af-5b27-a5b5-a34fe9621bf8",
+      "source_position": 59,
+      "source_line": 87,
+      "source_year_heading": 2025,
+      "source_month_text": "july",
+      "source_value": "osaka",
+      "source_raw_line": "* july: osaka",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2025,
+          "month": 7
+        },
+        "end": {
+          "year": 2025,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "85cba730-a6f4-598b-93f2-f68b02ef60f3",
+          "source_name": "osaka",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "2559d35f-434f-5187-b061-2d14dd1b8b34",
+      "source_position": 60,
+      "source_line": 88,
+      "source_year_heading": 2025,
+      "source_month_text": "july",
+      "source_value": "taiwan ",
+      "source_raw_line": "* july: taiwan ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2025,
+          "month": 7
+        },
+        "end": {
+          "year": 2025,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "67df4325-7fba-5448-84f0-ffe5a67b2483",
+          "source_name": "taiwan",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "df74f3c0-0bdf-55ee-a3f8-a246eea04b69",
+      "source_position": 61,
+      "source_line": 89,
+      "source_year_heading": 2025,
+      "source_month_text": "apr-july",
+      "source_value": "hoi an",
+      "source_raw_line": "* apr-july: hoi an",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "apr-july",
+        "start": {
+          "year": 2025,
+          "month": 4
+        },
+        "end": {
+          "year": 2025,
+          "month": 7
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "f7894a71-d4e7-5132-98bd-84f7a0fb8e6a",
+          "source_name": "hoi an",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "52140dd4-b8fc-5319-9647-0b255b2dd7a4",
+      "source_position": 62,
+      "source_line": 90,
+      "source_year_heading": 2025,
+      "source_month_text": "apr",
+      "source_value": "siem reap",
+      "source_raw_line": "* apr: siem reap",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "apr",
+        "start": {
+          "year": 2025,
+          "month": 4
+        },
+        "end": {
+          "year": 2025,
+          "month": 4
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "3c841191-0104-5b07-8afb-88f4a3ecdcf0",
+          "source_name": "siem reap",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "6c3744e2-5230-568d-a55e-28c4440c7389",
+      "source_position": 63,
+      "source_line": 91,
+      "source_year_heading": 2025,
+      "source_month_text": "apr",
+      "source_value": "phnom penh",
+      "source_raw_line": "* apr: phnom penh",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "apr",
+        "start": {
+          "year": 2025,
+          "month": 4
+        },
+        "end": {
+          "year": 2025,
+          "month": 4
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "e057f67b-358b-5725-85f2-e8b7f732cc8b",
+          "source_name": "phnom penh",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "3f867361-cd3d-5cba-9620-4e25fb2a7bb9",
+      "source_position": 64,
+      "source_line": 92,
+      "source_year_heading": 2025,
+      "source_month_text": "mar/apr",
+      "source_value": "kampot",
+      "source_raw_line": "* mar/apr: kampot",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "mar/apr",
+        "start": {
+          "year": 2025,
+          "month": 3
+        },
+        "end": {
+          "year": 2025,
+          "month": 4
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "eeca7f4f-dece-5c35-870e-65879e3496a1",
+          "source_name": "kampot",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "7104acd1-eac2-5272-b7f4-1ef795d2b372",
+      "source_position": 65,
+      "source_line": 93,
+      "source_year_heading": 2025,
+      "source_month_text": "feb/march",
+      "source_value": "phu quoc ",
+      "source_raw_line": "* feb/march: phu quoc ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb/march",
+        "start": {
+          "year": 2025,
+          "month": 2
+        },
+        "end": {
+          "year": 2025,
+          "month": 3
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "3a21ca97-331d-5115-942f-3ac64016b423",
+          "source_name": "phu quoc",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "27d3fba8-ee17-5c0f-a446-5f0b5b3a6ae9",
+      "source_position": 66,
+      "source_line": 94,
+      "source_year_heading": 2025,
+      "source_month_text": "feb",
+      "source_value": "sapa",
+      "source_raw_line": "* feb: sapa",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb",
+        "start": {
+          "year": 2025,
+          "month": 2
+        },
+        "end": {
+          "year": 2025,
+          "month": 2
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "5bfeeddb-4941-5cfc-a1c4-20a50b398e01",
+          "source_name": "sapa",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "a2c3f6ac-9d35-5289-8518-1b8020c5d97e",
+      "source_position": 67,
+      "source_line": 95,
+      "source_year_heading": 2025,
+      "source_month_text": "feb",
+      "source_value": "hanoi",
+      "source_raw_line": "* feb: hanoi",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb",
+        "start": {
+          "year": 2025,
+          "month": 2
+        },
+        "end": {
+          "year": 2025,
+          "month": 2
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "8b113df7-8842-51fb-90cc-6c27a34c9591",
+          "source_name": "hanoi",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "06abef1a-0636-5e21-8e23-0c08f02b44da",
+      "source_position": 68,
+      "source_line": 96,
+      "source_year_heading": 2025,
+      "source_month_text": "jan",
+      "source_value": "da nang",
+      "source_raw_line": "* jan: da nang",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "jan",
+        "start": {
+          "year": 2025,
+          "month": 1
+        },
+        "end": {
+          "year": 2025,
+          "month": 1
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "7bc8ec37-e1fd-56ae-bb55-f19dadfeb910",
+          "source_name": "da nang",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "01ed4be0-bf1d-5781-81a5-6bfdaaf5f3d1",
+      "source_position": 69,
+      "source_line": 97,
+      "source_year_heading": 2025,
+      "source_month_text": "jan",
+      "source_value": "phuket",
+      "source_raw_line": "* jan: phuket",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "jan",
+        "start": {
+          "year": 2025,
+          "month": 1
+        },
+        "end": {
+          "year": 2025,
+          "month": 1
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "4a4b3577-2545-5854-aaf5-ea82abb349eb",
+          "source_name": "phuket",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "7d8d611b-b92c-58e7-a8ec-81d1ab4b6e1a",
+      "source_position": 70,
+      "source_line": 101,
+      "source_year_heading": 2024,
+      "source_month_text": "dec",
+      "source_value": "chiang rai",
+      "source_raw_line": "* dec: chiang rai",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec",
+        "start": {
+          "year": 2024,
+          "month": 12
+        },
+        "end": {
+          "year": 2024,
+          "month": 12
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "cc91edf4-05b5-5573-9ae6-fc195151e4d8",
+          "source_name": "chiang rai",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "9e4b068f-e443-50ec-b62b-cbd0e68cfe2d",
+      "source_position": 71,
+      "source_line": 102,
+      "source_year_heading": 2024,
+      "source_month_text": "dec",
+      "source_value": "chiang mai",
+      "source_raw_line": "* dec: chiang mai",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec",
+        "start": {
+          "year": 2024,
+          "month": 12
+        },
+        "end": {
+          "year": 2024,
+          "month": 12
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "f14cc825-e364-5f1c-8bb5-13f8a9cb0c5e",
+          "source_name": "chiang mai",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "9decf9b8-2323-54df-8139-9fa70276c890",
+      "source_position": 72,
+      "source_line": 103,
+      "source_year_heading": 2024,
+      "source_month_text": "dec",
+      "source_value": "pattaya",
+      "source_raw_line": "* dec: pattaya",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec",
+        "start": {
+          "year": 2024,
+          "month": 12
+        },
+        "end": {
+          "year": 2024,
+          "month": 12
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "f311c7c5-ad0e-5dfd-998a-ba344736c660",
+          "source_name": "pattaya",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "e89f8d24-a34a-56f2-a0f8-80353235a3c1",
+      "source_position": 73,
+      "source_line": 104,
+      "source_year_heading": 2024,
+      "source_month_text": "dec",
+      "source_value": "bangkok",
+      "source_raw_line": "* dec: bangkok",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec",
+        "start": {
+          "year": 2024,
+          "month": 12
+        },
+        "end": {
+          "year": 2024,
+          "month": 12
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "89fce753-a69f-5f72-85a8-e7c9043792f9",
+          "source_name": "bangkok",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "6e3ea277-c48e-5ae8-838b-61c7322515fe",
+      "source_position": 74,
+      "source_line": 105,
+      "source_year_heading": 2024,
+      "source_month_text": "nov",
+      "source_value": "phuket",
+      "source_raw_line": "* nov: phuket",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov",
+        "start": {
+          "year": 2024,
+          "month": 11
+        },
+        "end": {
+          "year": 2024,
+          "month": 11
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "4a4b3577-2545-5854-aaf5-ea82abb349eb",
+          "source_name": "phuket",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "6d322a64-2d24-5082-a434-157d4465876e",
+      "source_position": 75,
+      "source_line": 106,
+      "source_year_heading": 2024,
+      "source_month_text": "nov",
+      "source_value": "kuala lumpur",
+      "source_raw_line": "* nov: kuala lumpur",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov",
+        "start": {
+          "year": 2024,
+          "month": 11
+        },
+        "end": {
+          "year": 2024,
+          "month": 11
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "a552bc37-174b-5bfd-8d08-837f9fdb69e4",
+          "source_name": "kuala lumpur",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "daff8451-798b-587f-8639-96bd27c83448",
+      "source_position": 76,
+      "source_line": 107,
+      "source_year_heading": 2024,
+      "source_month_text": "sept-nov",
+      "source_value": "bali ",
+      "source_raw_line": "* sept-nov: bali ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "sept-nov",
+        "start": {
+          "year": 2024,
+          "month": 9
+        },
+        "end": {
+          "year": 2024,
+          "month": 11
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "6f63626b-9946-5cf9-9609-d80befa7d2f2",
+          "source_name": "bali",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "40991a64-f8cf-50dd-a85f-b96196b0d670",
+      "source_position": 77,
+      "source_line": 108,
+      "source_year_heading": 2024,
+      "source_month_text": "sept",
+      "source_value": "palawan",
+      "source_raw_line": "* sept: palawan",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "sept",
+        "start": {
+          "year": 2024,
+          "month": 9
+        },
+        "end": {
+          "year": 2024,
+          "month": 9
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "5c2c1d19-9195-5c41-8b77-6bf3c02e4ec8",
+          "source_name": "palawan",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "71248faf-9f13-5c28-b0c7-6513c869cfa7",
+      "source_position": 78,
+      "source_line": 109,
+      "source_year_heading": 2024,
+      "source_month_text": "aug",
+      "source_value": "manila",
+      "source_raw_line": "* aug: manila",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "aug",
+        "start": {
+          "year": 2024,
+          "month": 8
+        },
+        "end": {
+          "year": 2024,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "bbcc3827-dea2-5137-8e86-ac9b3390e954",
+          "source_name": "manila",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "a7b9b9bf-83d2-5c32-ab57-be2b582b6a53",
+      "source_position": 79,
+      "source_line": 110,
+      "source_year_heading": 2024,
+      "source_month_text": "aug",
+      "source_value": "siargao ",
+      "source_raw_line": "* aug: siargao ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "aug",
+        "start": {
+          "year": 2024,
+          "month": 8
+        },
+        "end": {
+          "year": 2024,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "c0574dc9-0988-572c-ab0c-a7b3871e5485",
+          "source_name": "siargao",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "6896cd1b-9ef2-5774-b538-3a907882bb2d",
+      "source_position": 80,
+      "source_line": 111,
+      "source_year_heading": 2024,
+      "source_month_text": "aug",
+      "source_value": "cebu city",
+      "source_raw_line": "* aug: cebu city",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "aug",
+        "start": {
+          "year": 2024,
+          "month": 8
+        },
+        "end": {
+          "year": 2024,
+          "month": 8
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "9bebe532-987b-5aa4-9e00-fae8ab847190",
+          "source_name": "cebu city",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "cf3c7378-31a9-5c0d-85f7-88e24fcde06e",
+      "source_position": 81,
+      "source_line": 112,
+      "source_year_heading": 2024,
+      "source_month_text": "july",
+      "source_value": "budapest",
+      "source_raw_line": "* july: budapest",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "july",
+        "start": {
+          "year": 2024,
+          "month": 7
+        },
+        "end": {
+          "year": 2024,
+          "month": 7
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "39beaf37-0ba3-5be8-868d-e4460f513532",
+          "source_name": "budapest",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "c02dab97-6519-583d-9bfc-fe146d3b05eb",
+      "source_position": 82,
+      "source_line": 113,
+      "source_year_heading": 2024,
+      "source_month_text": "june/july",
+      "source_value": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "source_raw_line": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "record_kind": "grouped_visit",
+      "temporal_range": {
+        "source_text": "june/july",
+        "start": {
+          "year": 2024,
+          "month": 6
+        },
+        "end": {
+          "year": 2024,
+          "month": 7
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "bbdf7712-4824-59ec-a6dc-1dedb7cf1400",
+          "source_name": "tropea",
+          "group_position": 1
+        },
+        {
+          "id": "f93e9e54-a9c3-510f-a718-ee0f5bd06789",
+          "source_name": "pizzo",
+          "group_position": 2
+        },
+        {
+          "id": "a8fab43e-9f84-588f-b631-145a4398465c",
+          "source_name": "matera",
+          "group_position": 3
+        },
+        {
+          "id": "1e0c506f-8d4b-5f81-9044-0d56a17756d2",
+          "source_name": "taranto",
+          "group_position": 4
+        },
+        {
+          "id": "3510b679-844c-5d22-aa5f-af9bb26edeef",
+          "source_name": "gallipoli",
+          "group_position": 5
+        },
+        {
+          "id": "ea352ac4-243c-557d-a005-fc7f87f60708",
+          "source_name": "lecce",
+          "group_position": 6
+        },
+        {
+          "id": "4798c547-40af-54cf-b323-7add16c61a4d",
+          "source_name": "polignano de mare",
+          "group_position": 7
+        },
+        {
+          "id": "968d6dc6-80f3-549f-83ea-2f8d6eae12c2",
+          "source_name": "bari",
+          "group_position": 8
+        },
+        {
+          "id": "9ec032ee-9f13-5010-9c44-0de26346bbdb",
+          "source_name": "spello",
+          "group_position": 9
+        },
+        {
+          "id": "f75e6caf-2359-5a64-98db-2ddda10b06a8",
+          "source_name": "rimini",
+          "group_position": 10
+        }
+      ],
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "grouped_source_record"
+        ]
+      }
+    },
+    {
+      "id": "0b8e1c1a-547c-59d1-866c-4b9a866d2a96",
+      "source_position": 83,
+      "source_line": 114,
+      "source_year_heading": 2024,
+      "source_month_text": "june",
+      "source_value": "sicily",
+      "source_raw_line": "* june: sicily",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "june",
+        "start": {
+          "year": 2024,
+          "month": 6
+        },
+        "end": {
+          "year": 2024,
+          "month": 6
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "5dd3dd3d-e733-55f9-ad1d-c4cc3bd04318",
+          "source_name": "sicily",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "0ef100c9-c16d-5166-872f-6481fd5fa714",
+      "source_position": 84,
+      "source_line": 115,
+      "source_year_heading": 2024,
+      "source_month_text": "june",
+      "source_value": "barcelona",
+      "source_raw_line": "* june: barcelona",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "june",
+        "start": {
+          "year": 2024,
+          "month": 6
+        },
+        "end": {
+          "year": 2024,
+          "month": 6
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "fb02680c-adc9-5531-abf2-5e82f3a92117",
+          "source_name": "barcelona",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "285f604c-2958-5afc-b12a-a0c30737e863",
+      "source_position": 85,
+      "source_line": 116,
+      "source_year_heading": 2024,
+      "source_month_text": "june",
+      "source_value": "galicia",
+      "source_raw_line": "* june: galicia",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "june",
+        "start": {
+          "year": 2024,
+          "month": 6
+        },
+        "end": {
+          "year": 2024,
+          "month": 6
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "7414a2a6-8e68-5106-a802-3d10d916545a",
+          "source_name": "galicia",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "ceaf5237-e8af-5c47-a2bb-3d964e90a317",
+      "source_position": 86,
+      "source_line": 117,
+      "source_year_heading": 2024,
+      "source_month_text": "may/june",
+      "source_value": "london ",
+      "source_raw_line": "* may/june: london ",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may/june",
+        "start": {
+          "year": 2024,
+          "month": 5
+        },
+        "end": {
+          "year": 2024,
+          "month": 6
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "85fe05f4-b48b-574d-8e08-630bea222bc4",
+          "source_name": "london",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "1980a33d-bab1-553e-9e78-fe3cff6caf34",
+      "source_position": 87,
+      "source_line": 118,
+      "source_year_heading": 2024,
+      "source_month_text": "may",
+      "source_value": "new york city",
+      "source_raw_line": "* may: new york city",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2024,
+          "month": 5
+        },
+        "end": {
+          "year": 2024,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "2561b599-3637-5c00-b199-9975af177819",
+          "source_name": "new york city",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "9d764061-568b-52fb-9a9c-783881e04570",
+      "source_position": 88,
+      "source_line": 119,
+      "source_year_heading": 2024,
+      "source_month_text": "may",
+      "source_value": "island heights",
+      "source_raw_line": "* may: island heights",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "may",
+        "start": {
+          "year": 2024,
+          "month": 5
+        },
+        "end": {
+          "year": 2024,
+          "month": 5
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "cb091ebc-968d-5ace-a820-5c25000c0d7d",
+          "source_name": "island heights",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "bcfe227d-fc78-51d0-867c-620c33820be8",
+      "source_position": 89,
+      "source_line": 120,
+      "source_year_heading": 2024,
+      "source_month_text": "apr",
+      "source_value": "punta cana",
+      "source_raw_line": "* apr: punta cana",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "apr",
+        "start": {
+          "year": 2024,
+          "month": 4
+        },
+        "end": {
+          "year": 2024,
+          "month": 4
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "1ed379db-71f4-5d11-982e-2cdfa0615272",
+          "source_name": "punta cana",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "a3337bb7-c3ac-53e9-8e43-54027e144b34",
+      "source_position": 90,
+      "source_line": 121,
+      "source_year_heading": 2024,
+      "source_month_text": "apr",
+      "source_value": "lima",
+      "source_raw_line": "* apr: lima",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "apr",
+        "start": {
+          "year": 2024,
+          "month": 4
+        },
+        "end": {
+          "year": 2024,
+          "month": 4
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "7709e18e-156c-5404-9a45-5fb6975f2220",
+          "source_name": "lima",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "2899dd24-a624-56f4-ba70-89749741981a",
+      "source_position": 91,
+      "source_line": 122,
+      "source_year_heading": 2024,
+      "source_month_text": "apr",
+      "source_value": "santiago",
+      "source_raw_line": "* apr: santiago",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "apr",
+        "start": {
+          "year": 2024,
+          "month": 4
+        },
+        "end": {
+          "year": 2024,
+          "month": 4
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "900c5bce-ed93-52f4-9059-383c76f786fa",
+          "source_name": "santiago",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "ce60e3c0-5da7-57f3-8939-04d166de2580",
+      "source_position": 92,
+      "source_line": 123,
+      "source_year_heading": 2024,
+      "source_month_text": "apr",
+      "source_value": "mendoza",
+      "source_raw_line": "* apr: mendoza",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "apr",
+        "start": {
+          "year": 2024,
+          "month": 4
+        },
+        "end": {
+          "year": 2024,
+          "month": 4
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "1c5dbc71-b33d-5d5e-9bca-ec6b2be85e8d",
+          "source_name": "mendoza",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "a151d43f-43e6-5634-9cae-d660f22f92e5",
+      "source_position": 93,
+      "source_line": 124,
+      "source_year_heading": 2024,
+      "source_month_text": "feb-apr",
+      "source_value": "buenos aires",
+      "source_raw_line": "* feb-apr: buenos aires",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb-apr",
+        "start": {
+          "year": 2024,
+          "month": 2
+        },
+        "end": {
+          "year": 2024,
+          "month": 4
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "a09e237a-4103-5516-a32f-d7d28bc79865",
+          "source_name": "buenos aires",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "b76dcc99-1e60-51c5-8fc3-29e476a5ed52",
+      "source_position": 94,
+      "source_line": 125,
+      "source_year_heading": 2024,
+      "source_month_text": "feb",
+      "source_value": "el bolson + lago puelo",
+      "source_raw_line": "* feb: el bolson + lago puelo",
+      "record_kind": "grouped_visit",
+      "temporal_range": {
+        "source_text": "feb",
+        "start": {
+          "year": 2024,
+          "month": 2
+        },
+        "end": {
+          "year": 2024,
+          "month": 2
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "a81cbc37-77a1-530d-97bb-8afe69edec15",
+          "source_name": "el bolson",
+          "group_position": 1
+        },
+        {
+          "id": "8c17a3df-96b0-555c-a1a5-cda0ac6e6d92",
+          "source_name": "lago puelo",
+          "group_position": 2
+        }
+      ],
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "grouped_source_record"
+        ]
+      }
+    },
+    {
+      "id": "e39985d3-3a33-59fe-85ca-0cea6892a2a7",
+      "source_position": 95,
+      "source_line": 126,
+      "source_year_heading": 2024,
+      "source_month_text": "feb",
+      "source_value": "bariloche",
+      "source_raw_line": "* feb: bariloche",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "feb",
+        "start": {
+          "year": 2024,
+          "month": 2
+        },
+        "end": {
+          "year": 2024,
+          "month": 2
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "b1c268a4-0f2d-5c7a-baed-0a91264f7b66",
+          "source_name": "bariloche",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "c167a6eb-6541-591e-909b-da22d3aa0110",
+      "source_position": 96,
+      "source_line": 130,
+      "source_year_heading": 2023,
+      "source_month_text": "dec-feb",
+      "source_value": "buenos aires",
+      "source_raw_line": "* dec-feb: buenos aires",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "dec-feb",
+        "start": {
+          "year": 2023,
+          "month": 12
+        },
+        "end": {
+          "year": 2024,
+          "month": 2
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "a09e237a-4103-5516-a32f-d7d28bc79865",
+          "source_name": "buenos aires",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "2ce30fa5-70f1-53fc-9c0f-79f096daef3d",
+      "source_position": 97,
+      "source_line": 131,
+      "source_year_heading": 2023,
+      "source_month_text": "nov/dec",
+      "source_value": "rio de janeiro",
+      "source_raw_line": "* nov/dec: rio de janeiro",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov/dec",
+        "start": {
+          "year": 2023,
+          "month": 11
+        },
+        "end": {
+          "year": 2023,
+          "month": 12
+        },
+        "precision": "month_range"
+      },
+      "candidate_places": [
+        {
+          "id": "2c27ef2c-f19f-57c1-97e6-0fc3315deaec",
+          "source_name": "rio de janeiro",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "74bfdb1d-e0f8-5a63-99e9-3bc936bd3bc7",
+      "source_position": 98,
+      "source_line": 132,
+      "source_year_heading": 2023,
+      "source_month_text": "nov",
+      "source_value": "cali",
+      "source_raw_line": "* nov: cali",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov",
+        "start": {
+          "year": 2023,
+          "month": 11
+        },
+        "end": {
+          "year": 2023,
+          "month": 11
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "3f612f4d-1453-5390-8631-e05716f6ac1e",
+          "source_name": "cali",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "45302a14-ef6f-50dd-ae57-18f3bf68153b",
+      "source_position": 99,
+      "source_line": 133,
+      "source_year_heading": 2023,
+      "source_month_text": "nov",
+      "source_value": "cancun",
+      "source_raw_line": "* nov: cancun",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "nov",
+        "start": {
+          "year": 2023,
+          "month": 11
+        },
+        "end": {
+          "year": 2023,
+          "month": 11
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "488de69a-63b9-5e8a-985f-653962a349f2",
+          "source_name": "cancun",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "9dc4045c-44f2-5b5a-876d-7d081dc2cc69",
+      "source_position": 100,
+      "source_line": 134,
+      "source_year_heading": 2023,
+      "source_month_text": "oct",
+      "source_value": "isabela",
+      "source_raw_line": "* oct: isabela",
+      "record_kind": "visit",
+      "temporal_range": {
+        "source_text": "oct",
+        "start": {
+          "year": 2023,
+          "month": 10
+        },
+        "end": {
+          "year": 2023,
+          "month": 10
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "d24b8882-ca3c-5b30-aab8-2da0dbcf7c9f",
+          "source_name": "isabela",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "id": "227a4d96-39f2-5cdf-a115-57127622305d",
+      "source_position": 101,
+      "source_line": 135,
+      "source_year_heading": 2023,
+      "source_month_text": "sept",
+      "source_value": "left austin",
+      "source_raw_line": "* sept: left austin",
+      "record_kind": "departure",
+      "temporal_range": {
+        "source_text": "sept",
+        "start": {
+          "year": 2023,
+          "month": 9
+        },
+        "end": {
+          "year": 2023,
+          "month": 9
+        },
+        "precision": "month"
+      },
+      "candidate_places": [
+        {
+          "id": "3b72a0a6-c58b-59c7-8a55-c074ce7f1136",
+          "source_name": "austin",
+          "group_position": 1
+        }
+      ],
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "movement_not_stay"
+        ]
+      }
+    }
+  ]
+}

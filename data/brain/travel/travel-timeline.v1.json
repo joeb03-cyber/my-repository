@@ -1,0 +1,3780 @@
+{
+  "schemaVersion": "synergetic-travel-timeline.v1",
+  "generatedFrom": "https://www.synergetichuman.com/notes/what",
+  "sourceSnapshot": {
+    "id": "21a9021f-666b-58a7-910d-4c78c1f11a8c",
+    "capturedOn": "2026-08-27",
+    "contentHash": "19135544962e7be9c0aa0c77be5236d2d075bea538863e71bb0d5d5140cc9967",
+    "intro": {
+      "traveling_since": {
+        "source_text": "september 2023",
+        "year": 2023,
+        "month": 9,
+        "precision": "month"
+      },
+      "journey_note": "been quite a journey. slept in well over 100 different beds now since I started",
+      "favorite_countries": [
+        "argentina",
+        "japan",
+        "vietnam"
+      ],
+      "favorite_places": [
+        "buenos aires",
+        "tokyo",
+        "hoi an/da nang"
+      ]
+    }
+  },
+  "stats": {
+    "sourceRecords": 101,
+    "visits": 110,
+    "movements": 1,
+    "uniquePlaces": 103,
+    "countries": 42,
+    "resolvedPlaces": 90,
+    "unresolvedPlaces": 13
+  },
+  "countries": [
+    "Albania",
+    "Argentina",
+    "Aruba",
+    "Austria",
+    "Brazil",
+    "Bulgaria",
+    "Cambodia",
+    "Canada",
+    "Chile",
+    "Colombia",
+    "Dominican Republic",
+    "El Salvador",
+    "Estonia",
+    "Finland",
+    "Guatemala",
+    "Honduras",
+    "Hungary",
+    "Indonesia",
+    "Italy",
+    "Japan",
+    "Kosovo",
+    "Latvia",
+    "Lithuania",
+    "Malaysia",
+    "Mexico",
+    "Montenegro",
+    "Morocco",
+    "North Macedonia",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Puerto Rico",
+    "Serbia",
+    "Slovenia",
+    "Spain",
+    "Sweden",
+    "Switzerland",
+    "Taiwan",
+    "Thailand",
+    "United Kingdom",
+    "United States",
+    "Vietnam"
+  ],
+  "places": [
+    {
+      "id": "a6adb311-5861-5c68-b405-8bf140c569f5",
+      "slug": "warsaw",
+      "sourceName": "warsaw",
+      "name": "Warsaw",
+      "placeType": "locality",
+      "countryCode": "PL",
+      "countryName": "Poland",
+      "latitude": 52.22977,
+      "longitude": 21.01178,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "5a7d4284-aa09-59a1-8f56-8f2207da8568",
+      "slug": "kaunas",
+      "sourceName": "kaunas",
+      "name": "Kaunas",
+      "placeType": "locality",
+      "countryCode": "LT",
+      "countryName": "Lithuania",
+      "latitude": 54.90156,
+      "longitude": 23.90909,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "b503effb-a98e-59ac-8780-bb50a535d62f",
+      "slug": "vilnius",
+      "sourceName": "vilnius",
+      "name": "Vilnius",
+      "placeType": "locality",
+      "countryCode": "LT",
+      "countryName": "Lithuania",
+      "latitude": 54.68916,
+      "longitude": 25.2798,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "594fe27c-12f7-5a0b-8e24-92606660d2fa",
+      "slug": "riga",
+      "sourceName": "riga",
+      "name": "Riga",
+      "placeType": "locality",
+      "countryCode": "LV",
+      "countryName": "Latvia",
+      "latitude": 56.946,
+      "longitude": 24.10589,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "5c9a8d75-ee18-568d-aa55-863bbd88cd59",
+      "slug": "tallinn",
+      "sourceName": "tallinn",
+      "name": "Tallinn",
+      "placeType": "locality",
+      "countryCode": "EE",
+      "countryName": "Estonia",
+      "latitude": 59.43696,
+      "longitude": 24.75353,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "22a5eddc-9106-5388-9b3d-6afe29879b3a",
+      "slug": "helsinki",
+      "sourceName": "helsinki",
+      "name": "Helsinki",
+      "placeType": "locality",
+      "countryCode": "FI",
+      "countryName": "Finland",
+      "latitude": 60.16952,
+      "longitude": 24.93545,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "956c3438-f7ea-54b8-bad6-71eb80b653f8",
+      "slug": "stockholm",
+      "sourceName": "stockholm",
+      "name": "Stockholm",
+      "placeType": "locality",
+      "countryCode": "SE",
+      "countryName": "Sweden",
+      "latitude": 59.32938,
+      "longitude": 18.06871,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "9254c5f6-d6af-53f5-b585-a55b7d128c55",
+      "slug": "tivat",
+      "sourceName": "tivat",
+      "name": "Tivat",
+      "placeType": "locality",
+      "countryCode": "ME",
+      "countryName": "Montenegro",
+      "latitude": 42.43623,
+      "longitude": 18.69361,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "ad496faa-eff9-5713-870f-797c7d9be118",
+      "slug": "ulcinj",
+      "sourceName": "ulcinj",
+      "name": "Ulcinj",
+      "placeType": "locality",
+      "countryCode": "ME",
+      "countryName": "Montenegro",
+      "latitude": 41.92936,
+      "longitude": 19.22436,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "9003d3dc-4d4f-5807-833d-2428964b639f",
+      "slug": "pristina",
+      "sourceName": "pristina",
+      "name": "Pristina",
+      "placeType": "locality",
+      "countryCode": "XK",
+      "countryName": "Kosovo",
+      "latitude": 42.67272,
+      "longitude": 21.16688,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "cf6adf4b-dd94-5016-88db-729bd27b9854",
+      "slug": "skopje",
+      "sourceName": "skopje",
+      "name": "Skopje",
+      "placeType": "locality",
+      "countryCode": "MK",
+      "countryName": "North Macedonia",
+      "latitude": 41.99646,
+      "longitude": 21.43141,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "f6c93dba-7866-533c-bf3c-02b16195986e",
+      "slug": "nis",
+      "sourceName": "nis",
+      "name": "Niš",
+      "placeType": "locality",
+      "countryCode": "RS",
+      "countryName": "Serbia",
+      "latitude": 43.32472,
+      "longitude": 21.90333,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "4e9d0de8-6520-556f-9c45-8657339ca7e0",
+      "slug": "sofia",
+      "sourceName": "sofia",
+      "name": "Sofia",
+      "placeType": "locality",
+      "countryCode": "BG",
+      "countryName": "Bulgaria",
+      "latitude": 42.69751,
+      "longitude": 23.32415,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "c0507ed0-b902-50c2-983f-909d10eb6443",
+      "slug": "saranda",
+      "sourceName": "saranda",
+      "name": "Sarandë",
+      "placeType": "locality",
+      "countryCode": "AL",
+      "countryName": "Albania",
+      "latitude": 39.87534,
+      "longitude": 20.00477,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "8e69dfc3-dffc-5dc3-aa06-0ccb2a3678d4",
+      "slug": "dhermi",
+      "sourceName": "dhermi",
+      "name": "Dhërmi",
+      "placeType": "locality",
+      "countryCode": "AL",
+      "countryName": "Albania",
+      "latitude": 40.15139,
+      "longitude": 19.63889,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "cac0de0e-909a-5f9c-a8bb-a9dfbd5e9e78",
+      "slug": "himare",
+      "sourceName": "himare",
+      "name": "Himarë",
+      "placeType": "locality",
+      "countryCode": "AL",
+      "countryName": "Albania",
+      "latitude": 40.10167,
+      "longitude": 19.74472,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "ed1878a9-45cf-57bd-9764-3fffeb0c43f3",
+      "slug": "vlore",
+      "sourceName": "vlore",
+      "name": "Vlorë",
+      "placeType": "locality",
+      "countryCode": "AL",
+      "countryName": "Albania",
+      "latitude": 40.4696,
+      "longitude": 19.48379,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d88f669a-a1ed-58d8-a7e9-33f25fdcf6e1",
+      "slug": "tirana",
+      "sourceName": "tirana",
+      "name": "Tirana",
+      "placeType": "locality",
+      "countryCode": "AL",
+      "countryName": "Albania",
+      "latitude": 41.32744,
+      "longitude": 19.81866,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "bdb9e89f-e6f7-584b-b20a-b90965535dc0",
+      "slug": "bohinj",
+      "sourceName": "bohinj",
+      "name": "Bohinj",
+      "placeType": "locality",
+      "countryCode": "SI",
+      "countryName": "Slovenia",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "03939280-53a6-55c0-a6d1-25cf392e76fd",
+      "slug": "bled",
+      "sourceName": "bled",
+      "name": "Bled",
+      "placeType": "locality",
+      "countryCode": "SI",
+      "countryName": "Slovenia",
+      "latitude": 46.36859,
+      "longitude": 14.11652,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "fd07934c-e2b3-51e0-af75-04a1dcbfcbc0",
+      "slug": "ljubljana",
+      "sourceName": "ljubljana",
+      "name": "Ljubljana",
+      "placeType": "locality",
+      "countryCode": "SI",
+      "countryName": "Slovenia",
+      "latitude": 46.05108,
+      "longitude": 14.50513,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "b1333455-49ee-55e8-b2c1-cf2daeb3f64a",
+      "slug": "salzburg",
+      "sourceName": "salzburg",
+      "name": "Salzburg",
+      "placeType": "locality",
+      "countryCode": "AT",
+      "countryName": "Austria",
+      "latitude": 47.79941,
+      "longitude": 13.04399,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "1244624c-ead4-537e-ae65-e7bdfce1b3fa",
+      "slug": "muhlbach-am-hochkonig",
+      "sourceName": "muhlbach am hochkonig",
+      "name": "Mühlbach am Hochkönig",
+      "placeType": "locality",
+      "countryCode": "AT",
+      "countryName": "Austria",
+      "latitude": 47.37746,
+      "longitude": 13.12926,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "fe76b10d-bb99-5f3b-8103-61469363bf0c",
+      "slug": "innsbruck",
+      "sourceName": "innsbruck",
+      "name": "Innsbruck",
+      "placeType": "locality",
+      "countryCode": "AT",
+      "countryName": "Austria",
+      "latitude": 47.26266,
+      "longitude": 11.39454,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d9b2bdfe-805b-57d4-a286-d006946290b7",
+      "slug": "zurich",
+      "sourceName": "zurich",
+      "name": "Zürich",
+      "placeType": "locality",
+      "countryCode": "CH",
+      "countryName": "Switzerland",
+      "latitude": 47.36667,
+      "longitude": 8.55,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "c78994bb-0902-556f-a943-f772f66081db",
+      "slug": "geneva",
+      "sourceName": "geneva",
+      "name": "Geneva",
+      "placeType": "locality",
+      "countryCode": "CH",
+      "countryName": "Switzerland",
+      "latitude": 46.20222,
+      "longitude": 6.14569,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "0b640c74-928b-5698-9e68-1880154a3608",
+      "slug": "seville",
+      "sourceName": "seville",
+      "name": "Sevilla",
+      "placeType": "locality",
+      "countryCode": "ES",
+      "countryName": "Spain",
+      "latitude": 37.38283,
+      "longitude": -5.97317,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "37912811-1eea-5100-92b7-a9b4fff78a4a",
+      "slug": "el-rompido",
+      "sourceName": "el rompido",
+      "name": "El Rompido",
+      "placeType": "locality",
+      "countryCode": "ES",
+      "countryName": "Spain",
+      "latitude": 37.21773,
+      "longitude": -7.12206,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "270ee196-8d3d-55f7-8e56-eff93a8ef389",
+      "slug": "marrakesh",
+      "sourceName": "marrakesh",
+      "name": "Marrakesh",
+      "placeType": "locality",
+      "countryCode": "MA",
+      "countryName": "Morocco",
+      "latitude": 31.63416,
+      "longitude": -7.99994,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "92c0b90c-e5d2-53c1-985a-3b4f62559034",
+      "slug": "casablanca",
+      "sourceName": "casablanca",
+      "name": "Casablanca",
+      "placeType": "locality",
+      "countryCode": "MA",
+      "countryName": "Morocco",
+      "latitude": 33.58831,
+      "longitude": -7.61138,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "8cb773ff-9d8b-5509-abda-169db2318cad",
+      "slug": "miami",
+      "sourceName": "miami",
+      "name": "Miami",
+      "placeType": "locality",
+      "countryCode": "US",
+      "countryName": "United States",
+      "latitude": 25.77427,
+      "longitude": -80.19366,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "6f1b89f5-61d3-5468-b638-2e3e4ddd7beb",
+      "slug": "island-heights",
+      "sourceName": "island heights",
+      "name": "Island Heights",
+      "placeType": "locality",
+      "countryCode": "US",
+      "countryName": "United States",
+      "latitude": 39.94206,
+      "longitude": -74.14986,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "03b91ed0-5061-5fb5-b5fe-021468982bbf",
+      "slug": "st-petersburg",
+      "sourceName": "st. petersburg",
+      "name": "St. Petersburg",
+      "placeType": "locality",
+      "countryCode": "US",
+      "countryName": "United States",
+      "latitude": 27.77086,
+      "longitude": -82.67927,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "2bcefbc4-7573-5413-8739-e69d18779c52",
+      "slug": "aruba",
+      "sourceName": "aruba",
+      "name": "Aruba",
+      "placeType": "country",
+      "countryCode": "AW",
+      "countryName": "Aruba",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "5ff184a5-66e2-526d-9928-16e14aa92416",
+      "slug": "medellin",
+      "sourceName": "medellin",
+      "name": "Medellín",
+      "placeType": "locality",
+      "countryCode": "CO",
+      "countryName": "Colombia",
+      "latitude": 6.245,
+      "longitude": -75.57151,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "f0e17aa0-1c80-52a9-b03c-a3545960b3fd",
+      "slug": "jardin",
+      "sourceName": "jardin",
+      "name": "Jardín",
+      "placeType": "locality",
+      "countryCode": "CO",
+      "countryName": "Colombia",
+      "latitude": 5.59902,
+      "longitude": -75.81976,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "00b8511c-2e91-5052-82ef-6db80e1e5a9d",
+      "slug": "bogota",
+      "sourceName": "bogota",
+      "name": "Bogotá",
+      "placeType": "locality",
+      "countryCode": "CO",
+      "countryName": "Colombia",
+      "latitude": 4.60971,
+      "longitude": -74.08175,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "5a9feb3a-b1da-5148-9938-05a1ea967853",
+      "slug": "el-paredon",
+      "sourceName": "el paredon",
+      "name": "El Paredon",
+      "placeType": "locality",
+      "countryCode": "GT",
+      "countryName": "Guatemala",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "a0492b98-867b-5ac7-9954-3ae4d5332b7e",
+      "slug": "lake-atitlan",
+      "sourceName": "lake atitlan",
+      "name": "Lake Atitlan",
+      "placeType": "lake",
+      "countryCode": "GT",
+      "countryName": "Guatemala",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "1dc1b59f-6688-5fcc-91b4-7033a758239d",
+      "slug": "antigua",
+      "sourceName": "antigua",
+      "name": "Antigua Guatemala",
+      "placeType": "locality",
+      "countryCode": "GT",
+      "countryName": "Guatemala",
+      "latitude": 14.55636,
+      "longitude": -90.7332,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "aaed9913-afd5-52ce-87c9-a918330094b3",
+      "slug": "el-tunco",
+      "sourceName": "el tunco",
+      "name": "El Tunco",
+      "placeType": "locality",
+      "countryCode": "SV",
+      "countryName": "El Salvador",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "4d092c44-c5bf-5cc6-829c-02a909df3c88",
+      "slug": "la-libertad",
+      "sourceName": "la libertad",
+      "name": "La Libertad",
+      "placeType": "locality",
+      "countryCode": "SV",
+      "countryName": "El Salvador",
+      "latitude": 13.48833,
+      "longitude": -89.32222,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "6a11d344-5e89-56aa-b1cc-6ae8dfb6fdf8",
+      "slug": "san-salvador",
+      "sourceName": "san salvador",
+      "name": "San Salvador",
+      "placeType": "locality",
+      "countryCode": "SV",
+      "countryName": "El Salvador",
+      "latitude": 13.68935,
+      "longitude": -89.18718,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "eb12c9f9-9f1f-50ad-8fd9-a30c3c9aab74",
+      "slug": "tegucigalpa",
+      "sourceName": "tegucigalpa",
+      "name": "Tegucigalpa",
+      "placeType": "locality",
+      "countryCode": "HN",
+      "countryName": "Honduras",
+      "latitude": 14.0818,
+      "longitude": -87.20681,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "c92646a9-942a-58a4-a3e6-fd4c03a0d9e2",
+      "slug": "roatan",
+      "sourceName": "roatan",
+      "name": "Roatan",
+      "placeType": "locality",
+      "countryCode": "HN",
+      "countryName": "Honduras",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "b036afcc-21fc-58a2-a65e-bd5a1c05f2e9",
+      "slug": "austin",
+      "sourceName": "austin",
+      "name": "Austin",
+      "placeType": "locality",
+      "countryCode": "US",
+      "countryName": "United States",
+      "latitude": 30.26715,
+      "longitude": -97.74306,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "df3df4f9-64d4-553c-8c2a-f4091e647adb",
+      "slug": "puerto-vallarta",
+      "sourceName": "puerto vallarta",
+      "name": "Puerto Vallarta",
+      "placeType": "locality",
+      "countryCode": "MX",
+      "countryName": "Mexico",
+      "latitude": 20.617,
+      "longitude": -105.23018,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "13a8639e-aa4e-5ba3-848b-35d7d3e2ea95",
+      "slug": "guadalajara",
+      "sourceName": "guadalajara",
+      "name": "Guadalajara",
+      "placeType": "locality",
+      "countryCode": "MX",
+      "countryName": "Mexico",
+      "latitude": 20.67738,
+      "longitude": -103.34749,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "c1ff18d3-302f-5505-a1df-dd41e26820e0",
+      "slug": "san-miguel-de-allende",
+      "sourceName": "san miguel de allende",
+      "name": "San Miguel de Allende",
+      "placeType": "locality",
+      "countryCode": "MX",
+      "countryName": "Mexico",
+      "latitude": 20.91528,
+      "longitude": -100.74389,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "43f0bd2c-157f-5866-9c20-3279c3cc713c",
+      "slug": "guanajuato",
+      "sourceName": "guanajuato",
+      "name": "Guanajuato",
+      "placeType": "locality",
+      "countryCode": "MX",
+      "countryName": "Mexico",
+      "latitude": 21.01858,
+      "longitude": -101.2591,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "93ac38e6-ea68-58e3-aad0-aac15369283d",
+      "slug": "mexico-city",
+      "sourceName": "mexico city",
+      "name": "Mexico City",
+      "placeType": "locality",
+      "countryCode": "MX",
+      "countryName": "Mexico",
+      "latitude": 19.42847,
+      "longitude": -99.12766,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "c7d0b18a-c272-5008-8d0b-0503582283d2",
+      "slug": "montreal",
+      "sourceName": "montreal",
+      "name": "Montréal",
+      "placeType": "locality",
+      "countryCode": "CA",
+      "countryName": "Canada",
+      "latitude": 45.50884,
+      "longitude": -73.58781,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "5b85eae3-ab6c-5c27-a415-599dc578b1f9",
+      "slug": "new-york-city",
+      "sourceName": "new york city",
+      "name": "New York City",
+      "placeType": "locality",
+      "countryCode": "US",
+      "countryName": "United States",
+      "latitude": 40.71427,
+      "longitude": -74.00597,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "dc81f739-2f11-52da-95c3-818b54e4f78b",
+      "slug": "tokyo",
+      "sourceName": "tokyo",
+      "name": "Tokyo",
+      "placeType": "locality",
+      "countryCode": "JP",
+      "countryName": "Japan",
+      "latitude": 35.6895,
+      "longitude": 139.69171,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d1ab6a09-7f1b-58bd-b9e1-65cfc135d79f",
+      "slug": "kyoto",
+      "sourceName": "kyoto",
+      "name": "Kyoto",
+      "placeType": "locality",
+      "countryCode": "JP",
+      "countryName": "Japan",
+      "latitude": 35.02107,
+      "longitude": 135.75385,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "085b12c7-7dda-5bc5-8e6b-b4c9efcd506d",
+      "slug": "osaka",
+      "sourceName": "osaka",
+      "name": "Osaka",
+      "placeType": "locality",
+      "countryCode": "JP",
+      "countryName": "Japan",
+      "latitude": 34.69379,
+      "longitude": 135.50107,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "9147288f-37cf-5aa7-8b5f-ce61e322c181",
+      "slug": "taiwan",
+      "sourceName": "taiwan",
+      "name": "Taiwan",
+      "placeType": "country_or_territory",
+      "countryCode": "TW",
+      "countryName": "Taiwan",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "f670945e-2d72-543e-a8c8-49259d0ee32a",
+      "slug": "hoi-an",
+      "sourceName": "hoi an",
+      "name": "Hoi An",
+      "placeType": "locality",
+      "countryCode": "VN",
+      "countryName": "Vietnam",
+      "latitude": 15.87944,
+      "longitude": 108.335,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "885a22bf-57ec-5f8f-b02d-bba5f750187f",
+      "slug": "siem-reap",
+      "sourceName": "siem reap",
+      "name": "Siem Reap",
+      "placeType": "locality",
+      "countryCode": "KH",
+      "countryName": "Cambodia",
+      "latitude": 13.36179,
+      "longitude": 103.86056,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "be6ee122-a014-5348-b064-139635799799",
+      "slug": "phnom-penh",
+      "sourceName": "phnom penh",
+      "name": "Phnom Penh",
+      "placeType": "locality",
+      "countryCode": "KH",
+      "countryName": "Cambodia",
+      "latitude": 11.56245,
+      "longitude": 104.91601,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "6edd2004-3963-5f46-b08f-ca11e5cc0a64",
+      "slug": "kampot",
+      "sourceName": "kampot",
+      "name": "Kampot",
+      "placeType": "locality",
+      "countryCode": "KH",
+      "countryName": "Cambodia",
+      "latitude": 10.61041,
+      "longitude": 104.18145,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "f7ff98f9-588d-59f6-b696-914335dbd06f",
+      "slug": "phu-quoc",
+      "sourceName": "phu quoc",
+      "name": "Phu Quoc",
+      "placeType": "locality",
+      "countryCode": "VN",
+      "countryName": "Vietnam",
+      "latitude": 10.22409,
+      "longitude": 103.97156,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "cea7138d-bd30-5e31-ae01-6bf8ea4f189d",
+      "slug": "sapa",
+      "sourceName": "sapa",
+      "name": "Sa Pa",
+      "placeType": "locality",
+      "countryCode": "VN",
+      "countryName": "Vietnam",
+      "latitude": 22.34023,
+      "longitude": 103.84415,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "16439e5e-158c-5345-860e-178b73ce1fde",
+      "slug": "hanoi",
+      "sourceName": "hanoi",
+      "name": "Hanoi",
+      "placeType": "locality",
+      "countryCode": "VN",
+      "countryName": "Vietnam",
+      "latitude": 21.0245,
+      "longitude": 105.84117,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "b2e35de2-4333-5336-ba92-c3cca3e9dd01",
+      "slug": "da-nang",
+      "sourceName": "da nang",
+      "name": "Da Nang",
+      "placeType": "locality",
+      "countryCode": "VN",
+      "countryName": "Vietnam",
+      "latitude": 16.06778,
+      "longitude": 108.22083,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "58e7223c-da85-58d7-8d73-2dbb557ceeeb",
+      "slug": "phuket",
+      "sourceName": "phuket",
+      "name": "Phuket",
+      "placeType": "locality",
+      "countryCode": "TH",
+      "countryName": "Thailand",
+      "latitude": 7.89059,
+      "longitude": 98.3981,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "ce014c3f-a63e-54a6-8c32-43d1e92b924a",
+      "slug": "chiang-rai",
+      "sourceName": "chiang rai",
+      "name": "Chiang Rai",
+      "placeType": "locality",
+      "countryCode": "TH",
+      "countryName": "Thailand",
+      "latitude": 19.90858,
+      "longitude": 99.8325,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "3ae08fcd-d7b4-5b3e-9100-e382418ed4b7",
+      "slug": "chiang-mai",
+      "sourceName": "chiang mai",
+      "name": "Chiang Mai",
+      "placeType": "locality",
+      "countryCode": "TH",
+      "countryName": "Thailand",
+      "latitude": 18.79038,
+      "longitude": 98.98468,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "7c9639b6-7413-5f1b-ab5a-321b41f1a6ca",
+      "slug": "pattaya",
+      "sourceName": "pattaya",
+      "name": "Pattaya",
+      "placeType": "locality",
+      "countryCode": "TH",
+      "countryName": "Thailand",
+      "latitude": 12.93333,
+      "longitude": 100.88333,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "cd879bc8-0e5e-5062-8ad0-686abd96859b",
+      "slug": "bangkok",
+      "sourceName": "bangkok",
+      "name": "Bangkok",
+      "placeType": "locality",
+      "countryCode": "TH",
+      "countryName": "Thailand",
+      "latitude": 13.75398,
+      "longitude": 100.50144,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "2c7babd5-9520-52af-be2d-dec4ede972d5",
+      "slug": "kuala-lumpur",
+      "sourceName": "kuala lumpur",
+      "name": "Kuala Lumpur",
+      "placeType": "locality",
+      "countryCode": "MY",
+      "countryName": "Malaysia",
+      "latitude": 3.1412,
+      "longitude": 101.68653,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "19518562-5e1d-55d7-81e6-55fd770a2ef8",
+      "slug": "bali",
+      "sourceName": "bali",
+      "name": "Bali",
+      "placeType": "island",
+      "countryCode": "ID",
+      "countryName": "Indonesia",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "7b4b79af-6933-5216-a45f-5728ca4b3fa5",
+      "slug": "palawan",
+      "sourceName": "palawan",
+      "name": "Palawan",
+      "placeType": "island",
+      "countryCode": "PH",
+      "countryName": "Philippines",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "76206b06-c1a4-552d-8a6f-6772a1a6f446",
+      "slug": "manila",
+      "sourceName": "manila",
+      "name": "Manila",
+      "placeType": "locality",
+      "countryCode": "PH",
+      "countryName": "Philippines",
+      "latitude": 14.6042,
+      "longitude": 120.9822,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "da22dff2-184e-50b1-86e1-4264081ad3b7",
+      "slug": "siargao",
+      "sourceName": "siargao",
+      "name": "Siargao",
+      "placeType": "island",
+      "countryCode": "PH",
+      "countryName": "Philippines",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "f221f21a-dca1-550c-81e3-ddb6e9e0abbd",
+      "slug": "cebu-city",
+      "sourceName": "cebu city",
+      "name": "Cebu City",
+      "placeType": "locality",
+      "countryCode": "PH",
+      "countryName": "Philippines",
+      "latitude": 10.31672,
+      "longitude": 123.89071,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "b3c38671-90de-5367-aae1-2030bd24c991",
+      "slug": "budapest",
+      "sourceName": "budapest",
+      "name": "Budapest",
+      "placeType": "locality",
+      "countryCode": "HU",
+      "countryName": "Hungary",
+      "latitude": 47.49835,
+      "longitude": 19.04045,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "8cd4f1d3-9dcd-58dd-950e-9f1fdb6628cd",
+      "slug": "tropea",
+      "sourceName": "tropea",
+      "name": "Tropea",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 38.67449,
+      "longitude": 15.89505,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "b02a7939-9f4b-5fce-85b4-018ae97f9a88",
+      "slug": "pizzo",
+      "sourceName": "pizzo",
+      "name": "Pizzo",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 38.75259,
+      "longitude": 16.18696,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "42cce3df-c6cf-5462-8d05-f7c61af6654d",
+      "slug": "matera",
+      "sourceName": "matera",
+      "name": "Matera",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 40.66599,
+      "longitude": 16.60463,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "443f3751-68be-5b87-b0b0-acc789b21b14",
+      "slug": "taranto",
+      "sourceName": "taranto",
+      "name": "Taranto",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 40.46438,
+      "longitude": 17.24707,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "76512fbe-a26d-58f0-b927-91a5af676fa7",
+      "slug": "gallipoli",
+      "sourceName": "gallipoli",
+      "name": "Gallipoli",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 40.05594,
+      "longitude": 17.99088,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "52a376d7-7a3b-5d37-9a54-5cfb2139390c",
+      "slug": "lecce",
+      "sourceName": "lecce",
+      "name": "Lecce",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 40.35481,
+      "longitude": 18.17244,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "ff68f88e-65ec-50a9-8a55-e0165e6c4f29",
+      "slug": "polignano-de-mare",
+      "sourceName": "polignano de mare",
+      "name": "Polignano De Mare",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "20bc0978-d6ac-5d8f-9a42-9b4df76fabd4",
+      "slug": "bari",
+      "sourceName": "bari",
+      "name": "Bari",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 41.12066,
+      "longitude": 16.86982,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "0e6caa4c-4868-59fe-b98b-3dfe8fa46d89",
+      "slug": "spello",
+      "sourceName": "spello",
+      "name": "Spello",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 42.99231,
+      "longitude": 12.66632,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "5c861fb3-4f11-5baa-ae3a-ee57da26b8b7",
+      "slug": "rimini",
+      "sourceName": "rimini",
+      "name": "Rimini",
+      "placeType": "locality",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": 44.05755,
+      "longitude": 12.56528,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "f40360ba-383c-5f36-818c-35e593e72b4f",
+      "slug": "sicily",
+      "sourceName": "sicily",
+      "name": "Sicily",
+      "placeType": "island",
+      "countryCode": "IT",
+      "countryName": "Italy",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "3d195e4c-02b7-5818-97b1-6fac6f3aaf34",
+      "slug": "barcelona",
+      "sourceName": "barcelona",
+      "name": "Barcelona",
+      "placeType": "locality",
+      "countryCode": "ES",
+      "countryName": "Spain",
+      "latitude": 41.38879,
+      "longitude": 2.15899,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d574d019-1e2f-518a-a658-7d892d8aa37f",
+      "slug": "galicia",
+      "sourceName": "galicia",
+      "name": "Galicia",
+      "placeType": "region",
+      "countryCode": "ES",
+      "countryName": "Spain",
+      "latitude": null,
+      "longitude": null,
+      "coordinatesState": "unresolved",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "95c5fc4f-1af3-50be-834e-1223317a3687",
+      "slug": "london",
+      "sourceName": "london",
+      "name": "London",
+      "placeType": "locality",
+      "countryCode": "GB",
+      "countryName": "United Kingdom",
+      "latitude": 51.50853,
+      "longitude": -0.12574,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "1d3650cc-b38c-5195-ab91-08d4d78e14d7",
+      "slug": "punta-cana",
+      "sourceName": "punta cana",
+      "name": "Punta Cana",
+      "placeType": "locality",
+      "countryCode": "DO",
+      "countryName": "Dominican Republic",
+      "latitude": 18.58182,
+      "longitude": -68.40431,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "4ee670e0-ba2d-51e1-a6f8-bcfc61ffa695",
+      "slug": "lima",
+      "sourceName": "lima",
+      "name": "Lima",
+      "placeType": "locality",
+      "countryCode": "PE",
+      "countryName": "Peru",
+      "latitude": -12.04318,
+      "longitude": -77.02824,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "ac74659e-3716-5442-a538-d4e8642e8ec3",
+      "slug": "santiago",
+      "sourceName": "santiago",
+      "name": "Santiago",
+      "placeType": "locality",
+      "countryCode": "CL",
+      "countryName": "Chile",
+      "latitude": -33.45694,
+      "longitude": -70.64827,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "c4cf7628-d724-5a25-b1a5-d3ce63ccfa3c",
+      "slug": "mendoza",
+      "sourceName": "mendoza",
+      "name": "Mendoza",
+      "placeType": "locality",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "latitude": -32.88946,
+      "longitude": -68.84582,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "6a748dbc-1a39-571e-9e51-a67c381d85fc",
+      "slug": "buenos-aires",
+      "sourceName": "buenos aires",
+      "name": "Buenos Aires",
+      "placeType": "locality",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "latitude": -34.61315,
+      "longitude": -58.37723,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "c7777e35-4c67-50cc-aa81-1c1db964549a",
+      "slug": "el-bolson",
+      "sourceName": "el bolson",
+      "name": "El Bolsón",
+      "placeType": "locality",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "latitude": -41.96051,
+      "longitude": -71.53336,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "8d472160-7a76-5a74-a248-fbeca2a4ec83",
+      "slug": "lago-puelo",
+      "sourceName": "lago puelo",
+      "name": "Lago Puelo",
+      "placeType": "locality",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "latitude": -42.06684,
+      "longitude": -71.60384,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "37312b6b-f183-5870-a2ab-8e85665179b1",
+      "slug": "bariloche",
+      "sourceName": "bariloche",
+      "name": "San Carlos de Bariloche",
+      "placeType": "locality",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "latitude": -41.14557,
+      "longitude": -71.30822,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "92404a2a-b67a-526c-8999-69fc4520453f",
+      "slug": "rio-de-janeiro",
+      "sourceName": "rio de janeiro",
+      "name": "Rio de Janeiro",
+      "placeType": "locality",
+      "countryCode": "BR",
+      "countryName": "Brazil",
+      "latitude": -22.90642,
+      "longitude": -43.18223,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "8eb5c518-9d68-5821-bafd-0c19217a3e4a",
+      "slug": "cali",
+      "sourceName": "cali",
+      "name": "Cali",
+      "placeType": "locality",
+      "countryCode": "CO",
+      "countryName": "Colombia",
+      "latitude": 3.43054,
+      "longitude": -76.5199,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "3d4551ad-f8dd-5d20-924e-f2854d065f1f",
+      "slug": "cancun",
+      "sourceName": "cancun",
+      "name": "Cancún",
+      "placeType": "locality",
+      "countryCode": "MX",
+      "countryName": "Mexico",
+      "latitude": 21.17429,
+      "longitude": -86.84656,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "aba96340-213d-5ad9-b74b-eb01ee0e15bb",
+      "slug": "isabela",
+      "sourceName": "isabela",
+      "name": "Isabela",
+      "placeType": "locality",
+      "countryCode": "PR",
+      "countryName": "Puerto Rico",
+      "latitude": 18.50078,
+      "longitude": -67.02435,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "needs_review"
+    }
+  ],
+  "visits": [
+    {
+      "id": "0376a3d4-310e-53dc-a139-b52e1d229417",
+      "placeId": "aba96340-213d-5ad9-b74b-eb01ee0e15bb",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 100,
+      "groupPosition": 1,
+      "chronologyIndex": 1,
+      "start": {
+        "year": 2023,
+        "month": 10
+      },
+      "end": {
+        "year": 2023,
+        "month": 10
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "oct",
+      "sourceValue": "isabela",
+      "sourceRawLine": "* oct: isabela",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "847308ee-d47e-567a-9d79-b126c17daae0",
+      "placeId": "3d4551ad-f8dd-5d20-924e-f2854d065f1f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 99,
+      "groupPosition": 1,
+      "chronologyIndex": 2,
+      "start": {
+        "year": 2023,
+        "month": 11
+      },
+      "end": {
+        "year": 2023,
+        "month": 11
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "nov",
+      "sourceValue": "cancun",
+      "sourceRawLine": "* nov: cancun",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "86f01516-5756-5ab1-bda5-0e817a1bf7e5",
+      "placeId": "8eb5c518-9d68-5821-bafd-0c19217a3e4a",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 98,
+      "groupPosition": 1,
+      "chronologyIndex": 3,
+      "start": {
+        "year": 2023,
+        "month": 11
+      },
+      "end": {
+        "year": 2023,
+        "month": 11
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "nov",
+      "sourceValue": "cali",
+      "sourceRawLine": "* nov: cali",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "654f9e93-e148-5548-8301-611edca9ab5c",
+      "placeId": "92404a2a-b67a-526c-8999-69fc4520453f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 97,
+      "groupPosition": 1,
+      "chronologyIndex": 4,
+      "start": {
+        "year": 2023,
+        "month": 11
+      },
+      "end": {
+        "year": 2023,
+        "month": 12
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "nov/dec",
+      "sourceValue": "rio de janeiro",
+      "sourceRawLine": "* nov/dec: rio de janeiro",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "c27720eb-d85f-54d3-be2a-49b31ecb482e",
+      "placeId": "6a748dbc-1a39-571e-9e51-a67c381d85fc",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 96,
+      "groupPosition": 1,
+      "chronologyIndex": 5,
+      "start": {
+        "year": 2023,
+        "month": 12
+      },
+      "end": {
+        "year": 2024,
+        "month": 2
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "dec-feb",
+      "sourceValue": "buenos aires",
+      "sourceRawLine": "* dec-feb: buenos aires",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "159e6cbd-f4f7-5d24-8aee-31eb233bad3d",
+      "placeId": "37312b6b-f183-5870-a2ab-8e85665179b1",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 95,
+      "groupPosition": 1,
+      "chronologyIndex": 6,
+      "start": {
+        "year": 2024,
+        "month": 2
+      },
+      "end": {
+        "year": 2024,
+        "month": 2
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "feb",
+      "sourceValue": "bariloche",
+      "sourceRawLine": "* feb: bariloche",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "48966694-40e4-5f2b-a8d3-a2a1d1dfc60a",
+      "placeId": "c7777e35-4c67-50cc-aa81-1c1db964549a",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 94,
+      "groupPosition": 1,
+      "chronologyIndex": 7,
+      "start": {
+        "year": 2024,
+        "month": 2
+      },
+      "end": {
+        "year": 2024,
+        "month": 2
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "feb",
+      "sourceValue": "el bolson + lago puelo",
+      "sourceRawLine": "* feb: el bolson + lago puelo",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "a9ec59aa-d0dc-5f51-8416-eb9388784b50",
+      "placeId": "8d472160-7a76-5a74-a248-fbeca2a4ec83",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 94,
+      "groupPosition": 2,
+      "chronologyIndex": 8,
+      "start": {
+        "year": 2024,
+        "month": 2
+      },
+      "end": {
+        "year": 2024,
+        "month": 2
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "feb",
+      "sourceValue": "el bolson + lago puelo",
+      "sourceRawLine": "* feb: el bolson + lago puelo",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "61978ee1-4f0f-5ac8-a054-51bebf15a275",
+      "placeId": "6a748dbc-1a39-571e-9e51-a67c381d85fc",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 93,
+      "groupPosition": 1,
+      "chronologyIndex": 9,
+      "start": {
+        "year": 2024,
+        "month": 2
+      },
+      "end": {
+        "year": 2024,
+        "month": 4
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "feb-apr",
+      "sourceValue": "buenos aires",
+      "sourceRawLine": "* feb-apr: buenos aires",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "9235c7e2-51d7-5ad9-8b33-7660b6c01569",
+      "placeId": "c4cf7628-d724-5a25-b1a5-d3ce63ccfa3c",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 92,
+      "groupPosition": 1,
+      "chronologyIndex": 10,
+      "start": {
+        "year": 2024,
+        "month": 4
+      },
+      "end": {
+        "year": 2024,
+        "month": 4
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "apr",
+      "sourceValue": "mendoza",
+      "sourceRawLine": "* apr: mendoza",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "f3f522c6-7620-5fb9-b87f-5be2f2630df4",
+      "placeId": "ac74659e-3716-5442-a538-d4e8642e8ec3",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 91,
+      "groupPosition": 1,
+      "chronologyIndex": 11,
+      "start": {
+        "year": 2024,
+        "month": 4
+      },
+      "end": {
+        "year": 2024,
+        "month": 4
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "apr",
+      "sourceValue": "santiago",
+      "sourceRawLine": "* apr: santiago",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "e3006e23-3dbf-5dd4-b646-7d8625f91fd3",
+      "placeId": "4ee670e0-ba2d-51e1-a6f8-bcfc61ffa695",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 90,
+      "groupPosition": 1,
+      "chronologyIndex": 12,
+      "start": {
+        "year": 2024,
+        "month": 4
+      },
+      "end": {
+        "year": 2024,
+        "month": 4
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "apr",
+      "sourceValue": "lima",
+      "sourceRawLine": "* apr: lima",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "075349c3-f8e8-5305-a346-6cf1f481e080",
+      "placeId": "1d3650cc-b38c-5195-ab91-08d4d78e14d7",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 89,
+      "groupPosition": 1,
+      "chronologyIndex": 13,
+      "start": {
+        "year": 2024,
+        "month": 4
+      },
+      "end": {
+        "year": 2024,
+        "month": 4
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "apr",
+      "sourceValue": "punta cana",
+      "sourceRawLine": "* apr: punta cana",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "60ffb066-fb10-5daf-b431-9e2a07cdddc0",
+      "placeId": "6f1b89f5-61d3-5468-b638-2e3e4ddd7beb",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 88,
+      "groupPosition": 1,
+      "chronologyIndex": 14,
+      "start": {
+        "year": 2024,
+        "month": 5
+      },
+      "end": {
+        "year": 2024,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "island heights",
+      "sourceRawLine": "* may: island heights",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "e3dd0e17-b3f6-59fc-9aea-55740862d211",
+      "placeId": "5b85eae3-ab6c-5c27-a415-599dc578b1f9",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 87,
+      "groupPosition": 1,
+      "chronologyIndex": 15,
+      "start": {
+        "year": 2024,
+        "month": 5
+      },
+      "end": {
+        "year": 2024,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "new york city",
+      "sourceRawLine": "* may: new york city",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "6a418617-0675-5fa7-8ccf-38e5b776ad73",
+      "placeId": "95c5fc4f-1af3-50be-834e-1223317a3687",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 86,
+      "groupPosition": 1,
+      "chronologyIndex": 16,
+      "start": {
+        "year": 2024,
+        "month": 5
+      },
+      "end": {
+        "year": 2024,
+        "month": 6
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "may/june",
+      "sourceValue": "london ",
+      "sourceRawLine": "* may/june: london ",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "c32c89d7-02d0-5c56-966d-8ebcc015f88b",
+      "placeId": "d574d019-1e2f-518a-a658-7d892d8aa37f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 85,
+      "groupPosition": 1,
+      "chronologyIndex": 17,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 6
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "june",
+      "sourceValue": "galicia",
+      "sourceRawLine": "* june: galicia",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "1c330bb6-6b66-5e08-a191-2982cf62d0f0",
+      "placeId": "3d195e4c-02b7-5818-97b1-6fac6f3aaf34",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 84,
+      "groupPosition": 1,
+      "chronologyIndex": 18,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 6
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "june",
+      "sourceValue": "barcelona",
+      "sourceRawLine": "* june: barcelona",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "4c708687-8d5c-5b4d-9f2b-803b2bad0e5e",
+      "placeId": "f40360ba-383c-5f36-818c-35e593e72b4f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 83,
+      "groupPosition": 1,
+      "chronologyIndex": 19,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 6
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "june",
+      "sourceValue": "sicily",
+      "sourceRawLine": "* june: sicily",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "310a2efa-e18f-518f-a438-9394d48acfe3",
+      "placeId": "8cd4f1d3-9dcd-58dd-950e-9f1fdb6628cd",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 1,
+      "chronologyIndex": 20,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "92701090-c703-5550-b331-76ef49ac6d97",
+      "placeId": "b02a7939-9f4b-5fce-85b4-018ae97f9a88",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 2,
+      "chronologyIndex": 21,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "cb0322d9-449f-59d6-84ee-3856a3db9011",
+      "placeId": "42cce3df-c6cf-5462-8d05-f7c61af6654d",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 3,
+      "chronologyIndex": 22,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "e45b1611-6984-58f1-8a52-65ee48d2fdcd",
+      "placeId": "443f3751-68be-5b87-b0b0-acc789b21b14",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 4,
+      "chronologyIndex": 23,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "59deee52-9d31-5c38-b40e-d40112cf9425",
+      "placeId": "76512fbe-a26d-58f0-b927-91a5af676fa7",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 5,
+      "chronologyIndex": 24,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "44a71b65-8a32-5b12-802a-7d46e9b37fbe",
+      "placeId": "52a376d7-7a3b-5d37-9a54-5cfb2139390c",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 6,
+      "chronologyIndex": 25,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "b823624b-7594-5eeb-bc57-cdee88e46fec",
+      "placeId": "ff68f88e-65ec-50a9-8a55-e0165e6c4f29",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 7,
+      "chronologyIndex": 26,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "432fff47-6d88-5248-8e0f-274353eb3cd2",
+      "placeId": "20bc0978-d6ac-5d8f-9a42-9b4df76fabd4",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 8,
+      "chronologyIndex": 27,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "8d2520a4-695a-52d2-844b-0c155e46c5ef",
+      "placeId": "0e6caa4c-4868-59fe-b98b-3dfe8fa46d89",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 9,
+      "chronologyIndex": 28,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "551d3e7a-ac98-5dd6-999a-82d2c7ca68b9",
+      "placeId": "5c861fb3-4f11-5baa-ae3a-ee57da26b8b7",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 82,
+      "groupPosition": 10,
+      "chronologyIndex": 29,
+      "start": {
+        "year": 2024,
+        "month": 6
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "sourceRawLine": "* june/july: italy- tropea, pizzo, matera, taranto, gallipoli, lecce, polignano de mare, bari, spello, rimini",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "324e9e67-ed76-5d77-a9bb-aae4cf5a54d1",
+      "placeId": "b3c38671-90de-5367-aae1-2030bd24c991",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 81,
+      "groupPosition": 1,
+      "chronologyIndex": 30,
+      "start": {
+        "year": 2024,
+        "month": 7
+      },
+      "end": {
+        "year": 2024,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "budapest",
+      "sourceRawLine": "* july: budapest",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "43e12083-34b8-59f4-8882-56f4f38678b0",
+      "placeId": "f221f21a-dca1-550c-81e3-ddb6e9e0abbd",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 80,
+      "groupPosition": 1,
+      "chronologyIndex": 31,
+      "start": {
+        "year": 2024,
+        "month": 8
+      },
+      "end": {
+        "year": 2024,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "aug",
+      "sourceValue": "cebu city",
+      "sourceRawLine": "* aug: cebu city",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "0c24ccac-4fdd-5d05-b56f-597252b9b86c",
+      "placeId": "da22dff2-184e-50b1-86e1-4264081ad3b7",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 79,
+      "groupPosition": 1,
+      "chronologyIndex": 32,
+      "start": {
+        "year": 2024,
+        "month": 8
+      },
+      "end": {
+        "year": 2024,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "aug",
+      "sourceValue": "siargao ",
+      "sourceRawLine": "* aug: siargao ",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "75943884-4924-5abf-bb7d-76b63e2ba595",
+      "placeId": "76206b06-c1a4-552d-8a6f-6772a1a6f446",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 78,
+      "groupPosition": 1,
+      "chronologyIndex": 33,
+      "start": {
+        "year": 2024,
+        "month": 8
+      },
+      "end": {
+        "year": 2024,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "aug",
+      "sourceValue": "manila",
+      "sourceRawLine": "* aug: manila",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "e359076f-ee73-52de-abbe-a52cdd9c783a",
+      "placeId": "7b4b79af-6933-5216-a45f-5728ca4b3fa5",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 77,
+      "groupPosition": 1,
+      "chronologyIndex": 34,
+      "start": {
+        "year": 2024,
+        "month": 9
+      },
+      "end": {
+        "year": 2024,
+        "month": 9
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "sept",
+      "sourceValue": "palawan",
+      "sourceRawLine": "* sept: palawan",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "4f25eae6-4587-5527-8806-ea5c021dc57d",
+      "placeId": "19518562-5e1d-55d7-81e6-55fd770a2ef8",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 76,
+      "groupPosition": 1,
+      "chronologyIndex": 35,
+      "start": {
+        "year": 2024,
+        "month": 9
+      },
+      "end": {
+        "year": 2024,
+        "month": 11
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "sept-nov",
+      "sourceValue": "bali ",
+      "sourceRawLine": "* sept-nov: bali ",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "fba99cf3-57c2-541c-acc9-db781a5b523d",
+      "placeId": "2c7babd5-9520-52af-be2d-dec4ede972d5",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 75,
+      "groupPosition": 1,
+      "chronologyIndex": 36,
+      "start": {
+        "year": 2024,
+        "month": 11
+      },
+      "end": {
+        "year": 2024,
+        "month": 11
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "nov",
+      "sourceValue": "kuala lumpur",
+      "sourceRawLine": "* nov: kuala lumpur",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "6d6974ce-0f5c-5262-bba0-a74970477687",
+      "placeId": "58e7223c-da85-58d7-8d73-2dbb557ceeeb",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 74,
+      "groupPosition": 1,
+      "chronologyIndex": 37,
+      "start": {
+        "year": 2024,
+        "month": 11
+      },
+      "end": {
+        "year": 2024,
+        "month": 11
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "nov",
+      "sourceValue": "phuket",
+      "sourceRawLine": "* nov: phuket",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "a9c7ddac-f0a6-56c6-9156-d6ec78e9f63c",
+      "placeId": "cd879bc8-0e5e-5062-8ad0-686abd96859b",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 73,
+      "groupPosition": 1,
+      "chronologyIndex": 38,
+      "start": {
+        "year": 2024,
+        "month": 12
+      },
+      "end": {
+        "year": 2024,
+        "month": 12
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "dec",
+      "sourceValue": "bangkok",
+      "sourceRawLine": "* dec: bangkok",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "51ed2b96-5b07-540c-acd8-5bc585823cc4",
+      "placeId": "7c9639b6-7413-5f1b-ab5a-321b41f1a6ca",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 72,
+      "groupPosition": 1,
+      "chronologyIndex": 39,
+      "start": {
+        "year": 2024,
+        "month": 12
+      },
+      "end": {
+        "year": 2024,
+        "month": 12
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "dec",
+      "sourceValue": "pattaya",
+      "sourceRawLine": "* dec: pattaya",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "2e394b5e-ddbe-5e67-97f4-391b3b0d95ca",
+      "placeId": "3ae08fcd-d7b4-5b3e-9100-e382418ed4b7",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 71,
+      "groupPosition": 1,
+      "chronologyIndex": 40,
+      "start": {
+        "year": 2024,
+        "month": 12
+      },
+      "end": {
+        "year": 2024,
+        "month": 12
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "dec",
+      "sourceValue": "chiang mai",
+      "sourceRawLine": "* dec: chiang mai",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "6d8f45d8-805a-51e3-a586-fa162dd17d3f",
+      "placeId": "ce014c3f-a63e-54a6-8c32-43d1e92b924a",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 70,
+      "groupPosition": 1,
+      "chronologyIndex": 41,
+      "start": {
+        "year": 2024,
+        "month": 12
+      },
+      "end": {
+        "year": 2024,
+        "month": 12
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "dec",
+      "sourceValue": "chiang rai",
+      "sourceRawLine": "* dec: chiang rai",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "9e83ab98-1e66-564b-9a5f-dc70817e87f2",
+      "placeId": "58e7223c-da85-58d7-8d73-2dbb557ceeeb",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 69,
+      "groupPosition": 1,
+      "chronologyIndex": 42,
+      "start": {
+        "year": 2025,
+        "month": 1
+      },
+      "end": {
+        "year": 2025,
+        "month": 1
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "jan",
+      "sourceValue": "phuket",
+      "sourceRawLine": "* jan: phuket",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "b611eaaa-1ae1-5611-879f-08bf7f7aa904",
+      "placeId": "b2e35de2-4333-5336-ba92-c3cca3e9dd01",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 68,
+      "groupPosition": 1,
+      "chronologyIndex": 43,
+      "start": {
+        "year": 2025,
+        "month": 1
+      },
+      "end": {
+        "year": 2025,
+        "month": 1
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "jan",
+      "sourceValue": "da nang",
+      "sourceRawLine": "* jan: da nang",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "c3f7b683-f9ba-5c15-b17a-2a1c65836746",
+      "placeId": "16439e5e-158c-5345-860e-178b73ce1fde",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 67,
+      "groupPosition": 1,
+      "chronologyIndex": 44,
+      "start": {
+        "year": 2025,
+        "month": 2
+      },
+      "end": {
+        "year": 2025,
+        "month": 2
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "feb",
+      "sourceValue": "hanoi",
+      "sourceRawLine": "* feb: hanoi",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "f6e19671-8f50-5a02-8407-44914094e5a9",
+      "placeId": "cea7138d-bd30-5e31-ae01-6bf8ea4f189d",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 66,
+      "groupPosition": 1,
+      "chronologyIndex": 45,
+      "start": {
+        "year": 2025,
+        "month": 2
+      },
+      "end": {
+        "year": 2025,
+        "month": 2
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "feb",
+      "sourceValue": "sapa",
+      "sourceRawLine": "* feb: sapa",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "7ad899e8-c14f-5c52-937d-401c6088ec93",
+      "placeId": "f7ff98f9-588d-59f6-b696-914335dbd06f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 65,
+      "groupPosition": 1,
+      "chronologyIndex": 46,
+      "start": {
+        "year": 2025,
+        "month": 2
+      },
+      "end": {
+        "year": 2025,
+        "month": 3
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "feb/march",
+      "sourceValue": "phu quoc ",
+      "sourceRawLine": "* feb/march: phu quoc ",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "c38bd36e-2411-55cd-bafa-527dc7b1e7df",
+      "placeId": "6edd2004-3963-5f46-b08f-ca11e5cc0a64",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 64,
+      "groupPosition": 1,
+      "chronologyIndex": 47,
+      "start": {
+        "year": 2025,
+        "month": 3
+      },
+      "end": {
+        "year": 2025,
+        "month": 4
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "mar/apr",
+      "sourceValue": "kampot",
+      "sourceRawLine": "* mar/apr: kampot",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "eab17ee6-9e2a-5fda-9e74-c8f12fe7ce08",
+      "placeId": "be6ee122-a014-5348-b064-139635799799",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 63,
+      "groupPosition": 1,
+      "chronologyIndex": 48,
+      "start": {
+        "year": 2025,
+        "month": 4
+      },
+      "end": {
+        "year": 2025,
+        "month": 4
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "apr",
+      "sourceValue": "phnom penh",
+      "sourceRawLine": "* apr: phnom penh",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "48ad1001-18cf-5579-9f31-127ca9d606d0",
+      "placeId": "885a22bf-57ec-5f8f-b02d-bba5f750187f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 62,
+      "groupPosition": 1,
+      "chronologyIndex": 49,
+      "start": {
+        "year": 2025,
+        "month": 4
+      },
+      "end": {
+        "year": 2025,
+        "month": 4
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "apr",
+      "sourceValue": "siem reap",
+      "sourceRawLine": "* apr: siem reap",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "57955914-53f5-5e0d-a6fa-625d1db196c3",
+      "placeId": "f670945e-2d72-543e-a8c8-49259d0ee32a",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 61,
+      "groupPosition": 1,
+      "chronologyIndex": 50,
+      "start": {
+        "year": 2025,
+        "month": 4
+      },
+      "end": {
+        "year": 2025,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "apr-july",
+      "sourceValue": "hoi an",
+      "sourceRawLine": "* apr-july: hoi an",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "aa02b38e-f87f-5f3c-b88e-b024daf13cf7",
+      "placeId": "9147288f-37cf-5aa7-8b5f-ce61e322c181",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 60,
+      "groupPosition": 1,
+      "chronologyIndex": 51,
+      "start": {
+        "year": 2025,
+        "month": 7
+      },
+      "end": {
+        "year": 2025,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "taiwan ",
+      "sourceRawLine": "* july: taiwan ",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "7e8e772b-b1d0-5d85-b84c-77f85c12c374",
+      "placeId": "085b12c7-7dda-5bc5-8e6b-b4c9efcd506d",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 59,
+      "groupPosition": 1,
+      "chronologyIndex": 52,
+      "start": {
+        "year": 2025,
+        "month": 7
+      },
+      "end": {
+        "year": 2025,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "osaka",
+      "sourceRawLine": "* july: osaka",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "4c3ff64b-d50a-5516-ba94-2fe931e30f4f",
+      "placeId": "d1ab6a09-7f1b-58bd-b9e1-65cfc135d79f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 58,
+      "groupPosition": 1,
+      "chronologyIndex": 53,
+      "start": {
+        "year": 2025,
+        "month": 7
+      },
+      "end": {
+        "year": 2025,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "kyoto",
+      "sourceRawLine": "* july: kyoto",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "6be2f9c3-26da-5f23-bb16-f4b55572d880",
+      "placeId": "dc81f739-2f11-52da-95c3-818b54e4f78b",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 57,
+      "groupPosition": 1,
+      "chronologyIndex": 54,
+      "start": {
+        "year": 2025,
+        "month": 7
+      },
+      "end": {
+        "year": 2025,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "tokyo",
+      "sourceRawLine": "* july: tokyo",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "1300e365-9d78-5d47-bf53-8bfd2b36b9a5",
+      "placeId": "5b85eae3-ab6c-5c27-a415-599dc578b1f9",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 56,
+      "groupPosition": 1,
+      "chronologyIndex": 55,
+      "start": {
+        "year": 2025,
+        "month": 8
+      },
+      "end": {
+        "year": 2025,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "aug",
+      "sourceValue": "new york city",
+      "sourceRawLine": "* aug: new york city",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "a3c05ffc-44a8-5255-9778-aeb8332b07a9",
+      "placeId": "c7d0b18a-c272-5008-8d0b-0503582283d2",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 55,
+      "groupPosition": 1,
+      "chronologyIndex": 56,
+      "start": {
+        "year": 2025,
+        "month": 8
+      },
+      "end": {
+        "year": 2025,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "aug",
+      "sourceValue": "montreal ",
+      "sourceRawLine": "* aug: montreal ",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d0184867-c183-585b-abe3-104bb4ca0d7a",
+      "placeId": "6f1b89f5-61d3-5468-b638-2e3e4ddd7beb",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 54,
+      "groupPosition": 1,
+      "chronologyIndex": 57,
+      "start": {
+        "year": 2025,
+        "month": 8
+      },
+      "end": {
+        "year": 2025,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "aug",
+      "sourceValue": "island heights ",
+      "sourceRawLine": "* aug: island heights ",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "a4bdadbd-e1e4-5ae9-acce-c2ebead1946c",
+      "placeId": "93ac38e6-ea68-58e3-aad0-aac15369283d",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 53,
+      "groupPosition": 1,
+      "chronologyIndex": 58,
+      "start": {
+        "year": 2025,
+        "month": 9
+      },
+      "end": {
+        "year": 2025,
+        "month": 9
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "sept",
+      "sourceValue": "mexico city ",
+      "sourceRawLine": "* sept: mexico city ",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "ec01c6d6-19a4-557c-8df4-3f55874da43c",
+      "placeId": "43f0bd2c-157f-5866-9c20-3279c3cc713c",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 52,
+      "groupPosition": 1,
+      "chronologyIndex": 59,
+      "start": {
+        "year": 2025,
+        "month": 9
+      },
+      "end": {
+        "year": 2025,
+        "month": 9
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "sept",
+      "sourceValue": "guanajuato",
+      "sourceRawLine": "* sept: guanajuato",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "f3d5881a-bec5-5048-bf9d-1d1623b3f5d8",
+      "placeId": "c1ff18d3-302f-5505-a1df-dd41e26820e0",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 51,
+      "groupPosition": 1,
+      "chronologyIndex": 60,
+      "start": {
+        "year": 2025,
+        "month": 9
+      },
+      "end": {
+        "year": 2025,
+        "month": 9
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "sept",
+      "sourceValue": "san miguel de allende",
+      "sourceRawLine": "* sept: san miguel de allende",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "6999b241-9420-53c4-9154-e1910d40d632",
+      "placeId": "13a8639e-aa4e-5ba3-848b-35d7d3e2ea95",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 50,
+      "groupPosition": 1,
+      "chronologyIndex": 61,
+      "start": {
+        "year": 2025,
+        "month": 9
+      },
+      "end": {
+        "year": 2025,
+        "month": 9
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "sept",
+      "sourceValue": "guadalajara",
+      "sourceRawLine": "* sept: guadalajara",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "22e236a2-61e0-5b80-94d8-06a46c984f01",
+      "placeId": "df3df4f9-64d4-553c-8c2a-f4091e647adb",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 49,
+      "groupPosition": 1,
+      "chronologyIndex": 62,
+      "start": {
+        "year": 2025,
+        "month": 9
+      },
+      "end": {
+        "year": 2025,
+        "month": 10
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "sept/oct",
+      "sourceValue": "puerto vallarta ",
+      "sourceRawLine": "* sept/oct: puerto vallarta ",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "365d3b23-9097-5ad9-b287-3b5ffc4b56f8",
+      "placeId": "b036afcc-21fc-58a2-a65e-bd5a1c05f2e9",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 48,
+      "groupPosition": 1,
+      "chronologyIndex": 63,
+      "start": {
+        "year": 2025,
+        "month": 10
+      },
+      "end": {
+        "year": 2025,
+        "month": 11
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "oct/nov",
+      "sourceValue": "austin",
+      "sourceRawLine": "* oct/nov: austin",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "ba62fe56-d366-5983-abdb-f680c9cffcbf",
+      "placeId": "c92646a9-942a-58a4-a3e6-fd4c03a0d9e2",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 47,
+      "groupPosition": 1,
+      "chronologyIndex": 64,
+      "start": {
+        "year": 2025,
+        "month": 11
+      },
+      "end": {
+        "year": 2025,
+        "month": 11
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "nov",
+      "sourceValue": "roatan",
+      "sourceRawLine": "* nov: roatan",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "a6023d7e-3a2e-53c6-9cbf-ec337a0462c6",
+      "placeId": "eb12c9f9-9f1f-50ad-8fd9-a30c3c9aab74",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 46,
+      "groupPosition": 1,
+      "chronologyIndex": 65,
+      "start": {
+        "year": 2025,
+        "month": 11
+      },
+      "end": {
+        "year": 2025,
+        "month": 11
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "nov",
+      "sourceValue": "tegucigalpa",
+      "sourceRawLine": "* nov: tegucigalpa",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "f4118a0c-b59a-575f-b708-4896900b4ec0",
+      "placeId": "6a11d344-5e89-56aa-b1cc-6ae8dfb6fdf8",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 45,
+      "groupPosition": 1,
+      "chronologyIndex": 66,
+      "start": {
+        "year": 2025,
+        "month": 11
+      },
+      "end": {
+        "year": 2025,
+        "month": 11
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "nov",
+      "sourceValue": "san salvador",
+      "sourceRawLine": "* nov: san salvador",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "1cb70cbf-ea47-5c76-87a7-ca5109f23fc4",
+      "placeId": "4d092c44-c5bf-5cc6-829c-02a909df3c88",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 44,
+      "groupPosition": 1,
+      "chronologyIndex": 67,
+      "start": {
+        "year": 2025,
+        "month": 11
+      },
+      "end": {
+        "year": 2025,
+        "month": 11
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "nov",
+      "sourceValue": "la libertad",
+      "sourceRawLine": "* nov: la libertad",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "4319ebca-c2fc-5b1f-95fa-b36b37274071",
+      "placeId": "aaed9913-afd5-52ce-87c9-a918330094b3",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 43,
+      "groupPosition": 1,
+      "chronologyIndex": 68,
+      "start": {
+        "year": 2025,
+        "month": 11
+      },
+      "end": {
+        "year": 2025,
+        "month": 12
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "nov/dec",
+      "sourceValue": "el tunco",
+      "sourceRawLine": "* nov/dec: el tunco",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "e8c34c33-d225-52f0-8c60-a853ceb89d0d",
+      "placeId": "1dc1b59f-6688-5fcc-91b4-7033a758239d",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 42,
+      "groupPosition": 1,
+      "chronologyIndex": 69,
+      "start": {
+        "year": 2025,
+        "month": 12
+      },
+      "end": {
+        "year": 2025,
+        "month": 12
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "dec",
+      "sourceValue": "antigua",
+      "sourceRawLine": "* dec: antigua",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "44ae625f-5eac-553f-a606-6983df5929c6",
+      "placeId": "a0492b98-867b-5ac7-9954-3ae4d5332b7e",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 41,
+      "groupPosition": 1,
+      "chronologyIndex": 70,
+      "start": {
+        "year": 2025,
+        "month": 12
+      },
+      "end": {
+        "year": 2025,
+        "month": 12
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "dec",
+      "sourceValue": "lake atitlan",
+      "sourceRawLine": "* dec: lake atitlan",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "466bf316-f648-5ef2-8c5b-b1f637a72928",
+      "placeId": "5a9feb3a-b1da-5148-9938-05a1ea967853",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 40,
+      "groupPosition": 1,
+      "chronologyIndex": 71,
+      "start": {
+        "year": 2025,
+        "month": 12
+      },
+      "end": {
+        "year": 2025,
+        "month": 12
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "dec",
+      "sourceValue": "el paredon",
+      "sourceRawLine": "* dec: el paredon",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "42581843-9eb8-52ce-9e27-715c9b52dd38",
+      "placeId": "00b8511c-2e91-5052-82ef-6db80e1e5a9d",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 39,
+      "groupPosition": 1,
+      "chronologyIndex": 72,
+      "start": {
+        "year": 2025,
+        "month": 12
+      },
+      "end": {
+        "year": 2025,
+        "month": 12
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "dec",
+      "sourceValue": "bogota",
+      "sourceRawLine": "* dec: bogota",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "46d03597-a5d9-53da-8447-86965449e919",
+      "placeId": "5ff184a5-66e2-526d-9928-16e14aa92416",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 38,
+      "groupPosition": 1,
+      "chronologyIndex": 73,
+      "start": {
+        "year": 2026,
+        "month": 1
+      },
+      "end": {
+        "year": 2026,
+        "month": 1
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "jan",
+      "sourceValue": "medellin",
+      "sourceRawLine": "* jan: medellin",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "e7c050e4-1807-5aeb-9368-230296772cc9",
+      "placeId": "f0e17aa0-1c80-52a9-b03c-a3545960b3fd",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 37,
+      "groupPosition": 1,
+      "chronologyIndex": 74,
+      "start": {
+        "year": 2026,
+        "month": 1
+      },
+      "end": {
+        "year": 2026,
+        "month": 1
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "jan",
+      "sourceValue": "jardin",
+      "sourceRawLine": "* jan: jardin",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d5d64098-ad91-5c2f-8a3a-59b8dbbbf988",
+      "placeId": "5ff184a5-66e2-526d-9928-16e14aa92416",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 36,
+      "groupPosition": 1,
+      "chronologyIndex": 75,
+      "start": {
+        "year": 2026,
+        "month": 2
+      },
+      "end": {
+        "year": 2026,
+        "month": 2
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "feb",
+      "sourceValue": "medellin",
+      "sourceRawLine": "* feb: medellin",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "39f7d59d-14e8-50c2-aad2-3528cd45e540",
+      "placeId": "2bcefbc4-7573-5413-8739-e69d18779c52",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 35,
+      "groupPosition": 1,
+      "chronologyIndex": 76,
+      "start": {
+        "year": 2026,
+        "month": 2
+      },
+      "end": {
+        "year": 2026,
+        "month": 2
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "feb",
+      "sourceValue": "aruba",
+      "sourceRawLine": "* feb: aruba",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "4312e410-aa19-5f09-bb83-f9806619ff52",
+      "placeId": "8cb773ff-9d8b-5509-abda-169db2318cad",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 34,
+      "groupPosition": 1,
+      "chronologyIndex": 77,
+      "start": {
+        "year": 2026,
+        "month": 2
+      },
+      "end": {
+        "year": 2026,
+        "month": 2
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "feb",
+      "sourceValue": "miami",
+      "sourceRawLine": "* feb: miami",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "ba34a56c-9679-5c2d-a93f-5ca81a5383ef",
+      "placeId": "03b91ed0-5061-5fb5-b5fe-021468982bbf",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 33,
+      "groupPosition": 1,
+      "chronologyIndex": 78,
+      "start": {
+        "year": 2026,
+        "month": 2
+      },
+      "end": {
+        "year": 2026,
+        "month": 3
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "feb/mar",
+      "sourceValue": "st. petersburg",
+      "sourceRawLine": "* feb/mar: st. petersburg",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "0d376ac2-7262-5072-a188-d18e89ccaae6",
+      "placeId": "6f1b89f5-61d3-5468-b638-2e3e4ddd7beb",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 32,
+      "groupPosition": 1,
+      "chronologyIndex": 79,
+      "start": {
+        "year": 2026,
+        "month": 3
+      },
+      "end": {
+        "year": 2026,
+        "month": 4
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "mar/april",
+      "sourceValue": "island heights",
+      "sourceRawLine": "* mar/april: island heights",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "0d7b876d-7dda-5542-877d-8438f888470b",
+      "placeId": "8cb773ff-9d8b-5509-abda-169db2318cad",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 31,
+      "groupPosition": 1,
+      "chronologyIndex": 80,
+      "start": {
+        "year": 2026,
+        "month": 4
+      },
+      "end": {
+        "year": 2026,
+        "month": 4
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "april",
+      "sourceValue": "miami",
+      "sourceRawLine": "* april: miami",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "f99ec38b-3460-58a0-889f-25ae0c15c5c6",
+      "placeId": "92c0b90c-e5d2-53c1-985a-3b4f62559034",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 30,
+      "groupPosition": 1,
+      "chronologyIndex": 81,
+      "start": {
+        "year": 2026,
+        "month": 4
+      },
+      "end": {
+        "year": 2026,
+        "month": 4
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "april",
+      "sourceValue": "casablanca",
+      "sourceRawLine": "* april: casablanca",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "118d192a-ca4c-5097-b3b9-8e3c2ee9168f",
+      "placeId": "270ee196-8d3d-55f7-8e56-eff93a8ef389",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 29,
+      "groupPosition": 1,
+      "chronologyIndex": 82,
+      "start": {
+        "year": 2026,
+        "month": 4
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "april/may",
+      "sourceValue": "marrakesh",
+      "sourceRawLine": "* april/may: marrakesh",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "8d572384-822f-58a3-bc86-969088694d55",
+      "placeId": "37912811-1eea-5100-92b7-a9b4fff78a4a",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 28,
+      "groupPosition": 1,
+      "chronologyIndex": 83,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "el rompido",
+      "sourceRawLine": "* may: el rompido",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "0da2ba8d-eb1c-5102-a64c-e2b7ed5e6a47",
+      "placeId": "0b640c74-928b-5698-9e68-1880154a3608",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 27,
+      "groupPosition": 1,
+      "chronologyIndex": 84,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "seville",
+      "sourceRawLine": "* may: seville",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d68e224b-72f4-52e7-8fb7-cc18b0cb53c3",
+      "placeId": "c78994bb-0902-556f-a943-f772f66081db",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 26,
+      "groupPosition": 1,
+      "chronologyIndex": 85,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "geneva",
+      "sourceRawLine": "* may: geneva",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "c16e987f-7382-5607-b0cd-a57bf0cad864",
+      "placeId": "d9b2bdfe-805b-57d4-a286-d006946290b7",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 25,
+      "groupPosition": 1,
+      "chronologyIndex": 86,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "zurich",
+      "sourceRawLine": "* may: zurich",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "ed583585-29fc-5984-8689-053ab3f3ca11",
+      "placeId": "fe76b10d-bb99-5f3b-8103-61469363bf0c",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 24,
+      "groupPosition": 1,
+      "chronologyIndex": 87,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "innsbruck",
+      "sourceRawLine": "* may: innsbruck",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "00a09627-2ace-549a-b346-a27fc5363bb2",
+      "placeId": "1244624c-ead4-537e-ae65-e7bdfce1b3fa",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 23,
+      "groupPosition": 1,
+      "chronologyIndex": 88,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "muhlbach am hochkonig",
+      "sourceRawLine": "* may: muhlbach am hochkonig",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "28eb8a83-f455-55d1-a48a-dc40c522b890",
+      "placeId": "b1333455-49ee-55e8-b2c1-cf2daeb3f64a",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 22,
+      "groupPosition": 1,
+      "chronologyIndex": 89,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "salzburg",
+      "sourceRawLine": "* may: salzburg",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "f4c58dfb-869e-5001-a44c-947edfc41f7d",
+      "placeId": "fd07934c-e2b3-51e0-af75-04a1dcbfcbc0",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 21,
+      "groupPosition": 1,
+      "chronologyIndex": 90,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "ljubljana",
+      "sourceRawLine": "* may: ljubljana",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "b708eb91-511e-5fa5-96a4-5123f66dde22",
+      "placeId": "03939280-53a6-55c0-a6d1-25cf392e76fd",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 20,
+      "groupPosition": 1,
+      "chronologyIndex": 91,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "bled",
+      "sourceRawLine": "* may: bled",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "288d874d-cb6b-59f5-b66a-795ec57fb7af",
+      "placeId": "bdb9e89f-e6f7-584b-b20a-b90965535dc0",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 19,
+      "groupPosition": 1,
+      "chronologyIndex": 92,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "bohinj",
+      "sourceRawLine": "* may: bohinj",
+      "reviewState": "needs_review"
+    },
+    {
+      "id": "cde851b5-41be-581b-be3f-bf4b3ab58723",
+      "placeId": "d88f669a-a1ed-58d8-a7e9-33f25fdcf6e1",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 18,
+      "groupPosition": 1,
+      "chronologyIndex": 93,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 5
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "may",
+      "sourceValue": "tirana",
+      "sourceRawLine": "* may: tirana",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d493ceb0-58ff-5da1-86fd-644d8dd8765d",
+      "placeId": "ed1878a9-45cf-57bd-9764-3fffeb0c43f3",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 17,
+      "groupPosition": 1,
+      "chronologyIndex": 94,
+      "start": {
+        "year": 2026,
+        "month": 5
+      },
+      "end": {
+        "year": 2026,
+        "month": 6
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "may/june",
+      "sourceValue": "vlore",
+      "sourceRawLine": "* may/june: vlore",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "f633de86-8a6f-50a0-95a4-b9118f39c90f",
+      "placeId": "cac0de0e-909a-5f9c-a8bb-a9dfbd5e9e78",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 16,
+      "groupPosition": 1,
+      "chronologyIndex": 95,
+      "start": {
+        "year": 2026,
+        "month": 6
+      },
+      "end": {
+        "year": 2026,
+        "month": 6
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "june",
+      "sourceValue": "himare",
+      "sourceRawLine": "* june: himare",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "bc375632-595b-5f48-baf2-6b016ac85707",
+      "placeId": "8e69dfc3-dffc-5dc3-aa06-0ccb2a3678d4",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 15,
+      "groupPosition": 1,
+      "chronologyIndex": 96,
+      "start": {
+        "year": 2026,
+        "month": 6
+      },
+      "end": {
+        "year": 2026,
+        "month": 6
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "june",
+      "sourceValue": "dhermi",
+      "sourceRawLine": "* june: dhermi",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "3c750f06-8232-5289-bfc5-a7c7495b52d7",
+      "placeId": "c0507ed0-b902-50c2-983f-909d10eb6443",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 14,
+      "groupPosition": 1,
+      "chronologyIndex": 97,
+      "start": {
+        "year": 2026,
+        "month": 6
+      },
+      "end": {
+        "year": 2026,
+        "month": 6
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "june",
+      "sourceValue": "saranda",
+      "sourceRawLine": "* june: saranda",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "d1e66525-f2c9-5def-b5b0-1600606bf1c6",
+      "placeId": "4e9d0de8-6520-556f-9c45-8657339ca7e0",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 13,
+      "groupPosition": 1,
+      "chronologyIndex": 98,
+      "start": {
+        "year": 2026,
+        "month": 6
+      },
+      "end": {
+        "year": 2026,
+        "month": 7
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "june/july",
+      "sourceValue": "sofia",
+      "sourceRawLine": "* june/july: sofia",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "99dee95c-92b9-519c-888a-eaf54ac79bd6",
+      "placeId": "f6c93dba-7866-533c-bf3c-02b16195986e",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 12,
+      "groupPosition": 1,
+      "chronologyIndex": 99,
+      "start": {
+        "year": 2026,
+        "month": 7
+      },
+      "end": {
+        "year": 2026,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "nis",
+      "sourceRawLine": "* july: nis",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "3c9414de-52df-5fc5-b60e-26d96d6829c5",
+      "placeId": "cf6adf4b-dd94-5016-88db-729bd27b9854",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 11,
+      "groupPosition": 1,
+      "chronologyIndex": 100,
+      "start": {
+        "year": 2026,
+        "month": 7
+      },
+      "end": {
+        "year": 2026,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "skopje",
+      "sourceRawLine": "* july: skopje",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "159794f6-7300-577c-bd02-1ea30e6780dd",
+      "placeId": "9003d3dc-4d4f-5807-833d-2428964b639f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 10,
+      "groupPosition": 1,
+      "chronologyIndex": 101,
+      "start": {
+        "year": 2026,
+        "month": 7
+      },
+      "end": {
+        "year": 2026,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "pristina",
+      "sourceRawLine": "* july: pristina",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "7abb167e-904d-55b0-8df7-fb8e002d1081",
+      "placeId": "ad496faa-eff9-5713-870f-797c7d9be118",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 9,
+      "groupPosition": 1,
+      "chronologyIndex": 102,
+      "start": {
+        "year": 2026,
+        "month": 7
+      },
+      "end": {
+        "year": 2026,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "ulcinj",
+      "sourceRawLine": "* july: ulcinj",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "ea9b1ab4-013b-5272-8846-4a4b43ad8288",
+      "placeId": "9254c5f6-d6af-53f5-b585-a55b7d128c55",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 8,
+      "groupPosition": 1,
+      "chronologyIndex": 103,
+      "start": {
+        "year": 2026,
+        "month": 7
+      },
+      "end": {
+        "year": 2026,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "tivat",
+      "sourceRawLine": "* july: tivat",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "a156d6c4-2c28-54f6-af3a-9df278630803",
+      "placeId": "956c3438-f7ea-54b8-bad6-71eb80b653f8",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 7,
+      "groupPosition": 1,
+      "chronologyIndex": 104,
+      "start": {
+        "year": 2026,
+        "month": 7
+      },
+      "end": {
+        "year": 2026,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "stockholm",
+      "sourceRawLine": "* july: stockholm",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "9d0d5326-3602-59bc-beea-a0b543022ad6",
+      "placeId": "22a5eddc-9106-5388-9b3d-6afe29879b3a",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 6,
+      "groupPosition": 1,
+      "chronologyIndex": 105,
+      "start": {
+        "year": 2026,
+        "month": 7
+      },
+      "end": {
+        "year": 2026,
+        "month": 7
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "july",
+      "sourceValue": "helsinki",
+      "sourceRawLine": "* july: helsinki",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "64f60308-ed16-5b7c-9052-b12af055b8c8",
+      "placeId": "5c9a8d75-ee18-568d-aa55-863bbd88cd59",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 5,
+      "groupPosition": 1,
+      "chronologyIndex": 106,
+      "start": {
+        "year": 2026,
+        "month": 7
+      },
+      "end": {
+        "year": 2026,
+        "month": 8
+      },
+      "temporalPrecision": "month_range",
+      "sourceDateText": "july/august",
+      "sourceValue": "tallinn ",
+      "sourceRawLine": "* july/august: tallinn ",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "06b8f44c-005e-5c91-830b-1d52b61d9b45",
+      "placeId": "594fe27c-12f7-5a0b-8e24-92606660d2fa",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 4,
+      "groupPosition": 1,
+      "chronologyIndex": 107,
+      "start": {
+        "year": 2026,
+        "month": 8
+      },
+      "end": {
+        "year": 2026,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "august",
+      "sourceValue": "riga",
+      "sourceRawLine": "* august: riga",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "034532b8-a0ba-5490-b162-f8bc6859064c",
+      "placeId": "b503effb-a98e-59ac-8780-bb50a535d62f",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 3,
+      "groupPosition": 1,
+      "chronologyIndex": 108,
+      "start": {
+        "year": 2026,
+        "month": 8
+      },
+      "end": {
+        "year": 2026,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "august",
+      "sourceValue": "vilnius",
+      "sourceRawLine": "* august: vilnius",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "f0aa82d8-7822-5016-9587-b2d09e09e8dd",
+      "placeId": "5a7d4284-aa09-59a1-8f56-8f2207da8568",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 2,
+      "groupPosition": 1,
+      "chronologyIndex": 109,
+      "start": {
+        "year": 2026,
+        "month": 8
+      },
+      "end": {
+        "year": 2026,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "august",
+      "sourceValue": "kaunas",
+      "sourceRawLine": "* august: kaunas",
+      "reviewState": "unreviewed"
+    },
+    {
+      "id": "8109d0a9-c6d3-571b-8ddd-2234eb0d3562",
+      "placeId": "a6adb311-5861-5c68-b405-8bf140c569f5",
+      "visitKind": "visit_or_stay_unspecified",
+      "sourcePosition": 1,
+      "groupPosition": 1,
+      "chronologyIndex": 110,
+      "start": {
+        "year": 2026,
+        "month": 8
+      },
+      "end": {
+        "year": 2026,
+        "month": 8
+      },
+      "temporalPrecision": "month",
+      "sourceDateText": "august",
+      "sourceValue": "warsaw",
+      "sourceRawLine": "* august: warsaw",
+      "reviewState": "unreviewed"
+    }
+  ],
+  "movements": [
+    {
+      "id": "7826f449-3225-5363-b055-216d60085699",
+      "source_snapshot_id": "21a9021f-666b-58a7-910d-4c78c1f11a8c",
+      "origin_place_id": "b036afcc-21fc-58a2-a65e-bd5a1c05f2e9",
+      "destination_place_id": null,
+      "event_kind": "departure",
+      "transport_mode": null,
+      "start_year": 2023,
+      "start_month": 9,
+      "temporal_precision": "month",
+      "source_position": 101,
+      "source_raw_line": "* sept: left austin",
+      "visibility": "public",
+      "editorial_state": "needs_review",
+      "provenance": {
+        "source_record_id": "227a4d96-39f2-5cdf-a115-57127622305d",
+        "review_flags": [
+          "movement_not_stay"
+        ]
+      }
+    }
+  ],
+  "review": {
+    "unresolvedPlaceLabels": [
+      "bohinj",
+      "aruba",
+      "el paredon",
+      "lake atitlan",
+      "el tunco",
+      "roatan",
+      "taiwan",
+      "bali",
+      "palawan",
+      "siargao",
+      "polignano de mare",
+      "sicily",
+      "galicia"
+    ],
+    "currentLocationConflict": {
+      "sourceLatest": "warsaw",
+      "existingOsNow": "Sarajevo",
+      "decision": "unresolved_do_not_overwrite_now"
+    }
+  },
+  "mapAttribution": "GeoNames geographical database, CC BY 4.0"
+}

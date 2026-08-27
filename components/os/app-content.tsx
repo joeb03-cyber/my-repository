@@ -5,11 +5,12 @@ import { LibraryApp } from "./library-app";
 import type { AppId } from "@/data/prototype";
 import type { BrainBookSummary } from "@/lib/brain/types";
 import AppIcon, { iconForApp } from "./app-icon";
+import MapsApp from "./maps-app";
 
 export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: AppId; onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (appId: AppId) => void }) {
   if (appId === "finder") return <Finder onOpenApp={onOpenApp} />;
   if (appId === "library") return <LibraryApp onBookOpen={onBookOpen} />;
-  if (appId === "atlas") return <Atlas />;
+  if (appId === "atlas") return <MapsApp />;
   if (appId === "laboratory") return <Laboratory />;
   if (appId === "messages") return <Messages />;
   if (appId === "journal") return <Journal />;
@@ -31,10 +32,6 @@ function Finder({ onOpenApp }: { onOpenApp: (appId: AppId) => void }) {
   ];
   const future = ["Contacts", "Podcasts", "Stocks", "Time Machine"];
   return <div className="finder-app system-app"><aside className="os-sidebar"><strong>Favorites</strong><button className="is-selected">Brain</button><button>Applications</button><button>Currently</button><span/><strong>Collections</strong><button>Books</button><button>Places</button><button>People</button><button>Ideas</button></aside><section className="finder-main"><div className="os-toolbar"><div><button className="toolbar-button">‹</button><button className="toolbar-button">›</button></div><strong>Synergetic Human</strong><label className="system-search"><Search/><input aria-label="Search Finder" placeholder="Search"/></label></div><div className="finder-section"><span className="section-label">APPLICATIONS</span><div className="finder-grid">{available.map((app)=><button key={app.id} onClick={()=>onOpenApp(app.id)}><AppIcon name={iconForApp[app.id] ?? "finder"}/><span><strong>{app.label}</strong><small>{app.detail}</small></span></button>)}</div></div><div className="finder-section finder-section--future"><span className="section-label">NOT YET INSTALLED</span>{future.map((name)=><div className="os-list-row is-muted" key={name}><span className="future-app-dot"/><strong>{name}</strong><small>Coming later</small></div>)}</div></section></div>;
-}
-
-function Atlas() {
-  return <div className="atlas-app app-placeholder"><div className="atlas-map"><div className="route-line route-line--one"/><div className="route-line route-line--two"/><i className="map-point point-one"/><i className="map-point point-two"/><i className="map-point point-three"/><span className="map-label label-one">Tallinn</span><span className="map-label label-two">Sarajevo</span><span className="map-label label-three">Buenos Aires</span></div><div className="placeholder-copy"><span className="app-kicker">MAPS · 2023—NOW</span><h2>Life between coordinates.</h2><p>A future map of the long route, the short stays, the rooms remembered, and the streets worth walking twice.</p><div className="atlas-stat"><strong>38</strong><span>countries<br/>and counting</span></div></div></div>;
 }
 
 function Laboratory() {

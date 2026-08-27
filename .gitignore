@@ -44,3 +44,8 @@ IMPLEMENTATION.md
 /data/brain/books/
 /data/brain/import-v1/
 /data/brain/import-manifest.v1.json
+
+# Photo inventory output may contain original filenames, local paths, capture
+# timestamps, and exact GPS. The versioned tool is safe; generated inventories
+# remain workstation-only until an explicit editorial publication step.
+/artifacts/photo-inventory/

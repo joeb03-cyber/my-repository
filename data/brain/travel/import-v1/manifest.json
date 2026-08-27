@@ -1,0 +1,16 @@
+{
+  "schema_version": "synergetic-travel-import.v1",
+  "source_hash": "19135544962e7be9c0aa0c77be5236d2d075bea538863e71bb0d5d5140cc9967",
+  "counts": {
+    "travel_source_snapshots": 1,
+    "travel_places": 103,
+    "travel_visits": 110,
+    "travel_movements": 1
+  },
+  "artifact_hashes": {
+    "travel_source_snapshots": "9b2ea2d5447033742688006d16f8fd8c4214061fe4a6e68181125b79a46522fc",
+    "travel_places": "fc0a1ff27c4c967a5720acd6d18f5e001903087ecf82153ba755064ab71f9dc4",
+    "travel_visits": "0eeb742010fb7b4a40ab51bc24e21f8d2f23378db5208ddbf5c366caa842955d",
+    "travel_movements": "7f2a30d59b19b1d4015c75ebbdf062a2e282b8292f666f242c5c2e20a44d29c9"
+  }
+}

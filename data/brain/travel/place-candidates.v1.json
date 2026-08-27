@@ -1,0 +1,2422 @@
+{
+  "schema_version": "synergetic-place-candidates.v1",
+  "generated_from": "data/brain/travel/travel-source-inventory.v1.json",
+  "provider_attribution": "GeoNames geographical database, CC BY 4.0",
+  "place_count": 103,
+  "resolved_count": 90,
+  "places": [
+    {
+      "source_name": "warsaw",
+      "canonical_name_candidate": "Warsaw",
+      "country_code_candidate": "PL",
+      "place_type_candidate": "locality",
+      "latitude": 52.22977,
+      "longitude": 21.01178,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 756135,
+        "feature_code": "PPLC",
+        "query": "warsaw",
+        "candidate_count": 1,
+        "candidate_ids": [
+          756135
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "kaunas",
+      "canonical_name_candidate": "Kaunas",
+      "country_code_candidate": "LT",
+      "place_type_candidate": "locality",
+      "latitude": 54.90156,
+      "longitude": 23.90909,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 598316,
+        "feature_code": "PPLA",
+        "query": "kaunas",
+        "candidate_count": 1,
+        "candidate_ids": [
+          598316
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "vilnius",
+      "canonical_name_candidate": "Vilnius",
+      "country_code_candidate": "LT",
+      "place_type_candidate": "locality",
+      "latitude": 54.68916,
+      "longitude": 25.2798,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 593116,
+        "feature_code": "PPLC",
+        "query": "vilnius",
+        "candidate_count": 1,
+        "candidate_ids": [
+          593116
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "riga",
+      "canonical_name_candidate": "Riga",
+      "country_code_candidate": "LV",
+      "place_type_candidate": "locality",
+      "latitude": 56.946,
+      "longitude": 24.10589,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 456172,
+        "feature_code": "PPLC",
+        "query": "riga",
+        "candidate_count": 1,
+        "candidate_ids": [
+          456172
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "tallinn",
+      "canonical_name_candidate": "Tallinn",
+      "country_code_candidate": "EE",
+      "place_type_candidate": "locality",
+      "latitude": 59.43696,
+      "longitude": 24.75353,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 588409,
+        "feature_code": "PPLC",
+        "query": "tallinn",
+        "candidate_count": 1,
+        "candidate_ids": [
+          588409
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "helsinki",
+      "canonical_name_candidate": "Helsinki",
+      "country_code_candidate": "FI",
+      "place_type_candidate": "locality",
+      "latitude": 60.16952,
+      "longitude": 24.93545,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 658225,
+        "feature_code": "PPLC",
+        "query": "helsinki",
+        "candidate_count": 1,
+        "candidate_ids": [
+          658225
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "stockholm",
+      "canonical_name_candidate": "Stockholm",
+      "country_code_candidate": "SE",
+      "place_type_candidate": "locality",
+      "latitude": 59.32938,
+      "longitude": 18.06871,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2673730,
+        "feature_code": "PPLC",
+        "query": "stockholm",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2673730
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "tivat",
+      "canonical_name_candidate": "Tivat",
+      "country_code_candidate": "ME",
+      "place_type_candidate": "locality",
+      "latitude": 42.43623,
+      "longitude": 18.69361,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3189073,
+        "feature_code": "PPLA",
+        "query": "tivat",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3189073
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "ulcinj",
+      "canonical_name_candidate": "Ulcinj",
+      "country_code_candidate": "ME",
+      "place_type_candidate": "locality",
+      "latitude": 41.92936,
+      "longitude": 19.22436,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3188516,
+        "feature_code": "PPLA",
+        "query": "ulcinj",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3188516
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "pristina",
+      "canonical_name_candidate": "Pristina",
+      "country_code_candidate": "XK",
+      "place_type_candidate": "locality",
+      "latitude": 42.67272,
+      "longitude": 21.16688,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 786714,
+        "feature_code": "PPLC",
+        "query": "pristina",
+        "candidate_count": 1,
+        "candidate_ids": [
+          786714
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "skopje",
+      "canonical_name_candidate": "Skopje",
+      "country_code_candidate": "MK",
+      "place_type_candidate": "locality",
+      "latitude": 41.99646,
+      "longitude": 21.43141,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 785842,
+        "feature_code": "PPLC",
+        "query": "skopje",
+        "candidate_count": 1,
+        "candidate_ids": [
+          785842
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "nis",
+      "canonical_name_candidate": "Niš",
+      "country_code_candidate": "RS",
+      "place_type_candidate": "locality",
+      "latitude": 43.32472,
+      "longitude": 21.90333,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 787657,
+        "feature_code": "PPLA2",
+        "query": "nis",
+        "candidate_count": 1,
+        "candidate_ids": [
+          787657
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "sofia",
+      "canonical_name_candidate": "Sofia",
+      "country_code_candidate": "BG",
+      "place_type_candidate": "locality",
+      "latitude": 42.69751,
+      "longitude": 23.32415,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 727011,
+        "feature_code": "PPLC",
+        "query": "sofia",
+        "candidate_count": 1,
+        "candidate_ids": [
+          727011
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "saranda",
+      "canonical_name_candidate": "Sarandë",
+      "country_code_candidate": "AL",
+      "place_type_candidate": "locality",
+      "latitude": 39.87534,
+      "longitude": 20.00477,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 363243,
+        "feature_code": "PPLA2",
+        "query": "saranda",
+        "candidate_count": 1,
+        "candidate_ids": [
+          363243
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "dhermi",
+      "canonical_name_candidate": "Dhërmi",
+      "country_code_candidate": "AL",
+      "place_type_candidate": "locality",
+      "latitude": 40.15139,
+      "longitude": 19.63889,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3185803,
+        "feature_code": "PPL",
+        "query": "dhermi",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3185803
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "himare",
+      "canonical_name_candidate": "Himarë",
+      "country_code_candidate": "AL",
+      "place_type_candidate": "locality",
+      "latitude": 40.10167,
+      "longitude": 19.74472,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3185377,
+        "feature_code": "PPLA3",
+        "query": "himare",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3185377
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "vlore",
+      "canonical_name_candidate": "Vlorë",
+      "country_code_candidate": "AL",
+      "place_type_candidate": "locality",
+      "latitude": 40.4696,
+      "longitude": 19.48379,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3183719,
+        "feature_code": "PPLA",
+        "query": "vlore",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3183719
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "tirana",
+      "canonical_name_candidate": "Tirana",
+      "country_code_candidate": "AL",
+      "place_type_candidate": "locality",
+      "latitude": 41.32744,
+      "longitude": 19.81866,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3183875,
+        "feature_code": "PPLC",
+        "query": "tirana",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3183875
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "bohinj",
+      "canonical_name_candidate": "Bohinj",
+      "country_code_candidate": "SI",
+      "place_type_candidate": "locality",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "bohinj",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "geocoding_unresolved"
+        ]
+      }
+    },
+    {
+      "source_name": "bled",
+      "canonical_name_candidate": "Bled",
+      "country_code_candidate": "SI",
+      "place_type_candidate": "locality",
+      "latitude": 46.36859,
+      "longitude": 14.11652,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3203925,
+        "feature_code": "PPLA",
+        "query": "bled",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3203925
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "ljubljana",
+      "canonical_name_candidate": "Ljubljana",
+      "country_code_candidate": "SI",
+      "place_type_candidate": "locality",
+      "latitude": 46.05108,
+      "longitude": 14.50513,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3196359,
+        "feature_code": "PPLC",
+        "query": "ljubljana",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3196359
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "salzburg",
+      "canonical_name_candidate": "Salzburg",
+      "country_code_candidate": "AT",
+      "place_type_candidate": "locality",
+      "latitude": 47.79941,
+      "longitude": 13.04399,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2766824,
+        "feature_code": "PPLA",
+        "query": "salzburg",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2766824
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "muhlbach am hochkonig",
+      "canonical_name_candidate": "Mühlbach am Hochkönig",
+      "country_code_candidate": "AT",
+      "place_type_candidate": "locality",
+      "latitude": 47.37746,
+      "longitude": 13.12926,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2771109,
+        "feature_code": "PPLA3",
+        "query": "mühlbach am hochkönig",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2771109
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "innsbruck",
+      "canonical_name_candidate": "Innsbruck",
+      "country_code_candidate": "AT",
+      "place_type_candidate": "locality",
+      "latitude": 47.26266,
+      "longitude": 11.39454,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2775220,
+        "feature_code": "PPLA",
+        "query": "innsbruck",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2775220
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "zurich",
+      "canonical_name_candidate": "Zürich",
+      "country_code_candidate": "CH",
+      "place_type_candidate": "locality",
+      "latitude": 47.36667,
+      "longitude": 8.55,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2657896,
+        "feature_code": "PPLA",
+        "query": "zurich",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2657896
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "geneva",
+      "canonical_name_candidate": "Geneva",
+      "country_code_candidate": "CH",
+      "place_type_candidate": "locality",
+      "latitude": 46.20222,
+      "longitude": 6.14569,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2660646,
+        "feature_code": "PPLA",
+        "query": "geneva",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2660646
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "seville",
+      "canonical_name_candidate": "Sevilla",
+      "country_code_candidate": "ES",
+      "place_type_candidate": "locality",
+      "latitude": 37.38283,
+      "longitude": -5.97317,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2510911,
+        "feature_code": "PPLA",
+        "query": "seville",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2510911
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "el rompido",
+      "canonical_name_candidate": "El Rompido",
+      "country_code_candidate": "ES",
+      "place_type_candidate": "locality",
+      "latitude": 37.21773,
+      "longitude": -7.12206,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2518147,
+        "feature_code": "PPL",
+        "query": "el rompido",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2518147
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "marrakesh",
+      "canonical_name_candidate": "Marrakesh",
+      "country_code_candidate": "MA",
+      "place_type_candidate": "locality",
+      "latitude": 31.63416,
+      "longitude": -7.99994,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2542997,
+        "feature_code": "PPLA",
+        "query": "marrakesh",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2542997
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "casablanca",
+      "canonical_name_candidate": "Casablanca",
+      "country_code_candidate": "MA",
+      "place_type_candidate": "locality",
+      "latitude": 33.58831,
+      "longitude": -7.61138,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2553604,
+        "feature_code": "PPLA",
+        "query": "casablanca",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2553604
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "miami",
+      "canonical_name_candidate": "Miami",
+      "country_code_candidate": "US",
+      "place_type_candidate": "locality",
+      "latitude": 25.77427,
+      "longitude": -80.19366,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 4164138,
+        "feature_code": "PPLA2",
+        "query": "miami",
+        "candidate_count": 5,
+        "candidate_ids": [
+          4164138,
+          4542692,
+          5304640,
+          4518202,
+          5526233
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "island heights",
+      "canonical_name_candidate": "Island Heights",
+      "country_code_candidate": "US",
+      "place_type_candidate": "locality",
+      "latitude": 39.94206,
+      "longitude": -74.14986,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 4502420,
+        "feature_code": "PPL",
+        "query": "island heights",
+        "candidate_count": 1,
+        "candidate_ids": [
+          4502420
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "st. petersburg",
+      "canonical_name_candidate": "St. Petersburg",
+      "country_code_candidate": "US",
+      "place_type_candidate": "locality",
+      "latitude": 27.77086,
+      "longitude": -82.67927,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 4171563,
+        "feature_code": "PPL",
+        "query": "st. petersburg",
+        "candidate_count": 1,
+        "candidate_ids": [
+          4171563
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "country_and_region_inferred_from_route_context"
+        ]
+      }
+    },
+    {
+      "source_name": "aruba",
+      "canonical_name_candidate": "Aruba",
+      "country_code_candidate": "AW",
+      "place_type_candidate": "country",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "aruba",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "non_locality_requires_manual_or_full_geodata_resolution"
+        ]
+      }
+    },
+    {
+      "source_name": "medellin",
+      "canonical_name_candidate": "Medellín",
+      "country_code_candidate": "CO",
+      "place_type_candidate": "locality",
+      "latitude": 6.245,
+      "longitude": -75.57151,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3674962,
+        "feature_code": "PPLA",
+        "query": "medellin",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3674962
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "jardin",
+      "canonical_name_candidate": "Jardín",
+      "country_code_candidate": "CO",
+      "place_type_candidate": "locality",
+      "latitude": 5.59902,
+      "longitude": -75.81976,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3680366,
+        "feature_code": "PPLA2",
+        "query": "jardín",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3680366
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "bogota",
+      "canonical_name_candidate": "Bogotá",
+      "country_code_candidate": "CO",
+      "place_type_candidate": "locality",
+      "latitude": 4.60971,
+      "longitude": -74.08175,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3688689,
+        "feature_code": "PPLC",
+        "query": "bogota",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3688689
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "el paredon",
+      "canonical_name_candidate": "El Paredon",
+      "country_code_candidate": "GT",
+      "place_type_candidate": "locality",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "el paredon",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "geocoding_unresolved"
+        ]
+      }
+    },
+    {
+      "source_name": "lake atitlan",
+      "canonical_name_candidate": "Lake Atitlan",
+      "country_code_candidate": "GT",
+      "place_type_candidate": "lake",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "lake atitlan",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "non_locality_requires_manual_or_full_geodata_resolution"
+        ]
+      }
+    },
+    {
+      "source_name": "antigua",
+      "canonical_name_candidate": "Antigua Guatemala",
+      "country_code_candidate": "GT",
+      "place_type_candidate": "locality",
+      "latitude": 14.55636,
+      "longitude": -90.7332,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3599699,
+        "feature_code": "PPLA",
+        "query": "antigua",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3599699
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "country_inferred_from_route_context"
+        ]
+      }
+    },
+    {
+      "source_name": "el tunco",
+      "canonical_name_candidate": "El Tunco",
+      "country_code_candidate": "SV",
+      "place_type_candidate": "locality",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "el tunco",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "geocoding_unresolved"
+        ]
+      }
+    },
+    {
+      "source_name": "la libertad",
+      "canonical_name_candidate": "La Libertad",
+      "country_code_candidate": "SV",
+      "place_type_candidate": "locality",
+      "latitude": 13.48833,
+      "longitude": -89.32222,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3585157,
+        "feature_code": "PPL",
+        "query": "la libertad",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3585157
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "country_inferred_from_route_context"
+        ]
+      }
+    },
+    {
+      "source_name": "san salvador",
+      "canonical_name_candidate": "San Salvador",
+      "country_code_candidate": "SV",
+      "place_type_candidate": "locality",
+      "latitude": 13.68935,
+      "longitude": -89.18718,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3583361,
+        "feature_code": "PPLC",
+        "query": "san salvador",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3583361
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "tegucigalpa",
+      "canonical_name_candidate": "Tegucigalpa",
+      "country_code_candidate": "HN",
+      "place_type_candidate": "locality",
+      "latitude": 14.0818,
+      "longitude": -87.20681,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3600949,
+        "feature_code": "PPLC",
+        "query": "tegucigalpa",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3600949
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "roatan",
+      "canonical_name_candidate": "Roatan",
+      "country_code_candidate": "HN",
+      "place_type_candidate": "locality",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "roatan",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "geocoding_unresolved"
+        ]
+      }
+    },
+    {
+      "source_name": "austin",
+      "canonical_name_candidate": "Austin",
+      "country_code_candidate": "US",
+      "place_type_candidate": "locality",
+      "latitude": 30.26715,
+      "longitude": -97.74306,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 4671654,
+        "feature_code": "PPLA",
+        "query": "austin",
+        "candidate_count": 7,
+        "candidate_ids": [
+          4671654,
+          5146256,
+          5016884,
+          4254010,
+          4099974
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "puerto vallarta",
+      "canonical_name_candidate": "Puerto Vallarta",
+      "country_code_candidate": "MX",
+      "place_type_candidate": "locality",
+      "latitude": 20.617,
+      "longitude": -105.23018,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3991328,
+        "feature_code": "PPL",
+        "query": "puerto vallarta",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3991328
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "guadalajara",
+      "canonical_name_candidate": "Guadalajara",
+      "country_code_candidate": "MX",
+      "place_type_candidate": "locality",
+      "latitude": 20.67738,
+      "longitude": -103.34749,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 4005539,
+        "feature_code": "PPLA",
+        "query": "guadalajara",
+        "candidate_count": 2,
+        "candidate_ids": [
+          4005539,
+          4011597
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "san miguel de allende",
+      "canonical_name_candidate": "San Miguel de Allende",
+      "country_code_candidate": "MX",
+      "place_type_candidate": "locality",
+      "latitude": 20.91528,
+      "longitude": -100.74389,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3985344,
+        "feature_code": "PPL",
+        "query": "san miguel de allende",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3985344
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "guanajuato",
+      "canonical_name_candidate": "Guanajuato",
+      "country_code_candidate": "MX",
+      "place_type_candidate": "locality",
+      "latitude": 21.01858,
+      "longitude": -101.2591,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 4005270,
+        "feature_code": "PPLA",
+        "query": "guanajuato",
+        "candidate_count": 3,
+        "candidate_ids": [
+          4005270,
+          4011592,
+          3816852
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "mexico city",
+      "canonical_name_candidate": "Mexico City",
+      "country_code_candidate": "MX",
+      "place_type_candidate": "locality",
+      "latitude": 19.42847,
+      "longitude": -99.12766,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3530597,
+        "feature_code": "PPLC",
+        "query": "mexico city",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3530597
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "montreal",
+      "canonical_name_candidate": "Montréal",
+      "country_code_candidate": "CA",
+      "place_type_candidate": "locality",
+      "latitude": 45.50884,
+      "longitude": -73.58781,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 6077243,
+        "feature_code": "PPLA2",
+        "query": "montreal",
+        "candidate_count": 1,
+        "candidate_ids": [
+          6077243
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "new york city",
+      "canonical_name_candidate": "New York City",
+      "country_code_candidate": "US",
+      "place_type_candidate": "locality",
+      "latitude": 40.71427,
+      "longitude": -74.00597,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 5128581,
+        "feature_code": "PPL",
+        "query": "new york city",
+        "candidate_count": 1,
+        "candidate_ids": [
+          5128581
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "tokyo",
+      "canonical_name_candidate": "Tokyo",
+      "country_code_candidate": "JP",
+      "place_type_candidate": "locality",
+      "latitude": 35.6895,
+      "longitude": 139.69171,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1850147,
+        "feature_code": "PPLC",
+        "query": "tokyo",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1850147
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "kyoto",
+      "canonical_name_candidate": "Kyoto",
+      "country_code_candidate": "JP",
+      "place_type_candidate": "locality",
+      "latitude": 35.02107,
+      "longitude": 135.75385,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1857910,
+        "feature_code": "PPLA",
+        "query": "kyoto",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1857910
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "osaka",
+      "canonical_name_candidate": "Osaka",
+      "country_code_candidate": "JP",
+      "place_type_candidate": "locality",
+      "latitude": 34.69379,
+      "longitude": 135.50107,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1853909,
+        "feature_code": "PPLA",
+        "query": "osaka",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1853909
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "taiwan",
+      "canonical_name_candidate": "Taiwan",
+      "country_code_candidate": "TW",
+      "place_type_candidate": "country_or_territory",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "taiwan",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "non_locality_requires_manual_or_full_geodata_resolution"
+        ]
+      }
+    },
+    {
+      "source_name": "hoi an",
+      "canonical_name_candidate": "Hoi An",
+      "country_code_candidate": "VN",
+      "place_type_candidate": "locality",
+      "latitude": 15.87944,
+      "longitude": 108.335,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1580541,
+        "feature_code": "PPL",
+        "query": "hoi an",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1580541
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "siem reap",
+      "canonical_name_candidate": "Siem Reap",
+      "country_code_candidate": "KH",
+      "place_type_candidate": "locality",
+      "latitude": 13.36179,
+      "longitude": 103.86056,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1822214,
+        "feature_code": "PPLA",
+        "query": "siem reap",
+        "candidate_count": 2,
+        "candidate_ids": [
+          1822214,
+          1824888
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "phnom penh",
+      "canonical_name_candidate": "Phnom Penh",
+      "country_code_candidate": "KH",
+      "place_type_candidate": "locality",
+      "latitude": 11.56245,
+      "longitude": 104.91601,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1821306,
+        "feature_code": "PPLC",
+        "query": "phnom penh",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1821306
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "kampot",
+      "canonical_name_candidate": "Kampot",
+      "country_code_candidate": "KH",
+      "place_type_candidate": "locality",
+      "latitude": 10.61041,
+      "longitude": 104.18145,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1831112,
+        "feature_code": "PPLA",
+        "query": "kampot",
+        "candidate_count": 2,
+        "candidate_ids": [
+          1831112,
+          11449447
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "phu quoc",
+      "canonical_name_candidate": "Phu Quoc",
+      "country_code_candidate": "VN",
+      "place_type_candidate": "locality",
+      "latitude": 10.22409,
+      "longitude": 103.97156,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 8531735,
+        "feature_code": "PPL",
+        "query": "phu quoc",
+        "candidate_count": 2,
+        "candidate_ids": [
+          8531735,
+          12253704
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "sapa",
+      "canonical_name_candidate": "Sa Pa",
+      "country_code_candidate": "VN",
+      "place_type_candidate": "locality",
+      "latitude": 22.34023,
+      "longitude": 103.84415,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1568043,
+        "feature_code": "PPL",
+        "query": "sapa",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1568043
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "hanoi",
+      "canonical_name_candidate": "Hanoi",
+      "country_code_candidate": "VN",
+      "place_type_candidate": "locality",
+      "latitude": 21.0245,
+      "longitude": 105.84117,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1581130,
+        "feature_code": "PPLC",
+        "query": "hanoi",
+        "candidate_count": 2,
+        "candidate_ids": [
+          1581130,
+          8554466
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "da nang",
+      "canonical_name_candidate": "Da Nang",
+      "country_code_candidate": "VN",
+      "place_type_candidate": "locality",
+      "latitude": 16.06778,
+      "longitude": 108.22083,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1583992,
+        "feature_code": "PPLA",
+        "query": "da nang",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1583992
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "phuket",
+      "canonical_name_candidate": "Phuket",
+      "country_code_candidate": "TH",
+      "place_type_candidate": "locality",
+      "latitude": 7.89059,
+      "longitude": 98.3981,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1151254,
+        "feature_code": "PPLA",
+        "query": "phuket",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1151254
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "chiang rai",
+      "canonical_name_candidate": "Chiang Rai",
+      "country_code_candidate": "TH",
+      "place_type_candidate": "locality",
+      "latitude": 19.90858,
+      "longitude": 99.8325,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1153669,
+        "feature_code": "PPLA",
+        "query": "chiang rai",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1153669
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "chiang mai",
+      "canonical_name_candidate": "Chiang Mai",
+      "country_code_candidate": "TH",
+      "place_type_candidate": "locality",
+      "latitude": 18.79038,
+      "longitude": 98.98468,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1153671,
+        "feature_code": "PPLA",
+        "query": "chiang mai",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1153671
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "pattaya",
+      "canonical_name_candidate": "Pattaya",
+      "country_code_candidate": "TH",
+      "place_type_candidate": "locality",
+      "latitude": 12.93333,
+      "longitude": 100.88333,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1614295,
+        "feature_code": "PPL",
+        "query": "pattaya",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1614295
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "bangkok",
+      "canonical_name_candidate": "Bangkok",
+      "country_code_candidate": "TH",
+      "place_type_candidate": "locality",
+      "latitude": 13.75398,
+      "longitude": 100.50144,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1609350,
+        "feature_code": "PPLC",
+        "query": "bangkok",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1609350
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "kuala lumpur",
+      "canonical_name_candidate": "Kuala Lumpur",
+      "country_code_candidate": "MY",
+      "place_type_candidate": "locality",
+      "latitude": 3.1412,
+      "longitude": 101.68653,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1735161,
+        "feature_code": "PPLC",
+        "query": "kuala lumpur",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1735161
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "bali",
+      "canonical_name_candidate": "Bali",
+      "country_code_candidate": "ID",
+      "place_type_candidate": "island",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "bali",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "non_locality_requires_manual_or_full_geodata_resolution"
+        ]
+      }
+    },
+    {
+      "source_name": "palawan",
+      "canonical_name_candidate": "Palawan",
+      "country_code_candidate": "PH",
+      "place_type_candidate": "island",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "palawan",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "non_locality_requires_manual_or_full_geodata_resolution"
+        ]
+      }
+    },
+    {
+      "source_name": "manila",
+      "canonical_name_candidate": "Manila",
+      "country_code_candidate": "PH",
+      "place_type_candidate": "locality",
+      "latitude": 14.6042,
+      "longitude": 120.9822,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1701668,
+        "feature_code": "PPLC",
+        "query": "manila",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1701668
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "siargao",
+      "canonical_name_candidate": "Siargao",
+      "country_code_candidate": "PH",
+      "place_type_candidate": "island",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "siargao",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "non_locality_requires_manual_or_full_geodata_resolution"
+        ]
+      }
+    },
+    {
+      "source_name": "cebu city",
+      "canonical_name_candidate": "Cebu City",
+      "country_code_candidate": "PH",
+      "place_type_candidate": "locality",
+      "latitude": 10.31672,
+      "longitude": 123.89071,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 1717512,
+        "feature_code": "PPLA",
+        "query": "cebu city",
+        "candidate_count": 1,
+        "candidate_ids": [
+          1717512
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "budapest",
+      "canonical_name_candidate": "Budapest",
+      "country_code_candidate": "HU",
+      "place_type_candidate": "locality",
+      "latitude": 47.49835,
+      "longitude": 19.04045,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3054643,
+        "feature_code": "PPLC",
+        "query": "budapest",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3054643
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "tropea",
+      "canonical_name_candidate": "Tropea",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 38.67449,
+      "longitude": 15.89505,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2522847,
+        "feature_code": "PPLA3",
+        "query": "tropea",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2522847
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "pizzo",
+      "canonical_name_candidate": "Pizzo",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 38.75259,
+      "longitude": 16.18696,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2523762,
+        "feature_code": "PPLA3",
+        "query": "pizzo",
+        "candidate_count": 1,
+        "candidate_ids": [
+          2523762
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "matera",
+      "canonical_name_candidate": "Matera",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 40.66599,
+      "longitude": 16.60463,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3173721,
+        "feature_code": "PPLA2",
+        "query": "matera",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3173721
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "taranto",
+      "canonical_name_candidate": "Taranto",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 40.46438,
+      "longitude": 17.24707,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3165926,
+        "feature_code": "PPLA2",
+        "query": "taranto",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3165926
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "gallipoli",
+      "canonical_name_candidate": "Gallipoli",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 40.05594,
+      "longitude": 17.99088,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3176366,
+        "feature_code": "PPLA3",
+        "query": "gallipoli",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3176366
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "lecce",
+      "canonical_name_candidate": "Lecce",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 40.35481,
+      "longitude": 18.17244,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3174953,
+        "feature_code": "PPLA2",
+        "query": "lecce",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3174953
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "polignano de mare",
+      "canonical_name_candidate": "Polignano De Mare",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "polignano de mare",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "geocoding_unresolved"
+        ]
+      }
+    },
+    {
+      "source_name": "bari",
+      "canonical_name_candidate": "Bari",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 41.12066,
+      "longitude": 16.86982,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3182351,
+        "feature_code": "PPLA",
+        "query": "bari",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3182351
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "spello",
+      "canonical_name_candidate": "Spello",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 42.99231,
+      "longitude": 12.66632,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3166287,
+        "feature_code": "PPLA3",
+        "query": "spello",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3166287
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "rimini",
+      "canonical_name_candidate": "Rimini",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "locality",
+      "latitude": 44.05755,
+      "longitude": 12.56528,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3169361,
+        "feature_code": "PPLA2",
+        "query": "rimini",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3169361
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "sicily",
+      "canonical_name_candidate": "Sicily",
+      "country_code_candidate": "IT",
+      "place_type_candidate": "island",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "sicily",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "non_locality_requires_manual_or_full_geodata_resolution"
+        ]
+      }
+    },
+    {
+      "source_name": "barcelona",
+      "canonical_name_candidate": "Barcelona",
+      "country_code_candidate": "ES",
+      "place_type_candidate": "locality",
+      "latitude": 41.38879,
+      "longitude": 2.15899,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3128760,
+        "feature_code": "PPLA",
+        "query": "barcelona",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3128760
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "galicia",
+      "canonical_name_candidate": "Galicia",
+      "country_code_candidate": "ES",
+      "place_type_candidate": "region",
+      "latitude": null,
+      "longitude": null,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": null,
+        "feature_code": null,
+        "query": "galicia",
+        "candidate_count": 0,
+        "candidate_ids": []
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "non_locality_requires_manual_or_full_geodata_resolution"
+        ]
+      }
+    },
+    {
+      "source_name": "london",
+      "canonical_name_candidate": "London",
+      "country_code_candidate": "GB",
+      "place_type_candidate": "locality",
+      "latitude": 51.50853,
+      "longitude": -0.12574,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 2643743,
+        "feature_code": "PPLC",
+        "query": "london",
+        "candidate_count": 2,
+        "candidate_ids": [
+          2643743,
+          2643741
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "multiple_provider_candidates"
+        ]
+      }
+    },
+    {
+      "source_name": "punta cana",
+      "canonical_name_candidate": "Punta Cana",
+      "country_code_candidate": "DO",
+      "place_type_candidate": "locality",
+      "latitude": 18.58182,
+      "longitude": -68.40431,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3494242,
+        "feature_code": "PPL",
+        "query": "punta cana",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3494242
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "lima",
+      "canonical_name_candidate": "Lima",
+      "country_code_candidate": "PE",
+      "place_type_candidate": "locality",
+      "latitude": -12.04318,
+      "longitude": -77.02824,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3936456,
+        "feature_code": "PPLC",
+        "query": "lima",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3936456
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "santiago",
+      "canonical_name_candidate": "Santiago",
+      "country_code_candidate": "CL",
+      "place_type_candidate": "locality",
+      "latitude": -33.45694,
+      "longitude": -70.64827,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3871336,
+        "feature_code": "PPLC",
+        "query": "santiago",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3871336
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "country_inferred_from_route_context"
+        ]
+      }
+    },
+    {
+      "source_name": "mendoza",
+      "canonical_name_candidate": "Mendoza",
+      "country_code_candidate": "AR",
+      "place_type_candidate": "locality",
+      "latitude": -32.88946,
+      "longitude": -68.84582,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3844421,
+        "feature_code": "PPLA",
+        "query": "mendoza",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3844421
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "buenos aires",
+      "canonical_name_candidate": "Buenos Aires",
+      "country_code_candidate": "AR",
+      "place_type_candidate": "locality",
+      "latitude": -34.61315,
+      "longitude": -58.37723,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3435910,
+        "feature_code": "PPLC",
+        "query": "buenos aires",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3435910
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "el bolson",
+      "canonical_name_candidate": "El Bolsón",
+      "country_code_candidate": "AR",
+      "place_type_candidate": "locality",
+      "latitude": -41.96051,
+      "longitude": -71.53336,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3858765,
+        "feature_code": "PPL",
+        "query": "el bolsón",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3858765
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "lago puelo",
+      "canonical_name_candidate": "Lago Puelo",
+      "country_code_candidate": "AR",
+      "place_type_candidate": "locality",
+      "latitude": -42.06684,
+      "longitude": -71.60384,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3851100,
+        "feature_code": "PPL",
+        "query": "lago puelo",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3851100
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "bariloche",
+      "canonical_name_candidate": "San Carlos de Bariloche",
+      "country_code_candidate": "AR",
+      "place_type_candidate": "locality",
+      "latitude": -41.14557,
+      "longitude": -71.30822,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 7647007,
+        "feature_code": "PPLA3",
+        "query": "bariloche",
+        "candidate_count": 1,
+        "candidate_ids": [
+          7647007
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "rio de janeiro",
+      "canonical_name_candidate": "Rio de Janeiro",
+      "country_code_candidate": "BR",
+      "place_type_candidate": "locality",
+      "latitude": -22.90642,
+      "longitude": -43.18223,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3451190,
+        "feature_code": "PPLA",
+        "query": "rio de janeiro",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3451190
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "cali",
+      "canonical_name_candidate": "Cali",
+      "country_code_candidate": "CO",
+      "place_type_candidate": "locality",
+      "latitude": 3.43054,
+      "longitude": -76.5199,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3687925,
+        "feature_code": "PPLA",
+        "query": "cali",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3687925
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "cancun",
+      "canonical_name_candidate": "Cancún",
+      "country_code_candidate": "MX",
+      "place_type_candidate": "locality",
+      "latitude": 21.17429,
+      "longitude": -86.84656,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 3531673,
+        "feature_code": "PPL",
+        "query": "cancun",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3531673
+        ]
+      },
+      "review": {
+        "state": "unreviewed",
+        "flags": []
+      }
+    },
+    {
+      "source_name": "isabela",
+      "canonical_name_candidate": "Isabela",
+      "country_code_candidate": "PR",
+      "place_type_candidate": "locality",
+      "latitude": 18.50078,
+      "longitude": -67.02435,
+      "provider": {
+        "name": "GeoNames cities500",
+        "license": "CC BY 4.0",
+        "geoname_id": 4565577,
+        "feature_code": "PPLA",
+        "query": "isabela",
+        "candidate_count": 1,
+        "candidate_ids": [
+          4565577
+        ]
+      },
+      "review": {
+        "state": "needs_review",
+        "flags": [
+          "country_and_region_inferred_from_route_context"
+        ]
+      }
+    }
+  ]
+}
