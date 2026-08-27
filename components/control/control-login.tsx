@@ -17,7 +17,12 @@ export default function ControlLogin({ supabaseUrl, anonKey, initialError = "" }
       email: email.trim(),
       options: { shouldCreateUser: false, emailRedirectTo: `${window.location.origin}/control/auth/callback` },
     });
-    if (error) { setStatus("error"); setMessage("That address is not authorized for this Control Center."); }
+    if (error) {
+      setStatus("error");
+      setMessage(error.status === 429
+        ? "Please wait a minute before requesting another sign-in link."
+        : "That address is not authorized for this Control Center.");
+    }
     else setStatus("sent");
   }
 
