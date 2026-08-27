@@ -16,6 +16,7 @@ Apply these exact files, in order:
 2. `supabase/migrations/20260827100000_brain_passage_groups_v1.sql`
 3. `supabase/migrations/20260827120000_brain_document_title_kind.sql`
 4. `supabase/migrations/20260827130000_brain_public_book_counts.sql`
+5. `supabase/migrations/20260827160000_brain_travel_photos_v1.sql`
 
 Do not run an unrestricted migration-directory push: the directory also contains the legacy 2024 Notes migration. Verify that the public views exist and that the base Brain tables cannot be selected with the anonymous role.
 
@@ -54,3 +55,9 @@ The Library API will use the staging public views. Local generated JSON remains 
 Import the repository into a new preview hosting project or run the host's preview command after authentication. Confirm the resulting hostname is a provider preview URL and that no custom domain is attached. Smoke-test desktop/mobile navigation, Library search/topic filters, long and short books, incomplete records, grouped passages, and public API privacy.
 
 No project credentials or linkage were available during Stage 4, so these external steps have not been run.
+
+## 7. Travel import and validation
+
+After migration 5 is applied, run `scripts/ingestion/import-travel-snapshot.mjs data/brain/travel/import-v1` with the same guarded staging import variables described above. Run it twice; both passes must retain the manifest totals of 1 source snapshot, 103 places, 110 visits, and 1 movement.
+
+Then run `scripts/ingestion/validate-staging-travel.mjs`. Anonymous reads must be limited to the `brain_public_*` projections. In particular, `brain_public_photos` must not contain exact photo GPS, raw EXIF, or original source paths. The expected photo count remains zero until an explicitly reviewed photo import occurs.
