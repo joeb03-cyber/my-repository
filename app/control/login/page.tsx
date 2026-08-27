@@ -4,10 +4,10 @@ import ControlLogin from "@/components/control/control-login";
 
 export const dynamic = "force-dynamic";
 
-export default async function LoginPage() {
+export default async function LoginPage({ searchParams }: { searchParams: { error?: string } }) {
   if (await getControlAdmin()) redirect("/control");
   const url = process.env.BRAIN_SUPABASE_URL;
   const anonKey = process.env.BRAIN_SUPABASE_ANON_KEY;
   if (!url || !anonKey) throw new Error("Control Center environment is incomplete.");
-  return <ControlLogin supabaseUrl={url} anonKey={anonKey} />;
+  return <ControlLogin supabaseUrl={url} anonKey={anonKey} initialError={searchParams.error ? "That sign-in link could not be completed. Please request a fresh one." : ""} />;
 }

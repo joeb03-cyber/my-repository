@@ -11,6 +11,8 @@ The public OS remains the experience. Control Center is a private, deliberately 
 ## Authentication and authorization
 
 - Supabase Auth provides passwordless email magic links.
+- The login request uses Supabase's implicit email flow so a link opened from a mail app or a different browser context does not depend on a PKCE verifier stored in the requesting browser. The callback accepts credentials only from the URL fragment, persists them through the Supabase SSR cookie client, immediately removes the fragment, then verifies the administrator allowlist before opening Control Center.
+- The staging Auth Site URL is `https://synergetic-human-staging.vercel.app` and the sole allowed callback is `https://synergetic-human-staging.vercel.app/control/auth/callback`.
 - Public signup and anonymous sign-in are disabled in the isolated staging project.
 - The application requests magic links with `shouldCreateUser: false`.
 - One pre-provisioned Auth user is allowlisted in `brain_admin_users`.
@@ -67,3 +69,5 @@ The automated staging test verifies:
 ## Deferred
 
 Media library, image upload, entity-link autocomplete, folder management, revision comparison/restore UI, additional administrators, production rollout, rich inline styling, AI writing, and new public applications remain outside Stage 12. The schema already leaves room for note media and future Book/Place linking without requiring either for a quick update.
+
+A token-hash confirmation page would provide additional resilience against email scanners that automatically open one-time links, but Supabase's shared email service does not permit the required custom email template. That hardening is intentionally deferred until custom SMTP is configured; staging logs currently show no evidence that a scanner caused the observed failure.
