@@ -28,6 +28,7 @@ function contact(row: Row): BrainContact {
     sortName: row.sort_name,
     initials: row.initials,
     factualIdentity: row.factual_identity,
+    portrait: row.portrait,
     curatedInterest: true,
     endorsement: false,
     topics: row.topics || [],

@@ -17,19 +17,19 @@ const read = async (client, view) => {
 
 const contacts = await read(anon, "brain_public_contacts");
 const episodes = await read(anon, "brain_public_podcast_episodes");
-if (contacts.length !== 15) throw new Error(`Expected 15 anonymous Contacts, received ${contacts.length}.`);
+if (contacts.length !== 18) throw new Error(`Expected 18 anonymous Contacts, received ${contacts.length}.`);
 if (episodes.length !== 15) throw new Error(`Expected 15 anonymous episodes, received ${episodes.length}.`);
 const serialized = JSON.stringify({ contacts, episodes }).toLowerCase();
 for (const forbidden of ["private_locator", "raw_text", "summary_body", "journal", "transcript", "/users/", "downloads/"]) {
   if (serialized.includes(forbidden)) throw new Error(`Anonymous views expose forbidden marker: ${forbidden}`);
 }
 if (contacts.some((row) => row.endorsement !== false || row.curated_interest !== true)) throw new Error("Anonymous curated-interest semantics are invalid.");
-const allowedContactKeys = new Set(["id", "slug", "display_name", "sort_name", "initials", "factual_identity", "curated_interest", "endorsement", "topics", "books", "podcast_appearances"]);
+const allowedContactKeys = new Set(["id", "slug", "display_name", "sort_name", "initials", "factual_identity", "portrait", "curated_interest", "endorsement", "topics", "books", "podcast_appearances"]);
 const allowedEpisodeKeys = new Set(["id", "slug", "title", "show_title", "publication_date", "duration_seconds", "original_url", "public_provenance_label", "credits"]);
 if (contacts.some((row) => Object.keys(row).some((key) => !allowedContactKeys.has(key)))) throw new Error("Anonymous Contacts view contains an unreviewed column.");
 if (episodes.some((row) => Object.keys(row).some((key) => !allowedEpisodeKeys.has(key)))) throw new Error("Anonymous podcast view contains an unreviewed column.");
 
-const protectedTables = ["people", "person_aliases", "sources", "source_people", "editorial_assertions", "source_versions", "source_fragments"];
+const protectedTables = ["people", "person_aliases", "sources", "source_people", "editorial_assertions", "editorial_source_candidates", "source_versions", "source_fragments"];
 for (const table of protectedTables) {
   const { error } = await anon.from(table).select("*").limit(1);
   if (!error) throw new Error(`Anonymous role unexpectedly has direct access to ${table}.`);
@@ -41,4 +41,12 @@ const { count: leverageCount, error: leverageError } = await service.from("edito
 if (leverageError) throw leverageError;
 if (curatedCount !== 62) throw new Error(`Expected 62 curated-interest assertions, received ${curatedCount}.`);
 if (leverageCount !== 0) throw new Error(`Expected zero High Leverage assertions, received ${leverageCount}.`);
-console.log(JSON.stringify({ anonymous_contacts: contacts.length, anonymous_podcast_episodes: episodes.length, curated_interest_assertions: curatedCount, high_leverage_assertions: leverageCount, private_markers_exposed: false, protected_base_tables_denied: protectedTables.length }, null, 2));
+const pilotNames = new Set(["Ray Peat", "Peter Levine", "Eileen Day McKusick", "Rupert Spira", "Michael Levin"]);
+const pilot = contacts.filter((row) => pilotNames.has(row.display_name));
+if (pilot.length !== 5 || pilot.some((row) => !row.factual_identity)) throw new Error("Five-profile pilot identities are incomplete.");
+if (pilot.some((row) => (row.topics || []).length !== 1)) throw new Error("Pilot profiles must retain exactly one focused reviewable topic in this pass.");
+if (pilot.filter((row) => row.portrait).length !== 1) throw new Error("Expected exactly one clearly licensed pilot portrait.");
+const { count: candidateCount, error: candidateError } = await service.from("editorial_source_candidates").select("id", { count: "exact", head: true }).eq("approval_state", "suggested");
+if (candidateError) throw candidateError;
+if (candidateCount !== 25) throw new Error(`Expected 25 private editorial candidates, received ${candidateCount}.`);
+console.log(JSON.stringify({ anonymous_contacts: contacts.length, anonymous_podcast_episodes: episodes.length, pilot_profiles: pilot.length, licensed_portraits: 1, private_editorial_candidates: candidateCount, approved_start_here: 0, curated_interest_assertions: curatedCount, high_leverage_assertions: leverageCount, private_markers_exposed: false, protected_base_tables_denied: protectedTables.length }, null, 2));

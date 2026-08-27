@@ -1,15 +1,15 @@
 {
-  "schemaVersion": "brain-people-sources.v1",
-  "generatedFrom": "public-safe Stage 10 metadata projection",
-  "contactCount": 15,
+  "schemaVersion": "brain-people-sources.editorial-pilot.v1",
+  "generatedFrom": "public-safe Stage 10 metadata plus five-profile editorial pilot",
+  "contactCount": 18,
   "podcastEpisodeCount": 15,
   "contacts": [
     {
-      "id": "93ef3bc7-606f-5009-b925-cd4ad69e01be",
-      "slug": "person-marizelle-arce",
-      "displayName": "Marizelle Arce",
+      "id": "53a2733b-871c-5ac6-9c18-ecdb0570d547",
+      "slug": "person-aleena-kanner",
+      "displayName": "Aleena Kanner",
       "sortName": null,
-      "initials": "MA",
+      "initials": "AK",
       "factualIdentity": null,
       "curatedInterest": true,
       "endorsement": false,
@@ -23,22 +23,31 @@
       "books": [],
       "podcastAppearances": [
         {
-          "id": "13205f25-81be-512d-809b-bcfcc10554c7",
-          "slug": "marizelle-arce-germs-are-not-our-enemy-5lxisiiq-ka",
-          "title": "Marizelle Arce: Germs Are Not Our Enemy",
-          "showTitle": "Alfacast Podcast",
+          "id": "f89e6b20-3023-5c40-8e1e-9a970d37130f",
+          "slug": "aleena-kanner-7ffeav7595s",
+          "title": "Aleena Kanner",
+          "showTitle": "The Way Forward Podcast",
           "role": "guest",
-          "publicationDate": "2025-10-23",
-          "durationSeconds": 6152
+          "publicationDate": "2025-10-29",
+          "durationSeconds": 8316
+        },
+        {
+          "id": "eff4439b-1159-5f28-b681-587e56b00201",
+          "slug": "aleen-kanner-pri-jf722ganog4",
+          "title": "Aleen Kanner PRI",
+          "showTitle": "Wonderjunkie Podcast",
+          "role": "guest",
+          "publicationDate": "2025-03-06",
+          "durationSeconds": 4219
         }
       ]
     },
     {
-      "id": "a2cfaa3c-fe0a-572d-aab7-16f05e7ef673",
-      "slug": "person-zac-cupples",
-      "displayName": "Zac Cupples",
+      "id": "9849f68e-3f37-5d8f-9cb4-97567255e101",
+      "slug": "person-chris-masterjohn",
+      "displayName": "Chris Masterjohn",
       "sortName": null,
-      "initials": "ZC",
+      "initials": "CM",
       "factualIdentity": null,
       "curatedInterest": true,
       "endorsement": false,
@@ -51,6 +60,78 @@
       ],
       "books": [],
       "podcastAppearances": []
+    },
+    {
+      "id": "5cf2e638-38ae-53e0-97f5-612eee1d3e13",
+      "slug": "person-daniel-roytas",
+      "displayName": "Daniel Roytas",
+      "sortName": null,
+      "initials": "DR",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": [
+        {
+          "id": "8b354df2-625b-586e-b9ec-826a84f3fa8b",
+          "slug": "daniel-roytas-7lksybnfzvc",
+          "title": "Daniel Roytas",
+          "showTitle": "The Way Forward Podcast",
+          "role": "guest",
+          "publicationDate": "2024-04-17",
+          "durationSeconds": 5465
+        }
+      ]
+    },
+    {
+      "id": "f36f1c56-df91-55fe-b16e-38a9bcb4bb36",
+      "slug": "person-eileen-day-mckusick",
+      "displayName": "Eileen Day McKusick",
+      "sortName": null,
+      "initials": "ED",
+      "factualIdentity": "Researcher, author, and sound-therapy practitioner who founded Biofield Tuning and the Biofield Tuning Institute.",
+      "portrait": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "biofield-sound",
+          "label": "Biofield & Sound",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "150ae276-f630-59d3-bdd7-79edf915373b",
+          "slug": "tuning-the-human-biofield",
+          "title": "Tuning the human biofield",
+          "originalAuthor": "Eileen Day McKusick",
+          "coverPath": "/book-covers/tuning-the-human-biofield.jpg"
+        }
+      ],
+      "podcastAppearances": [
+        {
+          "id": "81650a69-8af5-53b8-95b6-4f7aef5e59de",
+          "slug": "eileen-mckusick-sq3jiaufn8i",
+          "title": "Eileen McKusick",
+          "showTitle": "The Way Forward Podcast",
+          "role": "guest",
+          "publicationDate": "2024-04-27",
+          "durationSeconds": 7313
+        }
+      ]
     },
     {
       "id": "2cf8b751-81c1-57fe-bcfb-f73467555d6c",
@@ -92,112 +173,11 @@
       "podcastAppearances": []
     },
     {
-      "id": "489d1644-2821-5a4e-9df9-51f000429b5c",
-      "slug": "person-kapil-gupta",
-      "displayName": "Kapil Gupta",
+      "id": "9262fc82-362c-594e-a89f-c6d71df43153",
+      "slug": "person-irene-lyon",
+      "displayName": "Irene Lyon",
       "sortName": null,
-      "initials": "KG",
-      "factualIdentity": null,
-      "curatedInterest": true,
-      "endorsement": false,
-      "topics": [
-        {
-          "slug": "philosophy-meaning",
-          "label": "Philosophy & Meaning",
-          "editorialState": "suggested"
-        },
-        {
-          "slug": "consciousness-nonduality",
-          "label": "Consciousness & Nonduality",
-          "editorialState": "suggested"
-        }
-      ],
-      "books": [
-        {
-          "id": "2e2647bc-fb22-540e-b851-ab3ded84f4a9",
-          "slug": "a-master-s-secret-whispers",
-          "title": "A Master's Secret Whispers",
-          "originalAuthor": "Kapil Gupta",
-          "coverPath": "/book-covers/a-master-s-secret-whispers.jpg"
-        },
-        {
-          "id": "b09933fc-db62-5b65-bba7-96b7fdfe4a88",
-          "slug": "atmamun",
-          "title": "Atmamun",
-          "originalAuthor": "Kapil Gupta",
-          "coverPath": "/book-covers/atmamun.jpg"
-        }
-      ],
-      "podcastAppearances": []
-    },
-    {
-      "id": "4df2f189-9497-59e1-8b3e-d6ccb07153d4",
-      "slug": "person-shamini-jain",
-      "displayName": "Shamini Jain",
-      "sortName": null,
-      "initials": "SJ",
-      "factualIdentity": null,
-      "curatedInterest": true,
-      "endorsement": false,
-      "topics": [
-        {
-          "slug": "energy-esoteric-healing",
-          "label": "Energy & Esoteric Healing",
-          "editorialState": "suggested"
-        },
-        {
-          "slug": "health-longevity",
-          "label": "Health, Biology & Longevity",
-          "editorialState": "suggested"
-        }
-      ],
-      "books": [],
-      "podcastAppearances": []
-    },
-    {
-      "id": "53a2733b-871c-5ac6-9c18-ecdb0570d547",
-      "slug": "person-aleena-kanner",
-      "displayName": "Aleena Kanner",
-      "sortName": null,
-      "initials": "AK",
-      "factualIdentity": null,
-      "curatedInterest": true,
-      "endorsement": false,
-      "topics": [
-        {
-          "slug": "health-longevity",
-          "label": "Health, Biology & Longevity",
-          "editorialState": "suggested"
-        }
-      ],
-      "books": [],
-      "podcastAppearances": [
-        {
-          "id": "f89e6b20-3023-5c40-8e1e-9a970d37130f",
-          "slug": "aleena-kanner-7ffeav7595s",
-          "title": "Aleena Kanner",
-          "showTitle": "The Way Forward Podcast",
-          "role": "guest",
-          "publicationDate": "2025-10-29",
-          "durationSeconds": 8316
-        },
-        {
-          "id": "eff4439b-1159-5f28-b681-587e56b00201",
-          "slug": "aleen-kanner-pri-jf722ganog4",
-          "title": "Aleen Kanner PRI",
-          "showTitle": "Wonderjunkie Podcast",
-          "role": "guest",
-          "publicationDate": "2025-03-06",
-          "durationSeconds": 4219
-        }
-      ]
-    },
-    {
-      "id": "d654e2cb-80bf-559d-8082-00ee40d35686",
-      "slug": "person-peter-levine",
-      "displayName": "Peter Levine",
-      "sortName": null,
-      "initials": "PL",
+      "initials": "IL",
       "factualIdentity": null,
       "curatedInterest": true,
       "endorsement": false,
@@ -208,24 +188,16 @@
           "editorialState": "suggested"
         }
       ],
-      "books": [
-        {
-          "id": "c2e6c86d-e587-5199-8d66-ab4323f9dd55",
-          "slug": "in-an-unspoken-voice",
-          "title": "In an Unspoken Voice",
-          "originalAuthor": "Peter Levine",
-          "coverPath": "/book-covers/placeholder.svg"
-        }
-      ],
+      "books": [],
       "podcastAppearances": [
         {
-          "id": "370e16af-2829-55c9-ad43-54e16f957187",
-          "slug": "peter-levine-somatic-experiencing-wrhckes_mla",
-          "title": "Peter Levine- Somatic Experiencing",
-          "showTitle": "Wonderjunkie Podcast",
+          "id": "dea65493-5117-595e-a207-fcdceeb5c9d3",
+          "slug": "irene-lyon-wsus8ekxahi",
+          "title": "Irene Lyon",
+          "showTitle": "The Way Forward Podcast",
           "role": "guest",
-          "publicationDate": "2025-02-23",
-          "durationSeconds": 4004
+          "publicationDate": "2024-12-31",
+          "durationSeconds": 12628
         }
       ]
     },
@@ -273,94 +245,43 @@
       ]
     },
     {
-      "id": "9262fc82-362c-594e-a89f-c6d71df43153",
-      "slug": "person-irene-lyon",
-      "displayName": "Irene Lyon",
+      "id": "489d1644-2821-5a4e-9df9-51f000429b5c",
+      "slug": "person-kapil-gupta",
+      "displayName": "Kapil Gupta",
       "sortName": null,
-      "initials": "IL",
+      "initials": "KG",
       "factualIdentity": null,
       "curatedInterest": true,
       "endorsement": false,
       "topics": [
         {
-          "slug": "psychology-trauma-inner-work",
-          "label": "Psychology, Trauma & Inner Work",
-          "editorialState": "suggested"
-        }
-      ],
-      "books": [],
-      "podcastAppearances": [
-        {
-          "id": "dea65493-5117-595e-a207-fcdceeb5c9d3",
-          "slug": "irene-lyon-wsus8ekxahi",
-          "title": "Irene Lyon",
-          "showTitle": "The Way Forward Podcast",
-          "role": "guest",
-          "publicationDate": "2024-12-31",
-          "durationSeconds": 12628
-        }
-      ]
-    },
-    {
-      "id": "9849f68e-3f37-5d8f-9cb4-97567255e101",
-      "slug": "person-chris-masterjohn",
-      "displayName": "Chris Masterjohn",
-      "sortName": null,
-      "initials": "CM",
-      "factualIdentity": null,
-      "curatedInterest": true,
-      "endorsement": false,
-      "topics": [
-        {
-          "slug": "health-longevity",
-          "label": "Health, Biology & Longevity",
-          "editorialState": "suggested"
-        }
-      ],
-      "books": [],
-      "podcastAppearances": []
-    },
-    {
-      "id": "f36f1c56-df91-55fe-b16e-38a9bcb4bb36",
-      "slug": "person-eileen-day-mckusick",
-      "displayName": "Eileen Day McKusick",
-      "sortName": null,
-      "initials": "ED",
-      "factualIdentity": null,
-      "curatedInterest": true,
-      "endorsement": false,
-      "topics": [
-        {
-          "slug": "energy-esoteric-healing",
-          "label": "Energy & Esoteric Healing",
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
           "editorialState": "suggested"
         },
         {
-          "slug": "health-longevity",
-          "label": "Health, Biology & Longevity",
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
           "editorialState": "suggested"
         }
       ],
       "books": [
         {
-          "id": "150ae276-f630-59d3-bdd7-79edf915373b",
-          "slug": "tuning-the-human-biofield",
-          "title": "Tuning the human biofield",
-          "originalAuthor": "Eileen Day McKusick",
-          "coverPath": "/book-covers/tuning-the-human-biofield.jpg"
+          "id": "2e2647bc-fb22-540e-b851-ab3ded84f4a9",
+          "slug": "a-master-s-secret-whispers",
+          "title": "A Master's Secret Whispers",
+          "originalAuthor": "Kapil Gupta",
+          "coverPath": "/book-covers/a-master-s-secret-whispers.jpg"
+        },
+        {
+          "id": "b09933fc-db62-5b65-bba7-96b7fdfe4a88",
+          "slug": "atmamun",
+          "title": "Atmamun",
+          "originalAuthor": "Kapil Gupta",
+          "coverPath": "/book-covers/atmamun.jpg"
         }
       ],
-      "podcastAppearances": [
-        {
-          "id": "81650a69-8af5-53b8-95b6-4f7aef5e59de",
-          "slug": "eileen-mckusick-sq3jiaufn8i",
-          "title": "Eileen McKusick",
-          "showTitle": "The Way Forward Podcast",
-          "role": "guest",
-          "publicationDate": "2024-04-27",
-          "durationSeconds": 7313
-        }
-      ]
+      "podcastAppearances": []
     },
     {
       "id": "60742c2d-3682-5210-a322-14ed11ed9d76",
@@ -405,67 +326,6 @@
       ]
     },
     {
-      "id": "a9b9c2d6-8242-5b02-9eda-8cfcfc2e435c",
-      "slug": "person-stephen-porges",
-      "displayName": "Stephen Porges",
-      "sortName": null,
-      "initials": "SP",
-      "factualIdentity": null,
-      "curatedInterest": true,
-      "endorsement": false,
-      "topics": [
-        {
-          "slug": "psychology-trauma-inner-work",
-          "label": "Psychology, Trauma & Inner Work",
-          "editorialState": "suggested"
-        }
-      ],
-      "books": [
-        {
-          "id": "4ecdf63c-942b-56a3-880e-40642a181da4",
-          "slug": "our-polyvagal-world",
-          "title": "Our Polyvagal World",
-          "originalAuthor": "Stephen Porges, Deb Dana",
-          "coverPath": "/book-covers/placeholder.svg"
-        }
-      ],
-      "podcastAppearances": []
-    },
-    {
-      "id": "5cf2e638-38ae-53e0-97f5-612eee1d3e13",
-      "slug": "person-daniel-roytas",
-      "displayName": "Daniel Roytas",
-      "sortName": null,
-      "initials": "DR",
-      "factualIdentity": null,
-      "curatedInterest": true,
-      "endorsement": false,
-      "topics": [
-        {
-          "slug": "health-longevity",
-          "label": "Health, Biology & Longevity",
-          "editorialState": "suggested"
-        },
-        {
-          "slug": "society-culture-systems",
-          "label": "Society, Culture & Systems",
-          "editorialState": "suggested"
-        }
-      ],
-      "books": [],
-      "podcastAppearances": [
-        {
-          "id": "8b354df2-625b-586e-b9ec-826a84f3fa8b",
-          "slug": "daniel-roytas-7lksybnfzvc",
-          "title": "Daniel Roytas",
-          "showTitle": "The Way Forward Podcast",
-          "role": "guest",
-          "publicationDate": "2024-04-17",
-          "durationSeconds": 5465
-        }
-      ]
-    },
-    {
       "id": "abed9714-57f9-513b-beb0-94ae700c6d95",
       "slug": "person-madhava-setty",
       "displayName": "Madhava Setty",
@@ -498,6 +358,217 @@
           "durationSeconds": 6459
         }
       ]
+    },
+    {
+      "id": "93ef3bc7-606f-5009-b925-cd4ad69e01be",
+      "slug": "person-marizelle-arce",
+      "displayName": "Marizelle Arce",
+      "sortName": null,
+      "initials": "MA",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": [
+        {
+          "id": "13205f25-81be-512d-809b-bcfcc10554c7",
+          "slug": "marizelle-arce-germs-are-not-our-enemy-5lxisiiq-ka",
+          "title": "Marizelle Arce: Germs Are Not Our Enemy",
+          "showTitle": "Alfacast Podcast",
+          "role": "guest",
+          "publicationDate": "2025-10-23",
+          "durationSeconds": 6152
+        }
+      ]
+    },
+    {
+      "id": "2a23fed0-1b95-54af-8788-2c2e340874a5",
+      "slug": "person-michael-levin",
+      "displayName": "Michael Levin",
+      "sortName": null,
+      "initials": "ML",
+      "factualIdentity": "Developmental biologist and Tufts professor studying bioelectricity, regeneration, and collective intelligence in living systems.",
+      "portrait": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "bioelectricity-morphogenesis",
+          "label": "Bioelectricity & Morphogenesis",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": []
+    },
+    {
+      "id": "d654e2cb-80bf-559d-8082-00ee40d35686",
+      "slug": "person-peter-levine",
+      "displayName": "Peter Levine",
+      "sortName": null,
+      "initials": "PL",
+      "factualIdentity": "Biophysicist, psychologist, author, and developer of Somatic Experiencing.",
+      "portrait": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "trauma-somatic-work",
+          "label": "Trauma & Somatic Work",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "c2e6c86d-e587-5199-8d66-ab4323f9dd55",
+          "slug": "in-an-unspoken-voice",
+          "title": "In an Unspoken Voice",
+          "originalAuthor": "Peter Levine",
+          "coverPath": "/book-covers/placeholder.svg"
+        }
+      ],
+      "podcastAppearances": [
+        {
+          "id": "370e16af-2829-55c9-ad43-54e16f957187",
+          "slug": "peter-levine-somatic-experiencing-wrhckes_mla",
+          "title": "Peter Levine- Somatic Experiencing",
+          "showTitle": "Wonderjunkie Podcast",
+          "role": "guest",
+          "publicationDate": "2025-02-23",
+          "durationSeconds": 4004
+        }
+      ]
+    },
+    {
+      "id": "fb49fab6-4842-5785-b842-81d07a3a1fd8",
+      "slug": "person-ray-peat",
+      "displayName": "Ray Peat",
+      "sortName": null,
+      "initials": "RP",
+      "factualIdentity": "Biologist and nutrition writer with a PhD in biology from the University of Oregon, specializing in physiology.",
+      "portrait": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "metabolism-bioenergetics",
+          "label": "Metabolism & Bioenergetics",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": []
+    },
+    {
+      "id": "552d34ad-7dc4-593c-807e-2ba4aad71894",
+      "slug": "person-rupert-spira",
+      "displayName": "Rupert Spira",
+      "sortName": null,
+      "initials": "RS",
+      "factualIdentity": "Author, non-duality teacher, and former studio potter.",
+      "portrait": {
+        "path": "/contact-portraits/rupert-spira.jpg",
+        "alt": "Rupert Spira",
+        "attribution": "Awareness / Wikimedia Commons",
+        "license": "CC BY 3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rupert_Spira.jpg"
+      },
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "nonduality-self-inquiry",
+          "label": "Nonduality & Self-Inquiry",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "7a42ce43-5fad-5199-8870-18af6f280358",
+          "slug": "being-aware-of-being-aware",
+          "title": "Being aware of being aware",
+          "originalAuthor": "Rupert Spira",
+          "coverPath": "/book-covers/being-aware-of-being-aware.jpg"
+        }
+      ],
+      "podcastAppearances": []
+    },
+    {
+      "id": "4df2f189-9497-59e1-8b3e-d6ccb07153d4",
+      "slug": "person-shamini-jain",
+      "displayName": "Shamini Jain",
+      "sortName": null,
+      "initials": "SJ",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": []
+    },
+    {
+      "id": "a9b9c2d6-8242-5b02-9eda-8cfcfc2e435c",
+      "slug": "person-stephen-porges",
+      "displayName": "Stephen Porges",
+      "sortName": null,
+      "initials": "SP",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [
+        {
+          "id": "4ecdf63c-942b-56a3-880e-40642a181da4",
+          "slug": "our-polyvagal-world",
+          "title": "Our Polyvagal World",
+          "originalAuthor": "Stephen Porges, Deb Dana",
+          "coverPath": "/book-covers/placeholder.svg"
+        }
+      ],
+      "podcastAppearances": []
+    },
+    {
+      "id": "a2cfaa3c-fe0a-572d-aab7-16f05e7ef673",
+      "slug": "person-zac-cupples",
+      "displayName": "Zac Cupples",
+      "sortName": null,
+      "initials": "ZC",
+      "factualIdentity": null,
+      "curatedInterest": true,
+      "endorsement": false,
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "editorialState": "suggested"
+        }
+      ],
+      "books": [],
+      "podcastAppearances": []
     }
   ],
   "podcastEpisodes": [

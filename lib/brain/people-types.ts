@@ -22,6 +22,14 @@ export interface BrainPodcastAppearance {
   durationSeconds?: number | null;
 }
 
+export interface BrainPersonPortrait {
+  path: string;
+  alt: string;
+  attribution?: string | null;
+  license?: string | null;
+  sourceUrl?: string | null;
+}
+
 export interface BrainContact {
   id: string;
   slug: string;
@@ -29,6 +37,7 @@ export interface BrainContact {
   sortName?: string | null;
   initials: string;
   factualIdentity?: string | null;
+  portrait?: BrainPersonPortrait | null;
   curatedInterest: true;
   endorsement: false;
   topics: BrainPersonTopic[];

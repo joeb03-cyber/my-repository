@@ -68,7 +68,7 @@ export default function ContactsApp({ onBookOpen }: { onBookOpen: (book: BrainBo
       <button className={topic === "all" ? "is-selected" : ""} onClick={() => setTopic("all")}><span className="contacts-list-icon"><Users/></span><span>All Contacts</span><small>{data.contactCount}</small></button>
       <strong className="contacts-section-label">AREAS</strong>
       <div className="contacts-topic-list">{topics.map((item) => <button key={item.slug} className={topic === item.slug ? "is-selected" : ""} onClick={() => setTopic(item.slug)}><i/><span>{item.label}</span><small>{item.count}</small></button>)}</div>
-      <div className="contacts-sidebar-note"><Info/><span>Interesting to explore.<br/>Inclusion is not endorsement.</span></div>
+      <div className="contacts-sidebar-note"><Info/><span>People whose work I’ve found interesting, useful, provocative, or worth exploring. Inclusion isn’t blanket endorsement.</span></div>
     </aside>
 
     <section className="contacts-list-pane">
@@ -87,7 +87,9 @@ export default function ContactsApp({ onBookOpen }: { onBookOpen: (book: BrainBo
 function PersonAvatar({ person, size }: { person: BrainContact; size: "small" | "large" }) {
   const palettes = ["sage", "blue", "plum", "amber", "rose"];
   const palette = palettes[person.displayName.codePointAt(0)! % palettes.length];
-  return <span className={`person-avatar person-avatar--${size} person-avatar--${palette}`} aria-hidden="true">{person.initials}</span>;
+  return <span className={`person-avatar person-avatar--${size} person-avatar--${palette} ${person.portrait ? "has-portrait" : ""}`} aria-hidden="true">
+    {person.portrait ? <img src={person.portrait.path} alt=""/> : person.initials}
+  </span>;
 }
 
 function ContactDetail({ person, onBack, onOpenBook, onOpenEpisode }: { person: BrainContact | null; onBack: () => void; onOpenBook: (id: string) => void; onOpenEpisode: (id: string) => void }) {
@@ -95,8 +97,7 @@ function ContactDetail({ person, onBack, onOpenBook, onOpenEpisode }: { person: 
   return <section className="contact-detail">
     <div className="contact-detail-toolbar"><button className="contact-mobile-back" onClick={onBack}><ArrowLeft/> Contacts</button><button aria-label="Contact actions">•••</button></div>
     <div className="contact-detail-scroll">
-      <header className="contact-profile"><PersonAvatar person={person} size="large"/><div><h1>{person.displayName}</h1>{person.factualIdentity && <p>{person.factualIdentity}</p>}<div className="contact-topic-pills">{person.topics.map((item) => <span key={item.slug}>{item.label}</span>)}</div></div></header>
-      <div className="curated-interest-note"><span>Curated interest</span><p>Joe marked this person as interesting to explore. This is not an endorsement of every claim or idea.</p></div>
+      <header className="contact-profile"><PersonAvatar person={person} size="large"/><div><h1>{person.displayName}</h1>{person.factualIdentity && <p>{person.factualIdentity}</p>}<div className="contact-topic-pills">{person.topics.map((item) => <span key={item.slug}>{item.label}</span>)}</div>{person.portrait?.sourceUrl && <a className="contact-portrait-credit" href={person.portrait.sourceUrl} target="_blank" rel="noreferrer">Photo: {person.portrait.attribution} · {person.portrait.license}</a>}</div></header>
 
       {!!person.books.length && <ContactSection icon={<BookOpen/>} title="Books"><div className="contact-books">{person.books.map((book) => <button key={book.id} onClick={() => onOpenBook(book.id)}>
         <BookCover compact book={{ title: book.title, authors: book.originalAuthor ? [book.originalAuthor] : [], cover: book.coverPath ? { status: "cached", public_path: book.coverPath } : { status: "placeholder", public_path: "/book-covers/placeholder.svg" } }}/><span><strong>{book.title}</strong>{book.originalAuthor && <small>{book.originalAuthor}</small>}<em>Open in Books <ChevronRight/></em></span>
@@ -106,7 +107,7 @@ function ContactDetail({ person, onBack, onOpenBook, onOpenEpisode }: { person: 
         <span className="podcast-source-icon"><Mic2/></span><span><small>{item.showTitle}</small><strong>{item.title}</strong><em>{formatDate(item.publicationDate)}{item.durationSeconds ? ` · ${formatDuration(item.durationSeconds)}` : ""}</em></span><ChevronRight/>
       </button>)}</div></ContactSection>}
 
-      {!person.books.length && !person.podcastAppearances.length && <div className="contact-sparse"><span>Source links are still being reconciled.</span><p>This Contact is included because Joe explicitly curated the person—not because the archive happened to contain the most material.</p></div>}
+      {!person.books.length && !person.podcastAppearances.length && <div className="contact-sparse"><span>Connections are still being assembled.</span><p>Books, conversations, and other paths into this person’s work will appear here as the archive is reconciled.</p></div>}
     </div>
   </section>;
 }

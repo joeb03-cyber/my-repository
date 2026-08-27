@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "contacts-editorial-pilot.v1",
+  "status": "reviewable",
+  "generatedAt": "2026-08-27",
+  "publicCandidateLabel": null,
+  "people": [
+    {
+      "name": "Ray Peat",
+      "entityId": "fb49fab6-4842-5785-b842-81d07a3a1fd8",
+      "identity": "Biologist and nutrition writer with a PhD in biology from the University of Oregon, specializing in physiology.",
+      "identitySource": {"label": "Ray Peat — About", "url": "https://www.raypeat.com/about.shtml", "retrievedAt": "2026-08-27"},
+      "topics": [{"slug": "metabolism-bioenergetics", "label": "Metabolism & Bioenergetics"}],
+      "portrait": null,
+      "candidates": [
+        {"kind": "book", "title": "Nutrition for Women", "url": "https://www.raypeat.com/products.shtml", "relationship": "archive_match", "note": "A matching book-notes document exists in the Kortex workspace but this book is not yet in the public Brain."},
+        {"kind": "book", "title": "Generative Energy", "url": "https://www.raypeat.com/products.shtml", "relationship": "external"},
+        {"kind": "book", "title": "From PMS to Menopause", "url": "https://www.raypeat.com/products.shtml", "relationship": "external"},
+        {"kind": "official_intro", "title": "About Ray Peat", "url": "https://www.raypeat.com/about.shtml", "relationship": "external"},
+        {"kind": "article_collection", "title": "Ray Peat articles", "url": "https://www.raypeat.com/articles/articles/", "relationship": "external"}
+      ]
+    },
+    {
+      "name": "Peter Levine",
+      "entityId": "d654e2cb-80bf-559d-8082-00ee40d35686",
+      "identity": "Biophysicist, psychologist, author, and developer of Somatic Experiencing.",
+      "identitySource": {"label": "Ergos Institute — About Peter Levine", "url": "https://www.somaticexperiencing.com/about-peter", "retrievedAt": "2026-08-27"},
+      "topics": [{"slug": "trauma-somatic-work", "label": "Trauma & Somatic Work"}],
+      "portrait": null,
+      "candidates": [
+        {"kind": "book", "title": "In an Unspoken Voice", "url": null, "relationship": "brain_book", "existingEntityId": "c2e6c86d-e587-5199-8d66-ab4323f9dd55"},
+        {"kind": "podcast_episode", "title": "Peter Levine — Somatic Experiencing", "url": "https://www.youtube.com/watch?v=WrHCkES_MLA", "relationship": "archive_source", "existingSourceId": "370e16af-2829-55c9-ad43-54e16f957187"},
+        {"kind": "book", "title": "Waking the Tiger", "url": "https://www.somaticexperiencing.com/se-books", "relationship": "external"},
+        {"kind": "book", "title": "An Autobiography of Trauma", "url": "https://www.somaticexperiencing.com/se-books", "relationship": "external"},
+        {"kind": "interview_collection", "title": "Interviews & Publications", "url": "https://www.somaticexperiencing.com/se-interviews", "relationship": "external"}
+      ]
+    },
+    {
+      "name": "Eileen Day McKusick",
+      "entityId": "f36f1c56-df91-55fe-b16e-38a9bcb4bb36",
+      "identity": "Researcher, author, and sound-therapy practitioner who founded Biofield Tuning and the Biofield Tuning Institute.",
+      "identitySource": {"label": "Eileen McKusick — Meet Eileen", "url": "https://www.eileenmckusick.com/meet-eileen-mckusick", "retrievedAt": "2026-08-27"},
+      "topics": [{"slug": "biofield-sound", "label": "Biofield & Sound"}],
+      "portrait": null,
+      "candidates": [
+        {"kind": "book", "title": "Tuning the Human Biofield", "url": null, "relationship": "brain_book", "existingEntityId": "150ae276-f630-59d3-bdd7-79edf915373b"},
+        {"kind": "podcast_episode", "title": "Eileen McKusick", "url": "https://www.youtube.com/watch?v=Sq3JiaUfn8I", "relationship": "archive_source", "existingSourceId": "81650a69-8af5-53b8-95b6-4f7aef5e59de"},
+        {"kind": "book", "title": "Electric Body, Electric Health", "url": "https://www.eileenmckusick.com/meet-eileen-mckusick", "relationship": "external"},
+        {"kind": "official_intro", "title": "Meet Eileen McKusick", "url": "https://www.eileenmckusick.com/meet-eileen-mckusick", "relationship": "external"},
+        {"kind": "interview_collection", "title": "Media & Events", "url": "https://www.eileenmckusick.com/media-events", "relationship": "external"}
+      ]
+    },
+    {
+      "name": "Rupert Spira",
+      "entityId": "552d34ad-7dc4-593c-807e-2ba4aad71894",
+      "identity": "Author, non-duality teacher, and former studio potter.",
+      "identitySource": {"label": "Rupert Spira — About Rupert", "url": "https://rupertspira.com/about-rupert/", "retrievedAt": "2026-08-27"},
+      "topics": [{"slug": "nonduality-self-inquiry", "label": "Nonduality & Self-Inquiry"}],
+      "portrait": {
+        "path": "/contact-portraits/rupert-spira.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rupert_Spira.jpg",
+        "downloadUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rupert_Spira.jpg",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+        "attribution": "Awareness / Wikimedia Commons",
+        "transformation": "Responsive crop only"
+      },
+      "candidates": [
+        {"kind": "book", "title": "Being Aware of Being Aware", "url": "https://rupertspira.com/publications/being-aware-of-being-aware/", "relationship": "brain_book", "existingEntityId": "7a42ce43-5fad-5199-8870-18af6f280358"},
+        {"kind": "video", "title": "What Is ‘Being Aware of Being Aware’?", "url": "https://rupertspira.com/watch-listen/archive/i-dont-have-to-get-it-to-be-it/what-is-being-aware-of-being-aware/", "relationship": "external"},
+        {"kind": "book", "title": "You Are the Happiness You Seek", "url": "https://rupertspira.com/publications", "relationship": "external"},
+        {"kind": "official_intro", "title": "About Rupert", "url": "https://rupertspira.com/about-rupert/", "relationship": "external"},
+        {"kind": "publication_collection", "title": "Introduction to Non-Duality", "url": "https://rupertspira.com/publications", "relationship": "external"}
+      ]
+    },
+    {
+      "name": "Michael Levin",
+      "entityId": "2a23fed0-1b95-54af-8788-2c2e340874a5",
+      "identity": "Developmental biologist and Tufts professor studying bioelectricity, regeneration, and collective intelligence in living systems.",
+      "identitySource": {"label": "Tufts University — Michael Levin", "url": "https://as.tufts.edu/biology/people/faculty/michael-levin", "retrievedAt": "2026-08-27"},
+      "topics": [{"slug": "bioelectricity-morphogenesis", "label": "Bioelectricity & Morphogenesis"}],
+      "portrait": null,
+      "portraitReviewNote": "A Wikimedia file is marked CC BY 4.0 but contains conflicting embedded all-rights-reserved metadata; initials retained pending rights clarification.",
+      "candidates": [
+        {"kind": "official_intro", "title": "Michael Levin — Tufts faculty profile", "url": "https://as.tufts.edu/biology/people/faculty/michael-levin", "relationship": "external"},
+        {"kind": "official_intro", "title": "Levin Lab — Frequently Asked Questions", "url": "https://as.tufts.edu/biology/levin-lab/resources", "relationship": "external"},
+        {"kind": "paper", "title": "The Computational Boundary of a ‘Self’", "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02688/full", "relationship": "external"},
+        {"kind": "interview", "title": "How bioelectricity could regrow limbs and organs", "url": "https://as.tufts.edu/biology/levin-lab/media", "relationship": "external"},
+        {"kind": "media_collection", "title": "Levin Lab media archive", "url": "https://as.tufts.edu/biology/levin-lab/media", "relationship": "external"}
+      ]
+    }
+  ]
+}
