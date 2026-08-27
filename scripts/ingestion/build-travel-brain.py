@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 INVENTORY_PATH = ROOT / "data/brain/travel/travel-source-inventory.v1.json"
 PLACES_PATH = ROOT / "data/brain/travel/place-candidates.v1.json"
+DECISIONS_PATH = ROOT / "data/brain/travel/editorial-decisions.v1.json"
 OUTPUT = ROOT / "data/brain/travel/travel-timeline.v1.json"
 IMPORT_ROOT = ROOT / "data/brain/travel/import-v1"
 NAMESPACE = uuid.UUID("7f790137-c94e-42db-baa0-3c6bd179df41")
@@ -26,6 +27,7 @@ def jsonl(path: Path, rows: list[dict]) -> None:
 def main() -> None:
     inventory = json.loads(INVENTORY_PATH.read_text())
     candidates = json.loads(PLACES_PATH.read_text())
+    decisions = json.loads(DECISIONS_PATH.read_text())
     candidate_by_name = {place["source_name"]: place for place in candidates["places"]}
     snapshot_id = stable_id("travel-source-snapshot", inventory["source"]["content_sha256"])
 
@@ -40,7 +42,7 @@ def main() -> None:
             "latitude": candidate["latitude"], "longitude": candidate["longitude"],
             "coordinates_state": "provider_candidate" if candidate["latitude"] is not None else "unresolved",
             "visibility": "public", "editorial_state": candidate["review"]["state"],
-            "provenance": {"source_label": source_name, "country_assignment": "route_context_candidate", "geocoding": candidate["provider"], "review_flags": candidate["review"]["flags"]},
+            "provenance": {"source_label": source_name, "country_assignment": "editorial_decision" if candidate["review"].get("editorial_decision") else "route_context_candidate", "geocoding": candidate["provider"], "review_flags": candidate["review"]["flags"], "editorial_decision": candidate["review"].get("editorial_decision")},
         })
     place_by_source = {place["source_name"]: place for place in places}
 
@@ -79,7 +81,7 @@ def main() -> None:
     source_snapshot = {
         "id": snapshot_id, "source_url": inventory["source"]["source_url"], "external_id": inventory["source"]["source_id"],
         "captured_on": inventory["source"]["captured_at"], "content_hash": inventory["source"]["content_sha256"],
-        "snapshot_path": inventory["source"]["snapshot_path"], "source_metadata": {"title": inventory["source"]["source_title"], "slug": inventory["source"]["source_slug"], "intro": inventory["intro"]},
+        "snapshot_path": inventory["source"]["snapshot_path"], "source_metadata": {"title": inventory["source"]["source_title"], "slug": inventory["source"]["source_slug"], "intro": inventory["intro"], "editorial_decisions": decisions},
     }
     public_places = [{"id": p["id"], "slug": p["slug"], "sourceName": p["source_name"], "name": p["name"], "placeType": p["place_type"], "countryCode": p["country_code"], "countryName": p["country_name"], "latitude": p["latitude"], "longitude": p["longitude"], "coordinatesState": p["coordinates_state"], "reviewState": p["editorial_state"]} for p in places]
     public_visits = [{"id": v["id"], "placeId": v["place_id"], "visitKind": v["visit_kind"], "sourcePosition": v["source_position"], "groupPosition": v["group_position"], "chronologyIndex": v["chronology_index"], "start":{"year":v["start_year"],"month":v["start_month"]}, "end":{"year":v["end_year"],"month":v["end_month"]}, "temporalPrecision":v["temporal_precision"], "sourceDateText":v["source_date_text"], "sourceValue":v["source_value"], "sourceRawLine":v["source_raw_line"], "reviewState":v["editorial_state"]} for v in visits]
@@ -90,7 +92,8 @@ def main() -> None:
         "sourceSnapshot": {"id": snapshot_id, "capturedOn": source_snapshot["captured_on"], "contentHash": source_snapshot["content_hash"], "intro": inventory["intro"]},
         "stats": {"sourceRecords": inventory["record_count"], "visits": len(visits), "movements": len(movements), "uniquePlaces": len(places), "countries": len(countries), "resolvedPlaces": len(places)-len(unresolved), "unresolvedPlaces": len(unresolved)},
         "countries": countries, "places": public_places, "visits": public_visits,
-        "movements": movements, "review": {"unresolvedPlaceLabels": unresolved, "currentLocationConflict": {"sourceLatest": "warsaw", "existingOsNow": "Sarajevo", "decision": "unresolved_do_not_overwrite_now"}},
+        "movements": movements, "currentState": {"location": {**decisions["current_state"]["location"], "provenance": {"authority": decisions["authority"], "recorded_at": decisions["recorded_at"]}}},
+        "review": {"unresolvedPlaceLabels": unresolved, "currentLocationResolution": {"chronologyLatest": "warsaw", "approvedNow": "Sarajevo", "decision": "resolved_keep_chronology_and_now_separate"}},
         "mapAttribution": "GeoNames geographical database, CC BY 4.0",
     }
     OUTPUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")

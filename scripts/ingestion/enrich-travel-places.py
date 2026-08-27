@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data/brain/travel/travel-source-inventory.v1.json"
 OUTPUT = ROOT / "data/brain/travel/place-candidates.v1.json"
+DECISIONS = ROOT / "data/brain/travel/editorial-decisions.v1.json"
 
 COUNTRIES = {
     "PL": "warsaw", "LT": "kaunas|vilnius", "LV": "riga", "EE": "tallinn", "FI": "helsinki", "SE": "stockholm",
@@ -28,7 +29,7 @@ COUNTRIES = {
     "AR": "mendoza|buenos aires|el bolson|lago puelo|bariloche", "BR": "rio de janeiro", "PR": "isabela",
 }
 COUNTRY_FOR = {name: code for code, values in COUNTRIES.items() for name in values.split("|")}
-QUERY_OVERRIDES = {"muhlbach am hochkonig": "mühlbach am hochkönig", "jardin": "jardín", "el bolson": "el bolsón"}
+QUERY_OVERRIDES = {"muhlbach am hochkonig": "mühlbach am hochkönig", "jardin": "jardín", "el bolson": "el bolsón", "polignano de mare": "polignano a mare"}
 NON_LOCALITIES = {
     "aruba": "country", "taiwan": "country_or_territory", "bali": "island", "palawan": "island",
     "siargao": "island", "sicily": "island", "galicia": "region", "lake atitlan": "lake",
@@ -63,6 +64,7 @@ def main() -> None:
     archive = Path(sys.argv[1] if len(sys.argv) > 1 else "/tmp/synergetic-geonames-cities500.zip")
     if not archive.exists(): raise SystemExit(f"GeoNames archive not found: {archive}")
     inventory = json.loads(SOURCE.read_text())
+    decisions = json.loads(DECISIONS.read_text())["place_identity_decisions"]
     names = []
     for record in inventory["records"]:
         for place in record["candidate_places"]:
@@ -74,17 +76,22 @@ def main() -> None:
     for name in names:
         country = COUNTRY_FOR[name]
         candidates = sorted(index.get((country, normalized(QUERY_OVERRIDES.get(name, name))), []), key=lambda row: row["population"], reverse=True)
+        decision = decisions.get(name)
+        if decision and decision.get("provider_geoname_id"):
+            candidates.sort(key=lambda row: row["geoname_id"] != decision["provider_geoname_id"])
         flags = list(CONTEXT_FLAGS.get(name, []))
         accepted = None if name in NON_LOCALITIES else (candidates[0] if candidates else None)
         if name in NON_LOCALITIES: flags.append("non_locality_requires_manual_or_full_geodata_resolution")
         elif not accepted: flags.append("geocoding_unresolved")
         if len(candidates) > 1: flags.append("multiple_provider_candidates")
+        if decision:
+            flags = []
         places.append({
-            "source_name": name, "canonical_name_candidate": accepted["name"] if accepted else name.title(),
-            "country_code_candidate": country, "place_type_candidate": NON_LOCALITIES.get(name, "locality"),
+            "source_name": name, "canonical_name_candidate": decision["canonical_name"] if decision else accepted["name"] if accepted else name.title(),
+            "country_code_candidate": decision.get("country_code", country) if decision else country, "place_type_candidate": NON_LOCALITIES.get(name, "locality"),
             "latitude": accepted["latitude"] if accepted else None, "longitude": accepted["longitude"] if accepted else None,
             "provider": {"name": "GeoNames cities500", "license": "CC BY 4.0", "geoname_id": accepted["geoname_id"] if accepted else None, "feature_code": accepted["feature_code"] if accepted else None, "query": QUERY_OVERRIDES.get(name, name), "candidate_count": len(candidates), "candidate_ids": [item["geoname_id"] for item in candidates[:5]]},
-            "review": {"state": "needs_review" if flags else "unreviewed", "flags": flags},
+            "review": {"state": decision.get("state", "approved") if decision else "needs_review" if flags else "unreviewed", "flags": flags, "editorial_decision": decision},
         })
     payload = {"schema_version": "synergetic-place-candidates.v1", "generated_from": str(SOURCE.relative_to(ROOT)), "provider_attribution": "GeoNames geographical database, CC BY 4.0", "place_count": len(places), "resolved_count": sum(p["latitude"] is not None for p in places), "places": places}
     OUTPUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")

@@ -3,7 +3,7 @@
   "generated_from": "data/brain/travel/travel-source-inventory.v1.json",
   "provider_attribution": "GeoNames geographical database, CC BY 4.0",
   "place_count": 103,
-  "resolved_count": 90,
+  "resolved_count": 91,
   "places": [
     {
       "source_name": "warsaw",
@@ -25,7 +25,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -48,7 +49,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -71,7 +73,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -94,7 +97,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -117,7 +121,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -140,7 +145,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -163,7 +169,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -186,7 +193,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -209,7 +217,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -232,7 +241,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -255,7 +265,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -278,7 +289,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -301,7 +313,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -324,7 +337,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -347,7 +361,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -370,7 +385,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -393,7 +409,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -416,7 +433,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -439,7 +457,8 @@
         "state": "needs_review",
         "flags": [
           "geocoding_unresolved"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -462,7 +481,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -485,7 +505,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -508,7 +529,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -531,7 +553,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -554,7 +577,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -577,7 +601,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -600,7 +625,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -623,7 +649,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -646,7 +673,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -669,7 +697,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -692,7 +721,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -721,7 +751,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -744,7 +775,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -766,10 +798,16 @@
         ]
       },
       "review": {
-        "state": "needs_review",
-        "flags": [
-          "country_and_region_inferred_from_route_context"
-        ]
+        "state": "approved",
+        "flags": [],
+        "editorial_decision": {
+          "canonical_name": "St. Petersburg",
+          "region_name": "Florida",
+          "country_code": "US",
+          "country_name": "United States",
+          "provider_geoname_id": 4171563,
+          "state": "approved"
+        }
       }
     },
     {
@@ -792,7 +830,8 @@
         "state": "needs_review",
         "flags": [
           "non_locality_requires_manual_or_full_geodata_resolution"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -815,7 +854,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -838,7 +878,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -861,7 +902,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -884,7 +926,8 @@
         "state": "needs_review",
         "flags": [
           "geocoding_unresolved"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -907,7 +950,8 @@
         "state": "needs_review",
         "flags": [
           "non_locality_requires_manual_or_full_geodata_resolution"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -929,10 +973,15 @@
         ]
       },
       "review": {
-        "state": "needs_review",
-        "flags": [
-          "country_inferred_from_route_context"
-        ]
+        "state": "approved",
+        "flags": [],
+        "editorial_decision": {
+          "canonical_name": "Antigua Guatemala",
+          "country_code": "GT",
+          "country_name": "Guatemala",
+          "provider_geoname_id": 3599699,
+          "state": "approved"
+        }
       }
     },
     {
@@ -955,7 +1004,8 @@
         "state": "needs_review",
         "flags": [
           "geocoding_unresolved"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -977,10 +1027,15 @@
         ]
       },
       "review": {
-        "state": "needs_review",
-        "flags": [
-          "country_inferred_from_route_context"
-        ]
+        "state": "approved",
+        "flags": [],
+        "editorial_decision": {
+          "canonical_name": "La Libertad",
+          "country_code": "SV",
+          "country_name": "El Salvador",
+          "provider_geoname_id": 3585157,
+          "state": "approved"
+        }
       }
     },
     {
@@ -1003,7 +1058,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1026,7 +1082,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1049,7 +1106,8 @@
         "state": "needs_review",
         "flags": [
           "geocoding_unresolved"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1078,7 +1136,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1101,7 +1160,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1127,7 +1187,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1150,7 +1211,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1177,7 +1239,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1200,7 +1263,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1223,7 +1287,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1246,7 +1311,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1269,7 +1335,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1292,7 +1359,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1315,7 +1383,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1338,7 +1407,8 @@
         "state": "needs_review",
         "flags": [
           "non_locality_requires_manual_or_full_geodata_resolution"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1361,7 +1431,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1387,7 +1458,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1410,7 +1482,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1436,7 +1509,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1462,7 +1536,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1485,7 +1560,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1511,7 +1587,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1534,7 +1611,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1557,7 +1635,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1580,7 +1659,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1603,7 +1683,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1626,7 +1707,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1649,7 +1731,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1672,7 +1755,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1695,7 +1779,8 @@
         "state": "needs_review",
         "flags": [
           "non_locality_requires_manual_or_full_geodata_resolution"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1718,7 +1803,8 @@
         "state": "needs_review",
         "flags": [
           "non_locality_requires_manual_or_full_geodata_resolution"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1741,7 +1827,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1764,7 +1851,8 @@
         "state": "needs_review",
         "flags": [
           "non_locality_requires_manual_or_full_geodata_resolution"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -1787,7 +1875,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1810,7 +1899,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1833,7 +1923,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1856,7 +1947,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1879,7 +1971,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1902,7 +1995,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1925,7 +2019,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -1948,30 +2043,38 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
       "source_name": "polignano de mare",
-      "canonical_name_candidate": "Polignano De Mare",
+      "canonical_name_candidate": "Polignano a Mare",
       "country_code_candidate": "IT",
       "place_type_candidate": "locality",
-      "latitude": null,
-      "longitude": null,
+      "latitude": 40.99221,
+      "longitude": 17.22149,
       "provider": {
         "name": "GeoNames cities500",
         "license": "CC BY 4.0",
-        "geoname_id": null,
-        "feature_code": null,
-        "query": "polignano de mare",
-        "candidate_count": 0,
-        "candidate_ids": []
+        "geoname_id": 3170382,
+        "feature_code": "PPLA3",
+        "query": "polignano a mare",
+        "candidate_count": 1,
+        "candidate_ids": [
+          3170382
+        ]
       },
       "review": {
-        "state": "needs_review",
-        "flags": [
-          "geocoding_unresolved"
-        ]
+        "state": "approved",
+        "flags": [],
+        "editorial_decision": {
+          "canonical_name": "Polignano a Mare",
+          "country_code": "IT",
+          "country_name": "Italy",
+          "source_value_preserved": "polignano de mare",
+          "state": "approved"
+        }
       }
     },
     {
@@ -1994,7 +2097,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2017,7 +2121,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2040,7 +2145,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2063,7 +2169,8 @@
         "state": "needs_review",
         "flags": [
           "non_locality_requires_manual_or_full_geodata_resolution"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -2086,7 +2193,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2109,7 +2217,8 @@
         "state": "needs_review",
         "flags": [
           "non_locality_requires_manual_or_full_geodata_resolution"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -2135,7 +2244,8 @@
         "state": "needs_review",
         "flags": [
           "multiple_provider_candidates"
-        ]
+        ],
+        "editorial_decision": null
       }
     },
     {
@@ -2158,7 +2268,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2181,7 +2292,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2203,10 +2315,15 @@
         ]
       },
       "review": {
-        "state": "needs_review",
-        "flags": [
-          "country_inferred_from_route_context"
-        ]
+        "state": "approved",
+        "flags": [],
+        "editorial_decision": {
+          "canonical_name": "Santiago",
+          "country_code": "CL",
+          "country_name": "Chile",
+          "provider_geoname_id": 3871336,
+          "state": "approved"
+        }
       }
     },
     {
@@ -2229,7 +2346,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2252,7 +2370,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2275,7 +2394,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2298,7 +2418,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2321,7 +2442,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2344,7 +2466,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2367,7 +2490,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2390,7 +2514,8 @@
       },
       "review": {
         "state": "unreviewed",
-        "flags": []
+        "flags": [],
+        "editorial_decision": null
       }
     },
     {
@@ -2412,10 +2537,16 @@
         ]
       },
       "review": {
-        "state": "needs_review",
-        "flags": [
-          "country_and_region_inferred_from_route_context"
-        ]
+        "state": "approved",
+        "flags": [],
+        "editorial_decision": {
+          "canonical_name": "Isabela",
+          "region_name": "Puerto Rico",
+          "country_code": "PR",
+          "country_name": "Puerto Rico",
+          "provider_geoname_id": 4565577,
+          "state": "approved"
+        }
       }
     }
   ]

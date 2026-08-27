@@ -37,6 +37,7 @@ export interface TravelTimeline {
   places: TravelPlace[];
   visits: TravelVisit[];
   movements: Array<Record<string, unknown>>;
-  review: { unresolvedPlaceLabels: string[]; currentLocationConflict?: Record<string, string> };
+  currentState?: { location: { canonical_name: string; country_code: string; country_name: string; state: string; provenance?: Record<string, string> } };
+  review: { unresolvedPlaceLabels: string[]; currentLocationConflict?: Record<string, string>; currentLocationResolution?: Record<string, string> };
   mapAttribution: string;
 }

@@ -6,15 +6,17 @@ The authoritative snapshot is `data/brain/travel/source/what.2026-08-27.md`, cap
 
 The public source supports 110 place visits/stays and one explicit movement (`left austin`). It does not say whether most records were day visits, short stays, or longer stays, so the normalized records use `visit_or_stay_unspecified`. It supplies month or month-range precision only; no day values are manufactured. The `dec-feb` Buenos Aires record correctly crosses from December 2023 to February 2024.
 
-Country assignments and coordinates are candidates, not source truth. Country context is derived from the route. Coordinates were resolved offline against GeoNames `cities500` (CC BY 4.0), so the itinerary itself was not sent to a geocoder. Ninety of 103 unique labels have candidate locality centroids. Thirteen labels remain unresolved because they are islands, regions, a lake, or small/variant localities; they remain visible in the chronology and are not given invented coordinates.
+Country assignments and coordinates are candidates unless explicitly approved editorially. Country context was initially derived from the route. Coordinates were resolved offline against GeoNames `cities500` (CC BY 4.0), so the itinerary itself was not sent to a geocoder. Ninety-one of 103 unique labels now have locality centroids. Twelve labels remain unresolved because they are islands, regions, a lake, or small localities; they remain visible in the chronology and are not given invented coordinates.
+
+Approved editorial identity decisions (27 August 2026): St. Petersburg is St. Petersburg, Florida; Isabela is Isabela, Puerto Rico; Antigua is Antigua Guatemala; La Libertad is in El Salvador; Santiago is in Chile; and the source value `polignano de mare` canonically displays as Polignano a Mare while preserving the original source text. Sarajevo, Bosnia and Herzegovina is the approved NOW location. Warsaw remains the latest chronology record; NOW and latest chronology are intentionally separate assertions.
 
 Review decisions still needed:
 
-- Does `st. petersburg` mean St. Petersburg, Florida?
-- Does `isabela` mean Isabela, Puerto Rico?
-- Confirm route-context choices for Antigua (Guatemala), La Libertad (El Salvador), and Santiago (Chile).
-- Resolve/correct the 13 labels listed in `travel-timeline.v1.json` when richer geodata or editorial input is available.
-- The page's latest record is Warsaw in August 2026, while the frozen OS shell says Sarajevo. The import explicitly preserves this conflict and does not overwrite the current-location widget.
+- Resolve/correct the remaining 12 labels listed in `travel-timeline.v1.json` when richer geodata or editorial input is available.
+
+## Next Maps product direction
+
+Do not polish or rebuild Maps during archive discovery. The next Maps design phase should replace the bespoke visualization with a familiar Apple Maps / Google Maps interaction model: real detailed map tiles, pan and zoom, standard controls, native-feeling pins, subtle routes, place cards or drawers, terrain/satellite options when practical, and familiar responsive mobile behavior. Originality should come from Joe's route, photos, notes, recommendations, and journey playback rather than novel map controls or visual grammar.
 
 ## Brain model
 

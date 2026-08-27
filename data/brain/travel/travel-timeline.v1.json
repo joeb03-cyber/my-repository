@@ -31,8 +31,8 @@
     "movements": 1,
     "uniquePlaces": 103,
     "countries": 42,
-    "resolvedPlaces": 90,
-    "unresolvedPlaces": 13
+    "resolvedPlaces": 91,
+    "unresolvedPlaces": 12
   },
   "countries": [
     "Albania",
@@ -506,7 +506,7 @@
       "latitude": 27.77086,
       "longitude": -82.67927,
       "coordinatesState": "provider_candidate",
-      "reviewState": "needs_review"
+      "reviewState": "approved"
     },
     {
       "id": "2bcefbc4-7573-5413-8739-e69d18779c52",
@@ -597,7 +597,7 @@
       "latitude": 14.55636,
       "longitude": -90.7332,
       "coordinatesState": "provider_candidate",
-      "reviewState": "needs_review"
+      "reviewState": "approved"
     },
     {
       "id": "aaed9913-afd5-52ce-87c9-a918330094b3",
@@ -623,7 +623,7 @@
       "latitude": 13.48833,
       "longitude": -89.32222,
       "coordinatesState": "provider_candidate",
-      "reviewState": "needs_review"
+      "reviewState": "approved"
     },
     {
       "id": "6a11d344-5e89-56aa-b1cc-6ae8dfb6fdf8",
@@ -1162,14 +1162,14 @@
       "id": "ff68f88e-65ec-50a9-8a55-e0165e6c4f29",
       "slug": "polignano-de-mare",
       "sourceName": "polignano de mare",
-      "name": "Polignano De Mare",
+      "name": "Polignano a Mare",
       "placeType": "locality",
       "countryCode": "IT",
       "countryName": "Italy",
-      "latitude": null,
-      "longitude": null,
-      "coordinatesState": "unresolved",
-      "reviewState": "needs_review"
+      "latitude": 40.99221,
+      "longitude": 17.22149,
+      "coordinatesState": "provider_candidate",
+      "reviewState": "approved"
     },
     {
       "id": "20bc0978-d6ac-5d8f-9a42-9b4df76fabd4",
@@ -1299,7 +1299,7 @@
       "latitude": -33.45694,
       "longitude": -70.64827,
       "coordinatesState": "provider_candidate",
-      "reviewState": "needs_review"
+      "reviewState": "approved"
     },
     {
       "id": "c4cf7628-d724-5a25-b1a5-d3ce63ccfa3c",
@@ -1416,7 +1416,7 @@
       "latitude": 18.50078,
       "longitude": -67.02435,
       "coordinatesState": "provider_candidate",
-      "reviewState": "needs_review"
+      "reviewState": "approved"
     }
   ],
   "visits": [
@@ -1439,7 +1439,7 @@
       "sourceDateText": "oct",
       "sourceValue": "isabela",
       "sourceRawLine": "* oct: isabela",
-      "reviewState": "needs_review"
+      "reviewState": "unreviewed"
     },
     {
       "id": "847308ee-d47e-567a-9d79-b126c17daae0",
@@ -1649,7 +1649,7 @@
       "sourceDateText": "apr",
       "sourceValue": "santiago",
       "sourceRawLine": "* apr: santiago",
-      "reviewState": "needs_review"
+      "reviewState": "unreviewed"
     },
     {
       "id": "e3006e23-3dbf-5dd4-b646-7d8625f91fd3",
@@ -2825,7 +2825,7 @@
       "sourceDateText": "nov",
       "sourceValue": "la libertad",
       "sourceRawLine": "* nov: la libertad",
-      "reviewState": "needs_review"
+      "reviewState": "unreviewed"
     },
     {
       "id": "4319ebca-c2fc-5b1f-95fa-b36b37274071",
@@ -2867,7 +2867,7 @@
       "sourceDateText": "dec",
       "sourceValue": "antigua",
       "sourceRawLine": "* dec: antigua",
-      "reviewState": "needs_review"
+      "reviewState": "unreviewed"
     },
     {
       "id": "44ae625f-5eac-553f-a606-6983df5929c6",
@@ -3056,7 +3056,7 @@
       "sourceDateText": "feb/mar",
       "sourceValue": "st. petersburg",
       "sourceRawLine": "* feb/mar: st. petersburg",
-      "reviewState": "needs_review"
+      "reviewState": "unreviewed"
     },
     {
       "id": "0d376ac2-7262-5072-a188-d18e89ccaae6",
@@ -3754,6 +3754,18 @@
       }
     }
   ],
+  "currentState": {
+    "location": {
+      "canonical_name": "Sarajevo",
+      "country_code": "BA",
+      "country_name": "Bosnia and Herzegovina",
+      "state": "approved",
+      "provenance": {
+        "authority": "Joe Burt",
+        "recorded_at": "2026-08-27"
+      }
+    }
+  },
   "review": {
     "unresolvedPlaceLabels": [
       "bohinj",
@@ -3766,14 +3778,13 @@
       "bali",
       "palawan",
       "siargao",
-      "polignano de mare",
       "sicily",
       "galicia"
     ],
-    "currentLocationConflict": {
-      "sourceLatest": "warsaw",
-      "existingOsNow": "Sarajevo",
-      "decision": "unresolved_do_not_overwrite_now"
+    "currentLocationResolution": {
+      "chronologyLatest": "warsaw",
+      "approvedNow": "Sarajevo",
+      "decision": "resolved_keep_chronology_and_now_separate"
     }
   },
   "mapAttribution": "GeoNames geographical database, CC BY 4.0"
