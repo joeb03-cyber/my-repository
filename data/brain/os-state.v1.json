@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "brain-os-state.local.v1",
+  "softwareUpdate": {
+    "versionLabel": "Stage 12",
+    "new": ["Notes can now be maintained without code"],
+    "currentlyExploring": ["A smaller, more alive personal internet"],
+    "performance": ["Better signal-to-noise ratio"],
+    "knownIssues": ["Still becoming a person"]
+  },
+  "trash": [
+    { "id": "a3bef66e-d759-4a63-9514-49a46d2a4001", "title": "Being productive means being valuable", "description": "Retired belief", "category": "belief", "trashedAt": "2023-01-01" },
+    { "id": "a3bef66e-d759-4a63-9514-49a46d2a4002", "title": "The five-year plan", "description": "Abandoned with affection", "category": "document", "trashedAt": null },
+    { "id": "a3bef66e-d759-4a63-9514-49a46d2a4003", "title": "Cold showers fix everything", "description": "Experiment: inconclusive", "category": "experiment", "trashedAt": null },
+    { "id": "a3bef66e-d759-4a63-9514-49a46d2a4004", "title": "Old About page copy", "description": "Identity superseded", "category": "identity", "trashedAt": "2026-08-27" }
+  ]
+}

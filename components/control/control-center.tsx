@@ -1,0 +1,131 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+import { Archive, ArrowDown, ArrowLeft, ArrowUp, Check, ChevronRight, CircleUserRound, Eye, FilePlus2, FileText, ListPlus, MapPin, Pin, Plus, RefreshCw, Save, Trash2, X } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+type Module = "notes" | "now" | "update" | "trash";
+type BlockType = "paragraph" | "heading1" | "heading2" | "bullet" | "quote";
+type Block = { id: string; type: BlockType; text: string };
+type Link = { label: string; url: string };
+type Note = { id?: string; title: string; slug: string; excerpt: string; bodyMarkdown: string; publicationState: "draft" | "published"; pinned: boolean; folderSlug: string | null; tags: string[]; sourcePublishedAt: string | null; publishedAt: string | null; editorialNotice: string; externalLinks: Link[]; updatedAt?: string };
+type ControlData = { admin: { displayName: string; email: string }; notes: Note[]; folders: Array<{ id: string; slug: string; label: string }>; currentState: any; softwareUpdate: any; trash: any[] };
+
+const blankNote = (): Note => ({ title: "", slug: "", excerpt: "", bodyMarkdown: "", publicationState: "draft", pinned: false, folderSlug: "ideas", tags: [], sourcePublishedAt: null, publishedAt: null, editorialNotice: "", externalLinks: [] });
+
+export default function ControlCenter() {
+  const [data, setData] = useState<ControlData | null>(null);
+  const [module, setModule] = useState<Module>("notes");
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+  const [mobileDetail, setMobileDetail] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [toast, setToast] = useState("");
+
+  async function load() {
+    setLoading(true); setError("");
+    const response = await fetch("/api/control/content", { cache: "no-store" });
+    if (response.status === 401) { window.location.href = "/control/login"; return; }
+    const value = await response.json();
+    if (!response.ok) setError(value.error || "Control Center could not load.");
+    else { setData(value); setSelectedNote((current) => current ? value.notes.find((note: Note) => note.id === current.id) || current : value.notes[0] || null); }
+    setLoading(false);
+  }
+  useEffect(() => { load(); }, []);
+  function notify(message: string) { setToast(message); window.setTimeout(() => setToast(""), 2600); }
+
+  if (loading && !data) return <main className="control-loading"><RefreshCw/><strong>Opening Control Center…</strong></main>;
+  if (error && !data) return <main className="control-loading"><strong>Something interrupted the signal.</strong><p>{error}</p><button onClick={load}>Try again</button></main>;
+  if (!data) return null;
+
+  return <main className="control-center">
+    <header className="control-topbar"><div className="control-brand"><span>S</span><div><strong>Control Center</strong><small>Synergetic Human</small></div></div><div className="control-user"><span><strong>{data.admin.displayName}</strong><small>Administrator</small></span><CircleUserRound/><form action="/control/logout" method="post"><button>Sign out</button></form></div></header>
+    <aside className="control-nav">
+      <div><span>EDIT</span><NavButton id="notes" label="Notes" icon={<FileText/>} active={module === "notes"} onClick={() => { setModule("notes"); setMobileDetail(false); }}/><NavButton id="now" label="NOW" icon={<MapPin/>} active={module === "now"} onClick={() => { setModule("now"); setMobileDetail(true); }}/><NavButton id="update" label="Software Update" icon={<RefreshCw/>} active={module === "update"} onClick={() => { setModule("update"); setMobileDetail(true); }}/><NavButton id="trash" label="Trash" icon={<Trash2/>} active={module === "trash"} onClick={() => { setModule("trash"); setMobileDetail(true); }}/></div>
+      <footer><a href="/" target="_blank">Open public OS <Eye/></a><small>Changes appear on staging after save.</small></footer>
+    </aside>
+    <section className={`control-workspace ${mobileDetail ? "shows-detail" : "shows-index"}`}>
+      {module === "notes" && <NotesModule data={data} selected={selectedNote} setSelected={(note) => { setSelectedNote(note); setMobileDetail(true); }} onBack={() => setMobileDetail(false)} reload={load} notify={notify}/>} 
+      {module === "now" && <NowEditor state={data.currentState} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>} 
+      {module === "update" && <SoftwareEditor update={data.softwareUpdate} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>} 
+      {module === "trash" && <TrashEditor items={data.trash} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>} 
+    </section>
+    {toast && <div className="control-toast"><Check/>{toast}</div>}
+  </main>;
+}
+
+function NavButton({ label, icon, active, onClick }: { id: string; label: string; icon: React.ReactNode; active: boolean; onClick: () => void }) { return <button className={active ? "is-active" : ""} onClick={onClick}>{icon}<strong>{label}</strong><ChevronRight/></button>; }
+
+function NotesModule({ data, selected, setSelected, onBack, reload, notify }: { data: ControlData; selected: Note | null; setSelected: (note: Note) => void; onBack: () => void; reload: () => Promise<void>; notify: (value: string) => void }) {
+  const [query, setQuery] = useState("");
+  const filtered = data.notes.filter((note) => `${note.title} ${note.tags.join(" ")}`.toLowerCase().includes(query.toLowerCase()));
+  return <div className="control-notes">
+    <section className="control-note-index"><div className="mobile-section-head"><strong>Notes</strong></div><div className="control-section-title"><div><h1>Notes</h1><p>{data.notes.length} living documents</p></div><button onClick={() => setSelected(blankNote())}><FilePlus2/> New</button></div><label className="control-search">⌕<input placeholder="Search notes" value={query} onChange={(event) => setQuery(event.target.value)}/></label><div className="control-note-list">{filtered.map((note) => <button key={note.id} className={selected?.id === note.id ? "is-selected" : ""} onClick={() => setSelected(note)}><span><strong>{note.title || "Untitled"}</strong>{note.pinned && <Pin/>}</span><small>{note.publicationState === "published" ? "Published" : "Draft"} · {note.folderSlug || "No folder"}</small><p>{note.excerpt || "No summary yet."}</p><ChevronRight/></button>)}</div></section>
+    <NoteEditor key={selected?.id || "new"} note={selected || blankNote()} folders={data.folders} onBack={onBack} reload={reload} notify={notify}/>
+  </div>;
+}
+
+function NoteEditor({ note: initial, folders, onBack, reload, notify }: { note: Note; folders: ControlData["folders"]; onBack: () => void; reload: () => Promise<void>; notify: (value: string) => void }) {
+  const [note, setNote] = useState<Note>({ ...initial, externalLinks: initial.externalLinks || [], tags: initial.tags || [] });
+  const [blocks, setBlocks] = useState<Block[]>(parseMarkdown(initial.bodyMarkdown));
+  const [preview, setPreview] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const markdown = useMemo(() => serializeBlocks(blocks), [blocks]);
+  const update = (changes: Partial<Note>) => setNote((current) => ({ ...current, ...changes }));
+  const changeTitle = (title: string) => update({ title, ...(!note.id || !note.slug ? { slug: slugify(title) } : {}) });
+
+  async function save(publicationState: "draft" | "published") {
+    if (publicationState === "published" && !window.confirm("Publish this note to the public OS now?")) return;
+    if (publicationState === "draft" && note.publicationState === "published" && !window.confirm("Unpublish this note and return it to Drafts?")) return;
+    setSaving(true);
+    const response = await action({ action: "save-note", note: { ...note, bodyMarkdown: markdown, publicationState }, confirmPublish: publicationState === "published" });
+    setSaving(false);
+    if (!response.ok) return window.alert(response.error);
+    notify(publicationState === "published" ? "Note published" : "Draft saved"); await reload();
+  }
+  async function archive() {
+    if (!note.id || !window.confirm("Archive this note? It will disappear publicly but can be recovered from the database.")) return;
+    const response = await action({ action: "archive-note", id: note.id, confirm: true });
+    if (!response.ok) return window.alert(response.error); notify("Note archived"); await reload(); onBack();
+  }
+  return <section className="control-note-editor">
+    <header className="editor-header"><button className="mobile-back" onClick={onBack}><ArrowLeft/> Notes</button><Status state={note.publicationState}/><div><button onClick={() => setPreview(true)}><Eye/> Preview</button><button className="primary" disabled={saving} onClick={() => save(note.publicationState)}><Save/>{saving ? "Saving…" : note.publicationState === "published" ? "Update" : "Save draft"}</button></div></header>
+    <div className="editor-scroll"><label className="title-input"><span>Title</span><input value={note.title} onChange={(event) => changeTitle(event.target.value)} placeholder="A note worth keeping"/></label><div className="editor-two"><Field label="Slug"><input value={note.slug} onChange={(event) => update({ slug: slugify(event.target.value) })} placeholder="a-note-worth-keeping"/></Field><Field label="Folder"><select value={note.folderSlug || ""} onChange={(event) => update({ folderSlug: event.target.value || null })}><option value="">No folder</option>{folders.map((folder) => <option key={folder.id} value={folder.slug}>{folder.label}</option>)}</select></Field></div><Field label="Short description"><textarea rows={2} value={note.excerpt} onChange={(event) => update({ excerpt: event.target.value })} placeholder="What is this note about?"/></Field>
+      <div className="editor-writing-head"><div><strong>Writing</strong><small>Build the note in simple blocks. No Markdown required.</small></div><button onClick={() => setBlocks((current) => [...current, newBlock("paragraph")])}><Plus/> Add block</button></div><div className="block-editor">{blocks.map((block, index) => <BlockRow key={block.id} block={block} index={index} total={blocks.length} update={(value) => setBlocks((current) => current.map((item) => item.id === block.id ? { ...item, ...value } : item))} move={(direction) => setBlocks((current) => moveItem(current, index, index + direction))} remove={() => setBlocks((current) => current.filter((item) => item.id !== block.id))}/>)}</div>
+      <div className="editor-two"><Field label="Tags"><input value={note.tags.join(", ")} onChange={(event) => update({ tags: event.target.value.split(",").map((tag) => tag.trim()).filter(Boolean) })} placeholder="travel, ideas"/></Field><Field label="Original/source date"><input type="date" value={note.sourcePublishedAt || ""} onChange={(event) => update({ sourcePublishedAt: event.target.value || null })}/></Field></div><Field label="Editorial context (optional)"><textarea rows={2} value={note.editorialNotice} onChange={(event) => update({ editorialNotice: event.target.value })} placeholder="A subtle public note about context or uncertainty"/></Field>
+      <LinkEditor links={note.externalLinks} setLinks={(externalLinks) => update({ externalLinks })}/>
+      <div className="publish-panel"><label><input type="checkbox" checked={note.pinned} onChange={(event) => update({ pinned: event.target.checked })}/><span><strong>Pin this note</strong><small>Keep it easy to find in public Notes.</small></span></label><div><button onClick={() => save("draft")}>{note.publicationState === "published" ? "Unpublish" : "Save draft"}</button><button className="publish" onClick={() => save("published")}>{note.publicationState === "published" ? "Update published note" : "Review & publish"}</button></div></div>{note.id && <button className="danger-link" onClick={archive}><Archive/> Archive note</button>}
+    </div>
+    {preview && <Preview note={{ ...note, bodyMarkdown: markdown }} close={() => setPreview(false)}/>} 
+  </section>;
+}
+
+function BlockRow({ block, index, total, update, move, remove }: { block: Block; index: number; total: number; update: (value: Partial<Block>) => void; move: (direction: number) => void; remove: () => void }) { return <div className={`writing-block is-${block.type}`}><div className="block-controls"><select value={block.type} onChange={(event) => update({ type: event.target.value as BlockType })}><option value="paragraph">Text</option><option value="heading1">Title</option><option value="heading2">Heading</option><option value="bullet">Bullet</option><option value="quote">Quote</option></select><button disabled={index === 0} onClick={() => move(-1)} aria-label="Move up"><ArrowUp/></button><button disabled={index === total - 1} onClick={() => move(1)} aria-label="Move down"><ArrowDown/></button><button onClick={remove} aria-label="Remove block"><X/></button></div><textarea rows={block.type === "paragraph" || block.type === "quote" ? 3 : 1} value={block.text} onChange={(event) => update({ text: event.target.value })} placeholder={block.type === "heading2" ? "Section heading" : block.type === "bullet" ? "List item" : "Write something…"}/></div>; }
+
+function LinkEditor({ links, setLinks }: { links: Link[]; setLinks: (links: Link[]) => void }) { return <div className="link-editor"><div><strong>Links</strong><button onClick={() => setLinks([...links, { label: "", url: "" }])}><Plus/> Add link</button></div>{links.map((link, index) => <div key={index}><input value={link.label} onChange={(event) => setLinks(links.map((item, i) => i === index ? { ...item, label: event.target.value } : item))} placeholder="Label"/><input value={link.url} onChange={(event) => setLinks(links.map((item, i) => i === index ? { ...item, url: event.target.value } : item))} placeholder="https://…" inputMode="url"/><button onClick={() => setLinks(links.filter((_, i) => i !== index))}><X/></button></div>)}</div>; }
+
+function Preview({ note, close }: { note: Note; close: () => void }) { return <div className="control-preview"><header><div><Status state={note.publicationState}/><span>Private preview</span></div><button onClick={close}><X/> Close</button></header><article>{note.editorialNotice && <aside>{note.editorialNotice}</aside>}<ReactMarkdown remarkPlugins={[remarkGfm]}>{note.bodyMarkdown}</ReactMarkdown></article></div>; }
+
+function NowEditor({ state: initial, onBack, reload, notify }: { state: any; onBack: () => void; reload: () => Promise<void>; notify: (value: string) => void }) {
+  const [state, setState] = useState(initial || {}); const [saving, setSaving] = useState(false);
+  const set = (key: string, value: any) => setState((current: any) => ({ ...current, [key]: value }));
+  async function save() { setSaving(true); const response = await action({ action: "save-current-state", state }); setSaving(false); if (!response.ok) return window.alert(response.error); notify("NOW updated everywhere"); await reload(); }
+  return <EditorPage title="NOW" subtitle="The living state of the system. Blank is completely fine." onBack={onBack} action={<button className="primary" onClick={save} disabled={saving}><Save/>{saving ? "Saving…" : "Update NOW"}</button>}><div className="now-grid"><Field label="City"><input value={state.where?.city || ""} onChange={(event) => set("where", { ...state.where, city: event.target.value })}/></Field><Field label="Country"><input value={state.where?.country || ""} onChange={(event) => set("where", { ...state.where, country: event.target.value })}/></Field><Field label="Coordinates (optional)"><input value={state.where?.coordinates || ""} onChange={(event) => set("where", { ...state.where, coordinates: event.target.value })}/></Field><Field label="Reading"><input value={state.reading || ""} onChange={(event) => set("reading", event.target.value)} placeholder="Book title or leave blank"/></Field><Field label="Thinking about"><input value={state.thinking || ""} onChange={(event) => set("thinking", event.target.value)}/></Field><Field label="Current thought"><textarea rows={2} value={state.currentThought || ""} onChange={(event) => set("currentThought", event.target.value)}/></Field><ListText label="Rabbit holes" value={state.rabbitHoles || []} onChange={(value) => set("rabbitHoles", value)}/><ListText label="Experiments" value={state.experiments || []} onChange={(value) => set("experiments", value)}/><Field label="Training"><input value={state.training || ""} onChange={(event) => set("training", event.target.value)}/></Field><Field label="Eating lately"><input value={state.eatingLately || ""} onChange={(event) => set("eatingLately", event.target.value)}/></Field><Field label="Listening to"><input value={state.listening || ""} onChange={(event) => set("listening", event.target.value)}/></Field><Field label="Trying to understand"><input value={state.tryingToUnderstand || ""} onChange={(event) => set("tryingToUnderstand", event.target.value)}/></Field><Field label="Making"><input value={state.making || ""} onChange={(event) => set("making", event.target.value)}/></Field><Field label="Current question"><textarea rows={2} value={state.currentQuestion || ""} onChange={(event) => set("currentQuestion", event.target.value)}/></Field></div><section className="battery-editor"><div><strong>Human Battery</strong><small>Manual check-in only. Clear it whenever it stops feeling current.</small></div><label><input type="checkbox" checked={typeof state.humanBattery?.level === "number"} onChange={(event) => set("humanBattery", event.target.checked ? { level: 50, label: "Half charged", note: "" } : { level: null, label: "Unreported", note: null })}/> Report a battery level</label>{typeof state.humanBattery?.level === "number" && <><input type="range" min="0" max="100" value={state.humanBattery.level} onChange={(event) => set("humanBattery", { ...state.humanBattery, level: Number(event.target.value) })}/><strong>{state.humanBattery.level}%</strong><input value={state.humanBattery.label || ""} onChange={(event) => set("humanBattery", { ...state.humanBattery, label: event.target.value })} placeholder="Running beautifully weird"/><input value={state.humanBattery.note || ""} onChange={(event) => set("humanBattery", { ...state.humanBattery, note: event.target.value })} placeholder="Optional note"/></>}</section></EditorPage>;
+}
+
+function SoftwareEditor({ update: initial, onBack, reload, notify }: { update: any; onBack: () => void; reload: () => Promise<void>; notify: (value: string) => void }) { const [update, setUpdate] = useState(initial || { versionLabel: "Current", new: [], currentlyExploring: [], performance: [], knownIssues: [] }); const [saving, setSaving] = useState(false); async function save(){setSaving(true);const response=await action({action:"save-software-update",update});setSaving(false);if(!response.ok)return window.alert(response.error);notify("Software Update published");await reload();} return <EditorPage title="Software Update" subtitle="Release notes for a human in motion." onBack={onBack} action={<button className="primary" onClick={save} disabled={saving}><Save/>{saving?"Saving…":"Publish update"}</button>}><Field label="Version label"><input value={update.versionLabel} onChange={(event)=>setUpdate({...update,versionLabel:event.target.value})}/></Field><ItemList title="New" items={update.new||[]} setItems={(items)=>setUpdate({...update,new:items})}/><ItemList title="Currently Exploring" items={update.currentlyExploring||[]} setItems={(items)=>setUpdate({...update,currentlyExploring:items})}/><ItemList title="Performance" items={update.performance||[]} setItems={(items)=>setUpdate({...update,performance:items})}/><ItemList title="Known Issues" items={update.knownIssues||[]} setItems={(items)=>setUpdate({...update,knownIssues:items})}/></EditorPage>; }
+
+function TrashEditor({ items, onBack, reload, notify }: { items: any[]; onBack: () => void; reload: () => Promise<void>; notify: (value: string) => void }) { const [editing, setEditing] = useState<any>(null); async function save(item:any){const response=await action({action:"save-trash",item});if(!response.ok)return window.alert(response.error);notify("Trash updated");setEditing(null);await reload();} async function archive(id:string){if(!window.confirm("Archive this Trash record?"))return;const response=await action({action:"archive-trash",id,confirm:true});if(!response.ok)return window.alert(response.error);notify("Trash record archived");await reload();} return <EditorPage title="Trash" subtitle="Things worth releasing, or at least laughing about later." onBack={onBack} action={<button className="primary" onClick={()=>setEditing({title:"",description:"",category:"belief",trashedAt:"",state:"trashed",visibility:"public",sortOrder:(items.length+1)*10})}><Plus/> Add record</button>}><div className="trash-control-list">{items.map((item)=><article key={item.id}><div><strong>{item.title}</strong><span>{item.category} · {item.state}</span><p>{item.description}</p></div><button onClick={()=>setEditing({...item,trashedAt:item.trashed_at,sortOrder:item.sort_order})}>Edit</button><button className="icon-danger" onClick={()=>archive(item.id)}><Archive/></button></article>)}</div>{editing&&<div className="inline-sheet"><header><strong>{editing.id?"Edit record":"New Trash record"}</strong><button onClick={()=>setEditing(null)}><X/></button></header><Field label="Title"><input value={editing.title} onChange={(event)=>setEditing({...editing,title:event.target.value})}/></Field><Field label="Short description"><textarea rows={2} value={editing.description} onChange={(event)=>setEditing({...editing,description:event.target.value})}/></Field><div className="editor-two"><Field label="Category"><input value={editing.category} onChange={(event)=>setEditing({...editing,category:event.target.value})}/></Field><Field label="Trashed date"><input type="date" value={editing.trashedAt||""} onChange={(event)=>setEditing({...editing,trashedAt:event.target.value})}/></Field><Field label="State"><select value={editing.state} onChange={(event)=>setEditing({...editing,state:event.target.value})}><option value="trashed">Trashed</option><option value="restored">Put Back</option><option value="active">Active</option></select></Field><Field label="Visibility"><select value={editing.visibility} onChange={(event)=>setEditing({...editing,visibility:event.target.value})}><option value="public">Public</option><option value="private">Private</option></select></Field></div><button className="primary full" onClick={()=>save(editing)}><Save/> Save record</button></div>}</EditorPage>; }
+
+function EditorPage({ title, subtitle, onBack, action: actionNode, children }: { title: string; subtitle: string; onBack: () => void; action: React.ReactNode; children: React.ReactNode }) { return <section className="control-editor-page"><header><button className="mobile-back" onClick={onBack}><ArrowLeft/> Back</button><div><h1>{title}</h1><p>{subtitle}</p></div>{actionNode}</header><div className="control-form-scroll">{children}</div></section>; }
+function Field({ label, children }: { label: string; children: React.ReactNode }) { return <label className="control-field"><span>{label}</span>{children}</label>; }
+function ListText({ label, value, onChange }: { label: string; value: string[]; onChange: (value: string[]) => void }) { return <Field label={`${label} · one per line`}><textarea rows={3} value={value.join("\n")} onChange={(event)=>onChange(event.target.value.split("\n").map((item)=>item.trim()).filter(Boolean))}/></Field>; }
+function Status({ state }: { state: string }) { return <span className={`editor-status is-${state}`}><i/>{state === "published" ? "Published" : "Draft"}</span>; }
+function ItemList({ title, items, setItems }: { title: string; items: string[]; setItems: (items: string[]) => void }) { return <section className="item-list"><header><strong>{title}</strong><button onClick={()=>setItems([...items,""])}><ListPlus/> Add</button></header>{items.map((item,index)=><div key={index}><input value={item} onChange={(event)=>setItems(items.map((value,i)=>i===index?event.target.value:value))} placeholder="Short and human"/><button disabled={index===0} onClick={()=>setItems(moveItem(items,index,index-1))}><ArrowUp/></button><button disabled={index===items.length-1} onClick={()=>setItems(moveItem(items,index,index+1))}><ArrowDown/></button><button onClick={()=>setItems(items.filter((_,i)=>i!==index))}><X/></button></div>)}</section>; }
+async function action(body: any) { const response=await fetch("/api/control/action",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});const value=await response.json();return{ok:response.ok,...value}; }
+function slugify(value:string){return value.toLowerCase().trim().replace(/['’]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+function newBlock(type:BlockType,text=""):Block{return{id:crypto.randomUUID(),type,text};}
+function moveItem<T>(items:T[],from:number,to:number){if(to<0||to>=items.length)return items;const next=[...items];const [item]=next.splice(from,1);next.splice(to,0,item);return next;}
+function parseMarkdown(markdown:string):Block[]{if(!markdown.trim())return[newBlock("paragraph")];return markdown.split("\n").filter((line)=>line.trim()).map((line)=>line.startsWith("## ")?newBlock("heading2",line.slice(3)):line.startsWith("# ")?newBlock("heading1",line.slice(2)):line.startsWith("- ")?newBlock("bullet",line.slice(2)):line.startsWith("> ")?newBlock("quote",line.slice(2)):newBlock("paragraph",line));}
+function serializeBlocks(blocks:Block[]){let output="";let previous:BlockType|null=null;for(const block of blocks){if(!block.text.trim())continue;const prefix=block.type==="heading1"?"# ":block.type==="heading2"?"## ":block.type==="bullet"?"- ":block.type==="quote"?"> ":"";const separator=output&&!(previous==="bullet"&&block.type==="bullet")?"\n\n":output?"\n":"";output+=separator+prefix+block.text.trim();previous=block.type;}return output;}

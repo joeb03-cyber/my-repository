@@ -47,5 +47,6 @@ export interface BrainCurrentState {
   tryingToUnderstand: string | null;
   making: string | null;
   currentQuestion: string | null;
+  currentThought: string | null;
   humanBattery: { level: number | null; label: string; note: string | null };
 }

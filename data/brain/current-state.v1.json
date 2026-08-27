@@ -17,6 +17,7 @@
   "tryingToUnderstand": null,
   "making": "Synergetic Human",
   "currentQuestion": null,
+  "currentThought": null,
   "humanBattery": {
     "level": null,
     "label": "Unreported",

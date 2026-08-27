@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Archive, ArrowUpRight, ChevronRight, FlaskConical, MapPin, Orbit, Search, Wind } from "lucide-react";
 import { LibraryApp } from "./library-app";
 import type { AppId } from "@/data/prototype";
@@ -9,6 +9,8 @@ import AppIcon, { iconForApp } from "./app-icon";
 import MapsApp from "./maps-app";
 import ContactsApp from "./contacts-app";
 import NotesApp from "./notes-app";
+import osStateJson from "@/data/brain/os-state.v1.json";
+import type { BrainOsState } from "@/lib/brain/os-state-types";
 
 export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: AppId; onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (appId: AppId) => void }) {
   if (appId === "finder") return <Finder onOpenApp={onOpenApp} />;
@@ -76,8 +78,8 @@ function Settings() {
 }
 
 function Trash() {
-  const seed = [["Being productive means being valuable", "belief · 2023"], ["The five-year plan", "document · abandoned"], ["Cold showers fix everything", "experiment · inconclusive"], ["Old About page copy", "identity · superseded"]];
-  const [items, setItems] = useState(seed);
-  const putBack = (name: string) => setItems((current) => current.filter(([item]) => item !== name));
-  return <div className="trash-app system-app"><div className="os-toolbar"><strong>Trash</strong><span>{items.length} {items.length === 1 ? "item" : "items"}</span><button className="toolbar-button" disabled title="Permanent deletion is disabled in staging">Empty</button></div><div className="trash-list"><div className="trash-columns"><span>Name</span><span>Kind</span><span/></div>{items.map(([name,kind])=><div className="os-list-row" key={name}><span className="trashed-page"/><strong>{name}</strong><small>{kind}</small><button onClick={() => putBack(name)}>Put Back</button></div>)}{!items.length && <div className="trash-empty">Nothing here. Suspiciously healthy.</div>}</div><footer>Some things are kept here in case they become funny later.</footer></div>;
+  const [items, setItems] = useState((osStateJson as BrainOsState).trash);
+  useEffect(() => { fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then((state: BrainOsState) => setItems(state.trash)).catch(() => undefined); }, []);
+  const putBack = (id: string) => setItems((current) => current.filter((item) => item.id !== id));
+  return <div className="trash-app system-app"><div className="os-toolbar"><strong>Trash</strong><span>{items.length} {items.length === 1 ? "item" : "items"}</span><button className="toolbar-button" disabled title="Permanent deletion is disabled in staging">Empty</button></div><div className="trash-list"><div className="trash-columns"><span>Name</span><span>Kind</span><span/></div>{items.map((item)=><div className="os-list-row" key={item.id}><span className="trashed-page"/><strong>{item.title}</strong><small>{item.category}{item.description ? ` · ${item.description}` : ""}</small><button onClick={() => putBack(item.id)}>Put Back</button></div>)}{!items.length && <div className="trash-empty">Nothing here. Suspiciously healthy.</div>}</div><footer>Some things are kept here in case they become funny later.</footer></div>;
 }

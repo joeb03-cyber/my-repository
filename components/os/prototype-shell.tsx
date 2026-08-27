@@ -7,8 +7,10 @@ import type { AppId } from "@/data/prototype";
 import { wallpapers } from "@/data/prototype";
 import booksIndexJson from "@/data/brain/books-index.v1.json";
 import currentStateJson from "@/data/brain/current-state.v1.json";
+import osStateJson from "@/data/brain/os-state.v1.json";
 import type { BrainBookSummary, BrainBooksIndex } from "@/lib/brain/types";
 import type { BrainCurrentState } from "@/lib/brain/notes-types";
+import type { BrainOsState } from "@/lib/brain/os-state-types";
 import AppContent from "./app-content";
 import { BookDetail } from "./library-app";
 import AppIcon, { type AppIconName } from "./app-icon";
@@ -67,6 +69,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const [activeMenu, setActiveMenu] = useState<"file" | "explore" | "view" | null>(null);
   const [statusPanel, setStatusPanel] = useState<"battery" | "wifi" | "update" | null>(null);
   const [currentState, setCurrentState] = useState<BrainCurrentState>(currentStateJson as BrainCurrentState);
+  const [osState, setOsState] = useState<BrainOsState>(osStateJson as BrainOsState);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const dockRef = useRef<HTMLElement>(null);
   const dockAnimationRef = useRef<number | null>(null);
@@ -126,6 +129,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
 
   useEffect(() => {
     fetch("/api/brain/current-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
+    fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setOsState).catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -253,7 +257,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           <Clock />
           {statusPanel === "battery" && <StatusPopover title="Human Battery"><div className="battery-readout"><BatteryGlyph level={currentState.humanBattery.level}/><strong>{currentState.humanBattery.label}</strong></div><p>{currentState.humanBattery.note || "No check-in note."}</p><small>Manual check-in only · no health data inferred</small></StatusPopover>}
           {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Consensus Reality</strong><small>Connected, with occasional packet loss</small></span><i/></div><p className="popover-footnote">Other networks may be available.</p></StatusPopover>}
-          {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>11</span></div><strong>Synergetic Human is up to date</strong><p>Currently making: {currentState.making || "Not reported"}</p><dl><div><dt>Exploring</dt><dd>{currentState.rabbitHoles[0] || "Not reported"}</dd></div><div><dt>Known issue</dt><dd>Still becoming a person</dd></div></dl></StatusPopover>}
+          {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>{osState.softwareUpdate.versionLabel}</span></div><strong>Synergetic Human is up to date</strong><p>{osState.softwareUpdate.new[0] || `Currently making: ${currentState.making || "Not reported"}`}</p><dl><div><dt>Exploring</dt><dd>{osState.softwareUpdate.currentlyExploring[0] || "Not reported"}</dd></div><div><dt>Performance</dt><dd>{osState.softwareUpdate.performance[0] || "Nominally strange"}</dd></div><div><dt>Known issue</dt><dd>{osState.softwareUpdate.knownIssues[0] || "None reported"}</dd></div></dl></StatusPopover>}
         </div>
       </header>
 
@@ -316,7 +320,7 @@ function Reading({ state, onOpen }: { state: BrainCurrentState; onOpen: () => vo
 }
 
 function Thinking({ state }: { state: BrainCurrentState }) {
-  const thought = state.currentQuestion || state.thinking || state.tryingToUnderstand;
+  const thought = state.currentThought || state.currentQuestion || state.thinking || state.tryingToUnderstand;
   return <><blockquote className="thinking-quote">{thought ? `“${thought}”` : "Current thought not set yet."}</blockquote><div className="thought-meta"><span>{state.rabbitHoles.length ? "CURRENT RABBIT HOLE" : "OPEN CHANNEL"}</span><span>{state.rabbitHoles[0] || "waiting for signal"}</span></div></>;
 }
 
