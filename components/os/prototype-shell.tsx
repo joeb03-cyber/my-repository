@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import type { AppId } from "@/data/prototype";
@@ -63,6 +63,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const [launchingApp, setLaunchingApp] = useState<AppId | null>(null);
   const [activeMenu, setActiveMenu] = useState<"file" | "explore" | "view" | null>(null);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
+  const dockRef = useRef<HTMLElement>(null);
+  const dockAnimationRef = useRef<number | null>(null);
 
   const focusWindow = useCallback((id: string) => {
     setWindows((current) => {
@@ -172,6 +174,32 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
     closeMenus();
   };
 
+  const resetDockTransforms = useCallback(() => {
+    if (dockAnimationRef.current !== null) cancelAnimationFrame(dockAnimationRef.current);
+    dockAnimationRef.current = null;
+    dockRef.current?.querySelectorAll<HTMLElement>(".dock-item").forEach((item) => {
+      item.style.removeProperty("--dock-scale");
+      item.style.removeProperty("--dock-lift");
+    });
+  }, []);
+
+  const magnifyDock = useCallback((event: React.PointerEvent<HTMLElement>) => {
+    if (event.pointerType === "touch") return;
+    const pointerX = event.clientX;
+    if (dockAnimationRef.current !== null) cancelAnimationFrame(dockAnimationRef.current);
+    dockAnimationRef.current = requestAnimationFrame(() => {
+      dockRef.current?.querySelectorAll<HTMLElement>(".dock-item").forEach((item) => {
+        const bounds = item.getBoundingClientRect();
+        const distance = pointerX - (bounds.left + bounds.width / 2);
+        const influence = Math.exp(-(distance * distance) / (2 * 47 * 47));
+        const scale = 1 + .38 * influence;
+        item.style.setProperty("--dock-scale", scale.toFixed(3));
+        item.style.setProperty("--dock-lift", `${(-11 * influence).toFixed(2)}px`);
+      });
+      dockAnimationRef.current = null;
+    });
+  }, []);
+
   const renderWindowContent = (win: WindowState) => {
     if (win.kind === "currently") return <Currently />;
     if (win.kind === "reading") return <Reading onOpen={() => openApp("library")} />;
@@ -187,7 +215,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       {wallpapers.map((wallpaper, index) => <div key={wallpaper.id} className={`wallpaper ${wallpaper.className} ${index === wallpaperIndex ? "is-visible" : ""}`} aria-hidden="true" />)}
       <header className="menu-bar">
         <div className="menu-left">
-          <button className="menu-brand" onClick={() => { router.push("/"); closeMenus(); }}><strong>Synergetic Human</strong></button>
+          <button className="menu-brand" aria-label="Synergetic Human home" title="Synergetic Human" onClick={() => { router.push("/"); closeMenus(); }}><span aria-hidden="true">S</span></button>
+          <strong className="menu-app-name">{currentApp ? appNames[currentApp] : "Synergetic Human"}</strong>
           <nav className="system-menus" aria-label="System menus">
             <SystemMenu label="File" open={activeMenu === "file"} onToggle={() => setActiveMenu(activeMenu === "file" ? null : "file")}>
               <MenuAction label="Open Books" shortcut="⌘L" onClick={() => { openApp("library"); closeMenus(); }} />
@@ -205,7 +234,13 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
             </SystemMenu>
           </nav>
         </div>
-        <div className="menu-status"><span>Sarajevo</span><span>22° · clear-ish</span><Clock /></div>
+        <div className="menu-status">
+          <span className="menu-location">Sarajevo</span>
+          <span>22°</span>
+          <button className="status-icon" aria-label="Network connected" title="Network connected"><WifiGlyph /></button>
+          <button className="status-icon" aria-label="System status" title="System status"><ControlGlyph /></button>
+          <Clock />
+        </div>
       </header>
 
       <section className="desktop-stage" aria-label="Synergetic Human desktop" onPointerDown={closeMenus} onContextMenu={(event) => { event.preventDefault(); setActiveMenu(null); setContextMenu({ x: Math.min(event.clientX, window.innerWidth - 190), y: Math.min(event.clientY, window.innerHeight - 220) }); }}>
@@ -229,7 +264,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       </section>
 
       <button className="wallpaper-caption" onClick={() => setWallpaperIndex((wallpaperIndex + 1) % wallpapers.length)} title="Next wallpaper"><span>●</span> {currentWallpaper.label} · {currentWallpaper.location}<small>{currentWallpaper.credit}</small></button>
-      <nav className="dock" aria-label="Applications">
+      <nav ref={dockRef} className="dock" aria-label="Applications" onPointerMove={magnifyDock} onPointerLeave={resetDockTransforms}>
         {apps.map(({ id, label, icon, separated }) => <span className={separated ? "dock-entry dock-entry--separated" : "dock-entry"} key={id}>
           <button className={`dock-item ${openApps.has(id) ? "is-open" : ""} ${minimizedApps.has(id) ? "is-minimized" : ""} ${launchingApp === id ? "is-launching" : ""}`} onClick={() => openApp(id)} aria-label={`${label}${minimizedApps.has(id) ? ", minimized" : ""}`}>
             <span className="dock-label">{label}</span><AppIcon name={icon} /><span className="dock-running" />
@@ -239,6 +274,14 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       <div className="route-placeholder" aria-hidden="true">{children}</div>
     </main>
   );
+}
+
+function WifiGlyph() {
+  return <svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1.5 4.8a11.6 11.6 0 0115 0M4.2 7.7a7.4 7.4 0 019.6 0M7.1 10.5a3 3 0 013.8 0"/><circle cx="9" cy="12.2" r=".8"/></svg>;
+}
+
+function ControlGlyph() {
+  return <svg viewBox="0 0 18 14" aria-hidden="true"><path d="M2 4h14M2 10h14"/><circle cx="6" cy="4" r="2"/><circle cx="12" cy="10" r="2"/></svg>;
 }
 
 function Currently() {

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { Maximize2, Minus, X } from "lucide-react";
 
 export interface WindowState {
   id: string;
@@ -79,9 +78,15 @@ export default function WindowFrame({ windowState: win, children, onFocus, onClo
     >
       <header className="os-window__bar" onPointerDown={(event) => begin("drag", event)} onDoubleClick={() => onZoom(win.id)}>
         <div className="window-controls">
-          <button className="window-control window-control--close" onPointerDown={(event) => event.stopPropagation()} onClick={() => onClose(win.id)} aria-label={`Close ${win.title}`}><X /></button>
-          <button className="window-control window-control--min" onPointerDown={(event) => event.stopPropagation()} onClick={() => onMinimize(win.id)} aria-label={`Minimize ${win.title}`}><Minus /></button>
-          <button className="window-control window-control--zoom" onPointerDown={(event) => event.stopPropagation()} onClick={() => onZoom(win.id)} aria-label={`${win.zoomed ? "Restore" : "Expand"} ${win.title}`}><Maximize2 /></button>
+          <button className="window-control window-control--close" onPointerDown={(event) => event.stopPropagation()} onClick={() => onClose(win.id)} aria-label={`Close ${win.title}`}>
+            <svg viewBox="0 0 8 8" aria-hidden="true"><path d="M2 2l4 4M6 2L2 6" /></svg>
+          </button>
+          <button className="window-control window-control--min" onPointerDown={(event) => event.stopPropagation()} onClick={() => onMinimize(win.id)} aria-label={`Minimize ${win.title}`}>
+            <svg viewBox="0 0 8 8" aria-hidden="true"><path d="M1.5 4h5" /></svg>
+          </button>
+          <button className="window-control window-control--zoom" onPointerDown={(event) => event.stopPropagation()} onClick={() => onZoom(win.id)} aria-label={`${win.zoomed ? "Restore" : "Expand"} ${win.title}`}>
+            <svg viewBox="0 0 8 8" aria-hidden="true"><path className="zoom-glyph zoom-glyph--top" d="M1.3 5.3V1.3h4z" /><path className="zoom-glyph zoom-glyph--bottom" d="M6.7 2.7v4h-4z" /></svg>
+          </button>
         </div>
         <span>{win.title}</span>
         <span className="window-grip">•••</span>
