@@ -34,7 +34,9 @@ These should be recreated around Synergetic Human content and data boundaries ra
 
 The reference's six 512px PNG application icons appear extremely close to Apple artwork. No asset-specific provenance or third-party attribution was found in the repository. The repository's MIT license covers the author's contribution but is not evidence that Apple-derived artwork can be relicensed. Those files are excluded.
 
-Keep the current original vectors temporarily. Commission or generate a cohesive set of original transparent 1024px raster icons with documented provenance, using familiar application categories but distinct silhouettes, internal objects, lighting, and color construction. Do not use Apple logos or copied Apple icon artwork.
+The temporary line-icon set has now been replaced with a cohesive project-owned vector suite. It uses familiar application categories but independently drawn shapes, layered gradients, internal objects, lighting, and color construction. No Apple logos, Apple raster artwork, Alana Goyal icon files, or third-party icon-pack assets are included.
+
+The source review considered WhiteSur (GPL-3.0), Big Sur Icons (MIT repository whose README reserves individual icon copyrights to their respective owners), and Apple's official design resources (restricted terms). None provided both the required fidelity and sufficiently clear artwork provenance for this web project, so no external icon assets were adopted.
 
 ## Applications
 

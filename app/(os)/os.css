@@ -879,3 +879,28 @@ button:focus-visible, input:focus-visible { outline: none; }
 @media (prefers-reduced-motion:reduce) {
   .dock .dock-item { transition:none; }
 }
+
+/* Original layered vector application artwork. */
+.app-icon {
+  border:0;
+  background:transparent!important;
+  box-shadow:0 1px 1px rgba(255,255,255,.4) inset,0 -1px 1px rgba(0,0,0,.08) inset,0 5px 11px rgba(10,18,20,.22);
+}
+.app-icon::before,.app-icon::after { display:none; }
+.app-icon svg.native-icon-artwork {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  fill:none;
+  stroke:none;
+  filter:none;
+}
+.native-icon-artwork .v-line { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.native-icon-artwork .finder-seam { stroke:rgba(255,255,255,.82); stroke-width:1.15; }
+.native-icon-artwork .finder-face { stroke:#173b61; stroke-width:1.65; }
+.native-icon-artwork .maps-road { stroke:rgba(255,255,255,.9); stroke-width:4.2; }
+.native-icon-artwork .maps-highway { stroke:#f4ce63; stroke-width:1.65; }
+.native-icon-artwork .maps-route { stroke:#e64b48; stroke-width:2.35; stroke-dasharray:1.5 1; }
+.native-icon-artwork .human-pulse-new { stroke:white; stroke-width:1.55; }
+.dock .app-icon { box-shadow:0 1px 1px rgba(255,255,255,.42) inset,0 -1px 1px rgba(0,0,0,.09) inset,0 5px 11px rgba(10,18,20,.23); }
+.finder-grid .app-icon { box-shadow:0 1px 1px rgba(255,255,255,.42) inset,0 8px 17px rgba(18,24,28,.18); }
