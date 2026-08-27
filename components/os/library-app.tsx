@@ -45,10 +45,10 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
 
   return <div className="library-app brain-library">
     <header className="library-head">
-      <div><span className="app-kicker">THE SYNERGETIC HUMAN BRAIN</span><h2>Library</h2><p>{index.bookCount} books · {index.books.reduce((sum, book) => sum + book.highlightCount, 0).toLocaleString()} readable passages</p></div>
+      <div><span className="app-kicker">THE SYNERGETIC HUMAN BRAIN</span><h2>Books</h2><p>{index.bookCount} books · {index.books.reduce((sum, book) => sum + book.highlightCount, 0).toLocaleString()} readable passages</p></div>
       <div className="library-head__actions">
         {process.env.NODE_ENV !== "production" && <button className="editorial-entry" onClick={() => setReviewOpen(true)}><SlidersHorizontal /> Review <span>{index.books.reduce((sum, book) => sum + book.reviewFlagCount, 0)}</span></button>}
-        <label className="library-search"><Search /><input value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Escape") setQuery(""); }} placeholder="Search title, author, topic…" aria-label="Search the Library" />{query && <button type="button" onClick={() => setQuery("")} aria-label="Clear Library search"><X /></button>}</label>
+        <label className="library-search"><Search /><input value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Escape") setQuery(""); }} placeholder="Search title, author, topic…" aria-label="Search Books" />{query && <button type="button" onClick={() => setQuery("")} aria-label="Clear Books search"><X /></button>}</label>
       </div>
     </header>
     <div className="library-toolbar"><div className="filter-row" aria-label="Filter books by topic">
@@ -82,11 +82,11 @@ export function BookDetail({ slug, onBack }: { slug: string; onBack?: () => void
   if (!book) return <div className="book-detail-state"><span className="library-spinner" /> Opening book…</div>;
 
   return <article className="book-detail brain-book-detail">
-    {onBack && <button className="mobile-back-inline" onClick={onBack}><ArrowLeft /> Library</button>}
+    {onBack && <button className="mobile-back-inline" onClick={onBack}><ArrowLeft /> Books</button>}
     <header className="book-detail__hero"><BookCover book={book} compact /><div><span className="app-kicker">BOOK {String(book.sourcePosition).padStart(3, "0")} · {book.highlightCount} PASSAGES</span><h2>{book.title}</h2>{book.subtitle && <p className="book-subtitle">{book.subtitle}</p>}<p className="book-author">{book.authors.join(", ")}</p><div className="tag-list">{book.topics.map((topic) => <em key={topic.slug}>{topic.label}</em>)}</div></div></header>
     {book.standouts.length > 0 && <><section className="standout-section"><Star /><div><span className="app-kicker">STARRED PASSAGES</span><h3>What stayed with me</h3></div></section><div className="standout-list">{book.standouts.map((unit) => <blockquote key={unit.id}><span>0{unit.standoutRank}</span>{unit.text}</blockquote>)}</div></>}
     <div className="detail-columns"><section className="highlight-reader"><span className="app-kicker">COMPLETE HIGHLIGHTS · SOURCE ORDER</span>
-      {!book.readerUnits.length && <div className="book-incomplete"><strong>Highlights are not available yet.</strong><p>The book belongs in the Library while its source document remains missing or inaccessible.</p></div>}
+      {!book.readerUnits.length && <div className="book-incomplete"><strong>Highlights are not available yet.</strong><p>The book belongs in Books while its source document remains missing or inaccessible.</p></div>}
       {(book.passageGroups || []).map((group) => group.kind === "structure" ? group.units.map((unit) => unit.kind === "chapter_label" ? <h3 key={unit.id}>{unit.text}</h3> : <h4 key={unit.id}>{unit.text}</h4>) : <blockquote className={`passage-group ${group.units.length > 1 ? "is-grouped" : ""}`} key={group.id} data-group-confidence={group.confidence}>{group.units.map((unit) => <div className={`passage-paragraph passage-paragraph--${unit.kind} ${unit.listStyle === "numbered" ? "is-numbered" : ""}`} key={unit.id} id={unit.sourceUnitKey}><p>{unit.text}</p>{unit.locator?.raw && <cite>{unit.locator.raw}</cite>}</div>)}</blockquote>)}
     </section><aside>
       {book.relatedBooks.length > 0 && <Relation title="Related books" items={book.relatedBooks.map((item) => ({ label: item.title, href: `/library/${item.slug}` }))} />}

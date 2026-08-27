@@ -2,27 +2,40 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Archive, ArrowLeft, Atom, BookOpen, Compass, FlaskConical, Info, Map, NotebookPen } from "lucide-react";
+import { ArrowLeft, BookOpen } from "lucide-react";
 import type { AppId } from "@/data/prototype";
 import { wallpapers } from "@/data/prototype";
 import booksIndexJson from "@/data/brain/books-index.v1.json";
 import type { BrainBookSummary, BrainBooksIndex } from "@/lib/brain/types";
 import AppContent from "./app-content";
 import { BookDetail } from "./library-app";
+import AppIcon, { type AppIconName } from "./app-icon";
 import WindowFrame, { type WindowState } from "./window-frame";
 
-const apps = [
-  { id: "library", label: "Library", icon: BookOpen, tone: "amber" },
-  { id: "atlas", label: "Atlas", icon: Map, tone: "blue" },
-  { id: "laboratory", label: "Laboratory", icon: FlaskConical, tone: "green" },
-  { id: "reality", label: "Reality", icon: Atom, tone: "violet" },
-  { id: "journal", label: "Journal", icon: NotebookPen, tone: "rose" },
-  { id: "archive", label: "Archive", icon: Archive, tone: "slate" },
-  { id: "practice", label: "Practice", icon: Compass, tone: "sand" },
-  { id: "about", label: "About", icon: Info, tone: "ink" },
+const apps: ReadonlyArray<{ id: AppId; label: string; icon: AppIconName; route: string; separated?: boolean }> = [
+  { id: "finder", label: "Finder", icon: "finder", route: "/finder" },
+  { id: "library", label: "Books", icon: "books", route: "/library" },
+  { id: "atlas", label: "Maps", icon: "maps", route: "/atlas" },
+  { id: "messages", label: "Messages", icon: "messages", route: "/messages" },
+  { id: "journal", label: "Notes", icon: "notes", route: "/journal" },
+  { id: "photos", label: "Photos", icon: "photos", route: "/photos" },
+  { id: "laboratory", label: "Human", icon: "human", route: "/laboratory" },
+  { id: "browser", label: "Browser", icon: "browser", route: "/browser" },
+  { id: "about", label: "Settings", icon: "settings", route: "/about", separated: true },
+  { id: "trash", label: "Trash", icon: "trash", route: "/trash" },
 ] as const;
 
-const appNames: Record<AppId, string> = Object.fromEntries(apps.map((app) => [app.id, app.label])) as Record<AppId, string>;
+const appNames: Record<AppId, string> = {
+  finder: "Finder", library: "Books", atlas: "Maps", messages: "Messages", journal: "Notes",
+  photos: "Photos", laboratory: "Human", browser: "Browser", about: "Settings", trash: "Trash",
+  practice: "Practice", reality: "Reality", archive: "Archive",
+};
+const routes: Partial<Record<AppId, string>> = Object.fromEntries(apps.map((app) => [app.id, app.route]));
+const routeApps: Record<string, AppId> = {
+  finder: "finder", library: "library", atlas: "atlas", messages: "messages", journal: "journal",
+  photos: "photos", laboratory: "laboratory", browser: "browser", about: "about", trash: "trash",
+  practice: "practice", reality: "reality", archive: "archive",
+};
 const brainBooks = (booksIndexJson as BrainBooksIndex).books;
 
 const initialWindows: WindowState[] = [
@@ -72,7 +85,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       setLaunchingApp((active) => active === appId ? null : active);
       setWindows((current) => current.map((win) => win.id === id && (win.transition === "opening" || win.transition === "reopening") ? { ...win, transition: undefined } : win));
     }, 520);
-    if (changeRoute) router.push(`/${appId}`);
+    if (changeRoute) router.push(routes[appId] ?? `/${appId}`);
   }, [router]);
 
   const openBook = useCallback((book: BrainBookSummary, changeRoute = true) => {
@@ -89,8 +102,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
 
   useEffect(() => {
     const parts = pathname.split("/").filter(Boolean);
-    const appId = parts[0] as AppId;
-    if (apps.some((app) => app.id === appId)) openApp(appId, false);
+    const appId = routeApps[parts[0]];
+    if (appId) openApp(appId, false);
     if (appId === "library" && parts[1]) {
       const book = brainBooks.find((item) => item.slug === parts[1]);
       if (book) { openBook(book, false); setMobileBook(book); }
@@ -147,7 +160,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
     }));
   }, []);
   const currentWallpaper = wallpapers[wallpaperIndex];
-  const currentApp = pathname.split("/")[1] as AppId;
+  const currentApp = routeApps[pathname.split("/")[1]];
   const openApps = useMemo(() => new Set(windows.filter((win) => win.kind === "app" && win.appId).map((win) => win.appId)), [windows]);
   const minimizedApps = useMemo(() => new Set(windows.filter((win) => win.kind === "app" && win.appId && win.minimized).map((win) => win.appId)), [windows]);
   const topVisibleZ = Math.max(0, ...windows.filter((win) => !win.minimized).map((win) => win.z));
@@ -166,7 +179,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
     if (win.kind === "book") {
       return <BookDetail slug={win.payload || ""} />;
     }
-    return <AppContent appId={win.appId as AppId} onBookOpen={openBook} />;
+    return <AppContent appId={win.appId as AppId} onBookOpen={openBook} onOpenApp={openApp} />;
   };
 
   return (
@@ -177,13 +190,14 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           <button className="menu-brand" onClick={() => { router.push("/"); closeMenus(); }}><strong>Synergetic Human</strong></button>
           <nav className="system-menus" aria-label="System menus">
             <SystemMenu label="File" open={activeMenu === "file"} onToggle={() => setActiveMenu(activeMenu === "file" ? null : "file")}>
-              <MenuAction label="Open Library" shortcut="⌘L" onClick={() => { openApp("library"); closeMenus(); }} />
+              <MenuAction label="Open Books" shortcut="⌘L" onClick={() => { openApp("library"); closeMenus(); }} />
               <MenuAction label="Close Active Window" shortcut="⌘W" onClick={closeActiveWindow} />
             </SystemMenu>
             <SystemMenu label="Explore" open={activeMenu === "explore"} onToggle={() => setActiveMenu(activeMenu === "explore" ? null : "explore")}>
-              <MenuAction label="Library" onClick={() => { openApp("library"); closeMenus(); }} />
-              <MenuAction label="Atlas" onClick={() => { openApp("atlas"); closeMenus(); }} />
-              <MenuAction label="Archive" onClick={() => { openApp("archive"); closeMenus(); }} />
+              <MenuAction label="Finder" onClick={() => { openApp("finder"); closeMenus(); }} />
+              <MenuAction label="Books" onClick={() => { openApp("library"); closeMenus(); }} />
+              <MenuAction label="Maps" onClick={() => { openApp("atlas"); closeMenus(); }} />
+              <MenuAction label="Browser" onClick={() => { openApp("browser"); closeMenus(); }} />
             </SystemMenu>
             <SystemMenu label="View" open={activeMenu === "view"} onToggle={() => setActiveMenu(activeMenu === "view" ? null : "view")}>
               <MenuAction label="Next Wallpaper" shortcut="⌘→" onClick={() => { setWallpaperIndex((wallpaperIndex + 1) % wallpapers.length); closeMenus(); }} />
@@ -197,29 +211,30 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       <section className="desktop-stage" aria-label="Synergetic Human desktop" onPointerDown={closeMenus} onContextMenu={(event) => { event.preventDefault(); setActiveMenu(null); setContextMenu({ x: Math.min(event.clientX, window.innerWidth - 190), y: Math.min(event.clientY, window.innerHeight - 220) }); }}>
         {windows.map((win) => <WindowFrame key={win.id} windowState={win} isActive={win.z === topVisibleZ} onFocus={focusWindow} onClose={closeWindow} onMinimize={minimizeWindow} onZoom={zoomWindow} onChange={updateWindow}>{renderWindowContent(win)}</WindowFrame>)}
         {contextMenu && <div className="desktop-context-menu" role="menu" style={{ left: contextMenu.x, top: contextMenu.y }} onPointerDown={(event) => event.stopPropagation()}>
-          <MenuAction label="Open Library" onClick={() => { openApp("library"); closeMenus(); }} />
-          <MenuAction label="Open Atlas" onClick={() => { openApp("atlas"); closeMenus(); }} />
+          <MenuAction label="Open Finder" onClick={() => { openApp("finder"); closeMenus(); }} />
+          <MenuAction label="Open Books" onClick={() => { openApp("library"); closeMenus(); }} />
+          <MenuAction label="Open Maps" onClick={() => { openApp("atlas"); closeMenus(); }} />
           <span className="menu-separator" />
           <MenuAction label="Reset Desktop" onClick={resetDesktop} />
         </div>}
       </section>
 
       <section className="mobile-shell">
-        {pathname === "/" ? <MobileHome onOpen={(appId) => router.push(`/${appId}`)} /> : (
+        {pathname === "/" ? <MobileHome onOpen={(appId) => router.push(routes[appId] ?? `/${appId}`)} /> : (
           <div className="mobile-app-view">
             <header><button onClick={() => mobileBook ? setMobileBook(null) : router.push("/")}><ArrowLeft /></button><div><span>SYNERGETIC HUMAN</span><strong>{mobileBook?.title ?? appNames[currentApp] ?? "Application"}</strong></div></header>
-            <div className="mobile-app-scroll">{mobileBook ? <BookDetail slug={mobileBook.slug} onBack={() => setMobileBook(null)} /> : <AppContent appId={currentApp} onBookOpen={setMobileBook} />}</div>
+            <div className="mobile-app-scroll">{mobileBook ? <BookDetail slug={mobileBook.slug} onBack={() => setMobileBook(null)} /> : <AppContent appId={currentApp} onBookOpen={setMobileBook} onOpenApp={(appId) => router.push(routes[appId] ?? `/${appId}`)} />}</div>
           </div>
         )}
       </section>
 
       <button className="wallpaper-caption" onClick={() => setWallpaperIndex((wallpaperIndex + 1) % wallpapers.length)} title="Next wallpaper"><span>●</span> {currentWallpaper.label} · {currentWallpaper.location}<small>{currentWallpaper.credit}</small></button>
       <nav className="dock" aria-label="Applications">
-        {apps.map(({ id, label, icon: Icon, tone }) => (
-          <button key={id} className={`dock-item ${openApps.has(id) ? "is-open" : ""} ${minimizedApps.has(id) ? "is-minimized" : ""} ${launchingApp === id ? "is-launching" : ""}`} onClick={() => openApp(id)} aria-label={`${label}${minimizedApps.has(id) ? ", minimized" : ""}`}>
-            <span className="dock-label">{label}</span><span className={`dock-icon dock-icon--${tone}`}><span className="dock-symbol"><Icon strokeWidth={1.6} /></span></span><span className="dock-running" />
+        {apps.map(({ id, label, icon, separated }) => <span className={separated ? "dock-entry dock-entry--separated" : "dock-entry"} key={id}>
+          <button className={`dock-item ${openApps.has(id) ? "is-open" : ""} ${minimizedApps.has(id) ? "is-minimized" : ""} ${launchingApp === id ? "is-launching" : ""}`} onClick={() => openApp(id)} aria-label={`${label}${minimizedApps.has(id) ? ", minimized" : ""}`}>
+            <span className="dock-label">{label}</span><AppIcon name={icon} /><span className="dock-running" />
           </button>
-        ))}
+        </span>)}
       </nav>
       <div className="route-placeholder" aria-hidden="true">{children}</div>
     </main>
@@ -231,7 +246,7 @@ function Currently() {
 }
 
 function Reading({ onOpen }: { onOpen: () => void }) {
-  return <div className="reading-card reading-card--unset"><div className="reading-library-glyph"><BookOpen /></div><div><span className="eyebrow">READING STATE</span><h2>Not set yet</h2><p>165 books are ready in the Library.</p><button onClick={onOpen}>Open Library <span>↗</span></button></div></div>;
+  return <div className="reading-card reading-card--unset"><div className="reading-library-glyph"><BookOpen /></div><div><span className="eyebrow">READING STATE</span><h2>Not set yet</h2><p>165 books are ready in Books.</p><button onClick={onOpen}>Open Books <span>↗</span></button></div></div>;
 }
 
 function Thinking() {
@@ -239,7 +254,7 @@ function Thinking() {
 }
 
 function MobileHome({ onOpen }: { onOpen: (appId: AppId) => void }) {
-  return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>Sarajevo</h1><p>22° · clear-ish</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>What if a website felt like entering someone’s mind mid-thought?</p></div></div><button className="mobile-reading" onClick={() => onOpen("library")}><div className="reading-library-glyph"><BookOpen /></div><div><span className="app-kicker">LIBRARY</span><strong>165 books</strong><small>Highlights, sources, and connections</small></div></button></div>;
+  return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>Sarajevo</h1><p>22° · clear-ish</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>What if a website felt like entering someone’s mind mid-thought?</p></div></div><button className="mobile-reading" onClick={() => onOpen("library")}><AppIcon name="books"/><div><span className="app-kicker">BOOKS</span><strong>165 books</strong><small>Highlights, sources, and connections</small></div></button><div className="mobile-app-grid">{apps.map((app)=><button key={app.id} onClick={()=>onOpen(app.id)}><AppIcon name={app.icon}/><strong>{app.label}</strong></button>)}</div></div>;
 }
 
 function SystemMenu({ label, open, onToggle, children }: { label: string; open: boolean; onToggle: () => void; children: React.ReactNode }) {

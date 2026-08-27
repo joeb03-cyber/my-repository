@@ -1,4 +1,5 @@
 export type AppId =
+  | "finder"
   | "library"
   | "atlas"
   | "laboratory"
@@ -6,7 +7,11 @@ export type AppId =
   | "journal"
   | "archive"
   | "practice"
-  | "about";
+  | "about"
+  | "messages"
+  | "photos"
+  | "browser"
+  | "trash";
 
 export const wallpapers = [
   { id: "sarajevo-dusk", className: "wallpaper--sarajevo-photo", label: "Sarajevo at dusk", location: "Bosnia & Herzegovina", credit: "Sporisevic Photography · Unsplash" },
