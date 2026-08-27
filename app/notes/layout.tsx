@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: siteConfig.title,
   description: siteConfig.title,
+  robots:
+    process.env.SITE_ENV === "staging"
+      ? { index: false, follow: false, nocache: true }
+      : undefined,
 };
 
 export const revalidate = 86400; // 24 hours

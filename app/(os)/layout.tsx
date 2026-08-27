@@ -5,6 +5,10 @@ import "./os.css";
 export const metadata: Metadata = {
   title: "Synergetic Human OS — Prototype",
   description: "A visual prototype of a personal operating system.",
+  robots:
+    process.env.SITE_ENV === "staging"
+      ? { index: false, follow: false, nocache: true }
+      : undefined,
 };
 
 export default function OSLayout({ children }: { children: React.ReactNode }) {
