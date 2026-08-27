@@ -14,6 +14,8 @@ Apply these exact files, in order:
 
 1. `supabase/migrations/20260826220000_brain_books_v1.sql`
 2. `supabase/migrations/20260827100000_brain_passage_groups_v1.sql`
+3. `supabase/migrations/20260827120000_brain_document_title_kind.sql`
+4. `supabase/migrations/20260827130000_brain_public_book_counts.sql`
 
 Do not run an unrestricted migration-directory push: the directory also contains the legacy 2024 Notes migration. Verify that the public views exist and that the base Brain tables cannot be selected with the anonymous role.
 

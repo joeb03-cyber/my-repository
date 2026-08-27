@@ -13,11 +13,17 @@ function client() {
 }
 
 async function rows(view: string, query?: (value: any) => any): Promise<Row[]> {
-  let request = client().from(view).select("*");
-  if (query) request = query(request);
-  const { data, error } = await request;
-  if (error) throw new Error(`Supabase ${view}: ${error.message}`);
-  return data || [];
+  const pageSize = 1000;
+  const result: Row[] = [];
+  for (let offset = 0; ; offset += pageSize) {
+    let request = client().from(view).select("*");
+    if (query) request = query(request);
+    const { data, error } = await request.range(offset, offset + pageSize - 1);
+    if (error) throw new Error(`Supabase ${view}: ${error.message}`);
+    result.push(...(data || []));
+    if (!data || data.length < pageSize) break;
+  }
+  return result;
 }
 
 function topicsFor(bookId: string, topicRows: Row[]): BrainTopic[] {
@@ -34,7 +40,7 @@ function authorsFor(bookId: string, authorRows: Row[], fallback?: string | null)
   return authors.length ? authors : fallback ? [fallback] : [];
 }
 
-function summary(row: Row, authorRows: Row[], topicRows: Row[], highlightCounts: Map<string, number>): BrainBookSummary {
+function summary(row: Row, authorRows: Row[], topicRows: Row[]): BrainBookSummary {
   return {
     id: row.id,
     slug: row.slug,
@@ -53,7 +59,7 @@ function summary(row: Row, authorRows: Row[], topicRows: Row[], highlightCounts:
       width: row.cover_width,
       height: row.cover_height,
     } : { status: "placeholder", public_path: "/book-covers/placeholder.svg" },
-    highlightCount: highlightCounts.get(row.id) || 0,
+    highlightCount: Number(row.highlight_count || 0),
     importState: row.import_state === "complete" ? "complete" : "incomplete",
     metadataStatus: row.metadata_status,
     reviewFlagCount: 0,
@@ -61,15 +67,12 @@ function summary(row: Row, authorRows: Row[], topicRows: Row[], highlightCounts:
 }
 
 export async function getSupabaseBooksIndex(): Promise<BrainBooksIndex> {
-  const [bookRows, authorRows, topicRows, highlightRows] = await Promise.all([
+  const [bookRows, authorRows, topicRows] = await Promise.all([
     rows("brain_public_books", (query) => query.order("source_position")),
     rows("brain_public_book_authors"),
     rows("brain_public_book_topics"),
-    rows("brain_public_highlights"),
   ]);
-  const counts = new Map<string, number>();
-  for (const row of highlightRows) if (!["chapter_label", "section_label"].includes(row.content_kind)) counts.set(row.book_id, (counts.get(row.book_id) || 0) + 1);
-  const books = bookRows.map((row) => summary(row, authorRows, topicRows, counts));
+  const books = bookRows.map((row) => summary(row, authorRows, topicRows));
   return { schemaVersion: "brain-books-index.supabase.v1", bookCount: books.length, generatedFrom: "staging Supabase public views", books };
 }
 
