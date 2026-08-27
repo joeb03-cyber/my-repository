@@ -9,6 +9,7 @@ import booksIndexJson from "@/data/brain/books-index.v1.json";
 import currentStateJson from "@/data/brain/current-state.v1.json";
 import osStateJson from "@/data/brain/os-state.v1.json";
 import type { BrainBookSummary, BrainBooksIndex } from "@/lib/brain/types";
+import { refineBooksIndex } from "@/lib/brain/books-editorial";
 import type { BrainCurrentState } from "@/lib/brain/notes-types";
 import type { BrainOsState } from "@/lib/brain/os-state-types";
 import AppContent from "./app-content";
@@ -43,12 +44,12 @@ const routeApps: Record<string, AppId> = {
   practice: "practice", reality: "reality", archive: "archive",
   "software-update": "software", "activity-monitor": "activity", "screen-time": "screen-time", terminal: "terminal",
 };
-const brainBooks = (booksIndexJson as BrainBooksIndex).books;
+const brainBooks = refineBooksIndex(booksIndexJson as BrainBooksIndex).books;
 
 const initialWindows: WindowState[] = [
   { id: "currently", kind: "currently", title: "Currently", x: 42, y: 58, width: 200, height: 130, z: 1, resizable: false },
-  { id: "reading", kind: "reading", title: "Reading", x: 600, y: 630, width: 245, height: 140, z: 3, resizable: false },
-  { id: "thinking", kind: "thinking", title: "Thinking About", x: 1135, y: 82, width: 250, height: 135, z: 2, resizable: false },
+  { id: "reading", kind: "reading", title: "Reading", x: 1045, y: 555, width: 245, height: 140, z: 2, resizable: false },
+  { id: "app-journal", kind: "app", appId: "journal", title: "Notes", x: 315, y: 92, width: 680, height: 500, z: 3 },
 ];
 
 function Clock() {
@@ -218,7 +219,10 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
 
   const renderWindowContent = (win: WindowState) => {
     if (win.kind === "currently") return <Currently state={currentState} />;
-    if (win.kind === "reading") return <Reading state={currentState} onOpen={() => openApp("library")} />;
+    if (win.kind === "reading") return <Reading state={currentState} onOpen={() => {
+      const linked = currentState.readingBook ? brainBooks.find((book) => book.id === currentState.readingBook?.id || book.slug === currentState.readingBook?.slug) : null;
+      if (linked) openBook(linked); else openApp("library");
+    }} />;
     if (win.kind === "thinking") return <Thinking state={currentState} />;
     if (win.kind === "book") {
       return <BookDetail slug={win.payload || ""} />;
@@ -257,11 +261,11 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
         <div className="menu-status">
           <span className="menu-location">{currentState.where.city}</span>
           <button className={`status-icon ${statusPanel === "battery" ? "is-active" : ""}`} aria-label="Human Battery" title="Human Battery" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "battery" ? null : "battery"); }}><BatteryGlyph level={currentState.humanBattery.level} /></button>
-          <button className={`status-icon ${statusPanel === "wifi" ? "is-active" : ""}`} aria-label="Consensus Reality network" title="Consensus Reality" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "wifi" ? null : "wifi"); }}><WifiGlyph /></button>
+          <button className={`status-icon ${statusPanel === "wifi" ? "is-active" : ""}`} aria-label="Innernet network" title="Innernet" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "wifi" ? null : "wifi"); }}><WifiGlyph /></button>
           <button className={`status-icon ${statusPanel === "update" ? "is-active" : ""}`} aria-label="Software Update" title="Software Update" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "update" ? null : "update"); }}><ControlGlyph /></button>
           <Clock />
           {statusPanel === "battery" && <StatusPopover title="Human Battery"><div className="battery-readout"><BatteryGlyph level={currentState.humanBattery.level}/><strong>{currentState.humanBattery.label}</strong></div><p>{currentState.humanBattery.note || "No check-in note."}</p><small>Manual check-in only · no health data inferred</small></StatusPopover>}
-          {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Consensus Reality</strong><small>Connected, with occasional packet loss</small></span><i/></div><div className="network-row network-row--available"><WifiGlyph/><span><strong>Innernet</strong><small>Known network · signal varies</small></span></div><p className="popover-footnote">Networks are handcrafted interface copy.</p></StatusPopover>}
+          {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Innernet</strong><small>Connected · full signal</small></span><i/></div><div className="network-row network-row--available network-row--weak"><WifiGlyph strength="weak"/><span><strong>Consensus Reality</strong><small>Available · weak signal</small></span></div><p className="popover-footnote">Networks are handcrafted interface copy.</p></StatusPopover>}
           {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>{osState.softwareUpdate.versionLabel}</span></div><strong>Synergetic Human is up to date</strong><p>{osState.softwareUpdate.new[0] || `Currently making: ${currentState.making || "Not reported"}`}</p><dl><div><dt>Exploring</dt><dd>{osState.softwareUpdate.currentlyExploring[0] || "Not reported"}</dd></div><div><dt>Performance</dt><dd>{osState.softwareUpdate.performance[0] || "Nominally strange"}</dd></div><div><dt>Known issue</dt><dd>{osState.softwareUpdate.knownIssues[0] || "None reported"}</dd></div></dl><button className="popover-action" onClick={() => { openApp("software"); closeMenus(); }}>Open Software Update…</button></StatusPopover>}
         </div>
       </header>
@@ -300,8 +304,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   );
 }
 
-function WifiGlyph() {
-  return <svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1.5 4.8a11.6 11.6 0 0115 0M4.2 7.7a7.4 7.4 0 019.6 0M7.1 10.5a3 3 0 013.8 0"/><circle cx="9" cy="12.2" r=".8"/></svg>;
+function WifiGlyph({ strength = "full" }: { strength?: "full" | "weak" }) {
+  return <svg className={`wifi-glyph is-${strength}`} viewBox="0 0 18 14" aria-hidden="true"><path className="wifi-outer" d="M1.5 4.8a11.6 11.6 0 0115 0"/><path className="wifi-middle" d="M4.2 7.7a7.4 7.4 0 019.6 0"/><path d="M7.1 10.5a3 3 0 013.8 0"/><circle cx="9" cy="12.2" r=".8"/></svg>;
 }
 
 function BatteryGlyph({ level }: { level: number | null }) {
@@ -322,7 +326,8 @@ function Currently({ state }: { state: BrainCurrentState }) {
 }
 
 function Reading({ state, onOpen }: { state: BrainCurrentState; onOpen: () => void }) {
-  return <div className="reading-card reading-card--unset"><div className="reading-library-glyph"><BookOpen /></div><div><span className="eyebrow">READING STATE</span><h2>{state.reading || "Not set yet"}</h2><p>{state.reading ? "From the current-state record." : "165 books are ready in Books."}</p><button onClick={onOpen}>Open Books <span>↗</span></button></div></div>;
+  const linked = state.readingBook;
+  return <div className={`reading-card ${linked?.cover ? "reading-card--linked" : "reading-card--unset"}`}>{linked?.cover ? <img className="book-cover" src={linked.cover} alt={`Cover of ${linked.title}`}/> : <div className="reading-library-glyph"><BookOpen /></div>}<div><span className="eyebrow">READING STATE</span><h2>{linked?.title || state.reading || "Not set yet"}</h2><p>{linked?.authors.length ? linked.authors.join(", ") : state.reading ? "Current reading." : "Books are ready in the Library."}</p><button onClick={onOpen}>{linked ? "Open this Book" : "Open Books"} <span>↗</span></button></div></div>;
 }
 
 function Thinking({ state }: { state: BrainCurrentState }) {
@@ -331,7 +336,7 @@ function Thinking({ state }: { state: BrainCurrentState }) {
 }
 
 function MobileHome({ onOpen }: { onOpen: (appId: AppId) => void }) {
-  return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>Sarajevo</h1><p>22° · clear-ish</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>What if a website felt like entering someone’s mind mid-thought?</p></div></div><button className="mobile-reading" onClick={() => onOpen("library")}><AppIcon name="books"/><div><span className="app-kicker">BOOKS</span><strong>165 books</strong><small>Highlights, sources, and connections</small></div></button><div className="mobile-app-grid">{apps.map((app)=><button key={app.id} onClick={()=>onOpen(app.id)}><AppIcon name={app.icon}/><strong>{app.label}</strong></button>)}</div></div>;
+  return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>Sarajevo</h1><p>22° · clear-ish</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>What if a website felt like entering someone’s mind mid-thought?</p></div></div><button className="mobile-reading" onClick={() => onOpen("library")}><AppIcon name="books"/><div><span className="app-kicker">BOOKS</span><strong>163 public books</strong><small>Highlights, sources, and connections</small></div></button><div className="mobile-app-grid">{apps.map((app)=><button key={app.id} onClick={()=>onOpen(app.id)}><AppIcon name={app.icon}/><strong>{app.label}</strong></button>)}</div></div>;
 }
 
 function SystemMenu({ label, open, onToggle, children }: { label: string; open: boolean; onToggle: () => void; children: React.ReactNode }) {

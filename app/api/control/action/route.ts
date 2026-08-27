@@ -77,17 +77,30 @@ export async function POST(request: Request) {
     if (input.action === "save-current-state") {
       const state = input.state || {};
       const now = new Date().toISOString();
+      let readingBook: { id: string; title: string } | null = null;
+      if (state.readingBookId) {
+        const { data: book, error: bookError } = await db.from("brain_public_books").select("id,title").eq("id", String(state.readingBookId)).maybeSingle();
+        if (bookError) throw bookError;
+        if (!book) throw new Error("That linked Book is not available in the public Brain.");
+        readingBook = book;
+      }
       const normalized = {
         schemaVersion: "brain-current-state.control.v1", effectiveAt: now, lastConfirmedAt: now,
         where: { city: String(state.where?.city || "").trim(), country: String(state.where?.country || "").trim(), coordinates: String(state.where?.coordinates || "").trim() || null },
-        reading: textOrNull(state.reading), thinking: textOrNull(state.thinking), rabbitHoles: asStrings(state.rabbitHoles), experiments: asStrings(state.experiments),
+        reading: readingBook?.title || textOrNull(state.reading), thinking: textOrNull(state.thinking), rabbitHoles: asStrings(state.rabbitHoles), experiments: asStrings(state.experiments),
         training: textOrNull(state.training), eatingLately: textOrNull(state.eatingLately), listening: textOrNull(state.listening), tryingToUnderstand: textOrNull(state.tryingToUnderstand),
         making: textOrNull(state.making), currentQuestion: textOrNull(state.currentQuestion), currentThought: textOrNull(state.currentThought),
         humanBattery: { level: typeof state.humanBattery?.level === "number" ? Math.max(0, Math.min(100, Math.round(state.humanBattery.level))) : null, label: String(state.humanBattery?.label || "Unreported").slice(0, 40), note: textOrNull(state.humanBattery?.note) },
       };
       const id = crypto.randomUUID();
-      const { error } = await db.from("current_state_snapshots").insert({ id, effective_at: now, last_confirmed_at: now, publication_state: "published", state: normalized, provenance: { source: "control_center", editedBy: auth.user.id } });
+      const { error } = await db.from("current_state_snapshots").insert({ id, effective_at: now, last_confirmed_at: now, publication_state: "draft", state: normalized, provenance: { source: "control_center", editedBy: auth.user.id } });
       if (error) throw error;
+      if (readingBook) {
+        const { error: linkError } = await db.from("current_state_entity_links").insert({ snapshot_id: id, role: "reading", entity_id: readingBook.id });
+        if (linkError) throw linkError;
+      }
+      const { error: publishError } = await db.from("current_state_snapshots").update({ publication_state: "published" }).eq("id", id);
+      if (publishError) throw publishError;
       await db.from("current_state_snapshots").update({ publication_state: "archived" }).neq("id", id).eq("publication_state", "published");
       return NextResponse.json({ ok: true, state: normalized });
     }

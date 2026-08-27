@@ -1,6 +1,7 @@
 "use client";
 
 import { Activity, Archive, ArrowUpRight, ChevronRight, Clock3, FlaskConical, Orbit, Search, TerminalSquare, Wind } from "lucide-react";
+import { useState } from "react";
 import { LibraryApp } from "./library-app";
 import type { AppId } from "@/data/prototype";
 import type { BrainBookSummary } from "@/lib/brain/types";
@@ -33,9 +34,9 @@ export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: Ap
 
 function Finder({ onOpenApp }: { onOpenApp: (appId: AppId) => void }) {
   const available: Array<{ id: AppId; label: string; detail: string }> = [
-    { id: "library", label: "Books", detail: "165 books" }, { id: "atlas", label: "Maps", detail: "38 countries" },
+    { id: "library", label: "Books", detail: "163 public books" }, { id: "atlas", label: "Maps", detail: "38 countries" },
     { id: "contacts", label: "Contacts", detail: "15 interesting humans" }, { id: "journal", label: "Notes", detail: "Writing & fragments" }, { id: "photos", label: "Photos", detail: "Travel archive" },
-    { id: "laboratory", label: "Human", detail: "Experiments" }, { id: "browser", label: "Browser", detail: "Rabbit holes" },
+    { id: "laboratory", label: "Human", detail: "Operating manual" }, { id: "browser", label: "Browser", detail: "Rabbit holes" },
     { id: "practice", label: "Practice", detail: "Modalities" }, { id: "about", label: "Settings", detail: "About this human" },
   ];
   const future = ["Podcasts", "Stocks", "Time Machine"];
@@ -44,8 +45,18 @@ function Finder({ onOpenApp }: { onOpenApp: (appId: AppId) => void }) {
 }
 
 function Laboratory() {
-  const experiments = [["Morning light before screens", "ONGOING"], ["Long exhale protocol", "WEEK 04"], ["Less input, more signal", "OBSERVING"]];
-  return <div className="lab-app app-placeholder"><header><FlaskConical/><div><span className="app-kicker">HUMAN · PERSONAL LAB</span><h2>Experiments, not commandments.</h2></div></header><p className="lab-note">A record of protocols tried on one highly specific human. Results may be weird.</p><div className="experiment-list">{experiments.map(([name,status], index)=><div key={name}><span>0{index+1}</span><strong>{name}</strong><em>{status}</em></div>)}</div></div>;
+  const sections = ["Foundations", "Light", "Sleep", "Food", "Movement", "Training", "Nervous System", "Environment", "Experiments"];
+  const [section, setSection] = useState("Foundations");
+  const entries: Record<string, Array<{ title: string; state: string; note: string }>> = {
+    Foundations: [
+      { title: "Morning Light", state: "Core", note: "A practical anchor recorded from direct experience." },
+      { title: "Long Exhale", state: "Currently Testing", note: "An ongoing nervous-system practice; observations remain personal." },
+    ],
+    Light: [{ title: "Morning Light", state: "Core", note: "Get outside before the day becomes a screen." }],
+    "Nervous System": [{ title: "Long Exhale", state: "Currently Testing", note: "A small practice under active observation." }],
+  };
+  const visible = entries[section] || [];
+  return <div className="human-app system-app"><aside className="os-sidebar"><strong>Human</strong>{sections.map((item) => <button key={item} className={section === item ? "is-selected" : ""} onClick={() => setSection(item)}>{item}</button>)}</aside><section className="human-main"><header><div className="human-system-mark"><FlaskConical/></div><div><span className="app-kicker">JOE&apos;S OPERATING MANUAL</span><h2>{section}</h2><p>High-leverage practices and experiments for one particular human.</p></div></header><div className="human-state-key">{["Core", "Currently Testing", "Interesting", "Retired"].map((state) => <span className={`human-state is-${state.toLowerCase().replaceAll(" ", "-")}`} key={state}>{state}</span>)}</div>{visible.length ? <div className="human-entry-list">{visible.map((entry) => <article key={entry.title}><div><strong>{entry.title}</strong><span className={`human-state is-${entry.state.toLowerCase().replaceAll(" ", "-")}`}>{entry.state}</span></div><p>{entry.note}</p></article>)}</div> : <div className="human-empty"><FlaskConical/><strong>Nothing recorded here yet.</strong><p>This section is ready when a practice or experiment earns its place.</p></div>}<footer>Personal observations, not medical claims or objective measurements.</footer></section></div>;
 }
 
 function Messages() {

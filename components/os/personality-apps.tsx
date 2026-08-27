@@ -88,7 +88,7 @@ export function SettingsApp({ initialPanel = "about" }: { initialPanel?: Setting
 export function ScreenTimeApp() { return <div className="screen-time-app system-app"><div className="os-toolbar"><strong>Screen Time</strong><span>Manual snapshot</span></div><ScreenTimePanel currentState={usePublicSystemState().currentState}/></div>; }
 
 function AboutHuman({ currentState, version }: { currentState: BrainCurrentState; version: string }) {
-  return <><div className="settings-title"><div className="about-monogram">J<span>03</span></div><div><span className="app-kicker">ABOUT THIS HUMAN</span><h2>Joe Burt</h2><p>Synergetic Human {version}</p></div></div><div className="about-device"><div className="human-device"><span/><i/><i/></div><dl><div><dt>Model</dt><dd>Human</dd></div><div><dt>Version</dt><dd>{version}</dd></div><div><dt>Current Region</dt><dd>{currentState.where.country || "Not reported"}</dd></div><div><dt>Home Directory</dt><dd>/earth</dd></div><div><dt>Default Mode</dt><dd>Curious</dd></div></dl></div><p className="settings-copy">Interested in travel, markets, health, consciousness, practice, and the unexpected connections between them.</p><div className="about-location"><MapPin/> {currentState.where.city || "Somewhere"}, for now.</div></>;
+  return <><div className="settings-title"><div className="about-monogram">J<span>03</span></div><div><span className="app-kicker">ABOUT THIS HUMAN</span><h2>Joe Burt</h2><p>Synergetic Human {version}</p></div></div><div className="about-device"><div className="human-device"><span/><i/><i/></div><dl><div><dt>Model</dt><dd>Human</dd></div><div><dt>Version</dt><dd>{version}</dd></div><div><dt>Current Region</dt><dd>{currentState.where.country || "Not reported"}</dd></div><div><dt>Home Directory</dt><dd>/earth</dd></div><div><dt>Default Mode</dt><dd>Curious</dd></div></dl></div><p className="settings-copy">Interested in travel, markets, health, consciousness, experimentation, and the unexpected connections between them.</p><div className="about-location"><MapPin/> {currentState.where.city || "Somewhere"}, for now.</div></>;
 }
 
 function Configuration({ currentState }: { currentState: BrainCurrentState }) {
@@ -115,8 +115,8 @@ export function TerminalApp() {
   async function run(event: FormEvent) {
     event.preventDefault(); const command = value.trim(); if (!command) return; setValue(""); setHistory((current)=>[...current,command]);
     if (command === "clear") { setLines([]); return; }
-    let output = "Command not found. Try help.";
-    if (command === "help") output = "help · whoami · whereis joe · now · books · places · history · clear\ncat consciousness.txt · sudo become-enlightened";
+    let output = `zsh: command not found: ${command}\nType 'help' to see the handcrafted commands.`;
+    if (command === "help") output = "Supported commands:\n  help\n  whoami\n  whereis joe\n  now\n  books\n  places\n  history\n  clear\n  cat consciousness.txt\n  sudo become-enlightened";
     else if (command === "whoami") output = "joe — human, reader, traveler, builder of this particular machine";
     else if (command === "whereis joe") output = `${currentState.where.city || "location unreported"}, ${currentState.where.country || "earth"}`;
     else if (command === "now") output = [`reading: ${currentState.reading || "unreported"}`,`making: ${currentState.making || "unreported"}`,`thinking: ${currentState.thinking || currentState.currentThought || "unreported"}`].join("\n");

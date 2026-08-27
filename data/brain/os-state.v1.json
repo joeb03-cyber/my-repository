@@ -14,8 +14,11 @@
     { "id": "a3bef66e-d759-4a63-9514-49a46d2a4004", "title": "Old About page copy", "description": "Identity superseded", "category": "identity", "trashedAt": "2026-08-27" }
   ],
   "activity": [
-    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4101", "name": "Synergetic Human OS", "status": "running", "detail": "Turning years of collected information into something useful.", "startedLabel": "August 2026", "related": ["AI", "Creativity", "Notes", "Books"], "sortOrder": 10 },
-    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4102", "name": "Bosnia", "status": "running", "detail": "Current region and immediate field of exploration.", "startedLabel": "2026", "related": ["Maps", "Walking", "Travel"], "sortOrder": 20 },
-    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4103", "name": "Planetary Transits", "status": "background", "detail": "An open question, not a settled conclusion.", "startedLabel": null, "related": ["Cosmos and Psyche", "Astrology"], "sortOrder": 30 }
+    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4101", "name": "Nomadic Life", "status": "running", "detail": "Living between places as an ongoing operating condition.", "startedLabel": null, "related": ["Maps", "Travel"], "sortOrder": 10 },
+    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4102", "name": "Information Collection", "status": "running", "detail": "A long-running habit of gathering books, sources, notes, and questions.", "startedLabel": null, "related": ["Books", "Notes", "Archive"], "sortOrder": 20 },
+    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4103", "name": "Synergetic Human OS", "status": "running", "detail": "Turning years of collected information into something useful.", "startedLabel": "August 2026", "related": ["Notes", "Books"], "sortOrder": 30 },
+    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4104", "name": "Trading", "status": "background", "detail": "Still installed without occupying the foreground.", "startedLabel": null, "related": ["Markets"], "sortOrder": 40 },
+    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4105", "name": "Healing", "status": "background", "detail": "A long-running personal process, described without measurement.", "startedLabel": null, "related": ["Human"], "sortOrder": 50 },
+    { "id": "b3bef66e-d759-4a63-9514-49a46d2a4106", "name": "Newsletter", "status": "not_responding", "detail": "The process exists; it is not currently answering requests.", "startedLabel": null, "related": ["Writing", "Archive"], "sortOrder": 60 }
   ]
 }

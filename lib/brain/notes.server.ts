@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { BrainCurrentState, BrainNote, BrainNotesIndex } from "./notes-types";
+import { getBooksIndex } from "./books.server";
 
 type Row = Record<string, any>;
 
@@ -56,8 +57,22 @@ export async function getCurrentState(): Promise<BrainCurrentState> {
   if (process.env.BRAIN_DATA_SOURCE !== "supabase") {
     return JSON.parse(await readFile(path.join(process.cwd(), "data/brain/current-state.v1.json"), "utf8"));
   }
-  const { data, error } = await supabase().from("brain_public_current_state").select("*").limit(1).maybeSingle();
+  const db = supabase();
+  const { data, error } = await db.from("brain_public_current_state").select("*").limit(1).maybeSingle();
   if (error) throw new Error(`Supabase brain_public_current_state: ${error.message}`);
   if (!data) throw new Error("No public current-state snapshot is available.");
-  return { schemaVersion: "brain-current-state.supabase.v1", ...data.state } as BrainCurrentState;
+  const { data: reading, error: readingError } = await db.from("brain_public_current_state_reading").select("*").eq("snapshot_id", data.id).maybeSingle();
+  if (readingError) throw new Error(`Supabase brain_public_current_state_reading: ${readingError.message}`);
+  const linkedBook = reading ? (await getBooksIndex()).books.find((book) => book.id === reading.book_id) : null;
+  return {
+    schemaVersion: "brain-current-state.supabase.v1",
+    ...data.state,
+    readingBook: reading ? {
+      id: reading.book_id,
+      slug: reading.slug,
+      title: linkedBook?.title || reading.title,
+      authors: linkedBook?.authors || (reading.original_author ? [reading.original_author] : []),
+      cover: linkedBook?.cover.public_path || (reading.cover_path ? (reading.cover_path.startsWith("/") ? reading.cover_path : `/${reading.cover_path}`) : null),
+    } : null,
+  } as BrainCurrentState;
 }

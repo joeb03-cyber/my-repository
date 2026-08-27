@@ -170,13 +170,17 @@ function PhotosIcon({ id }: { id: string }) {
 
 function HumanIcon({ id }: { id: string }) {
   return <IconSvg>
-    <defs><linearGradient id={`${id}-bg`} x1="9" y1="2" x2="55" y2="63"><stop stopColor="#ff9e91"/><stop offset=".45" stopColor="#ed5579"/><stop offset="1" stopColor="#9147a3"/></linearGradient><radialGradient id={`${id}-aura`}><stop stopColor="#ffd8bc" stopOpacity=".78"/><stop offset="1" stopColor="#ffd8bc" stopOpacity="0"/></radialGradient></defs>
+    <defs><linearGradient id={`${id}-bg`} x1="8" y1="3" x2="57" y2="62"><stop stopColor="#8ed7c8"/><stop offset=".46" stopColor="#4b9fa4"/><stop offset="1" stopColor="#36598d"/></linearGradient><radialGradient id={`${id}-aura`}><stop stopColor="#effff8" stopOpacity=".8"/><stop offset="1" stopColor="#effff8" stopOpacity="0"/></radialGradient><filter id={`${id}-depth`}><feDropShadow dx="0" dy="1.4" stdDeviation="1.5" floodColor="#163b52" floodOpacity=".34"/></filter></defs>
     <rect width="64" height="64" rx="14" fill={`url(#${id}-bg)`}/>
-    <circle cx="32" cy="31" r="25" fill={`url(#${id}-aura)`} opacity=".45"/>
-    <circle cx="32" cy="14.7" r="5.3" fill="white" fillOpacity=".95"/>
-    <path d="M25.7 23.2c1.8-2.4 3.9-3.6 6.3-3.6s4.5 1.2 6.3 3.6l5.7 11.2-5 2.4-3-6.1v19.8h-8V30.7l-3 6.1-5-2.4z" fill="white" fillOpacity=".94"/>
-    <path className="v-line human-pulse-new" d="M18 34h9l2.5-5.2 4.4 11 3-5.8H46"/>
-    <circle cx="32" cy="32" r="20.5" fill="none" stroke="white" strokeOpacity=".2"/>
+    <circle cx="32" cy="32" r="27" fill={`url(#${id}-aura)`} opacity=".4"/>
+    <g filter={`url(#${id}-depth)`} fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="32" cy="32" r="19.5" strokeOpacity=".42"/>
+      <circle cx="32" cy="18" r="3.8" fill="white" fillOpacity=".94" stroke="none"/>
+      <path d="M32 23v20M22 28.5h20M32 43l-7 8M32 43l7 8" strokeWidth="3.3"/>
+      <path d="M13.5 34h9l3-5.4 5 11 4-7 3 1.4h13" strokeWidth="1.65"/>
+      <path d="M18.5 18.5A19 19 0 0145 18M18.5 45.5A19 19 0 0045 46" strokeOpacity=".55" strokeWidth="1.2"/>
+    </g>
+    <circle cx="13.5" cy="34" r="1.7" fill="#d9fff5"/><circle cx="50.5" cy="34" r="1.7" fill="#d9fff5"/>
   </IconSvg>;
 }
 

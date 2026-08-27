@@ -38,6 +38,13 @@ export interface BrainCurrentState {
   lastConfirmedAt: string;
   where: { city: string; country: string; coordinates?: string | null };
   reading: string | null;
+  readingBook?: {
+    id: string;
+    slug: string;
+    title: string;
+    authors: string[];
+    cover: string | null;
+  } | null;
   thinking: string | null;
   rabbitHoles: string[];
   experiments: string[];

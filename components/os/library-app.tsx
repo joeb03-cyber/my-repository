@@ -6,10 +6,11 @@ import booksIndexJson from "@/data/brain/books-index.v1.json";
 import taxonomyJson from "@/data/brain/topic-taxonomy.v1.json";
 import { applyDetailDecision, applySummaryDecision, loadEditorialDecisions } from "@/lib/brain/editorial";
 import type { BrainBookDetail, BrainBookSummary, BrainBooksIndex, BrainEditorialDecisions, BrainTopic } from "@/lib/brain/types";
+import { refineBooksIndex } from "@/lib/brain/books-editorial";
 import { BookCover } from "./book-cover";
 import { EditorialReview } from "./library-editorial-review";
 
-const bundledIndex = booksIndexJson as BrainBooksIndex;
+const bundledIndex = refineBooksIndex(booksIndexJson as BrainBooksIndex);
 const taxonomy = taxonomyJson as { topics: Array<{ slug: string; label: string; bookCount: number }> };
 const allTopics: BrainTopic[] = taxonomy.topics.map((topic) => ({ ...topic, confidence: 1, editorialState: "suggested" }));
 
@@ -40,6 +41,7 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
     const matchesText = !needle || `${book.title} ${book.subtitle || ""} ${book.authors.join(" ")} ${book.topics.map((item) => item.label).join(" ")}`.toLowerCase().includes(needle);
     return matchesText && (topic === "all" || book.topics.some((item) => item.slug === topic));
   }), [query, topic, decisions, index.books]);
+  const topicCounts = useMemo(() => new Map(allTopics.map((item) => [item.slug, index.books.filter((book) => book.topics.some((topicItem) => topicItem.slug === item.slug)).length])), [index.books]);
 
   if (reviewOpen) return <EditorialReview books={index.books} topics={allTopics} onClose={() => setReviewOpen(false)} onOpenBook={onBookOpen} />;
 
@@ -53,7 +55,7 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
     </header>
     <div className="library-toolbar"><div className="filter-row" aria-label="Filter books by topic">
       <button className={topic === "all" ? "is-active" : ""} onClick={() => setTopic("all")} aria-pressed={topic === "all"}>All</button>
-      {taxonomy.topics.filter((item) => item.bookCount).map((item) => <button key={item.slug} className={topic === item.slug ? "is-active" : ""} onClick={() => setTopic(item.slug)} aria-pressed={topic === item.slug}>{item.label}<span>{item.bookCount}</span></button>)}
+      {taxonomy.topics.filter((item) => topicCounts.get(item.slug)).map((item) => <button key={item.slug} className={topic === item.slug ? "is-active" : ""} onClick={() => setTopic(item.slug)} aria-pressed={topic === item.slug}>{item.label}<span>{topicCounts.get(item.slug)}</span></button>)}
     </div><span className="library-result-count" aria-live="polite">{books.length} {books.length === 1 ? "book" : "books"}</span></div>
     <div className="book-grid brain-book-grid">{books.map((book) => <button className="book-tile" key={book.slug} onClick={() => onBookOpen(book)}><BookCover book={book} /><strong title={book.title}>{book.title}</strong><span>{book.authors.join(", ")}</span><div className="tag-list">{book.topics.slice(0, 2).map((item) => <em key={item.slug}>{item.label}</em>)}</div></button>)}</div>
     {!books.length && <div className="library-empty">Nothing on this shelf—try a different thought.</div>}

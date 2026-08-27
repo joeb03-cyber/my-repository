@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getControlAdmin } from "@/lib/brain/control-auth.server";
+import { getBooksIndex } from "@/lib/brain/books.server";
 
 export const dynamic = "force-dynamic";
 
@@ -7,7 +8,7 @@ export async function GET() {
   const auth = await getControlAdmin();
   if (!auth) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const db = auth.supabase;
-  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult] = await Promise.all([
+  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, booksIndex] = await Promise.all([
     db.from("entities").select("id,slug,title,summary,visibility,lifecycle_state,editorial_state").eq("kind", "note").neq("lifecycle_state", "archived").order("updated_at", { ascending: false }),
     db.from("brain_notes").select("entity_id,folder_id,excerpt,body_markdown,publication_state,pinned,source_published_at,published_at,editorial_notice,external_links,updated_at"),
     db.from("note_folders").select("id,slug,label,sort_order").order("sort_order"),
@@ -17,6 +18,7 @@ export async function GET() {
     db.from("software_update_snapshots").select("id,version_label,new_items,exploring_items,performance_items,known_issue_items,effective_at").eq("publication_state", "published").order("effective_at", { ascending: false }).limit(1).maybeSingle(),
     db.from("os_trash_records").select("id,title,description,category,trashed_at,state,visibility,sort_order,updated_at").neq("state", "archived").order("sort_order"),
     db.from("activity_monitor_processes").select("id,name,status,detail,started_label,related_items,visibility,editorial_state,lifecycle_state,sort_order,updated_at").neq("lifecycle_state", "archived").order("sort_order"),
+    getBooksIndex(),
   ]);
   const failure = [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult].find((result) => result.error);
   if (failure?.error) return NextResponse.json({ error: failure.error.message }, { status: 500 });
@@ -34,11 +36,16 @@ export async function GET() {
       editorialNotice: note?.editorial_notice || "", externalLinks: note?.external_links || [], updatedAt: note?.updated_at,
     };
   });
+  const currentLinkResult = currentResult.data?.id
+    ? await db.from("current_state_entity_links").select("entity_id").eq("snapshot_id", currentResult.data.id).eq("role", "reading").maybeSingle()
+    : { data: null, error: null };
+  if (currentLinkResult.error) return NextResponse.json({ error: currentLinkResult.error.message }, { status: 500 });
   return NextResponse.json({
     admin: { displayName: auth.admin.display_name, email: auth.admin.email },
     notes,
     folders: foldersResult.data || [],
-    currentState: currentResult.data?.state || null,
+    currentState: currentResult.data ? { ...currentResult.data.state, readingBookId: currentLinkResult.data?.entity_id || null } : null,
+    bookOptions: booksIndex.books.map((book) => ({ id: book.id, slug: book.slug, title: book.title, authors: book.authors, cover: book.cover.public_path })),
     softwareUpdate: updateResult.data ? {
       versionLabel: updateResult.data.version_label,
       new: updateResult.data.new_items,
