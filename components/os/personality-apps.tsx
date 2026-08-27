@@ -98,7 +98,7 @@ function Configuration({ currentState }: { currentState: BrainCurrentState }) {
 
 function ScreenTimePanel({ currentState }: { currentState: BrainCurrentState }) {
   const activities = [["Creating", currentState.making],["Reading", currentState.reading],["Exploring", currentState.rabbitHoles[0]],["Thinking", currentState.thinking || currentState.currentQuestion]];
-  return <div className="screen-time-panel"><header className="settings-panel-head"><Clock3/><div><h2>Screen Time</h2><p>Life areas currently receiving attention.</p></div></header><div className="screen-week"><div className="screen-bars">{activities.map(([label,value],index)=><div key={label}><span style={{"--bar": `${52 + index * 9}%`} as React.CSSProperties}/><strong>{label}</strong><small>{value || "Not reported"}</small></div>)}</div><aside><strong>No minutes measured</strong><p>This is an editorial snapshot, not surveillance pretending to be self-knowledge.</p></aside></div></div>;
+  return <div className="screen-time-panel"><header className="settings-panel-head"><Clock3/><div><h2>Screen Time</h2><p>Life areas currently receiving attention.</p></div></header><div className="screen-week"><div className="screen-bars">{activities.map(([label,value])=><div key={label}><span/><strong>{label}</strong><small>{value || "Not reported"}</small></div>)}</div><aside><strong>No minutes measured</strong><p>This is an editorial snapshot, not surveillance pretending to be self-knowledge.</p></aside></div></div>;
 }
 
 function LensPanel({ lens, kind }: { lens: string; kind: "astro" | "design" | "keys" }) {
