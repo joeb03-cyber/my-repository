@@ -17,18 +17,9 @@ const nextConfig = {
     return [];
   },
   async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/notes',
-        permanent: false,
-      },
-      {
-        source: '/:path((?!notes|api|messages|_next|static|public|favicon\\.ico|sitemap\\.xml|robots\\.txt).*)',
-        destination: '/notes/:path',
-        permanent: true,
-      },
-    ];
+    // The prototype owns the root and canonical application routes.
+    // The existing implementation remains available at /notes.
+    return [];
   },
 };
 

@@ -37,3 +37,10 @@ next-env.d.ts
 
 # internal documentation
 IMPLEMENTATION.md
+
+# Local Books ingestion evidence and protected editorial/import material.
+# Keep these on the workstation; staging receives them through the guarded importer.
+/data/ingestion/
+/data/brain/books/
+/data/brain/import-v1/
+/data/brain/import-manifest.v1.json

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "books-global-topic-taxonomy.v1",
+  "approvalState": "all topics and assignments are suggested and editable",
+  "method": "A single controlled taxonomy was evaluated across titles and all 157 parsed documents; no per-book category creation was allowed.",
+  "topics": [
+    {
+      "id": "9152c14d-4ce9-54f9-926f-d069964c3da0",
+      "slug": "consciousness-nonduality",
+      "label": "Consciousness & Nonduality",
+      "bookCount": 38,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "5cd2833f-b4fe-5a2a-b88c-58f34d0730c3",
+      "slug": "spirituality-mysticism",
+      "label": "Spirituality & Mysticism",
+      "bookCount": 35,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "6939466a-da15-5470-9e40-faf312e3d1fb",
+      "slug": "meditation-practice",
+      "label": "Meditation & Practice",
+      "bookCount": 13,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "a8edaa81-99f8-5819-a92c-8e16d72328b3",
+      "slug": "psychology-trauma-inner-work",
+      "label": "Psychology, Trauma & Inner Work",
+      "bookCount": 30,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "c72bc087-9e28-5bd7-908b-baf28ec675ee",
+      "slug": "health-longevity",
+      "label": "Health, Biology & Longevity",
+      "bookCount": 26,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "6e83bfb8-e94d-514a-b1e5-a4ec87f3a209",
+      "slug": "energy-esoteric-healing",
+      "label": "Energy & Esoteric Healing",
+      "bookCount": 8,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "043dd7b0-5001-576c-8c8d-d9215b773380",
+      "slug": "love-relationships",
+      "label": "Love & Relationships",
+      "bookCount": 23,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "505d6857-7b10-5db4-a8ef-17338cb79e1d",
+      "slug": "creativity-purpose-work",
+      "label": "Creativity, Purpose & Work",
+      "bookCount": 9,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "852f4b2d-0fa1-54f4-8ec0-f48a798f472b",
+      "slug": "money-business-performance",
+      "label": "Money, Business & Performance",
+      "bookCount": 22,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "96cbba13-ce25-53f6-96f7-f98488778de0",
+      "slug": "philosophy-meaning",
+      "label": "Philosophy & Meaning",
+      "bookCount": 52,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "64845f83-964e-5757-a4b4-37699da11394",
+      "slug": "reality-metaphysics",
+      "label": "Reality & Metaphysics",
+      "bookCount": 3,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "037438fd-9aa5-5f05-b6bd-59570ad18e47",
+      "slug": "travel-place-freedom",
+      "label": "Travel, Place & Freedom",
+      "bookCount": 5,
+      "editorialState": "suggested"
+    },
+    {
+      "id": "39f67615-c013-56fb-9e82-4ead17466ca2",
+      "slug": "society-culture-systems",
+      "label": "Society, Culture & Systems",
+      "bookCount": 9,
+      "editorialState": "suggested"
+    }
+  ]
+}

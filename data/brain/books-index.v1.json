@@ -1,0 +1,5935 @@
+{
+  "schemaVersion": "brain-books-index.v1",
+  "bookCount": 165,
+  "generatedFrom": "books-brain-v1/parser-0.2.0",
+  "books": [
+    {
+      "id": "46690539-e6a0-53bd-8d58-5b7581a7250d",
+      "slug": "100m-offers",
+      "sourcePosition": 1,
+      "title": "$100M Offers",
+      "originalTitle": "$100M Offers",
+      "subtitle": "How to Make Offers So Good People Feel Stupid Saying No",
+      "authors": [
+        "Alex Hormozi"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.87,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/100m-offers.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/11948182-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL33290771M",
+        "bytes": 46768,
+        "sha256": "0186dbd99589b0fc716d92ff6bf03f107d619084884b45c62da90144e65b8c04",
+        "mime_type": "image/jpeg",
+        "width": 369,
+        "height": 500
+      },
+      "highlightCount": 28,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "e4d9f1d1-4b62-59b0-804c-23ac5d2582f3",
+      "slug": "1929",
+      "sourcePosition": 2,
+      "title": "1929",
+      "originalTitle": "1929",
+      "subtitle": null,
+      "authors": [
+        "Aaron Ross Sorkin"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "2e2647bc-fb22-540e-b851-ab3ded84f4a9",
+      "slug": "a-master-s-secret-whispers",
+      "sourcePosition": 3,
+      "title": "A Master's Secret Whispers",
+      "originalTitle": "A Master's Secret Whispers",
+      "subtitle": null,
+      "authors": [
+        "Kapil Gupta"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.76,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/a-master-s-secret-whispers.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10459700-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL22436374W",
+        "bytes": 65970,
+        "sha256": "bb50e032d6edcd16ba1f8b881c750e5b2b587236a9af7f0984e3307ce82bc550",
+        "mime_type": "image/jpeg",
+        "width": 328,
+        "height": 500
+      },
+      "highlightCount": 54,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "9e612ff4-88f7-503d-8486-175c6bee94eb",
+      "slug": "a-new-earth",
+      "sourcePosition": 4,
+      "title": "A New Earth",
+      "originalTitle": "A New Earth",
+      "subtitle": null,
+      "authors": [
+        "Eckhart Tolle"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.69,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/a-new-earth.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10858608-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL5727685W",
+        "bytes": 53771,
+        "sha256": "059c17244387b7cd22a45736622342d594cf4a910543ccec592459981279b283",
+        "mime_type": "image/jpeg",
+        "width": 337,
+        "height": 500
+      },
+      "highlightCount": 35,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "ffaeb16c-54bf-5a65-a048-cefd303c5c12",
+      "slug": "all-for-love",
+      "sourcePosition": 5,
+      "title": "All for Love",
+      "originalTitle": "All for Love",
+      "subtitle": null,
+      "authors": [
+        "Matt Kahn"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.75,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/all-for-love.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13192844-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "/works/OL28607694W",
+        "bytes": 34118,
+        "sha256": "0bfef40a7a670a03706955764922467dbe27e6d097299aff039b7504571923f1",
+        "mime_type": "image/jpeg",
+        "width": 500,
+        "height": 465
+      },
+      "highlightCount": 73,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "b09933fc-db62-5b65-bba7-96b7fdfe4a88",
+      "slug": "atmamun",
+      "sourcePosition": 6,
+      "title": "Atmamun",
+      "originalTitle": "Atmamun",
+      "subtitle": null,
+      "authors": [
+        "Kapil Gupta"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.62,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/atmamun.jpg",
+        "source_url": "https://covers.openlibrary.org/b/isbn/1532762720-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "isbn-1532762720",
+        "bytes": 28233,
+        "sha256": "65fa01f82441205bf42c1e63f24331f5b758e393bd17b7db13dc7fc16c5bf4c1",
+        "mime_type": "image/jpeg",
+        "width": 317,
+        "height": 500
+      },
+      "highlightCount": 21,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "03b95632-f6a7-5e5c-a803-7358b7f1a268",
+      "slug": "awake-it-s-your-turn",
+      "sourcePosition": 7,
+      "title": "Awake: It's Your Turn",
+      "originalTitle": "Awake: It's Your Turn",
+      "subtitle": null,
+      "authors": [
+        "Angelo DiLullo"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "73696923-1c42-5523-b817-47e29139a022",
+      "slug": "awake-but-sick",
+      "sourcePosition": 8,
+      "title": "Awake But Sick",
+      "originalTitle": "Awake But Sick",
+      "subtitle": null,
+      "authors": [
+        "Scott Kiloby"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.9,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 82,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 9
+    },
+    {
+      "id": "b9761f8b-4c2c-5a17-af09-f2ecd7e6a4f9",
+      "slug": "awaken-the-immortal-within",
+      "sourcePosition": 9,
+      "title": "Awaken the Immortal Within",
+      "originalTitle": "Awaken the Immortal Within",
+      "subtitle": null,
+      "authors": [
+        "Jason Breshears"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.82,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.71,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/awaken-the-immortal-within.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13691586-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL29532698W",
+        "bytes": 37212,
+        "sha256": "3073804b7922d2acb3b549178761721a3407a52135c612f23d5061624b6116bf",
+        "mime_type": "image/jpeg",
+        "width": 333,
+        "height": 500
+      },
+      "highlightCount": 104,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "438a4c76-a13d-5c15-b30e-cb1b9aef4ee0",
+      "slug": "awakening-intuition",
+      "sourcePosition": 10,
+      "title": "Awakening intuition",
+      "originalTitle": "Awakening Intuition",
+      "subtitle": null,
+      "authors": [
+        "Frances E. Vaughan"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/awakening-intuition.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/238258-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL2212303M",
+        "bytes": 25998,
+        "sha256": "7857cb6871306510228d5c9060d04ef8263e5cc205dd5b045122bf6533afa8b2",
+        "mime_type": "image/jpeg",
+        "width": 307,
+        "height": 475
+      },
+      "highlightCount": 35,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "63cc894f-7c8c-511e-956b-589db803d64c",
+      "slug": "awakening-to-be-human",
+      "sourcePosition": 11,
+      "title": "Awakening to Be Human",
+      "originalTitle": "Awakening to Be Human",
+      "subtitle": null,
+      "authors": [
+        "Maggie Gilewicz"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.67,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 41,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 16
+    },
+    {
+      "id": "d9284c12-2038-5da9-b7f2-81d6d0c2134b",
+      "slug": "ballistic",
+      "sourcePosition": 12,
+      "title": "Ballistic",
+      "originalTitle": "Ballistic",
+      "subtitle": "The New Science of Injury-Free Athletic Performance",
+      "authors": [
+        "Henry Abbott"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.67,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 26,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "06ead79e-cce5-5e60-b031-7a418a455442",
+      "slug": "be-your-own-healer",
+      "sourcePosition": 13,
+      "title": "Be Your Own Healer",
+      "originalTitle": "Be Your Own Healer",
+      "subtitle": null,
+      "authors": [
+        "Kim D'Eramo"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.89,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.78,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 78,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "7a42ce43-5fad-5199-8870-18af6f280358",
+      "slug": "being-aware-of-being-aware",
+      "sourcePosition": 14,
+      "title": "Being aware of being aware",
+      "originalTitle": "Being Aware of Being Aware",
+      "subtitle": null,
+      "authors": [
+        "Rupert Spira"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.88,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/being-aware-of-being-aware.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14675937-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL19733531W",
+        "bytes": 8210,
+        "sha256": "1ccf833b743cf199e62c29f4aab6d48bcf5e8cec5e7660240fbd16ff4858bf6f",
+        "mime_type": "image/jpeg",
+        "width": 285,
+        "height": 400
+      },
+      "highlightCount": 53,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "a6f3338b-207a-5f83-a961-ed7cc2ad2570",
+      "slug": "the-body-deva",
+      "sourcePosition": 15,
+      "title": "The Body Deva",
+      "originalTitle": "The Body Deva",
+      "subtitle": null,
+      "authors": [
+        "Mary Mueller Shutan"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.93,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-body-deva.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/8841368-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20192049W",
+        "bytes": 38257,
+        "sha256": "8b62faa56668720c67ac64592fe051d78d8f77f27b7bea72bbd171aafb3ae400",
+        "mime_type": "image/jpeg",
+        "width": 333,
+        "height": 500
+      },
+      "highlightCount": 119,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 8
+    },
+    {
+      "id": "ca8ab9c7-cc58-51d6-8c7f-e2e64a46d709",
+      "slug": "breath",
+      "sourcePosition": 16,
+      "title": "Breath",
+      "originalTitle": "Breath",
+      "subtitle": null,
+      "authors": [
+        "James Nestor"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/breath.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10096454-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20799952W",
+        "bytes": 34335,
+        "sha256": "23e9b44dd6512bf3193f26756a1518810a382195a8a9c10f708cb93d40a7ed54",
+        "mime_type": "image/jpeg",
+        "width": 331,
+        "height": 500
+      },
+      "highlightCount": 16,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 19
+    },
+    {
+      "id": "0249a598-895b-545b-a500-feb5b92b5433",
+      "slug": "breaking-the-habit-of-being-yourself",
+      "sourcePosition": 17,
+      "title": "Breaking the habit of being yourself",
+      "originalTitle": "Breaking the Habit of Being Yourself",
+      "subtitle": null,
+      "authors": [
+        "Joe Dispenza"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.79,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/breaking-the-habit-of-being-yourself.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/11348192-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL16215950W",
+        "bytes": 36734,
+        "sha256": "4786ce5d2a4170bc4701fe72e0604666eec886dc8c12d9cfe956c54901934702",
+        "mime_type": "image/jpeg",
+        "width": 324,
+        "height": 500
+      },
+      "highlightCount": 56,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "a11e0b6f-d9dd-520f-b571-fa5080e04814",
+      "slug": "collected-essays-of-joel-goldsmith",
+      "sourcePosition": 18,
+      "title": "Collected Essays Joel S Goldsmith",
+      "originalTitle": "Collected Essays of Joel Goldsmith",
+      "subtitle": null,
+      "authors": [
+        "Joel G. Goldsmith"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/collected-essays-of-joel-goldsmith.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/7750250-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL26113410M",
+        "bytes": 24790,
+        "sha256": "12a26be254291f9ba14bd8898759503e7f61426559f93f110df9aac17e508eb0",
+        "mime_type": "image/jpeg",
+        "width": 256,
+        "height": 400
+      },
+      "highlightCount": 117,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 10
+    },
+    {
+      "id": "1617ffe2-2b2f-50d4-bafe-b034159fd223",
+      "slug": "complete-works-of-h-emilie-cady",
+      "sourcePosition": 19,
+      "title": "Complete Works of H. Emilie Cady",
+      "originalTitle": "Complete Works of H. Emilie Cady",
+      "subtitle": null,
+      "authors": [
+        "H. Emilie Cady"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.82,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/complete-works-of-h-emilie-cady.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/4792551-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL8348828M",
+        "bytes": 4573,
+        "sha256": "cd182384591b6abfc9518ded4f18354a19161916123e1a5c49290e060ed369bc",
+        "mime_type": "image/jpeg",
+        "width": 128,
+        "height": 190
+      },
+      "highlightCount": 136,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 6
+    },
+    {
+      "id": "2861ac24-bdcb-548d-8bf4-af2fe5d6b8b6",
+      "slug": "conscious-accomplishment",
+      "sourcePosition": 20,
+      "title": "Conscious Accomplishment",
+      "originalTitle": "Conscious Accomplishemnt",
+      "subtitle": "How to Use Personal Achievement for Spiritual Growth",
+      "authors": [
+        "Scott Britton"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.92,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.82,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 112,
+      "importState": "complete",
+      "metadataStatus": "high_confidence_partial",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "19f39a5b-a2af-5900-b45f-17359ed3ed5b",
+      "slug": "cosmic-health",
+      "sourcePosition": 21,
+      "title": "Cosmic Health",
+      "originalTitle": "Cosmic Health",
+      "subtitle": null,
+      "authors": [
+        "Jennifer Racioppi"
+      ],
+      "topics": [
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 155,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 9
+    },
+    {
+      "id": "9a28e156-7a96-54b9-a775-b030f67de456",
+      "slug": "the-courage-to-be-disliked",
+      "sourcePosition": 22,
+      "title": "The Courage to Be Disliked",
+      "originalTitle": "The Courage to Be Disliked",
+      "subtitle": null,
+      "authors": [
+        "Ichiro Kishimi"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.78,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.7,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 113,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "292817d0-76c2-5428-ad86-f8f3018b1d8a",
+      "slug": "cutting-through-spiritual-materialism",
+      "sourcePosition": 23,
+      "title": "Cutting Through Spiritual Materialism",
+      "originalTitle": "Cutting Through Spiritual Materialism",
+      "subtitle": null,
+      "authors": [
+        "Chögyam Trungpa"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.73,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.63,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/cutting-through-spiritual-materialism.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/817673-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL8697747M",
+        "bytes": 21840,
+        "sha256": "42c399b5eb54bbe7e901c747d262706922cb8c14eda687f099b8cd25461b41ad",
+        "mime_type": "image/jpeg",
+        "width": 318,
+        "height": 475
+      },
+      "highlightCount": 35,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 12
+    },
+    {
+      "id": "eb387d8d-f78f-5f17-aa59-e03292064db0",
+      "slug": "dirtbag-rich",
+      "sourcePosition": 24,
+      "title": "Dirtbag Rich",
+      "originalTitle": "Dirtbag Rich",
+      "subtitle": null,
+      "authors": [
+        "Blake Boles"
+      ],
+      "topics": [
+        {
+          "slug": "travel-place-freedom",
+          "label": "Travel, Place & Freedom",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.86,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 77,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "cd69b547-c5d9-5d10-af6c-0d149d145122",
+      "slug": "disciples-of-the-mysterium",
+      "sourcePosition": 25,
+      "title": "Disciples of the Mysterium",
+      "originalTitle": "Disciples of the Mysterium",
+      "subtitle": null,
+      "authors": [
+        "Michael Tsarion"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.9,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 147,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "3684c1e4-162c-5c71-a3f4-dac9c6a125f8",
+      "slug": "doing-nothing",
+      "sourcePosition": 26,
+      "title": "Doing Nothing",
+      "originalTitle": "Doing Nothing",
+      "subtitle": null,
+      "authors": [
+        "Steven Harrison"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.69,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.62,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/doing-nothing.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/1977161-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL121685W",
+        "bytes": 19387,
+        "sha256": "c4b994633eed3a3f8fb573876d84e446d440c26017a072a3afc323b790d82a91",
+        "mime_type": "image/jpeg",
+        "width": 323,
+        "height": 500
+      },
+      "highlightCount": 47,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "e5207af5-84eb-5fbf-aca8-fbfdb1b9eefd",
+      "slug": "effortless-being",
+      "sourcePosition": 27,
+      "title": "Effortless Being",
+      "originalTitle": "Effortless Being",
+      "subtitle": null,
+      "authors": [
+        "David Bingham"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.93,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.61,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 41,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 14
+    },
+    {
+      "id": "011d7f96-e6a0-55ef-a107-9c2ed15035ff",
+      "slug": "estrogeneration",
+      "sourcePosition": 28,
+      "title": "Estrogeneration",
+      "originalTitle": "Estrogeneration",
+      "subtitle": null,
+      "authors": [
+        "Anthony G. Jay"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/estrogeneration.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12088000-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL26134766W",
+        "bytes": 44302,
+        "sha256": "951dc56777f28a9885303b44fba8c2ad41848f95d673a753328fe0052593aa05",
+        "mime_type": "image/jpeg",
+        "width": 348,
+        "height": 500
+      },
+      "highlightCount": 24,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "9e24ee48-0aaa-5bcc-9132-232971d13bce",
+      "slug": "excellent-advice-for-living",
+      "sourcePosition": 29,
+      "title": "Excellent Advice for Living",
+      "originalTitle": "Excellent Advice for Living",
+      "subtitle": null,
+      "authors": [
+        "Kevin Kelly"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.61,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/excellent-advice-for-living.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13573028-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL28861061W",
+        "bytes": 33334,
+        "sha256": "e6ed8e4ab075d0a279e94ba5e3a22f75b3bba749bf664cc80322124193972355",
+        "mime_type": "image/jpeg",
+        "width": 353,
+        "height": 500
+      },
+      "highlightCount": 49,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "04c8a441-69c3-5a3b-87c2-b2bab86bbfd9",
+      "slug": "eye-of-the-i",
+      "sourcePosition": 30,
+      "title": "The eye of the I",
+      "originalTitle": "Eye of the I",
+      "subtitle": "from which nothing is hidden",
+      "authors": [
+        "David R. Hawkins"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.91,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.76,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/eye-of-the-i.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13520198-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL27217700M",
+        "bytes": 25447,
+        "sha256": "dc50cfa2c79982d1858ca5f3d888b85c16c6ee755f79f9a2c504acd636a9d714",
+        "mime_type": "image/jpeg",
+        "width": 319,
+        "height": 500
+      },
+      "highlightCount": 87,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 8
+    },
+    {
+      "id": "5fc7d57b-5ec5-5bb0-8038-31646bb68ee7",
+      "slug": "face-to-no-face-on-having-no-head",
+      "sourcePosition": 31,
+      "title": "Face to No Face / On Having No Head",
+      "originalTitle": "Face to No Face / On Having No Head",
+      "subtitle": null,
+      "authors": [
+        "Douglas Harding"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.75,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.68,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 85,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "3bfd2d7b-962d-5a6a-995c-5b6361c1cae3",
+      "slug": "fatal-conveniences",
+      "sourcePosition": 32,
+      "title": "Fatal Conveniences",
+      "originalTitle": "Fatal Conveniences",
+      "subtitle": null,
+      "authors": [
+        "Darin Olien"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.7,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "confidence": 0.65,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/fatal-conveniences.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13836384-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL28356837W",
+        "bytes": 34884,
+        "sha256": "a7b9092269024d774e11ed9345d31a2fd102e900c555749ccf92530fdd7ca94c",
+        "mime_type": "image/jpeg",
+        "width": 331,
+        "height": 500
+      },
+      "highlightCount": 225,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 46
+    },
+    {
+      "id": "18a555e8-b91e-52d9-878f-34c82c627a0f",
+      "slug": "feel-good-productivity",
+      "sourcePosition": 33,
+      "title": "Feel-Good Productivity",
+      "originalTitle": "Feel-Good Productivity",
+      "subtitle": null,
+      "authors": [
+        "Ali Abdaal"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.72,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.67,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/feel-good-productivity.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14557462-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL34026833W",
+        "bytes": 38637,
+        "sha256": "69aa1341b1afa5fd27d766d40a0c61461c43a31eb58a4108f996fd903ed335ce",
+        "mime_type": "image/jpeg",
+        "width": 326,
+        "height": 500
+      },
+      "highlightCount": 189,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 29
+    },
+    {
+      "id": "c2c91d4e-3017-5055-97c9-db1d5444ee9c",
+      "slug": "a-fool-s-wisdom",
+      "sourcePosition": 34,
+      "title": "A Fool's Wisdom",
+      "originalTitle": "A Fool's Wisdom",
+      "subtitle": null,
+      "authors": [
+        "Steven Young"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.9,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.75,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 125,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 22
+    },
+    {
+      "id": "ad37445b-8f39-5264-ac80-6535bf693a38",
+      "slug": "forever-strong",
+      "sourcePosition": 35,
+      "title": "Forever Strong",
+      "originalTitle": "Forever Strong",
+      "subtitle": null,
+      "authors": [
+        "Gabrielle Lyon"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.75,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/forever-strong.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14799197-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL35722332W",
+        "bytes": 50057,
+        "sha256": "c3e6ee5961f05aa6a27bbf6c4cace671f7a740decf56feaca8c769923b21f91b",
+        "mime_type": "image/jpeg",
+        "width": 261,
+        "height": 400
+      },
+      "highlightCount": 24,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "b8e55bff-98d9-52ce-bf8c-1f27810f7fda",
+      "slug": "four-thousand-weeks",
+      "sourcePosition": 36,
+      "title": "Four Thousand Weeks",
+      "originalTitle": "Four Thousand Weeks",
+      "subtitle": "Time Management for Mortals",
+      "authors": [
+        "Oliver Burkeman"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/four-thousand-weeks.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/11990973-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL22355777W",
+        "bytes": 36490,
+        "sha256": "11584993c023d10bcf1faad41558096f22aa5f3a54116c712a149db6c3e04c55",
+        "mime_type": "image/jpeg",
+        "width": 325,
+        "height": 500
+      },
+      "highlightCount": 87,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 13
+    },
+    {
+      "id": "057c2769-bd5f-51e4-b274-add8a032fcc8",
+      "slug": "german-new-medicine-an-introduction",
+      "sourcePosition": 37,
+      "title": "German New Medicine: An Introduction",
+      "originalTitle": "German New Medicine: An Introduction",
+      "subtitle": null,
+      "authors": [
+        "Olivia Winston"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "e858671f-0482-59ff-8f9c-a5cee16f5e06",
+      "slug": "german-new-medicine-experiences-in-practice",
+      "sourcePosition": 38,
+      "title": "German New Medicine: Experiences in Practice",
+      "originalTitle": "German New Medicine: Experiences in Practice",
+      "subtitle": null,
+      "authors": [
+        "Katherine Willow"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.73,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 77,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "94fe2e74-cbb3-508d-9ead-a2d2ea8715e7",
+      "slug": "get-out-of-here-alive",
+      "sourcePosition": 39,
+      "title": "Get Out of Here Alive",
+      "originalTitle": "Get Out of Here Alive",
+      "subtitle": null,
+      "authors": [
+        "Sol Luckman"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.67,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 90,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "1b64cd9e-42c9-5df7-8eb0-f055a81969c4",
+      "slug": "god-will-work-with-you-but-not-for-you",
+      "sourcePosition": 40,
+      "title": "God Will Work With You but Not for You",
+      "originalTitle": "God Will Work With You But Not For You",
+      "subtitle": null,
+      "authors": [
+        "Lao Russell"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/god-will-work-with-you-but-not-for-you.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13851541-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL4729226W",
+        "bytes": 5155,
+        "sha256": "3f4741419de4c65c07b376cd95146294c35571f74f74de1a47459a24d3fbf2e2",
+        "mime_type": "image/jpeg",
+        "width": 90,
+        "height": 140
+      },
+      "highlightCount": 131,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "d9fe8701-a52e-5383-a094-f7c95cc7c64d",
+      "slug": "going-to-pieces-without-falling-apart",
+      "sourcePosition": 41,
+      "title": "Going to pieces without falling apart",
+      "originalTitle": "Going to Pieces Without Falling Apart",
+      "subtitle": null,
+      "authors": [
+        "Mark Epstein"
+      ],
+      "topics": [
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.77,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.61,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/going-to-pieces-without-falling-apart.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/527563-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL1815175W",
+        "bytes": 43292,
+        "sha256": "de4d867293ca62b5d750f81290cdc095db2cc5e1cf448f191f64a740748bed25",
+        "mime_type": "image/jpeg",
+        "width": 309,
+        "height": 474
+      },
+      "highlightCount": 27,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "241be0a3-6494-51fa-9ef9-2071463d5826",
+      "slug": "habits-of-a-healthy-brain",
+      "sourcePosition": 42,
+      "title": "Habits of a Healthy Brain",
+      "originalTitle": "Habits of a Healthy Brain",
+      "subtitle": null,
+      "authors": [
+        "Loretta Breuning"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 93,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 28
+    },
+    {
+      "id": "9fbaf542-9458-54bd-a417-8b90f0ebeda4",
+      "slug": "head-strong",
+      "sourcePosition": 43,
+      "title": "Head strong",
+      "originalTitle": "Head Strong",
+      "subtitle": null,
+      "authors": [
+        "Dave Asprey"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/head-strong.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/15121459-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20053442W",
+        "bytes": 53233,
+        "sha256": "7649391ab55f150e6887993e474b47185f5ff2f3ad79266f456d1ec120944d7f",
+        "mime_type": "image/jpeg",
+        "width": 330,
+        "height": 500
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "77bf1630-b939-595c-9125-af5469108cf6",
+      "slug": "healing-with-dmso",
+      "sourcePosition": 44,
+      "title": "Healing with DMSO",
+      "originalTitle": "Healing with DMSO",
+      "subtitle": null,
+      "authors": [
+        "Amandha Dawn Vollmer"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/healing-with-dmso.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13588464-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL21661734W",
+        "bytes": 42846,
+        "sha256": "6afa89c1dfa44a56ef89c8d6dfe2bc3129b4c78570da668b2b6b31a9b43d387d",
+        "mime_type": "image/jpeg",
+        "width": 323,
+        "height": 500
+      },
+      "highlightCount": 0,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "f52b88a0-b0c2-5f1a-9605-e9b7e3b75e9a",
+      "slug": "hidden-continents-beyond-the-poles",
+      "sourcePosition": 45,
+      "title": "Hidden Continents Beyond the Poles",
+      "originalTitle": "Hidden Continents Beyond the Poles",
+      "subtitle": null,
+      "authors": [
+        "Fred Dodson"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.59,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 25,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "1f7d9e8d-b6e4-5404-950f-58f6ce3d114d",
+      "slug": "high-performance-mind",
+      "sourcePosition": 46,
+      "title": "The high-performance mind",
+      "originalTitle": "High Performance Mind",
+      "subtitle": "mastering brainwaves for insight, healing, and creativity",
+      "authors": [
+        "Anna Wise"
+      ],
+      "topics": [
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.84,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/high-performance-mind.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14978564-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL22976175M",
+        "bytes": 45192,
+        "sha256": "0449c9f129e47738598bf713836f8392a2c9a46b82688792b8f301e18cacd428",
+        "mime_type": "image/jpeg",
+        "width": 332,
+        "height": 500
+      },
+      "highlightCount": 110,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 8
+    },
+    {
+      "id": "d2aa2a53-6a7a-5b1a-81f4-e657f6fc8ae8",
+      "slug": "holographic-blood",
+      "sourcePosition": 47,
+      "title": "Holographic Blood",
+      "originalTitle": "Holographic Blood",
+      "subtitle": null,
+      "authors": [
+        "Harvey Bigelsen"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.87,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.72,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 93,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "f0ef8d00-b3ab-56d7-a5c9-21e7cc3979d1",
+      "slug": "how-to-heal-your-metabolism",
+      "sourcePosition": 48,
+      "title": "How to Heal Your Metabolism",
+      "originalTitle": "How to Heal Your Metabolism",
+      "subtitle": null,
+      "authors": [
+        "Kate Deering"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.9,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/how-to-heal-your-metabolism.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10546880-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL24148413W",
+        "bytes": 53535,
+        "sha256": "140ad3a7694c2dd9c83d8a3c48fa542e3727d877d46675e779c45a4ea6e198fd",
+        "mime_type": "image/jpeg",
+        "width": 333,
+        "height": 500
+      },
+      "highlightCount": 138,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "f1ff191e-3e25-509c-8569-b876ee8fb844",
+      "slug": "how-to-live-your-truth",
+      "sourcePosition": 49,
+      "title": "How to Live Your Truth",
+      "originalTitle": "How to Live Your Truth",
+      "subtitle": null,
+      "authors": [
+        "Kamal Ravikant"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 35,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "a1d98111-afbd-506e-9efa-56d58d2f92be",
+      "slug": "how-to-actually-live-longer",
+      "sourcePosition": 50,
+      "title": "How to Actually Live Longer",
+      "originalTitle": "How to Actually Live Longer",
+      "subtitle": null,
+      "authors": [
+        "Christian Yordanov"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.61,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 132,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "67cc8f30-fed0-5dae-a1ea-45c2fac2bd11",
+      "slug": "i-am-the-word",
+      "sourcePosition": 51,
+      "title": "I am the word",
+      "originalTitle": "I Am the Word",
+      "subtitle": null,
+      "authors": [
+        "Paul Selig"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.7,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.69,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/i-am-the-word.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/7967828-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL15570491W",
+        "bytes": 18893,
+        "sha256": "192f74f6117e62cba77e70161f18f781d80d5de5260afc4aa8b1550ec6540e56",
+        "mime_type": "image/jpeg",
+        "width": 332,
+        "height": 500
+      },
+      "highlightCount": 73,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "a87b8e3e-0ae4-54db-b69d-fae9b0808f84",
+      "slug": "i-reality-and-subjectivity",
+      "sourcePosition": 52,
+      "title": "I: Reality and Subjectivity",
+      "originalTitle": "I: Reality and Subjectivity",
+      "subtitle": null,
+      "authors": [
+        "David R. Hawkins"
+      ],
+      "topics": [
+        {
+          "slug": "reality-metaphysics",
+          "label": "Reality & Metaphysics",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.92,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 91,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 8
+    },
+    {
+      "id": "5265365b-2399-516e-91e8-2ba6bfe00697",
+      "slug": "illumination-of-consciousness",
+      "sourcePosition": 53,
+      "title": "Illumination of Consciousness",
+      "originalTitle": "Illumination of Consciousness",
+      "subtitle": null,
+      "authors": [
+        "Frederick Dodson"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.9,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/illumination-of-consciousness.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/11861825-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL24943550W",
+        "bytes": 29862,
+        "sha256": "99fbc2871c04d232c4180c25adfc0ec30399e170b24442c89cfe5f2298dd340e",
+        "mime_type": "image/jpeg",
+        "width": 314,
+        "height": 500
+      },
+      "highlightCount": 136,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "c2e6c86d-e587-5199-8d66-ab4323f9dd55",
+      "slug": "in-an-unspoken-voice",
+      "sourcePosition": 54,
+      "title": "In an Unspoken Voice",
+      "originalTitle": "In an Unspoken Voice",
+      "subtitle": null,
+      "authors": [
+        "Peter Levine"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.87,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 115,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "4f89fca7-431f-51fd-bce0-229e483fe520",
+      "slug": "in-search-of-the-miraculous",
+      "sourcePosition": 55,
+      "title": "In Search of the Miraculous",
+      "originalTitle": "In Search of the Miraculous",
+      "subtitle": null,
+      "authors": [
+        "P.D. Ouspensky"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.86,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.76,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 154,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 8
+    },
+    {
+      "id": "acaa179f-33e1-5b74-871b-766c9b434c8b",
+      "slug": "increase-your-energy",
+      "sourcePosition": 56,
+      "title": "Increase Your Energy",
+      "originalTitle": "Increase Your Energy",
+      "subtitle": null,
+      "authors": [
+        "Frederick Dodson"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/increase-your-energy.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/11242665-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL24585196W",
+        "bytes": 32410,
+        "sha256": "108c23f60175639beee683079539b0cb6fe54e8b453a61aa61a264820776e777",
+        "mime_type": "image/jpeg",
+        "width": 314,
+        "height": 500
+      },
+      "highlightCount": 29,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "4f71924d-f122-5d77-a5c0-e5bedac9050e",
+      "slug": "infinite-self",
+      "sourcePosition": 57,
+      "title": "Infinite self",
+      "originalTitle": "Infinite Self",
+      "subtitle": null,
+      "authors": [
+        "Stuart Wilde"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.72,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/infinite-self.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12415047-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL13543927W",
+        "bytes": 22273,
+        "sha256": "9288366e396f80d6f16b228fa2261e9d63bd11ef2a6780bdff8454cf74739fd3",
+        "mime_type": "image/jpeg",
+        "width": 254,
+        "height": 400
+      },
+      "highlightCount": 95,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "cf78c21b-82a1-5184-972a-20bf7bfaed0a",
+      "slug": "irresistible",
+      "sourcePosition": 58,
+      "title": "Irresistible",
+      "originalTitle": "Irresistible",
+      "subtitle": null,
+      "authors": [
+        "Adam L. Alter"
+      ],
+      "topics": [
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.59,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/irresistible.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/15240641-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20054368W",
+        "bytes": 25333,
+        "sha256": "8fc7996f4a5477aac35978b3f38efc39fc065895d44cc613e8016d2bdcb6ab21",
+        "mime_type": "image/jpeg",
+        "width": 337,
+        "height": 500
+      },
+      "highlightCount": 46,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "c2d704f4-ff88-55b5-9317-4e1097c8ff56",
+      "slug": "kundalini-evolution-and-enlightenment",
+      "sourcePosition": 59,
+      "title": "Kundalini, evolution, and enlightenment",
+      "originalTitle": "Kundalini, Evolution and Enlightenment",
+      "subtitle": null,
+      "authors": [
+        "John Warren White"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/kundalini-evolution-and-enlightenment.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14486172-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL2220172M",
+        "bytes": 23553,
+        "sha256": "035be685487a6026dbd7df5b6de6cd2b85e67cb902ca1a7da1d1f4f44b318c39",
+        "mime_type": "image/jpeg",
+        "width": 325,
+        "height": 500
+      },
+      "highlightCount": 38,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "2a9433c2-6b5f-5e03-af42-fa6623b5723d",
+      "slug": "lazy-man-s-guide-to-enlightenment",
+      "sourcePosition": 60,
+      "title": "Lazy Man's Guide to Enlightenment",
+      "originalTitle": "Lazy Man's Guide to Enlightenment",
+      "subtitle": null,
+      "authors": [
+        "Thaddeus Golas"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.88,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.63,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/lazy-man-s-guide-to-enlightenment.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12761783-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL7821610M",
+        "bytes": 23381,
+        "sha256": "7ffefe6b44ac4eefb32ff17abac4594d4241fb8dbb40fa55906822d9a105802a",
+        "mime_type": "image/jpeg",
+        "width": 291,
+        "height": 500
+      },
+      "highlightCount": 20,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "5d62ccd0-49cd-5b11-99c6-86900e631fe9",
+      "slug": "learning-to-love-yourself",
+      "sourcePosition": 61,
+      "title": "Learning to Love Yourself",
+      "originalTitle": "Learning to Love Yourself",
+      "subtitle": null,
+      "authors": [
+        "Gay Hendricks"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/learning-to-love-yourself.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/7229219-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL14950910W",
+        "bytes": 36574,
+        "sha256": "13437c00f1ec569cdf1b657b618487810fed5ede7563baa3d10787afe64eae72",
+        "mime_type": "image/jpeg",
+        "width": 316,
+        "height": 500
+      },
+      "highlightCount": 51,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 4
+    },
+    {
+      "id": "3855a7df-f1e6-527a-bcec-7ada4868bcc9",
+      "slug": "let-it-flow",
+      "sourcePosition": 62,
+      "title": "Let It Flow",
+      "originalTitle": "Let if Flow",
+      "subtitle": "Hands-on Techniques for Healing Body, Mind, and Spirit",
+      "authors": [
+        "Dr. Sheel Tangri"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.66,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 15,
+      "importState": "complete",
+      "metadataStatus": "high_confidence_partial",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "74c96497-e9a9-598b-825f-dfb986bb9598",
+      "slug": "levels-of-energy",
+      "sourcePosition": 63,
+      "title": "Levels of Energy",
+      "originalTitle": "Levels of Energy",
+      "subtitle": null,
+      "authors": [
+        "Frederick Dodson"
+      ],
+      "topics": [
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/levels-of-energy.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14007089-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL27720173W",
+        "bytes": 66502,
+        "sha256": "5bb759e83ba51b82be30f243a9bd24e7f6890f16d953d0e429f601616c96bacb",
+        "mime_type": "image/jpeg",
+        "width": 314,
+        "height": 500
+      },
+      "highlightCount": 158,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 22
+    },
+    {
+      "id": "dbe91964-f93e-586d-b474-1e0d15a251da",
+      "slug": "life-force",
+      "sourcePosition": 64,
+      "title": "Life Force (Export)",
+      "originalTitle": "Life Force",
+      "subtitle": null,
+      "authors": [
+        "Tony Robbins"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.65,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/life-force.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13728544-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL26835492W",
+        "bytes": 44706,
+        "sha256": "3c40f2241f640094d046bb52fede5bc6379a6d9e58b08f99ddae903d4aaea16f",
+        "mime_type": "image/jpeg",
+        "width": 430,
+        "height": 500
+      },
+      "highlightCount": 73,
+      "importState": "complete",
+      "metadataStatus": "high_confidence_partial",
+      "reviewFlagCount": 19
+    },
+    {
+      "id": "2a674a82-cce3-5d5d-87a9-6c22fd9a8eb7",
+      "slug": "light-radiation-and-you",
+      "sourcePosition": 65,
+      "title": "Light, radiation, and you",
+      "originalTitle": "Light, Radiation, and You",
+      "subtitle": "how to stay healthy",
+      "authors": [
+        "John Nash Ott"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "confidence": 0.77,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/light-radiation-and-you.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/8501172-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL3790968M",
+        "bytes": 38413,
+        "sha256": "3422c6127f8bbaaee2e6d634dbfce7c99f9f5965da5e0fb214498d4b330c58cc",
+        "mime_type": "image/jpeg",
+        "width": 375,
+        "height": 500
+      },
+      "highlightCount": 34,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "dfcb7261-275b-51a9-bd19-b8589841d32e",
+      "slug": "love",
+      "sourcePosition": 66,
+      "title": "Love",
+      "originalTitle": "Love",
+      "subtitle": null,
+      "authors": [
+        "Lao Russell"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.91,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.61,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 33,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "29267bb4-2765-5f0c-aefc-3dd97ca2682e",
+      "slug": "loving-awakening",
+      "sourcePosition": 67,
+      "title": "Loving Awakening",
+      "originalTitle": "Loving Awakening",
+      "subtitle": null,
+      "authors": [
+        "Maija Haavisto"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 110,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "8fe4737e-1262-5d4f-b85f-2a88935370ba",
+      "slug": "matrix-reimprinting-using-eft",
+      "sourcePosition": 68,
+      "title": "Matrix Reimprint Using Eft/trade",
+      "originalTitle": "Matrix Reimprinting Using EFT",
+      "subtitle": null,
+      "authors": [
+        "Sasha Allenby",
+        "Karl Dawson"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.65,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 205,
+      "importState": "complete",
+      "metadataStatus": "high_confidence_partial",
+      "reviewFlagCount": 27
+    },
+    {
+      "id": "aca94b3a-96ab-597d-8fd3-44d13bf87530",
+      "slug": "maximum-vitality",
+      "sourcePosition": 69,
+      "title": "Maximum Vitality",
+      "originalTitle": "Maximum Vitality",
+      "subtitle": null,
+      "authors": [
+        "Ralf Otterpahl"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.89,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 123,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "d4fe0de3-165d-58e2-a3f1-caffff6100fc",
+      "slug": "men-s-work",
+      "sourcePosition": 70,
+      "title": "Men's Work",
+      "originalTitle": "Men's Work",
+      "subtitle": null,
+      "authors": [
+        "Connor Beaton"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.86,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/men-s-work.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13227729-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL27914886W",
+        "bytes": 20562,
+        "sha256": "f50c0621a603ce981a643d1349ed14c28fefd0e2838ec844d5161c6cd533488d",
+        "mime_type": "image/jpeg",
+        "width": 333,
+        "height": 500
+      },
+      "highlightCount": 83,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 4
+    },
+    {
+      "id": "d1771fa0-a4d5-5bbe-ad4c-8bd500eaffe8",
+      "slug": "million-dollar-weekend",
+      "sourcePosition": 71,
+      "title": "Million Dollar Weekend",
+      "originalTitle": "Million Dollar Weekend",
+      "subtitle": null,
+      "authors": [
+        "Noah Kagan"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.6,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/million-dollar-weekend.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14625512-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL37587791W",
+        "bytes": 47532,
+        "sha256": "00536d9b3b77949cdaa1b1cd062fc90e6228b44e152fea1b1cc9c52096b15058",
+        "mime_type": "image/jpeg",
+        "width": 331,
+        "height": 500
+      },
+      "highlightCount": 143,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "9ae46745-ff4f-56ef-a671-6a9248ad8761",
+      "slug": "minerals-revolution",
+      "sourcePosition": 72,
+      "title": "Minerals Revolution",
+      "originalTitle": "Minerals Revolution",
+      "subtitle": null,
+      "authors": [
+        "Ethan Fialkow"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.68,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 39,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 8
+    },
+    {
+      "id": "59bc6e68-7988-5ac1-bab5-3455b2d78774",
+      "slug": "missing-saints-missing-miracles",
+      "sourcePosition": 73,
+      "title": "Missing Saints, Missing Miracles",
+      "originalTitle": "Missing Saints, Missing Miracles",
+      "subtitle": null,
+      "authors": [
+        "James Perloff"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 14,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "8a141478-6ad0-5ad8-b448-c84e030a60f3",
+      "slug": "money-does-grow-on-trees",
+      "sourcePosition": 74,
+      "title": "Money Does Grow on Trees",
+      "originalTitle": "Money Does Grow on Trees",
+      "subtitle": null,
+      "authors": [
+        "Esra Banguoglu Ogut",
+        "Danijel Trstenjak"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.86,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 92,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 25
+    },
+    {
+      "id": "b254da68-a4dd-5d89-866d-406c4a9fa4fa",
+      "slug": "mysticism",
+      "sourcePosition": 75,
+      "title": "Mysticism",
+      "originalTitle": "Mysticism",
+      "subtitle": "A Study in the Nature and Development of Spiritual Consciousness",
+      "authors": [
+        "Evelyn Underhill"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/mysticism.jpg",
+        "source_url": "https://books.google.com/books/content?id=fsKv510rtg0C&printsec=frontcover&img=1&zoom=2&source=gbs_api",
+        "provider": "google_books",
+        "provider_id": "fsKv510rtg0C",
+        "bytes": 24303,
+        "sha256": "b3072bf383e919890ded14985ac0ca2e985a1d3e63fb972b8e3e917873c9a10b",
+        "mime_type": "image/jpeg",
+        "width": 300,
+        "height": 504
+      },
+      "highlightCount": 41,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "38a989aa-d7a0-5b2b-acae-bf60dff1d572",
+      "slug": "myth-of-normal",
+      "sourcePosition": 76,
+      "title": "Myth of Normal",
+      "originalTitle": "Myth of Normal",
+      "subtitle": null,
+      "authors": [
+        "Gabor Maté",
+        "Daniel Maté"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.86,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.86,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/myth-of-normal.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12982927-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL25468735W",
+        "bytes": 44291,
+        "sha256": "e4c59cf51eaa64c50af4ae4881feedae971ed7b3d0e3044fc91715a76b41216d",
+        "mime_type": "image/jpeg",
+        "width": 328,
+        "height": 499
+      },
+      "highlightCount": 93,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "6a32e213-7015-5758-94dd-680ca1314724",
+      "slug": "no-bad-parts",
+      "sourcePosition": 77,
+      "title": "No Bad Parts",
+      "originalTitle": "No Bad Parts",
+      "subtitle": null,
+      "authors": [
+        "Richard Schwartz"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.73,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.72,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/no-bad-parts.jpg",
+        "source_url": "https://covers.openlibrary.org/b/isbn/1683646681-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "isbn-1683646681",
+        "bytes": 39499,
+        "sha256": "e84f8e8236836ca19875abc080077a9c7ca302b8f2faadcded72dcf070ab0d6e",
+        "mime_type": "image/jpeg",
+        "width": 333,
+        "height": 500
+      },
+      "highlightCount": 109,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 14
+    },
+    {
+      "id": "58263bf8-46e9-55e9-b7ab-87bf506c30c9",
+      "slug": "no-boundary",
+      "sourcePosition": 78,
+      "title": "No boundary",
+      "originalTitle": "No Boundary",
+      "subtitle": null,
+      "authors": [
+        "Ken Wilber"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.69,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/no-boundary.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/8363370-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL114258W",
+        "bytes": 44521,
+        "sha256": "65bdf3486b5dee177e32478d4456f25181fa6de29fd1c4afb66fc77a4a6475d6",
+        "mime_type": "image/jpeg",
+        "width": 325,
+        "height": 500
+      },
+      "highlightCount": 90,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "a38f1795-5000-5c1c-a0d5-8da1fe7c8c08",
+      "slug": "online-business-for-spiritual-visionaries",
+      "sourcePosition": 79,
+      "title": "Online Business for Spiritual Visionaries",
+      "originalTitle": "Online Business for Spiritual Visionaries",
+      "subtitle": null,
+      "authors": [
+        "Jeff Carreira",
+        "Sophie Peirce"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.71,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 71,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 14
+    },
+    {
+      "id": "e4fbc4a4-a03a-5586-b157-d043c332c327",
+      "slug": "orthodoxy",
+      "sourcePosition": 80,
+      "title": "Orthodoxy",
+      "originalTitle": "Orthodoxy",
+      "subtitle": "with annotations and guided reading by Trevin Wax",
+      "authors": [
+        "Gilbert Keith Chesterton"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/orthodoxy.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/11951707-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL33322984M",
+        "bytes": 76705,
+        "sha256": "4f6b0109e5b382e3647d21ead47c7f5f10ab8d09bd2e2962350da33e6eef48f2",
+        "mime_type": "image/jpeg",
+        "width": 331,
+        "height": 500
+      },
+      "highlightCount": 40,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "5cabccee-9b27-5c77-a1c8-7d1d880acf0d",
+      "slug": "orthodoxy-and-the-religion-of-the-future",
+      "sourcePosition": 81,
+      "title": "Orthodoxy and the religion of the future",
+      "originalTitle": "Orthodoxy and the Religion of the Future",
+      "subtitle": null,
+      "authors": [
+        "Seraphim Rose"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.92,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/orthodoxy-and-the-religion-of-the-future.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12905266-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL21224405M",
+        "bytes": 22769,
+        "sha256": "d2e26157b0a81cfc8e6a47542807b746cab63248e8da832a12d2891248e83b2a",
+        "mime_type": "image/jpeg",
+        "width": 307,
+        "height": 500
+      },
+      "highlightCount": 31,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "4ecdf63c-942b-56a3-880e-40642a181da4",
+      "slug": "our-polyvagal-world",
+      "sourcePosition": 82,
+      "title": "Our Polyvagal World",
+      "originalTitle": "Our Polyvagal World",
+      "subtitle": null,
+      "authors": [
+        "Stephen Porges",
+        "Deb Dana"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.78,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 112,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "7020723f-6050-5e3b-bd5c-13294314e015",
+      "slug": "outlive",
+      "sourcePosition": 83,
+      "title": "Outlive",
+      "originalTitle": "Outlive",
+      "subtitle": null,
+      "authors": [
+        "Peter Attia",
+        "Bill Gifford"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.88,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/outlive.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13191259-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL28148070W",
+        "bytes": 27414,
+        "sha256": "80a7c225c7b0427c1ef5e38d08584dc07fe0c24d88c6a34b19dfab56ac579b5c",
+        "mime_type": "image/jpeg",
+        "width": 385,
+        "height": 500
+      },
+      "highlightCount": 102,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "0bc23ab9-7bc6-52ba-808f-454c9f5ccdeb",
+      "slug": "outshining-trauma",
+      "sourcePosition": 84,
+      "title": "Outshining Trauma",
+      "originalTitle": "Outshining Trauma",
+      "subtitle": "A New Vision of Radical Self-Compassion Integrating Internal Family Systems and Buddhist Meditation",
+      "authors": [
+        "Ralph De La Rosa"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.9,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/outshining-trauma.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14727394-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL50726170M",
+        "bytes": 19450,
+        "sha256": "5f0aa60331be1d2de3f2ed5ccdbf78606672e787062d8fcd76a6b5d2e1ebf729",
+        "mime_type": "image/jpeg",
+        "width": 258,
+        "height": 400
+      },
+      "highlightCount": 70,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "7572f37e-010f-5623-b9e3-6aa573c3da0c",
+      "slug": "outsmarting-reality",
+      "sourcePosition": 85,
+      "title": "Outsmarting Reality",
+      "originalTitle": "Outsmarting Reality",
+      "subtitle": null,
+      "authors": [
+        "Nero Knowledge"
+      ],
+      "topics": [
+        {
+          "slug": "reality-metaphysics",
+          "label": "Reality & Metaphysics",
+          "confidence": 0.91,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 129,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "dc0c882f-2bbe-557e-a7e4-f161d36b1874",
+      "slug": "overcoming-the-archon-through-alchemy",
+      "sourcePosition": 86,
+      "title": "Overcoming the Archon Through Alchemy",
+      "originalTitle": "Overcoming the Archon Through Alchemy",
+      "subtitle": null,
+      "authors": [
+        "John Kreiter"
+      ],
+      "topics": [
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "confidence": 0.78,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.65,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 24,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "2772a8da-cbc0-5b63-8b08-57e01484c025",
+      "slug": "owning-your-own-shadow",
+      "sourcePosition": 87,
+      "title": "Owning your own shadow",
+      "originalTitle": "Owning Your Own Shadow",
+      "subtitle": null,
+      "authors": [
+        "Robert A. Johnson"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.86,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.63,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/owning-your-own-shadow.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/4037954-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL1996324W",
+        "bytes": 6337,
+        "sha256": "44a134e38ed65981dee80b52ee1ea0c7b9f80a780d8b1887ed8a7a94a9d9be86",
+        "mime_type": "image/jpeg",
+        "width": 128,
+        "height": 198
+      },
+      "highlightCount": 48,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "5d766785-d530-5dd4-bea2-460b927ea245",
+      "slug": "pointers-from-nisargadatta-maharaj",
+      "sourcePosition": 88,
+      "title": "Pointers from Nisargadatta Maharaj",
+      "originalTitle": "Pointers from Nisargadatta Maharaj",
+      "subtitle": null,
+      "authors": [
+        "Ramesh S. Balsekar"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.79,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/pointers-from-nisargadatta-maharaj.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10718042-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL3372414W",
+        "bytes": 25892,
+        "sha256": "75251317ff2f73c561c02f82ae8e8cb258d31fffb1ccf7ef2dc93fd21fd5e9c8",
+        "mime_type": "image/jpeg",
+        "width": 307,
+        "height": 500
+      },
+      "highlightCount": 80,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "5fb43e84-a015-51f8-b9e7-37666edbc289",
+      "slug": "pouring-concrete",
+      "sourcePosition": 89,
+      "title": "Pouring Concrete",
+      "originalTitle": "Pouring Conrete",
+      "subtitle": null,
+      "authors": [
+        "Bob Harwood"
+      ],
+      "topics": [
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.82,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.82,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 86,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "9aa1d3d5-e116-557d-b4bc-2c013f7c78d1",
+      "slug": "psychophysiologic-disorders",
+      "sourcePosition": 90,
+      "title": "Psychophysiologic Disorders",
+      "originalTitle": "Psychophysiologic Disorders",
+      "subtitle": "Trauma Informed, Interprofessional Diagnosis and Treatment",
+      "authors": [
+        "David Clarke",
+        "Howard Schubiner",
+        "Mags Clark-Smith",
+        "Allan Abbass"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.75,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 142,
+      "importState": "complete",
+      "metadataStatus": "high_confidence_partial",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "4575d47d-8da0-5659-87c3-853b49e35011",
+      "slug": "pure-human",
+      "sourcePosition": 91,
+      "title": "Pure Human",
+      "originalTitle": "Pure Human",
+      "subtitle": null,
+      "authors": [
+        "Gregg Braden"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.69,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 56,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "12d1becf-b8aa-57c5-9c8e-3e84ee23d4dc",
+      "slug": "real-magic",
+      "sourcePosition": 92,
+      "title": "Real magic",
+      "originalTitle": "Real Magic",
+      "subtitle": null,
+      "authors": [
+        "Dean I. Radin"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/real-magic.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14632375-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL19739884W",
+        "bytes": 51139,
+        "sha256": "76b52f2ea9a9c1d9d5a4a8adf601592f65ce560025d2b055625a9dd74dd460d5",
+        "mime_type": "image/jpeg",
+        "width": 324,
+        "height": 500
+      },
+      "highlightCount": 37,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "d1285c73-75b9-51ba-8760-a607b1eba6ba",
+      "slug": "reality-creation-technique",
+      "sourcePosition": 93,
+      "title": "Reality Creation Technique",
+      "originalTitle": "Reality Creation Technique",
+      "subtitle": null,
+      "authors": [
+        "Frederick Dodson"
+      ],
+      "topics": [
+        {
+          "slug": "reality-metaphysics",
+          "label": "Reality & Metaphysics",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.9,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 1261,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1744
+    },
+    {
+      "id": "005c3b2a-d115-5184-8ca9-289fe5ab851d",
+      "slug": "realization",
+      "sourcePosition": 94,
+      "title": "Realization",
+      "originalTitle": "Realization",
+      "subtitle": null,
+      "authors": [
+        "Paul Selig"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.72,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 54,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "01c0d7da-dd36-5ec6-bf5a-e00912d53129",
+      "slug": "recapture-the-rapture",
+      "sourcePosition": 95,
+      "title": "Recapture the Rapture",
+      "originalTitle": "Recapture the Rapture",
+      "subtitle": null,
+      "authors": [
+        "Jamie Wheal"
+      ],
+      "topics": [
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.78,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.76,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/recapture-the-rapture.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10433787-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL22066208W",
+        "bytes": 48422,
+        "sha256": "fc36786be0266c5eef977610341196eeb372fd0634ee954787965392f859845f",
+        "mime_type": "image/jpeg",
+        "width": 331,
+        "height": 500
+      },
+      "highlightCount": 61,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "4dbe13a3-4166-5a71-9d09-75950a9c5e47",
+      "slug": "satsun",
+      "sourcePosition": 96,
+      "title": "Sastun",
+      "originalTitle": "Satsun",
+      "subtitle": "my apprenticeship with a Maya healer",
+      "authors": [
+        "Rosita Arvigo",
+        "Nadine Epstein",
+        "Marilyn Yaquinto"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/satsun.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/4942724-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL1426366M",
+        "bytes": 7948,
+        "sha256": "64c99fac0e382e64fca924323deca25bae8c677492a92b2527a3b74dff4d0b40",
+        "mime_type": "image/jpeg",
+        "width": 128,
+        "height": 195
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "90ad9d86-6fd6-565a-8037-5edd341d8eb0",
+      "slug": "selected-writings-of-wilhelm-reich",
+      "sourcePosition": 97,
+      "title": "Selected Writings of Wilhelm Reich",
+      "originalTitle": "Selected Writings of Wilhelm Reich",
+      "subtitle": null,
+      "authors": [
+        "Wilhelm Reich"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/selected-writings-of-wilhelm-reich.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12651844-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL1992637W",
+        "bytes": 46739,
+        "sha256": "dfbc75b9869450946dcd9c1eb0dcd560c3fd26b0cd601d7f5c38ca351954714e",
+        "mime_type": "image/jpeg",
+        "width": 327,
+        "height": 500
+      },
+      "highlightCount": 33,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "43bf25f1-e61b-5b6f-9f2a-89555de7acd7",
+      "slug": "self-therapy",
+      "sourcePosition": 98,
+      "title": "Self-Therapy",
+      "originalTitle": "Self-Therapy",
+      "subtitle": null,
+      "authors": [
+        "Jay Earley"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.77,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/self-therapy.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10106285-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20807041W",
+        "bytes": 59514,
+        "sha256": "99096a034428874201933f34b28a5c39b8d510c707866c222fe93acd81ac9ff8",
+        "mime_type": "image/jpeg",
+        "width": 333,
+        "height": 500
+      },
+      "highlightCount": 1152,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 37
+    },
+    {
+      "id": "e87f2c2a-4852-5380-abfe-d8b5d82498cc",
+      "slug": "so-good-they-can-t-ignore-you",
+      "sourcePosition": 99,
+      "title": "So Good They Can't Ignore You",
+      "originalTitle": "So Good They Can't Ignore You",
+      "subtitle": "Why Skills Trump Passion in the Quest for Work You Love",
+      "authors": [
+        "Cal Newport",
+        "Diego Pereda Sancho"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.67,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/so-good-they-can-t-ignore-you.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14816693-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL25102032M",
+        "bytes": 47583,
+        "sha256": "6ca0c7d19ceac2b982f570553ee1c5f0fa95e7b1e280024da40fab335bb25537",
+        "mime_type": "image/jpeg",
+        "width": 326,
+        "height": 500
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "eade4cc9-8525-5c52-ba62-753e509278fd",
+      "slug": "spirit-tech",
+      "sourcePosition": 100,
+      "title": "Spirit Tech",
+      "originalTitle": "Spirit Tech",
+      "subtitle": null,
+      "authors": [
+        "Wesley Wildman",
+        "Kate Stockly"
+      ],
+      "topics": [
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.62,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.61,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/spirit-tech.jpg",
+        "source_url": "https://covers.openlibrary.org/b/isbn/1250274931-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "isbn-1250274931",
+        "bytes": 40520,
+        "sha256": "9731a81ac8542e8892a4bba4927e2d41f05d2bab8969d80a0594530067145675",
+        "mime_type": "image/jpeg",
+        "width": 329,
+        "height": 500
+      },
+      "highlightCount": 36,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 23
+    },
+    {
+      "id": "623675cf-2ae8-502a-a106-98574b52f79a",
+      "slug": "supercharged-self-healing",
+      "sourcePosition": 101,
+      "title": "Supercharged Self-Healing",
+      "originalTitle": "Supercharged Self-Healing",
+      "subtitle": "A Revolutionary Guide to Access High-Frequency States of Consciousness That Rejuvenate and Repair",
+      "authors": [
+        "R. J. Spina"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/supercharged-self-healing.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13282660-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL34189092M",
+        "bytes": 41260,
+        "sha256": "e5e61f85f0c24213842b6122af8c059f86347871869bcbcffb61335e2351a21e",
+        "mime_type": "image/jpeg",
+        "width": 334,
+        "height": 500
+      },
+      "highlightCount": 81,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "1b8db8b3-94d8-5507-a163-e2171e261bc6",
+      "slug": "testosterone-the-god-molecule",
+      "sourcePosition": 102,
+      "title": "Testosterone: The God Molecule",
+      "originalTitle": "Testosterone: The God Molecule",
+      "subtitle": null,
+      "authors": [
+        "Gordon D. Hall"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.93,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 94,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 6
+    },
+    {
+      "id": "43c30d0f-8290-5616-bb47-a6fa47317e04",
+      "slug": "the-art-of-listening-to-the-body",
+      "sourcePosition": 103,
+      "title": "The Art of Listening to the Body",
+      "originalTitle": "The Art of Listening to the Body",
+      "subtitle": null,
+      "authors": [
+        "Angeles Wolder Helling"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.75,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.64,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 102,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 4
+    },
+    {
+      "id": "0a9dccfd-6c1a-543b-b22f-f2a0a9ca22c6",
+      "slug": "the-art-of-loving",
+      "sourcePosition": 104,
+      "title": "The Art of Loving",
+      "originalTitle": "The Art of Loving",
+      "subtitle": "An Inquiry into the Nature of Love",
+      "authors": [
+        "Erich Fromm"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.72,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-art-of-loving.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/4741809-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL1184991W",
+        "bytes": 3990,
+        "sha256": "37b54b45f90f1a7d0b78cdb83704ac71700c5f7fd822ea6516a2928d42469200",
+        "mime_type": "image/jpeg",
+        "width": 128,
+        "height": 194
+      },
+      "highlightCount": 56,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "74f70204-9f58-56aa-a453-9100311761a2",
+      "slug": "the-art-of-meditation",
+      "sourcePosition": 105,
+      "title": "The Art of Meditation",
+      "originalTitle": "The Art of Meditation",
+      "subtitle": null,
+      "authors": [
+        "Joel S. Goldsmith"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.89,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.86,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-art-of-meditation.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/9191589-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL27789634M",
+        "bytes": 23063,
+        "sha256": "c383f14b03f737f40e3f95ce80677974999db842a511f831d755444648a18639",
+        "mime_type": "image/jpeg",
+        "width": 324,
+        "height": 500
+      },
+      "highlightCount": 54,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "3c63a174-b740-50a7-a2a7-e6bf91ad075a",
+      "slug": "the-art-of-pilgrimage",
+      "sourcePosition": 106,
+      "title": "Art of Pilgrimage",
+      "originalTitle": "The Art of Pilgrimage",
+      "subtitle": "The Seeker's Guide to Making Travel Sacred",
+      "authors": [
+        "Phil Cousineau",
+        "Huston Smith"
+      ],
+      "topics": [
+        {
+          "slug": "travel-place-freedom",
+          "label": "Travel, Place & Freedom",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.91,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 21,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "e0fbe23e-09e5-5175-8abb-19ad4e1d8123",
+      "slug": "the-artist-s-way",
+      "sourcePosition": 107,
+      "title": "The Artist's Way",
+      "originalTitle": "The Artist's Way",
+      "subtitle": "A Spiritual Path to Higher Creativity",
+      "authors": [
+        "Julia Cameron"
+      ],
+      "topics": [
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-artist-s-way.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12660490-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL26933090M",
+        "bytes": 61267,
+        "sha256": "2c94fa40976fd842511bb50a37d4d403767ab0bf1d8dd734492d7a0ffbf12d3b",
+        "mime_type": "image/jpeg",
+        "width": 400,
+        "height": 500
+      },
+      "highlightCount": 328,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "1d614b2f-7da4-5830-9b04-f0102c4ccc70",
+      "slug": "the-awakened-mind",
+      "sourcePosition": 108,
+      "title": "The Awakened Mind",
+      "originalTitle": "The Awakened Mind",
+      "subtitle": null,
+      "authors": [
+        "Anna Wise"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.78,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 58,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "477c0aa5-504f-5fa9-b519-f1591e496933",
+      "slug": "the-awakened-way",
+      "sourcePosition": 109,
+      "title": "The Awakened Way",
+      "originalTitle": "The Awakened Way",
+      "subtitle": null,
+      "authors": [
+        "Suzanne Giesemann"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 15,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 20
+    },
+    {
+      "id": "99669e5a-3ddb-51d5-a195-f14c5e4953dc",
+      "slug": "the-big-leap",
+      "sourcePosition": 110,
+      "title": "The Big Leap",
+      "originalTitle": "The Big Leap",
+      "subtitle": "Conquer Your Hidden Fear and Take Life to the Next Level",
+      "authors": [
+        "Gay Hendricks"
+      ],
+      "topics": [
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.78,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.73,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-big-leap.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12177830-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL22795889M",
+        "bytes": 32814,
+        "sha256": "625e903642bf29b53bbc49e829cde723bc03e3eac623d6fc603e459a595c70ec",
+        "mime_type": "image/jpeg",
+        "width": 323,
+        "height": 500
+      },
+      "highlightCount": 83,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 23
+    },
+    {
+      "id": "46a99c5b-2f35-5695-9233-242756a25872",
+      "slug": "the-book-of-love-and-creation",
+      "sourcePosition": 111,
+      "title": "The Book Of Love And Creation A Channeled Text",
+      "originalTitle": "The Book of Love and Creation",
+      "subtitle": null,
+      "authors": [
+        "Paul Selig"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.73,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 67,
+      "importState": "complete",
+      "metadataStatus": "high_confidence_partial",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "329705a1-93eb-5857-983d-0ec45793d506",
+      "slug": "the-comfort-crisis",
+      "sourcePosition": 112,
+      "title": "The Comfort Crisis",
+      "originalTitle": "The Comfort Crisis",
+      "subtitle": null,
+      "authors": [
+        "Michael Easter"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.7,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-comfort-crisis.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/11101220-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL24486338W",
+        "bytes": 37526,
+        "sha256": "52bc978536663e57e89b07023efef07cd66f3370c155c64cf04a170c70b447e5",
+        "mime_type": "image/jpeg",
+        "width": 329,
+        "height": 500
+      },
+      "highlightCount": 44,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "cc482960-3e9d-5e88-a424-d03d3f84510d",
+      "slug": "the-communication-course",
+      "sourcePosition": 113,
+      "title": "The Communication Course",
+      "originalTitle": "The Communication Course",
+      "subtitle": null,
+      "authors": [
+        "Frederick Dodson"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.63,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 73,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 4
+    },
+    {
+      "id": "ed9e891e-bc7a-502b-a77f-b7b99d1522f5",
+      "slug": "the-creative-act",
+      "sourcePosition": 114,
+      "title": "The Creative Act",
+      "originalTitle": "The Creative Act",
+      "subtitle": "A Way of Being",
+      "authors": [
+        "Rick Rubin"
+      ],
+      "topics": [
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.79,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-creative-act.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13316390-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL27955361W",
+        "bytes": 8000,
+        "sha256": "da102ff4d008bcd2a0797e940868b86cfc9802a4e27364688e82112c8b75fdbc",
+        "mime_type": "image/jpeg",
+        "width": 149,
+        "height": 218
+      },
+      "highlightCount": 69,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 28
+    },
+    {
+      "id": "c8c9caeb-fc0f-5749-8725-9c7825107a32",
+      "slug": "the-daemon",
+      "sourcePosition": 115,
+      "title": "The Daemon",
+      "originalTitle": "The Daemon",
+      "subtitle": "A Guide to your Extraordinary Secret Self",
+      "authors": [
+        "Anthony Peake"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.68,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.62,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-daemon.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/9128197-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL16818163W",
+        "bytes": 50494,
+        "sha256": "120479cb8a1f10cab3537882f09b57d0b3a05068dd5f7d2a875bdf5430ae052a",
+        "mime_type": "image/jpeg",
+        "width": 333,
+        "height": 500
+      },
+      "highlightCount": 48,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "bf4bc6de-7bdb-5f3d-9721-651c977e8e0b",
+      "slug": "the-denial-of-death",
+      "sourcePosition": 116,
+      "title": "The Denial of Death",
+      "originalTitle": "The Denial of Death",
+      "subtitle": null,
+      "authors": [
+        "Ernest Becker"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.71,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-denial-of-death.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/4506134-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL154572W",
+        "bytes": 2532,
+        "sha256": "58df81211ff387e0bd7db7b32d5c4d0e93bdaf6df7b32739e968f74048b32dbf",
+        "mime_type": "image/jpeg",
+        "width": 128,
+        "height": 192
+      },
+      "highlightCount": 88,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "dfa2b4af-111f-51a1-a3c9-77b25390d5a1",
+      "slug": "the-divine-romance",
+      "sourcePosition": 117,
+      "title": "The Divine Romance",
+      "originalTitle": "The Divine Romance",
+      "subtitle": null,
+      "authors": [
+        "Paramahansa Yogananda"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.79,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-divine-romance.jpg",
+        "source_url": "https://covers.openlibrary.org/b/isbn/0876122411-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "isbn-0876122411",
+        "bytes": 54924,
+        "sha256": "89f45d46f30524517000ec89b677c0b7b142d4a1867c1891187d8e214669278f",
+        "mime_type": "image/jpeg",
+        "width": 327,
+        "height": 500
+      },
+      "highlightCount": 131,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "07142fe8-bab4-5b47-82c0-766ecf62939e",
+      "slug": "the-dynamic-laws-of-prayer",
+      "sourcePosition": 118,
+      "title": "The dynamic laws of prayer",
+      "originalTitle": "The Dynamic Laws of Prayer",
+      "subtitle": null,
+      "authors": [
+        "Catherine Ponder"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.89,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-dynamic-laws-of-prayer.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/666948-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL2746731M",
+        "bytes": 16568,
+        "sha256": "cc5465b8d371c530b1c618e07c51331827ed940aaf10857a00adb8f9acdb6b3c",
+        "mime_type": "image/jpeg",
+        "width": 295,
+        "height": 475
+      },
+      "highlightCount": 291,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 8
+    },
+    {
+      "id": "7abfeb9f-0a9f-5f19-a64b-e99d697b6a6f",
+      "slug": "the-dynamic-laws-of-prosperity",
+      "sourcePosition": 119,
+      "title": "Dynamic Laws of Prosperity",
+      "originalTitle": "The Dynamic Laws of Prosperity",
+      "subtitle": null,
+      "authors": [
+        "Catherine Ponder"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.68,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-dynamic-laws-of-prosperity.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14652387-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL8087570M",
+        "bytes": 35893,
+        "sha256": "87d9a7fdb3aa6f8b690c8c495f6c0ca97b44e7db7800f364a2d4cb764fe74dae",
+        "mime_type": "image/jpeg",
+        "width": 328,
+        "height": 500
+      },
+      "highlightCount": 116,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 7
+    },
+    {
+      "id": "1530f6a8-0fcd-5f54-8061-02ada9e0f79a",
+      "slug": "the-emotionally-absent-mother",
+      "sourcePosition": 120,
+      "title": "The emotionally absent mother",
+      "originalTitle": "The Emotionally Absent Mother",
+      "subtitle": null,
+      "authors": [
+        "Jasmin Lee Cori"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.77,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-emotionally-absent-mother.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/9321799-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20060216W",
+        "bytes": 28487,
+        "sha256": "8ce88f0c790a79db4cd80b9f4af9cbfde735a93fa72da4978055d6fd2e5820b7",
+        "mime_type": "image/jpeg",
+        "width": 266,
+        "height": 400
+      },
+      "highlightCount": 141,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "2069deaf-4c9e-5d30-92be-76226bb2bc9c",
+      "slug": "the-end-of-your-world",
+      "sourcePosition": 121,
+      "title": "The end of your world",
+      "originalTitle": "The End of Your World",
+      "subtitle": null,
+      "authors": [
+        "Adyashanti."
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-end-of-your-world.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/2954541-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL5859372W",
+        "bytes": 30476,
+        "sha256": "0f0c0f6e5f59be31aedee1a1d1f38137a9f414c1f1ab01e503d460999ad6498d",
+        "mime_type": "image/jpeg",
+        "width": 500,
+        "height": 489
+      },
+      "highlightCount": 41,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "e13b3cdb-325c-5025-8a18-28cc54506e81",
+      "slug": "the-energy-codes",
+      "sourcePosition": 122,
+      "title": "The Energy Codes",
+      "originalTitle": "The Energy Codes",
+      "subtitle": null,
+      "authors": [
+        "Dr Sue Morter"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-energy-codes.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/8798432-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20153463W",
+        "bytes": 41410,
+        "sha256": "d4cf5752500d1d5034a7ce27e191f188ec416a250b78068ac87f708776a2e17b",
+        "mime_type": "image/jpeg",
+        "width": 331,
+        "height": 500
+      },
+      "highlightCount": 277,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 48
+    },
+    {
+      "id": "d74a77e8-8f80-53fe-9ca9-0a0dd277bb0a",
+      "slug": "the-genius-of-being",
+      "sourcePosition": 123,
+      "title": "The Genius of Being",
+      "originalTitle": "The Genius of Being",
+      "subtitle": null,
+      "authors": [
+        "Peter Ralston"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.9,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 137,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 21
+    },
+    {
+      "id": "a6a859ad-2d14-52b8-b693-2fc1ba37c875",
+      "slug": "the-go-giver",
+      "sourcePosition": 124,
+      "title": "The Go-Giver",
+      "originalTitle": "The Go-Giver",
+      "subtitle": null,
+      "authors": [
+        "Bob Burg John David Mann"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.75,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 38,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 6
+    },
+    {
+      "id": "c9552e11-8b91-559e-a4a0-546479a1f12a",
+      "slug": "the-great-work-of-your-life",
+      "sourcePosition": 125,
+      "title": "The Great Work of Your Life",
+      "originalTitle": "The Great Work of Your Life",
+      "subtitle": "A Guide for the Journey to Your True Calling",
+      "authors": [
+        "Stephen Cope"
+      ],
+      "topics": [
+        {
+          "slug": "creativity-purpose-work",
+          "label": "Creativity, Purpose & Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "travel-place-freedom",
+          "label": "Travel, Place & Freedom",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-great-work-of-your-life.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/8960535-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL27503634M",
+        "bytes": 40093,
+        "sha256": "7ca05feff4c1e4ad0a5ef02181c2b0a71b60067c9e5b68cfe3fe7d6dc2c38837",
+        "mime_type": "image/jpeg",
+        "width": 335,
+        "height": 500
+      },
+      "highlightCount": 129,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "28071e65-f06c-5d3f-b79a-c72879ed49e0",
+      "slug": "the-infinite-way",
+      "sourcePosition": 126,
+      "title": "The infinite way",
+      "originalTitle": "The Infinite Way",
+      "subtitle": null,
+      "authors": [
+        "Joel S. Goldsmith"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.92,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-infinite-way.jpg",
+        "source_url": "https://covers.openlibrary.org/b/isbn/0875163092-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL22522425M",
+        "bytes": 36412,
+        "sha256": "60987900d33473b13317c88cbc2dbec55303b08446bfbe3e1dd33dd5dce494b5",
+        "mime_type": "image/jpeg",
+        "width": 351,
+        "height": 500
+      },
+      "highlightCount": 99,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 11
+    },
+    {
+      "id": "9ab31d22-d27e-5f54-a801-e2cc7dc53fe7",
+      "slug": "the-invisible-rainbow",
+      "sourcePosition": 127,
+      "title": "The Invisible Rainbow",
+      "originalTitle": "The Invisible Rainbow",
+      "subtitle": null,
+      "authors": [
+        "Arthur Firstenberg"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.85,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.75,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-invisible-rainbow.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10085113-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20791789W",
+        "bytes": 36885,
+        "sha256": "ec1e2f53a7539274abe868c14cdef6f95873e90be70c56337a2cc9b7acd6a357",
+        "mime_type": "image/jpeg",
+        "width": 333,
+        "height": 500
+      },
+      "highlightCount": 95,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "1c51ede0-2f69-52c2-9b12-a5a53155b93c",
+      "slug": "the-joel-goldsmith-reader",
+      "sourcePosition": 128,
+      "title": "The Joel Goldsmith Reader",
+      "originalTitle": "The Joel Goldsmith Reader",
+      "subtitle": null,
+      "authors": [
+        "Joel S. Goldsmith"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.89,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-joel-goldsmith-reader.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/9191588-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20546724W",
+        "bytes": 37420,
+        "sha256": "f04550fa5dcba70ffbeed0ed1f611fe323e736d48cbddb47611396a922cc3236",
+        "mime_type": "image/jpeg",
+        "width": 324,
+        "height": 500
+      },
+      "highlightCount": 165,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 18
+    },
+    {
+      "id": "95b27f70-a0c5-5a7a-b2a7-62d74b5c0fb4",
+      "slug": "the-man-of-zero",
+      "sourcePosition": 129,
+      "title": "The Man of Zero",
+      "originalTitle": "The Man of Zero",
+      "subtitle": null,
+      "authors": [
+        "David Deida"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.81,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.76,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 48,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 4
+    },
+    {
+      "id": "1b328d6a-9f81-54c6-b348-3cee76b292ce",
+      "slug": "the-mindful-body",
+      "sourcePosition": 130,
+      "title": "The Mindful Body",
+      "originalTitle": "The Mindful Body",
+      "subtitle": null,
+      "authors": [
+        "Ellen J. Langer"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.59,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 88,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 11
+    },
+    {
+      "id": "e431666a-6daf-5f42-8af7-48d2d52ddf0d",
+      "slug": "the-mystical-christ",
+      "sourcePosition": 131,
+      "title": "The Mystical Christ",
+      "originalTitle": "The Mystical Christ",
+      "subtitle": "Religion As a Personal Spiritual Experience",
+      "authors": [
+        "Manly Palmer Hall"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.82,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-mystical-christ.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/692106-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL8234561M",
+        "bytes": 37177,
+        "sha256": "6a068e9bd96b999664931edf8ec595957409dac9056357eadb73c135f87618ba",
+        "mime_type": "image/jpeg",
+        "width": 308,
+        "height": 475
+      },
+      "highlightCount": 100,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "7e87a1e2-0dc7-5aaf-b85a-b080bed86245",
+      "slug": "the-mystical-i",
+      "sourcePosition": 132,
+      "title": "The mystical I",
+      "originalTitle": "The Mystical I",
+      "subtitle": null,
+      "authors": [
+        "Joel S. Goldsmith"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-mystical-i.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/1072426-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL121140W",
+        "bytes": 22536,
+        "sha256": "2049ebeb020593b927a50e3c5a55476e5659e12b737ff07707c03debd667504b",
+        "mime_type": "image/jpeg",
+        "width": 312,
+        "height": 475
+      },
+      "highlightCount": 63,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "2c0a077c-fffe-5536-91d7-67772fba4404",
+      "slug": "the-others-within-us",
+      "sourcePosition": 133,
+      "title": "The Others Within Us",
+      "originalTitle": "The Others Within Us",
+      "subtitle": null,
+      "authors": [
+        "Robert Falconer"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.85,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 131,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "a647a63f-5150-5432-acd6-50e3010f2004",
+      "slug": "the-physics-of-god",
+      "sourcePosition": 134,
+      "title": "The Physics of God",
+      "originalTitle": "The Physics of God",
+      "subtitle": null,
+      "authors": [
+        "Joseph Selbie"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 11,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "2fe51a54-7ccf-5443-8c05-3b3b0ab17ad1",
+      "slug": "the-power-of-eight",
+      "sourcePosition": 135,
+      "title": "The power of eight",
+      "originalTitle": "The Power of Eight",
+      "subtitle": null,
+      "authors": [
+        "Lynne McTaggart"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.59,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-power-of-eight.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/8814989-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL19723956W",
+        "bytes": 51809,
+        "sha256": "d2a803c64140c0b6c539acb6a69759bd5f5f0cdf59e1e2bb09c5bee9eb64375d",
+        "mime_type": "image/jpeg",
+        "width": 328,
+        "height": 500
+      },
+      "highlightCount": 52,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "624557e3-ca66-5d64-94bd-9f3ca66e9b06",
+      "slug": "the-secret-language-of-your-body",
+      "sourcePosition": 136,
+      "title": "The secret language of your body",
+      "originalTitle": "The Secret Language of Your Body",
+      "subtitle": null,
+      "authors": [
+        "Inna Segal"
+      ],
+      "topics": [
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.88,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-secret-language-of-your-body.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12933947-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL18751055W",
+        "bytes": 20047,
+        "sha256": "a0b10e4d92569cf6212be2c9ee835896a0db3704d8d56b0889f9f041eca08ea7",
+        "mime_type": "image/jpeg",
+        "width": 392,
+        "height": 500
+      },
+      "highlightCount": 420,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 51
+    },
+    {
+      "id": "dae05749-f393-5786-a421-c1572c9d3317",
+      "slug": "the-secret-of-light",
+      "sourcePosition": 137,
+      "title": "The Secret of Light",
+      "originalTitle": "The Secret of Light",
+      "subtitle": null,
+      "authors": [
+        "Walter Bowman Russell"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.77,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.65,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-secret-of-light.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/4835462-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL2472399W",
+        "bytes": 2795,
+        "sha256": "1c929924d48b77e9f8bf257ac63c5ead6a8aaa33417816a9156564a664b1d71a",
+        "mime_type": "image/jpeg",
+        "width": 128,
+        "height": 181
+      },
+      "highlightCount": 61,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "3c83e615-0dfb-5270-9ee1-bf70166e5f93",
+      "slug": "the-secret-teachings-of-all-ages",
+      "sourcePosition": 138,
+      "title": "The Secret Teachings of All Ages",
+      "originalTitle": "The Secret Teachings of All Ages",
+      "subtitle": null,
+      "authors": [
+        "Manly Palmer Hall"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-secret-teachings-of-all-ages.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/4762003-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL8567349W",
+        "bytes": 1952,
+        "sha256": "f562d85233051bb51d7c7e199f60fed9ba5bdf2b32d44b57f20416ea442a877b",
+        "mime_type": "image/jpeg",
+        "width": 128,
+        "height": 194
+      },
+      "highlightCount": 55,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 12
+    },
+    {
+      "id": "701891c1-e8c6-5954-91b4-e522db47ed6a",
+      "slug": "the-seven-spiritual-laws-of-success",
+      "sourcePosition": 139,
+      "title": "The Seven Spiritual Laws of Success",
+      "originalTitle": "The Seven Spiritual Laws of Success",
+      "subtitle": null,
+      "authors": [
+        "Deepak Chopra"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.84,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.73,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-seven-spiritual-laws-of-success.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/6632013-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL548626W",
+        "bytes": 12860,
+        "sha256": "be41e832372c3fd76fdf240a4e4c5a66e77507621d359bde9ce7eb88359ecd62",
+        "mime_type": "image/jpeg",
+        "width": 298,
+        "height": 500
+      },
+      "highlightCount": 56,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "ba073d51-d5e5-513d-8867-277068b11a55",
+      "slug": "the-soul-of-money",
+      "sourcePosition": 140,
+      "title": "The Soul of Money",
+      "originalTitle": "The Soul of Money",
+      "subtitle": null,
+      "authors": [
+        "Lynne Twist"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.77,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-soul-of-money.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/247683-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "/works/OL8061841W",
+        "bytes": 38925,
+        "sha256": "bf081a4e61924e08197a4357ea6b362eebd0eb920822f16a9a08ebaf92cf0fd5",
+        "mime_type": "image/jpeg",
+        "width": 314,
+        "height": 475
+      },
+      "highlightCount": 26,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "389ed089-39e5-5a36-b1e3-68cfdaebd3ed",
+      "slug": "the-stimulated-mind",
+      "sourcePosition": 141,
+      "title": "The Stimulated Mind",
+      "originalTitle": "The Stimulated Mind",
+      "subtitle": null,
+      "authors": [
+        "Dr. Tommy Wood"
+      ],
+      "topics": [
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.7,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.65,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 59,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 9
+    },
+    {
+      "id": "18263560-c56a-55c3-9261-4611df0d46ec",
+      "slug": "the-tao-of-fully-feeling",
+      "sourcePosition": 142,
+      "title": "The Tao of fully feeling",
+      "originalTitle": "The Tao of Fully Feeling",
+      "subtitle": null,
+      "authors": [
+        "Pete Walker"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-tao-of-fully-feeling.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12571670-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL18343406W",
+        "bytes": 78707,
+        "sha256": "8fc6ee8aeca0c81e70a07a72d026e50f1f8fc1acf5bc9f0606491471a4340a6b",
+        "mime_type": "image/jpeg",
+        "width": 310,
+        "height": 500
+      },
+      "highlightCount": 241,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 90
+    },
+    {
+      "id": "67629fc0-3090-5208-a1b2-ecf2431af694",
+      "slug": "the-three-domains-of-freedom",
+      "sourcePosition": 143,
+      "title": "Three Domains of Freedom",
+      "originalTitle": "The Three Domains of Freedom",
+      "subtitle": "Each Moment Is Yours, Your Life Is Yours, Civilization Is Yours",
+      "authors": [
+        "George Kinder"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.92,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.82,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 35,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "00a78475-c2f1-52f9-b18d-87d1a8bb532d",
+      "slug": "the-thunder-of-silence",
+      "sourcePosition": 144,
+      "title": "The thunder of silence",
+      "originalTitle": "The Thunder of Silence",
+      "subtitle": null,
+      "authors": [
+        "Joel S. Goldsmith"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-thunder-of-silence.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/5294995-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL121135W",
+        "bytes": 3517,
+        "sha256": "b46f83bf53260ba1004ebb617c5defc3cec023717a34d2eb7be05324134ea90b",
+        "mime_type": "image/jpeg",
+        "width": 128,
+        "height": 194
+      },
+      "highlightCount": 72,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "fa7adb3b-a21f-5cac-99c9-520e51121b83",
+      "slug": "the-undiscovered-self",
+      "sourcePosition": 145,
+      "title": "The Undiscovered Self",
+      "originalTitle": "The Undiscovered Self",
+      "subtitle": null,
+      "authors": [
+        "Carl Gustav Jung"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-undiscovered-self.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/266855-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL261722W",
+        "bytes": 26708,
+        "sha256": "21cb14f03f7c62c6806a6fc47a0b2d4e33abe37157a18a3ebc129a024dae35b6",
+        "mime_type": "image/jpeg",
+        "width": 319,
+        "height": 500
+      },
+      "highlightCount": 14,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "07513ba9-0670-5d3b-8415-26a9ad4e9b3e",
+      "slug": "the-way-of-the-superior-man",
+      "sourcePosition": 146,
+      "title": "The way of the superior man",
+      "originalTitle": "The Way of the Superior Man",
+      "subtitle": null,
+      "authors": [
+        "David Deida"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.71,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-way-of-the-superior-man.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/865059-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL2680142W",
+        "bytes": 45495,
+        "sha256": "2781b2984aa09d1f34ab9846dd6e89dd0092a0661ca9c2a4ca684b1355c8ee03",
+        "mime_type": "image/jpeg",
+        "width": 449,
+        "height": 500
+      },
+      "highlightCount": 64,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 48
+    },
+    {
+      "id": "d129da9f-bf0b-5e7c-81f0-428259bf49ab",
+      "slug": "there-s-a-spiritual-solution-to-every-problem",
+      "sourcePosition": 147,
+      "title": "There's a Spiritual Solution to Every Problem",
+      "originalTitle": "There's A Spiritual Solution to Every Problem",
+      "subtitle": null,
+      "authors": [
+        "Wayne W. Dyer"
+      ],
+      "topics": [
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.67,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/there-s-a-spiritual-solution-to-every-problem.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/22854-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL1901466W",
+        "bytes": 44441,
+        "sha256": "2ca15c6da73d4d554ab4adb8da6a31af70db46cbc560ddde6aeb459a07317568",
+        "mime_type": "image/jpeg",
+        "width": 312,
+        "height": 475
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "1e95adc9-997d-59ed-9bca-4607557b6b49",
+      "slug": "this-is-marketing",
+      "sourcePosition": 148,
+      "title": "This is marketing",
+      "originalTitle": "This Is Marketing",
+      "subtitle": null,
+      "authors": [
+        "Seth Godin"
+      ],
+      "topics": [
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.67,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/this-is-marketing.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14624926-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL19764632W",
+        "bytes": 51435,
+        "sha256": "99366eeaffa875daf80004718a7a6aacb5bbf24ddec5a02dcd2990c8a0fc0f1b",
+        "mime_type": "image/jpeg",
+        "width": 354,
+        "height": 500
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "9835f2ee-5a84-5720-bab3-a2a5eba0efd1",
+      "slug": "timeless-secrets-of-health-and-rejuvenation",
+      "sourcePosition": 149,
+      "title": "Timeless Secrets of Health And Rejuvenation",
+      "originalTitle": "Timeless Secrets of Health and Rejuvenation",
+      "subtitle": null,
+      "authors": [
+        "Andreas Moritz"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.73,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/timeless-secrets-of-health-and-rejuvenation.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/764541-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL8779788W",
+        "bytes": 46207,
+        "sha256": "ba305f8b6c2fda15cc002e6c6015d89db1f47ce9cfd8ee517be07431b99d3bf4",
+        "mime_type": "image/jpeg",
+        "width": 375,
+        "height": 500
+      },
+      "highlightCount": 108,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 5
+    },
+    {
+      "id": "e9b0cf4a-3e41-56f0-b301-9378180200e3",
+      "slug": "tiny-experiments",
+      "sourcePosition": 150,
+      "title": "Tiny Experiments",
+      "originalTitle": "Tiny Experiments",
+      "subtitle": null,
+      "authors": [
+        "Anne-Laure Le Cunff"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.62,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/tiny-experiments.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14850860-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL42398133W",
+        "bytes": 32870,
+        "sha256": "88716ecadbf3ab4b99af39066ea88a638cb872a4c620d6e11dc416074697b8ca",
+        "mime_type": "image/jpeg",
+        "width": 331,
+        "height": 500
+      },
+      "highlightCount": 77,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "c7383f57-d96e-5d58-8a09-d0ac02048b44",
+      "slug": "to-have-or-to-be",
+      "sourcePosition": 151,
+      "title": "To Have or To Be?",
+      "originalTitle": "To Have or To Be?",
+      "subtitle": null,
+      "authors": [
+        "Erich Fromm"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 163,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 18
+    },
+    {
+      "id": "cee35902-1ef2-56e8-9a61-7436149df2f2",
+      "slug": "toxic",
+      "sourcePosition": 152,
+      "title": "Toxic",
+      "originalTitle": "Toxic",
+      "subtitle": null,
+      "authors": [
+        "Josh Kaye"
+      ],
+      "topics": [
+        {
+          "slug": "society-culture-systems",
+          "label": "Society, Culture & Systems",
+          "confidence": 0.65,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.64,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 69,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 16
+    },
+    {
+      "id": "1ec06176-5b82-597d-b40a-c1eaeae50215",
+      "slug": "transcending-the-levels-of-consciousness",
+      "sourcePosition": 153,
+      "title": "Transcending the Levels of Consciousness",
+      "originalTitle": "Transcending the Levels of Consciousness",
+      "subtitle": null,
+      "authors": [
+        "David R. Hawkins"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.82,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/transcending-the-levels-of-consciousness.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/8978618-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL20317301W",
+        "bytes": 24721,
+        "sha256": "ca417609de6e62567f8a99ef82cd2c3536bca1112081ad713f9c975d845c986d",
+        "mime_type": "image/jpeg",
+        "width": 312,
+        "height": 500
+      },
+      "highlightCount": 47,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "d2a9dace-4481-564d-9cdf-375e7da79f69",
+      "slug": "travel-light",
+      "sourcePosition": 154,
+      "title": "Travel Light",
+      "originalTitle": "Travel Light",
+      "subtitle": null,
+      "authors": [
+        "Light Watkins"
+      ],
+      "topics": [
+        {
+          "slug": "travel-place-freedom",
+          "label": "Travel, Place & Freedom",
+          "confidence": 0.83,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.71,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 141,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 3
+    },
+    {
+      "id": "150ae276-f630-59d3-bdd7-79edf915373b",
+      "slug": "tuning-the-human-biofield",
+      "sourcePosition": 155,
+      "title": "Tuning the human biofield",
+      "originalTitle": "Tuning the Human Biofield",
+      "subtitle": null,
+      "authors": [
+        "Eileen Day McKusick"
+      ],
+      "topics": [
+        {
+          "slug": "energy-esoteric-healing",
+          "label": "Energy & Esoteric Healing",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.8,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/tuning-the-human-biofield.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/13053075-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL19983194W",
+        "bytes": 54404,
+        "sha256": "277fa7e4c9afb65c522847a5fb59ae25c9df189360f3807ffb8eb4c008a9663e",
+        "mime_type": "image/jpeg",
+        "width": 297,
+        "height": 500
+      },
+      "highlightCount": 97,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 36
+    },
+    {
+      "id": "f0ab2aa6-4517-5682-8adc-475b30fef1a5",
+      "slug": "vagabonding",
+      "sourcePosition": 156,
+      "title": "Vagabonding",
+      "originalTitle": "Vagabonding",
+      "subtitle": "an uncommon guide to the art of long-term world travel",
+      "authors": [
+        "Rolf Potts"
+      ],
+      "topics": [
+        {
+          "slug": "travel-place-freedom",
+          "label": "Travel, Place & Freedom",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/vagabonding.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/14851629-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL22983241M",
+        "bytes": 38022,
+        "sha256": "bf533a355a12f189e5b89ade256d76f09106291912b129c79237425a027caea1",
+        "mime_type": "image/jpeg",
+        "width": 309,
+        "height": 500
+      },
+      "highlightCount": 7,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "81561e22-ccb1-5419-ac2c-2462296b11de",
+      "slug": "way-of-the-peaceful-warrior",
+      "sourcePosition": 157,
+      "title": "Way of the peaceful warrior",
+      "originalTitle": "Way of the Peaceful Warrior",
+      "subtitle": "A Book That Changes Lives",
+      "authors": [
+        "Dan Millman"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/way-of-the-peaceful-warrior.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/705748-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL40816W",
+        "bytes": 43035,
+        "sha256": "1243e7f1a077e8b119b5fa4d1b09d76ba311e4aa3c266a06ecb6d83c6f004193",
+        "mime_type": "image/jpeg",
+        "width": 323,
+        "height": 500
+      },
+      "highlightCount": 21,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "5648972e-ea66-5c48-b3ef-7ca96bb96728",
+      "slug": "when-the-body-says-no",
+      "sourcePosition": 158,
+      "title": "When the Body Says No",
+      "originalTitle": "When the Body Says No",
+      "subtitle": null,
+      "authors": [
+        "Gabor Maté"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "psychology-trauma-inner-work",
+          "label": "Psychology, Trauma & Inner Work",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/when-the-body-says-no.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/415299-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL8299076W",
+        "bytes": 22145,
+        "sha256": "13bd30360573f682b9e9b83e208526c020ea90715aee53e9b1ea1cea2fd59d3e",
+        "mime_type": "image/jpeg",
+        "width": 317,
+        "height": 475
+      },
+      "highlightCount": 144,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 15
+    },
+    {
+      "id": "664f186b-45dd-569b-8b69-ec03f3e3528b",
+      "slug": "when-things-stick",
+      "sourcePosition": 159,
+      "title": "When Things Stick",
+      "originalTitle": "When Things Stick",
+      "subtitle": null,
+      "authors": [
+        "Sue Choi"
+      ],
+      "topics": [],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 20,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
+    },
+    {
+      "id": "57f6153f-8fc5-505c-b6cc-cdb9330ca433",
+      "slug": "who-not-how",
+      "sourcePosition": 160,
+      "title": "Who Not How",
+      "originalTitle": "Who Not How",
+      "subtitle": null,
+      "authors": [
+        "Dan Sullivan",
+        "Benjamin Hardy"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.76,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.71,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/who-not-how.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/12412300-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL21690115W",
+        "bytes": 23273,
+        "sha256": "13212a83dde65a03a563da8b3700a2588f3039e381dfa1e5021b4717e5900f4b",
+        "mime_type": "image/jpeg",
+        "width": 243,
+        "height": 400
+      },
+      "highlightCount": 55,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 28
+    },
+    {
+      "id": "6faf40e6-806c-537a-ae3e-d84e2c5bdfd7",
+      "slug": "the-wisdom-of-insecurity",
+      "sourcePosition": 161,
+      "title": "The Wisdom of Insecurity: A Message for an Age of Anxiety",
+      "originalTitle": "The Wisdom of Insecurity",
+      "subtitle": null,
+      "authors": [
+        "Alan Watts"
+      ],
+      "topics": [
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/the-wisdom-of-insecurity.jpg",
+        "source_url": "https://covers.openlibrary.org/b/isbn/0307741206-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "isbn-0307741206",
+        "bytes": 21096,
+        "sha256": "4acb0f64480129381dd9acaf042b0ab9fea2ab6d4a7f66a1a45ba05a1a7c60b6",
+        "mime_type": "image/jpeg",
+        "width": 149,
+        "height": 260
+      },
+      "highlightCount": 32,
+      "importState": "complete",
+      "metadataStatus": "high_confidence_partial",
+      "reviewFlagCount": 1
+    },
+    {
+      "id": "fbfa36bd-fd5d-57b6-91cb-6a50f596b3ec",
+      "slug": "womb-awakening",
+      "sourcePosition": 162,
+      "title": "Womb Awakening",
+      "originalTitle": "Womb Awakening",
+      "subtitle": "Initiatory Wisdom from the Creatrix of All Life",
+      "authors": [
+        "Azra Bertrand M.D.",
+        "Seren Bertrand"
+      ],
+      "topics": [
+        {
+          "slug": "consciousness-nonduality",
+          "label": "Consciousness & Nonduality",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "spirituality-mysticism",
+          "label": "Spirituality & Mysticism",
+          "confidence": 0.92,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/womb-awakening.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/10672748-L.jpg",
+        "provider": "open_library",
+        "provider_id": "OL32004750M",
+        "bytes": 51722,
+        "sha256": "cdaee633972ade21837dcb85fef6428b08b530eae3d1533891c32eec3b9c1c2b",
+        "mime_type": "image/jpeg",
+        "width": 350,
+        "height": 500
+      },
+      "highlightCount": 46,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 23
+    },
+    {
+      "id": "b1e08f97-984d-540f-b547-1d35c36b98b2",
+      "slug": "you-can-heal-your-life",
+      "sourcePosition": 163,
+      "title": "You can heal your life",
+      "originalTitle": "You Can Heal Your Life",
+      "subtitle": null,
+      "authors": [
+        "Louise L. Hay"
+      ],
+      "topics": [
+        {
+          "slug": "love-relationships",
+          "label": "Love & Relationships",
+          "confidence": 0.74,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "money-business-performance",
+          "label": "Money, Business & Performance",
+          "confidence": 0.71,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/you-can-heal-your-life.jpg",
+        "source_url": "https://covers.openlibrary.org/b/id/715608-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL52866W",
+        "bytes": 33518,
+        "sha256": "7fb12576fa0fc68d9366c72e751d5b3a76ad212110dbfc0a450e712d63247213",
+        "mime_type": "image/jpeg",
+        "width": 319,
+        "height": 500
+      },
+      "highlightCount": 75,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 4
+    },
+    {
+      "id": "423058ae-3559-5a77-8b3f-422aeca5018b",
+      "slug": "your-guide-to-cellular-health",
+      "sourcePosition": 164,
+      "title": "Your Guide to Cellular Health",
+      "originalTitle": "Your Guide to Cellular Health",
+      "subtitle": null,
+      "authors": [
+        "Dr. Mercola"
+      ],
+      "topics": [
+        {
+          "slug": "health-longevity",
+          "label": "Health, Biology & Longevity",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "placeholder",
+        "public_path": "/book-covers/placeholder.svg"
+      },
+      "highlightCount": 167,
+      "importState": "complete",
+      "metadataStatus": "source_only",
+      "reviewFlagCount": 2
+    },
+    {
+      "id": "9c131c61-487b-5d27-97bd-f0b2bfdebaff",
+      "slug": "zen-mind-beginner-s-mind",
+      "sourcePosition": 165,
+      "title": "Zen Mind, Beginner's Mind",
+      "originalTitle": "Zen Mind, Beginner's Mind",
+      "subtitle": null,
+      "authors": [
+        "Shunryu Suzuki"
+      ],
+      "topics": [
+        {
+          "slug": "meditation-practice",
+          "label": "Meditation & Practice",
+          "confidence": 0.94,
+          "editorialState": "suggested"
+        },
+        {
+          "slug": "philosophy-meaning",
+          "label": "Philosophy & Meaning",
+          "confidence": 0.77,
+          "editorialState": "suggested"
+        }
+      ],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/zen-mind-beginner-s-mind.jpg",
+        "source_url": "https://covers.openlibrary.org/b/olid/OL25447030M-L.jpg?default=false",
+        "provider": "open_library",
+        "provider_id": "OL25447030M",
+        "bytes": 25467,
+        "sha256": "afbad48b65709dc4634d396190cd25a046d52418467ff4fb3c8f42b2296cd547",
+        "mime_type": "image/jpeg",
+        "width": 255,
+        "height": 400
+      },
+      "highlightCount": 50,
+      "importState": "complete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 14
+    }
+  ]
+}

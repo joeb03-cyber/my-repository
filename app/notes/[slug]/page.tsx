@@ -20,13 +20,16 @@ const getNote = cache(async (slug: string) => {
 
 // Dynamically determine if this is a user note
 export async function generateStaticParams() {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) return [];
   const supabase = createBrowserClient();
   const { data: posts } = await supabase
     .from("notes")
     .select("slug")
     .eq("public", true);
 
-  return posts!.map(({ slug }) => ({
+  // A local build may intentionally omit access to the legacy Notes backend.
+  // Dynamic note routes remain available when Supabase is configured.
+  return (posts || []).map(({ slug }) => ({
     slug,
   }));
 }
