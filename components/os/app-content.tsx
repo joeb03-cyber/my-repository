@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Archive, ArrowUpRight, ChevronRight, FlaskConical, MapPin, Orbit, Search, Wind } from "lucide-react";
+import { Activity, Archive, ArrowUpRight, ChevronRight, Clock3, FlaskConical, Orbit, Search, TerminalSquare, Wind } from "lucide-react";
 import { LibraryApp } from "./library-app";
 import type { AppId } from "@/data/prototype";
 import type { BrainBookSummary } from "@/lib/brain/types";
@@ -9,8 +8,7 @@ import AppIcon, { iconForApp } from "./app-icon";
 import MapsApp from "./maps-app";
 import ContactsApp from "./contacts-app";
 import NotesApp from "./notes-app";
-import osStateJson from "@/data/brain/os-state.v1.json";
-import type { BrainOsState } from "@/lib/brain/os-state-types";
+import { ActivityMonitorApp, ScreenTimeApp, SettingsApp, SoftwareUpdateApp, TerminalApp, TrashApp } from "./personality-apps";
 
 export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: AppId; onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (appId: AppId) => void }) {
   if (appId === "finder") return <Finder onOpenApp={onOpenApp} />;
@@ -22,9 +20,13 @@ export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: Ap
   if (appId === "journal") return <NotesApp />;
   if (appId === "photos") return <Photos />;
   if (appId === "browser") return <Browser />;
-  if (appId === "trash") return <Trash />;
+  if (appId === "trash") return <TrashApp />;
+  if (appId === "software") return <SoftwareUpdateApp />;
+  if (appId === "activity") return <ActivityMonitorApp />;
+  if (appId === "screen-time") return <ScreenTimeApp />;
+  if (appId === "terminal") return <TerminalApp />;
   if (appId === "practice") return <Practice />;
-  if (appId === "about") return <Settings />;
+  if (appId === "about") return <SettingsApp />;
   if (appId === "reality") return <Reality />;
   return <ArchiveApp />;
 }
@@ -37,7 +39,8 @@ function Finder({ onOpenApp }: { onOpenApp: (appId: AppId) => void }) {
     { id: "practice", label: "Practice", detail: "Modalities" }, { id: "about", label: "Settings", detail: "About this human" },
   ];
   const future = ["Podcasts", "Stocks", "Time Machine"];
-  return <div className="finder-app system-app"><aside className="os-sidebar"><strong>Favorites</strong><button className="is-selected">Brain</button><button>Applications</button><button>Currently</button><span/><strong>Collections</strong><button>Books</button><button>Places</button><button>People</button><button>Ideas</button></aside><section className="finder-main"><div className="os-toolbar"><div><button className="toolbar-button">‹</button><button className="toolbar-button">›</button></div><strong>Synergetic Human</strong><label className="system-search"><Search/><input aria-label="Search Finder" placeholder="Search"/></label></div><div className="finder-section"><span className="section-label">APPLICATIONS</span><div className="finder-grid">{available.map((app)=><button key={app.id} onClick={()=>onOpenApp(app.id)}><AppIcon name={iconForApp[app.id] ?? "finder"}/><span><strong>{app.label}</strong><small>{app.detail}</small></span></button>)}</div></div><div className="finder-section finder-section--future"><span className="section-label">NOT YET INSTALLED</span>{future.map((name)=><div className="os-list-row is-muted" key={name}><span className="future-app-dot"/><strong>{name}</strong><small>Coming later</small></div>)}</div></section></div>;
+  const system = [{id:"software" as AppId,label:"Software Update",detail:"Current release",icon:<ArrowUpRight/>},{id:"activity" as AppId,label:"Activity Monitor",detail:"Attention processes",icon:<Activity/>},{id:"screen-time" as AppId,label:"Screen Time",detail:"Manual snapshot",icon:<Clock3/>},{id:"terminal" as AppId,label:"Terminal",detail:"Handcrafted commands",icon:<TerminalSquare/>}];
+  return <div className="finder-app system-app"><aside className="os-sidebar"><strong>Favorites</strong><button className="is-selected">Joe</button><button>Applications</button><button>Currently</button><span/><strong>Locations</strong><button>/Joe/Books</button><button>/Joe/Places</button><button>/Joe/People</button><button>/Joe/Notes</button><button>/Joe/Obsessions/Current</button></aside><section className="finder-main"><div className="os-toolbar"><div><button className="toolbar-button">‹</button><button className="toolbar-button">›</button></div><strong>/Joe</strong><label className="system-search"><Search/><input aria-label="Search Finder" placeholder="Search"/></label></div><div className="finder-section"><span className="section-label">APPLICATIONS</span><div className="finder-grid">{available.map((app)=><button key={app.id} onClick={()=>onOpenApp(app.id)}><AppIcon name={iconForApp[app.id] ?? "finder"}/><span><strong>{app.label}</strong><small>{app.detail}</small></span></button>)}</div></div><div className="finder-section finder-system-list"><span className="section-label">SYSTEM</span>{system.map((item)=><button className="os-list-row" key={item.id} onClick={()=>onOpenApp(item.id)}><span className="system-tool-icon">{item.icon}</span><strong>{item.label}</strong><small>{item.detail}</small><ChevronRight/></button>)}</div><div className="finder-section finder-section--future"><span className="section-label">NOT YET INSTALLED</span>{future.map((name)=><div className="os-list-row is-muted" key={name}><span className="future-app-dot"/><strong>{name}</strong><small>Coming later</small></div>)}</div></section></div>;
 }
 
 function Laboratory() {
@@ -70,16 +73,4 @@ function ArchiveApp() {
 
 function Practice() {
   return <div className="practice-app app-placeholder"><div className="breath-circle"><Wind/><span>inhale<br/><strong>slowly</strong></span></div><div><span className="app-kicker">PRACTICE</span><h2>Return to the animal.</h2><p>Breath. Walk. Sit. Lift. Listen. Repeat without turning it into a personality.</p><small>Today · five unmeasured minutes</small></div></div>;
-}
-
-function Settings() {
-  const settings = [["Current location", "Sarajevo"], ["Default mode", "Curious"], ["Input tolerance", "Low"], ["Consensus reality", "Connected"]];
-  return <div className="settings-app system-app"><aside className="os-sidebar"><strong>Settings</strong><button className="is-selected">About This Human</button><button>Currently</button><button>Attention</button><button>Energy</button><button>Beliefs</button></aside><section className="settings-main"><div className="settings-profile"><div className="about-monogram">J<span>03</span></div><div><span className="app-kicker">ABOUT THIS HUMAN</span><h2>Joe Burt</h2><p>Version 03 · currently in motion</p></div></div><div className="settings-list">{settings.map(([label,value],index)=><div className="os-list-row" key={label}><span className={`settings-symbol settings-symbol--${index}`}/><strong>{label}</strong><small>{value}</small><ChevronRight/></div>)}</div><p className="settings-copy">Interested in what makes a life feel more alive: travel, markets, health, consciousness, practice, and the unexpected connections between them.</p><div className="about-location"><MapPin/> Sarajevo, for now.</div></section></div>;
-}
-
-function Trash() {
-  const [items, setItems] = useState((osStateJson as BrainOsState).trash);
-  useEffect(() => { fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then((state: BrainOsState) => setItems(state.trash)).catch(() => undefined); }, []);
-  const putBack = (id: string) => setItems((current) => current.filter((item) => item.id !== id));
-  return <div className="trash-app system-app"><div className="os-toolbar"><strong>Trash</strong><span>{items.length} {items.length === 1 ? "item" : "items"}</span><button className="toolbar-button" disabled title="Permanent deletion is disabled in staging">Empty</button></div><div className="trash-list"><div className="trash-columns"><span>Name</span><span>Kind</span><span/></div>{items.map((item)=><div className="os-list-row" key={item.id}><span className="trashed-page"/><strong>{item.title}</strong><small>{item.category}{item.description ? ` · ${item.description}` : ""}</small><button onClick={() => putBack(item.id)}>Put Back</button></div>)}{!items.length && <div className="trash-empty">Nothing here. Suspiciously healthy.</div>}</div><footer>Some things are kept here in case they become funny later.</footer></div>;
 }

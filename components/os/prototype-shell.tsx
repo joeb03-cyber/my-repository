@@ -34,12 +34,14 @@ const appNames: Record<AppId, string> = {
   finder: "Finder", library: "Books", atlas: "Maps", messages: "Messages", contacts: "Contacts", journal: "Notes",
   photos: "Photos", laboratory: "Human", browser: "Browser", about: "Settings", trash: "Trash",
   practice: "Practice", reality: "Reality", archive: "Archive",
+  software: "Software Update", activity: "Activity Monitor", "screen-time": "Screen Time", terminal: "Terminal",
 };
-const routes: Partial<Record<AppId, string>> = Object.fromEntries(apps.map((app) => [app.id, app.route]));
+const routes: Partial<Record<AppId, string>> = { ...Object.fromEntries(apps.map((app) => [app.id, app.route])), software: "/software-update", activity: "/activity-monitor", "screen-time": "/screen-time", terminal: "/terminal" };
 const routeApps: Record<string, AppId> = {
   finder: "finder", library: "library", atlas: "atlas", messages: "messages", contacts: "contacts", journal: "journal",
   photos: "photos", laboratory: "laboratory", browser: "browser", about: "about", trash: "trash",
   practice: "practice", reality: "reality", archive: "archive",
+  "software-update": "software", "activity-monitor": "activity", "screen-time": "screen-time", terminal: "terminal",
 };
 const brainBooks = (booksIndexJson as BrainBooksIndex).books;
 
@@ -88,7 +90,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       const top = Math.max(0, ...current.map((win) => win.z)) + 1;
       if (existing) return current.map((win) => win.id === id ? { ...win, z: top, minimized: false, transition: win.minimized ? "reopening" : undefined } : win);
       const offset = current.filter((win) => win.kind === "app").length * 24;
-      const isLargeApp = appId === "library" || appId === "contacts" || appId === "journal";
+      const isLargeApp = appId === "library" || appId === "contacts" || appId === "journal" || appId === "about" || appId === "activity";
       return [...current, { id, appId, kind: "app", title: appNames[appId], x: 135 + offset, y: 70 + offset, width: isLargeApp ? 900 : 720, height: isLargeApp ? 650 : 520, z: top, transition: "opening" }];
     });
     setLaunchingApp(appId);
@@ -242,6 +244,9 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
               <MenuAction label="Maps" onClick={() => { openApp("atlas"); closeMenus(); }} />
               <MenuAction label="Contacts" onClick={() => { openApp("contacts"); closeMenus(); }} />
               <MenuAction label="Browser" onClick={() => { openApp("browser"); closeMenus(); }} />
+              <span className="menu-separator" />
+              <MenuAction label="Activity Monitor" onClick={() => { openApp("activity"); closeMenus(); }} />
+              <MenuAction label="Terminal" onClick={() => { openApp("terminal"); closeMenus(); }} />
             </SystemMenu>
             <SystemMenu label="View" open={activeMenu === "view"} onToggle={() => setActiveMenu(activeMenu === "view" ? null : "view")}>
               <MenuAction label="Next Wallpaper" shortcut="⌘→" onClick={() => { setWallpaperIndex((wallpaperIndex + 1) % wallpapers.length); closeMenus(); }} />
@@ -256,8 +261,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           <button className={`status-icon ${statusPanel === "update" ? "is-active" : ""}`} aria-label="Software Update" title="Software Update" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "update" ? null : "update"); }}><ControlGlyph /></button>
           <Clock />
           {statusPanel === "battery" && <StatusPopover title="Human Battery"><div className="battery-readout"><BatteryGlyph level={currentState.humanBattery.level}/><strong>{currentState.humanBattery.label}</strong></div><p>{currentState.humanBattery.note || "No check-in note."}</p><small>Manual check-in only · no health data inferred</small></StatusPopover>}
-          {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Consensus Reality</strong><small>Connected, with occasional packet loss</small></span><i/></div><p className="popover-footnote">Other networks may be available.</p></StatusPopover>}
-          {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>{osState.softwareUpdate.versionLabel}</span></div><strong>Synergetic Human is up to date</strong><p>{osState.softwareUpdate.new[0] || `Currently making: ${currentState.making || "Not reported"}`}</p><dl><div><dt>Exploring</dt><dd>{osState.softwareUpdate.currentlyExploring[0] || "Not reported"}</dd></div><div><dt>Performance</dt><dd>{osState.softwareUpdate.performance[0] || "Nominally strange"}</dd></div><div><dt>Known issue</dt><dd>{osState.softwareUpdate.knownIssues[0] || "None reported"}</dd></div></dl></StatusPopover>}
+          {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Consensus Reality</strong><small>Connected, with occasional packet loss</small></span><i/></div><div className="network-row network-row--available"><WifiGlyph/><span><strong>Innernet</strong><small>Known network · signal varies</small></span></div><p className="popover-footnote">Networks are handcrafted interface copy.</p></StatusPopover>}
+          {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>{osState.softwareUpdate.versionLabel}</span></div><strong>Synergetic Human is up to date</strong><p>{osState.softwareUpdate.new[0] || `Currently making: ${currentState.making || "Not reported"}`}</p><dl><div><dt>Exploring</dt><dd>{osState.softwareUpdate.currentlyExploring[0] || "Not reported"}</dd></div><div><dt>Performance</dt><dd>{osState.softwareUpdate.performance[0] || "Nominally strange"}</dd></div><div><dt>Known issue</dt><dd>{osState.softwareUpdate.knownIssues[0] || "None reported"}</dd></div></dl><button className="popover-action" onClick={() => { openApp("software"); closeMenus(); }}>Open Software Update…</button></StatusPopover>}
         </div>
       </header>
 
@@ -267,6 +272,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           <MenuAction label="Open Finder" onClick={() => { openApp("finder"); closeMenus(); }} />
           <MenuAction label="Open Books" onClick={() => { openApp("library"); closeMenus(); }} />
           <MenuAction label="Open Maps" onClick={() => { openApp("atlas"); closeMenus(); }} />
+          <MenuAction label="Open Terminal" onClick={() => { openApp("terminal"); closeMenus(); }} />
           <span className="menu-separator" />
           <MenuAction label="Reset Desktop" onClick={resetDesktop} />
         </div>}

@@ -1,7 +1,7 @@
 # Synergetic Human: Product Architecture and Roadmap
 
-Status: architectural direction, not an implemented schema.
-Last updated: 2026-08-26.
+Status: living product architecture; Books, Places, People/Sources, Notes/current state, and the private Control Center are implemented in isolated staging.
+Last updated: 2026-08-28.
 
 ## Product premise
 
@@ -9,18 +9,20 @@ Last updated: 2026-08-26.
 
 The desktop represents the present moment. Applications are familiar interfaces into a shared archive of books, people, places, media, writing, experiments, beliefs, and sources. The site should remain sincere and useful, with occasional restrained humor.
 
-The product has two layers:
+The technical product has two layers:
 
 - **The OS:** desktop, windows, Dock, application chrome, menus, routes, Spotlight, and responsive interaction.
 - **The Brain:** structured entities, source material, relationships, media, provenance, temporal state, search, and ingestion workflows.
 
 Applications are views into the Brain. They must not become separate content silos.
 
-## Current prototype assessment
+The public experience has three product roles: **Utility** (Books, Notes, Maps, Photos, Contacts), **Exploration** (future Browser/Rabbit Holes, Finder, Human, Spotlight, and Brain relationships), and **Personality** (Trash, Software Update, Activity Monitor, Screen Time, Terminal, Settings, Battery, Wi-Fi, and small system messages). Utility remains familiar and useful; personality stays sparse, handcrafted, and manually editable where it represents Joe.
 
-The prototype is a Next.js 14 App Router application. Its OS is a client-side shell containing the window manager, Dock, menu system, wallpaper state, mobile shell, and canonical application routes. Library data is typed but hard-coded in `data/prototype.ts`; other applications are presentational placeholders selected by a switch in `components/os/app-content.tsx`.
+## Current implementation assessment
 
-Supabase currently belongs to the legacy Notes application under `/notes`. The OS prototype does not read or write Supabase. Existing Supabase migrations, clients, RPC calls, authentication, and storage behavior should be treated as a legacy subsystem until deliberately migrated—not as the future Brain schema.
+The product is a Next.js 14 App Router application. Its OS is a client-side shell containing the window manager, Dock, menu system, wallpaper state, mobile shell, and canonical application routes. Books, travel, Contacts, public Notes/current state, Software Update, Trash, and Activity Monitor now read purpose-specific public models from an isolated Supabase Brain, with validated local snapshots as fallback where appropriate.
+
+The private `/control` surface uses Supabase Auth, a one-person administrator allowlist, protected routes/commands, and narrow RLS policies. Production remains separate. The legacy Notes product remains reference material rather than the target architecture.
 
 ### Reasonable to preserve
 
@@ -217,3 +219,23 @@ The current checkout contains only the ten mock records in `data/prototype.ts`. 
 8. Only after approval, create the development schema and perform an idempotent staged import.
 
 Success means adding or re-importing a book does not require editing frontend code, imported text can be traced to its source, and the same book/person/topic records are immediately reusable by Library, Finder, Spotlight, Contacts, Messages, and future applications.
+
+## Documented future product concepts
+
+These directions are deliberately recorded but not part of Stage 13 implementation.
+
+### Expanded Maps — Joe’s subjective layer over Earth
+
+Maps should retain familiar geographic interaction—real tiles, pan/zoom, native-feeling pins, subtle routes, place cards, and mobile drawers—while the content answers “What was Joe’s Budapest?” rather than “What is Budapest?” A Place may eventually connect stays, neighborhood/accommodation, routine, food, specific places, memorable **Characters**, moments, photos, reading/learning, life context, “Would I live here?”, and Joe’s verdict. Provider selection and a deeper Maps rebuild remain deferred.
+
+### Photos — familiar, visual, and content-first
+
+Photos should wait for the real archive and shared media model. Candidate albums include People I Met Once, Things I Ate, Sunsets, Gyms Around the World, Apartments I’ve Temporarily Called Home, Photos I Took Because the Light Was Nice, and No Idea Why I Took This. Albums are editorial groupings over reusable photo records, not copied files.
+
+### Browser / Rabbit Holes — The Internet According to Joe
+
+Browser is not a fake general-purpose browser. A Rabbit Hole is an interesting question plus the highest-signal material Joe has encountered around it, connected across People, Books, Podcasts, Papers, Articles, Videos, Notes, and Experiments. A current take may simply be “I don’t know. This is fascinating.” Build only after the related sources and editorial workflow exist; no chatbot or autonomous browsing is implied.
+
+### Reminders — Things I Don’t Want to Forget
+
+The future Reminders concept is a small, personal memory surface rather than a conventional task manager. It should distinguish durable reminders from time-bound tasks and connect to public-safe Notes, Places, People, and ideas where useful. No application, schema, or ingestion is authorized yet.

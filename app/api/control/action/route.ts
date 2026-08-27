@@ -112,6 +112,30 @@ export async function POST(request: Request) {
       const { error } = await db.from("os_trash_records").update({ state: "archived" }).eq("id", input.id);
       if (error) throw error; return NextResponse.json({ ok: true });
     }
+    if (input.action === "restore-trash") {
+      if (!input.id || input.confirm !== true) throw new Error("Put Back confirmation required.");
+      const { error } = await db.from("os_trash_records").update({ state: "restored" }).eq("id", input.id);
+      if (error) throw error; return NextResponse.json({ ok: true });
+    }
+    if (input.action === "save-activity") {
+      const item = input.item || {}; const id = item.id || crypto.randomUUID();
+      const name = String(item.name || "").trim().slice(0, 120);
+      if (!name) throw new Error("A process needs a name.");
+      const status = ["running", "background", "sleeping", "not_responding"].includes(item.status) ? item.status : "background";
+      const { error } = await db.from("activity_monitor_processes").upsert({
+        id, name, status, detail: String(item.detail || "").trim().slice(0, 500),
+        started_label: textOrNull(item.startedLabel), related_items: asStrings(item.related).slice(0, 12),
+        visibility: item.visibility === "private" ? "private" : "public",
+        editorial_state: item.editorialState === "needs_review" ? "needs_review" : "approved",
+        lifecycle_state: "active", sort_order: Number.isFinite(item.sortOrder) ? item.sortOrder : 100,
+      });
+      if (error) throw error; return NextResponse.json({ ok: true, id });
+    }
+    if (input.action === "archive-activity") {
+      if (!input.id || input.confirm !== true) throw new Error("Archive confirmation required.");
+      const { error } = await db.from("activity_monitor_processes").update({ lifecycle_state: "archived", visibility: "private" }).eq("id", input.id);
+      if (error) throw error; return NextResponse.json({ ok: true });
+    }
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Save failed" }, { status: 400 });

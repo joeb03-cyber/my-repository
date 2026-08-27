@@ -12,7 +12,11 @@ export type AppId =
   | "contacts"
   | "photos"
   | "browser"
-  | "trash";
+  | "trash"
+  | "software"
+  | "activity"
+  | "screen-time"
+  | "terminal";
 
 export const wallpapers = [
   { id: "sarajevo-dusk", className: "wallpaper--sarajevo-photo", label: "Sarajevo at dusk", location: "Bosnia & Herzegovina", credit: "Sporisevic Photography · Unsplash" },
