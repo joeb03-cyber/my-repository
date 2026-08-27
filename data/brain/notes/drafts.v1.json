@@ -1,0 +1,32 @@
+[
+  {
+    "id": "d42b9b03-40d8-46ba-bec7-b08bb8d86006",
+    "slug": "work-with-me-biofield-tuning",
+    "title": "Work With Me — Biofield Tuning",
+    "excerpt": "A protected migration draft for a future service page inside Notes.",
+    "bodyMarkdown": "# Work With Me — Biofield Tuning\n\nThis is a protected editorial draft assembled from the legacy Biofield Tuning page. It is intentionally not public.\n\nThe source describes remote Biofield Tuning sessions using tuning forks, alongside Joe's study of the Emotion Code and muscle testing. Before publication, Joe should approve concise service language, decide how to frame non-mainstream mechanisms, and provide a safe scheduling destination.\n\nNo credential, outcome, testimonial, medical promise, or remote-equivalence claim has been approved for the new site.",
+    "folderSlug": "health",
+    "tags": ["work-with-me", "biofield-tuning"],
+    "pinned": false,
+    "publicationState": "draft",
+    "sourcePublishedAt": "2026-07-11",
+    "publishedAt": null,
+    "updatedAt": "2026-08-27T12:00:00+02:00",
+    "editorialNotice": "Protected migration draft. Requires Joe's review before publication.",
+    "externalLinks": [],
+    "provenance": {
+      "sourceUrl": "https://www.synergetichuman.com/",
+      "sourceTitle": "biofield tuning",
+      "capturedAt": "2026-08-27",
+      "migrationCategory": "migrate_edit_reframe",
+      "reviewFlags": [
+        "mechanism_claims",
+        "health_outcome_claims",
+        "remote_equivalence_claim",
+        "credentials_or_training_language",
+        "contact_information",
+        "scheduling_destination_missing"
+      ]
+    }
+  }
+]

@@ -1,12 +1,14 @@
 "use client";
 
-import { Archive, ArrowUpRight, ChevronRight, FlaskConical, MapPin, NotebookPen, Orbit, Search, Wind } from "lucide-react";
+import { useState } from "react";
+import { Archive, ArrowUpRight, ChevronRight, FlaskConical, MapPin, Orbit, Search, Wind } from "lucide-react";
 import { LibraryApp } from "./library-app";
 import type { AppId } from "@/data/prototype";
 import type { BrainBookSummary } from "@/lib/brain/types";
 import AppIcon, { iconForApp } from "./app-icon";
 import MapsApp from "./maps-app";
 import ContactsApp from "./contacts-app";
+import NotesApp from "./notes-app";
 
 export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: AppId; onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (appId: AppId) => void }) {
   if (appId === "finder") return <Finder onOpenApp={onOpenApp} />;
@@ -15,7 +17,7 @@ export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: Ap
   if (appId === "contacts") return <ContactsApp onBookOpen={onBookOpen} />;
   if (appId === "laboratory") return <Laboratory />;
   if (appId === "messages") return <Messages />;
-  if (appId === "journal") return <Journal />;
+  if (appId === "journal") return <NotesApp />;
   if (appId === "photos") return <Photos />;
   if (appId === "browser") return <Browser />;
   if (appId === "trash") return <Trash />;
@@ -50,10 +52,6 @@ function Reality() {
   return <div className="reality-app app-placeholder"><div className="reality-orbit"><i/><i/><i/><Orbit/></div><div><span className="app-kicker">REALITY / CONSCIOUSNESS</span><h2>Things get less solid in here.</h2><p>Notes from the borderlands of perception, identity, awareness, anomalous experience, and whatever this is.</p><button>Enter carefully <ArrowUpRight/></button></div></div>;
 }
 
-function Journal() {
-  return <div className="journal-app app-placeholder"><aside><NotebookPen/><span>AUG<br/><strong>26</strong><br/>2026</span></aside><article><span className="app-kicker">NOTES · FIELD NOTE · SARAJEVO</span><h2>The city gets quieter after the heat gives up.</h2><p>Prototype writing surface. Future notes can remain fragments: observations, questions, unfinished arguments, strange encounters, things noticed from café tables.</p><span className="cursor-mark"/></article></div>;
-}
-
 function Photos() {
   return <div className="photos-app system-app"><div className="os-toolbar"><strong>Photos</strong><div className="os-segment"><button className="is-selected">Years</button><button>Months</button><button>All Photos</button></div><button className="toolbar-button">•••</button></div><div className="photos-hero"><div><span className="app-kicker">2026 · SARAJEVO</span><h2>A life, mostly outside.</h2><p>The wallpaper collection and travel archive will live here.</p></div></div><div className="photo-strip">{["coast","street","mountain","window","night"].map((name)=><div className={`photo-tile photo-tile--${name}`} key={name}/>)}</div></div>;
 }
@@ -78,6 +76,8 @@ function Settings() {
 }
 
 function Trash() {
-  const items = [["Being productive means being valuable", "belief · 2023"], ["The five-year plan", "document · abandoned"], ["Cold showers fix everything", "experiment · inconclusive"], ["Old About page copy", "identity · superseded"]];
-  return <div className="trash-app system-app"><div className="os-toolbar"><strong>Trash</strong><span>4 items</span><button className="toolbar-button">Empty</button></div><div className="trash-list"><div className="trash-columns"><span>Name</span><span>Kind</span></div>{items.map(([name,kind])=><div className="os-list-row" key={name}><span className="trashed-page"/><strong>{name}</strong><small>{kind}</small></div>)}</div><footer>Some things are kept here in case they become funny later.</footer></div>;
+  const seed = [["Being productive means being valuable", "belief · 2023"], ["The five-year plan", "document · abandoned"], ["Cold showers fix everything", "experiment · inconclusive"], ["Old About page copy", "identity · superseded"]];
+  const [items, setItems] = useState(seed);
+  const putBack = (name: string) => setItems((current) => current.filter(([item]) => item !== name));
+  return <div className="trash-app system-app"><div className="os-toolbar"><strong>Trash</strong><span>{items.length} {items.length === 1 ? "item" : "items"}</span><button className="toolbar-button" disabled title="Permanent deletion is disabled in staging">Empty</button></div><div className="trash-list"><div className="trash-columns"><span>Name</span><span>Kind</span><span/></div>{items.map(([name,kind])=><div className="os-list-row" key={name}><span className="trashed-page"/><strong>{name}</strong><small>{kind}</small><button onClick={() => putBack(name)}>Put Back</button></div>)}{!items.length && <div className="trash-empty">Nothing here. Suspiciously healthy.</div>}</div><footer>Some things are kept here in case they become funny later.</footer></div>;
 }

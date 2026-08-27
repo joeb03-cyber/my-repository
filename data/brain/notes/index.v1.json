@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "brain-notes.local.v1",
+  "generatedFrom": "Legacy public Notes audit, captured 2026-08-27",
+  "folders": [
+    { "id": "72fbfb88-951b-4e94-9237-1128e7866a01", "slug": "ideas", "label": "Ideas", "sortOrder": 10 },
+    { "id": "72fbfb88-951b-4e94-9237-1128e7866a02", "slug": "health", "label": "Health", "sortOrder": 20 },
+    { "id": "72fbfb88-951b-4e94-9237-1128e7866a03", "slug": "experiments", "label": "Experiments", "sortOrder": 30 },
+    { "id": "72fbfb88-951b-4e94-9237-1128e7866a04", "slug": "about", "label": "About", "sortOrder": 40 },
+    { "id": "72fbfb88-951b-4e94-9237-1128e7866a05", "slug": "archive", "label": "Archive", "sortOrder": 50 }
+  ],
+  "notes": [
+    {
+      "id": "d42b9b03-40d8-46ba-bec7-b08bb8d86001",
+      "slug": "about-joe",
+      "title": "About Joe",
+      "excerpt": "Slow traveling, reading widely, trading markets, and exploring the deeper layers of health and consciousness.",
+      "bodyMarkdown": "# About Joe\n\nMy name is Joe.\n\n## Now\n\n- Slow traveling the world\n- Actively trading the markets\n- Writing the Synergetic Human newsletter\n- Practicing Biofield Tuning\n- Exploring the deeper layers—nervous system, biofield, consciousness\n\n## Background\n\nI was born on the Jersey Shore, went to Florida State, then moved to New York City and fell in love with the city for fifteen years.\n\nI started as a personal trainer at a boutique gym in Manhattan and worked my way up to general manager. I became obsessed with physical health, biomechanics, movement, rehabilitation, and aesthetics.\n\nI opened The Fitness Office on the Upper East Side with a partner and ran it for seven years. Later, I sold my half, kept training clients, traded stocks and crypto on the side, and kept reading.\n\n## The pivot\n\nI left New York in 2022, spent a year in Austin, and started traveling the world in September 2023. Since then: South America, Europe, Southeast Asia, and Central America—with more beds than I can count.\n\nThis is a living introduction, not a permanent identity statement.",
+      "folderSlug": "about",
+      "folderLabel": "About",
+      "tags": ["about", "currently", "travel"],
+      "pinned": true,
+      "publicationState": "published",
+      "sourcePublishedAt": "2026-07-12",
+      "publishedAt": "2026-08-27T12:00:00+02:00",
+      "updatedAt": "2026-08-27T12:00:00+02:00",
+      "editorialNotice": "Migrated from the legacy About page. Current details should be reviewed periodically.",
+      "externalLinks": []
+    },
+    {
+      "id": "d42b9b03-40d8-46ba-bec7-b08bb8d86002",
+      "slug": "things-i-come-back-to",
+      "title": "Things I Come Back To",
+      "excerpt": "A loose collection of reminders about living, healing, freedom, and paying attention.",
+      "bodyMarkdown": "# Things I Come Back To\n\n## On living\n\n- Time freedom over almost everything\n- Novelty forces presence—travel is one hack for this\n- The small pleasures are the whole point\n- You can take your health seriously without being neurotic about it\n- Most of what you're worried about won't matter in five years\n- The body knows things the mind hasn't figured out yet\n\n## On healing\n\n- Getting honest with yourself is the work\n- Let go of the baggage you picked up along the way\n- Meditation is overrated; feeling your emotions is underrated\n- You don't need more information, you need less resistance\n- The goal isn't to be fixed, it's to be free\n\n## A few lines I return to\n\n> “The most common form of despair is not being who you are.”\n> — Søren Kierkegaard\n\n> “Living in discovery is at all times preferable to living through assumptions.”\n> — Rick Rubin\n\n> “Acquiring things will rarely bring you deep satisfaction. But acquiring experiences will.”\n> — Kevin Kelly\n\n> “People act in ways that make sense from their point of view; otherwise they would act differently.”\n> — Ellen Langer",
+      "folderSlug": "ideas",
+      "folderLabel": "Ideas",
+      "tags": ["living", "healing", "reminders"],
+      "pinned": true,
+      "publicationState": "published",
+      "sourcePublishedAt": "2026-07-11",
+      "publishedAt": "2026-08-27T12:00:00+02:00",
+      "updatedAt": "2026-08-27T12:00:00+02:00",
+      "editorialNotice": null,
+      "externalLinks": []
+    },
+    {
+      "id": "d42b9b03-40d8-46ba-bec7-b08bb8d86003",
+      "slug": "how-i-think-about-health-right-now",
+      "title": "How I Think About Health Right Now",
+      "excerpt": "A provisional model: physical foundations, deeper layers, and the places where I remain skeptical.",
+      "bodyMarkdown": "# How I Think About Health Right Now\n\nThe physical stuff matters, but it's the floor, not the ceiling.\n\n## The foundation\n\n- Nervous system regulation comes first—if your system is stuck in survival mode, nothing else works optimally\n- Sleep, stress, sunlight, and circadian alignment are nonnegotiable\n- Adequate calories, enough protein, real food—don't overcomplicate it\n- Walking is underrated medicine for body and mind\n- To build muscle: progressive overload, train near failure, recover, and be consistent for years\n- To lose fat: caloric deficit, adequate protein, patience\n\n## The deeper layers\n\nI am interested in the body as an electrical system, the biofield, and the possibility that our histories and emotions affect physical experience. I think most people fixate on the physical and miss this bridge.\n\nSome of these ideas are personal working hypotheses or come from non-mainstream frameworks. They are not settled claims.\n\n## The deepest layer\n\nI keep returning to the possibility that we are not reducible to thoughts, emotions, or the body—and that transformation involves recognizing our nature while clearing what obstructs it.\n\n## What I'm skeptical of\n\n- Endless optimization without addressing root causes\n- Collecting self-help techniques without implementation\n- Outsourcing your health entirely to authorities\n- Treating materialist reductionism as the only permissible frame\n- Treating science as an identity rather than a method",
+      "folderSlug": "health",
+      "folderLabel": "Health",
+      "tags": ["health", "working-model", "consciousness"],
+      "pinned": false,
+      "publicationState": "published",
+      "sourcePublishedAt": "2026-07-12",
+      "publishedAt": "2026-08-27T12:00:00+02:00",
+      "updatedAt": "2026-08-27T12:00:00+02:00",
+      "editorialNotice": "A current working model, not medical advice or a final statement of belief. Material claims were reframed conservatively for public reading and remain reviewable.",
+      "externalLinks": []
+    },
+    {
+      "id": "d42b9b03-40d8-46ba-bec7-b08bb8d86004",
+      "slug": "things-i-use-and-experiment-with",
+      "title": "Things I Use + Experiment With",
+      "excerpt": "A dated snapshot of travel gear, health tools, experiments, and things I've moved away from.",
+      "bodyMarkdown": "# Things I Use + Experiment With\n\nThis is a changing snapshot, not a recommendation list. Some experiments carry real risks and may not be appropriate for anyone else.\n\n## Travel gear\n\n- One carry-on suitcase and one backpack\n- MacBook Air and travel monitor\n- Sleep mask, blue-light blockers, ear plugs, over-ear headphones\n- Kindle\n\n## Health tools\n\n- NuCalm—a nap app I've used for years\n- Tuning forks for Biofield Tuning\n- Grip trainer, lacrosse ball, massage tool\n- Apnea trainer for breath-hold work\n\n## Experiments recorded in the source snapshot\n\n- T3/Cytomel monotherapy\n- Psilocybin or LSD microdosing using the Fadiman protocol\n- A bioenergetic or pro-metabolic diet\n- Extended periods without social media, news, or consumption\n- Budget worldwide travel\n- Street photography with a Ricoh GR IIIx\n\n## Things I've moved away from\n\n- Obsessive supplement use\n- Tracking everything\n- Drinking alcohol\n- Excessive socialization",
+      "folderSlug": "experiments",
+      "folderLabel": "Experiments",
+      "tags": ["experiments", "tools", "travel"],
+      "pinned": false,
+      "publicationState": "published",
+      "sourcePublishedAt": "2026-07-09",
+      "publishedAt": "2026-08-27T12:00:00+02:00",
+      "updatedAt": "2026-08-27T12:00:00+02:00",
+      "editorialNotice": "Historical snapshot. Medication and psychoactive-substance entries describe personal experimentation, not advice or endorsement.",
+      "externalLinks": []
+    },
+    {
+      "id": "d42b9b03-40d8-46ba-bec7-b08bb8d86005",
+      "slug": "the-newsletter-archive",
+      "title": "The Newsletter Archive",
+      "excerpt": "The earlier public writing archive: roughly one hundred issues spanning health, energy, and consciousness.",
+      "bodyMarkdown": "# The Newsletter Archive\n\n**The Synergetic Human** was previously called **Synergetic Health**. The archive contains roughly one hundred issues.\n\nIt explored three broad layers:\n\n- Physical health—nutrition, movement, sleep, and light\n- Energetic health—the biofield, nervous system, and emotional experience\n- Consciousness—true nature, awakening, and inner work\n\nThe recurring idea was that people often work only on the physical layer, while meaningful change may involve several interacting layers.\n\nThe archive remains external for now. Individual issues have not been bulk-imported into the Brain.",
+      "folderSlug": "archive",
+      "folderLabel": "Archive",
+      "tags": ["newsletter", "archive", "writing"],
+      "pinned": false,
+      "publicationState": "published",
+      "sourcePublishedAt": "2026-06-16",
+      "publishedAt": "2026-08-27T12:00:00+02:00",
+      "updatedAt": "2026-08-27T12:00:00+02:00",
+      "editorialNotice": "Historical context only; the newsletter archive has not been ingested.",
+      "externalLinks": [
+        { "label": "Open the newsletter archive", "url": "https://joesnewsletterc2742d.beehiiv.com/" }
+      ]
+    }
+  ]
+}

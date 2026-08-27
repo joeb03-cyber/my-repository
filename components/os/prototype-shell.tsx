@@ -6,7 +6,9 @@ import { ArrowLeft, BookOpen } from "lucide-react";
 import type { AppId } from "@/data/prototype";
 import { wallpapers } from "@/data/prototype";
 import booksIndexJson from "@/data/brain/books-index.v1.json";
+import currentStateJson from "@/data/brain/current-state.v1.json";
 import type { BrainBookSummary, BrainBooksIndex } from "@/lib/brain/types";
+import type { BrainCurrentState } from "@/lib/brain/notes-types";
 import AppContent from "./app-content";
 import { BookDetail } from "./library-app";
 import AppIcon, { type AppIconName } from "./app-icon";
@@ -63,6 +65,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const [mobileBook, setMobileBook] = useState<BrainBookSummary | null>(null);
   const [launchingApp, setLaunchingApp] = useState<AppId | null>(null);
   const [activeMenu, setActiveMenu] = useState<"file" | "explore" | "view" | null>(null);
+  const [statusPanel, setStatusPanel] = useState<"battery" | "wifi" | "update" | null>(null);
+  const [currentState, setCurrentState] = useState<BrainCurrentState>(currentStateJson as BrainCurrentState);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const dockRef = useRef<HTMLElement>(null);
   const dockAnimationRef = useRef<number | null>(null);
@@ -81,7 +85,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       const top = Math.max(0, ...current.map((win) => win.z)) + 1;
       if (existing) return current.map((win) => win.id === id ? { ...win, z: top, minimized: false, transition: win.minimized ? "reopening" : undefined } : win);
       const offset = current.filter((win) => win.kind === "app").length * 24;
-      const isLargeApp = appId === "library" || appId === "contacts";
+      const isLargeApp = appId === "library" || appId === "contacts" || appId === "journal";
       return [...current, { id, appId, kind: "app", title: appNames[appId], x: 135 + offset, y: 70 + offset, width: isLargeApp ? 900 : 720, height: isLargeApp ? 650 : 520, z: top, transition: "opening" }];
     });
     setLaunchingApp(appId);
@@ -118,6 +122,10 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   useEffect(() => {
     const interval = window.setInterval(() => setWallpaperIndex((index) => (index + 1) % wallpapers.length), 24_000);
     return () => window.clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/brain/current-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -168,7 +176,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const openApps = useMemo(() => new Set(windows.filter((win) => win.kind === "app" && win.appId).map((win) => win.appId)), [windows]);
   const minimizedApps = useMemo(() => new Set(windows.filter((win) => win.kind === "app" && win.appId && win.minimized).map((win) => win.appId)), [windows]);
   const topVisibleZ = Math.max(0, ...windows.filter((win) => !win.minimized).map((win) => win.z));
-  const closeMenus = () => { setActiveMenu(null); setContextMenu(null); };
+  const closeMenus = () => { setActiveMenu(null); setStatusPanel(null); setContextMenu(null); };
   const resetDesktop = () => { setWindows(initialWindows.map((win) => ({ ...win }))); closeMenus(); router.push("/"); };
   const closeActiveWindow = () => {
     const active = windows.find((win) => !win.minimized && win.z === topVisibleZ);
@@ -203,9 +211,9 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   }, []);
 
   const renderWindowContent = (win: WindowState) => {
-    if (win.kind === "currently") return <Currently />;
-    if (win.kind === "reading") return <Reading onOpen={() => openApp("library")} />;
-    if (win.kind === "thinking") return <Thinking />;
+    if (win.kind === "currently") return <Currently state={currentState} />;
+    if (win.kind === "reading") return <Reading state={currentState} onOpen={() => openApp("library")} />;
+    if (win.kind === "thinking") return <Thinking state={currentState} />;
     if (win.kind === "book") {
       return <BookDetail slug={win.payload || ""} />;
     }
@@ -238,11 +246,14 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           </nav>
         </div>
         <div className="menu-status">
-          <span className="menu-location">Sarajevo</span>
-          <span>22°</span>
-          <button className="status-icon" aria-label="Network connected" title="Network connected"><WifiGlyph /></button>
-          <button className="status-icon" aria-label="System status" title="System status"><ControlGlyph /></button>
+          <span className="menu-location">{currentState.where.city}</span>
+          <button className={`status-icon ${statusPanel === "battery" ? "is-active" : ""}`} aria-label="Human Battery" title="Human Battery" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "battery" ? null : "battery"); }}><BatteryGlyph level={currentState.humanBattery.level} /></button>
+          <button className={`status-icon ${statusPanel === "wifi" ? "is-active" : ""}`} aria-label="Consensus Reality network" title="Consensus Reality" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "wifi" ? null : "wifi"); }}><WifiGlyph /></button>
+          <button className={`status-icon ${statusPanel === "update" ? "is-active" : ""}`} aria-label="Software Update" title="Software Update" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "update" ? null : "update"); }}><ControlGlyph /></button>
           <Clock />
+          {statusPanel === "battery" && <StatusPopover title="Human Battery"><div className="battery-readout"><BatteryGlyph level={currentState.humanBattery.level}/><strong>{currentState.humanBattery.label}</strong></div><p>{currentState.humanBattery.note || "No check-in note."}</p><small>Manual check-in only · no health data inferred</small></StatusPopover>}
+          {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Consensus Reality</strong><small>Connected, with occasional packet loss</small></span><i/></div><p className="popover-footnote">Other networks may be available.</p></StatusPopover>}
+          {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>11</span></div><strong>Synergetic Human is up to date</strong><p>Currently making: {currentState.making || "Not reported"}</p><dl><div><dt>Exploring</dt><dd>{currentState.rabbitHoles[0] || "Not reported"}</dd></div><div><dt>Known issue</dt><dd>Still becoming a person</dd></div></dl></StatusPopover>}
         </div>
       </header>
 
@@ -283,20 +294,30 @@ function WifiGlyph() {
   return <svg viewBox="0 0 18 14" aria-hidden="true"><path d="M1.5 4.8a11.6 11.6 0 0115 0M4.2 7.7a7.4 7.4 0 019.6 0M7.1 10.5a3 3 0 013.8 0"/><circle cx="9" cy="12.2" r=".8"/></svg>;
 }
 
+function BatteryGlyph({ level }: { level: number | null }) {
+  const width = level === null ? 4 : Math.max(2, Math.min(12, Math.round(level * .12)));
+  return <svg viewBox="0 0 18 14" aria-hidden="true"><rect x="1.5" y="3.5" width="13.5" height="7" rx="1.8"/><path d="M16 5.6v2.8"/><rect className="battery-fill" x="3" y="5" width={width} height="4" rx=".7"/></svg>;
+}
+
 function ControlGlyph() {
   return <svg viewBox="0 0 18 14" aria-hidden="true"><path d="M2 4h14M2 10h14"/><circle cx="6" cy="4" r="2"/><circle cx="12" cy="10" r="2"/></svg>;
 }
 
-function Currently() {
-  return <div className="status-content"><span className="eyebrow">CURRENT COORDINATES</span><h1>Sarajevo</h1><p>Bosnia &amp; Herzegovina</p><div className="status-rule"/><small>Slowly learning the shape of the city.</small><div className="coordinate-row"><span>43.8563° N</span><span>18.4131° E</span></div></div>;
+function StatusPopover({ title, children }: { title: string; children: React.ReactNode }) {
+  return <div className="status-popover" onPointerDown={(event) => event.stopPropagation()}><header>{title}</header>{children}</div>;
 }
 
-function Reading({ onOpen }: { onOpen: () => void }) {
-  return <div className="reading-card reading-card--unset"><div className="reading-library-glyph"><BookOpen /></div><div><span className="eyebrow">READING STATE</span><h2>Not set yet</h2><p>165 books are ready in Books.</p><button onClick={onOpen}>Open Books <span>↗</span></button></div></div>;
+function Currently({ state }: { state: BrainCurrentState }) {
+  return <div className="status-content"><span className="eyebrow">CURRENT COORDINATES</span><h1>{state.where.city}</h1><p>{state.where.country}</p><div className="status-rule"/><small>{state.making ? `Making ${state.making}.` : "Current note not set."}</small><div className="coordinate-row"><span>{state.where.coordinates || "Coordinates not set"}</span></div></div>;
 }
 
-function Thinking() {
-  return <><blockquote className="thinking-quote">“What if a personal website felt less like a résumé—and more like walking into someone’s mind mid-thought?”</blockquote><div className="thought-meta"><span>RABBIT HOLE #024</span><span>still unresolved</span></div></>;
+function Reading({ state, onOpen }: { state: BrainCurrentState; onOpen: () => void }) {
+  return <div className="reading-card reading-card--unset"><div className="reading-library-glyph"><BookOpen /></div><div><span className="eyebrow">READING STATE</span><h2>{state.reading || "Not set yet"}</h2><p>{state.reading ? "From the current-state record." : "165 books are ready in Books."}</p><button onClick={onOpen}>Open Books <span>↗</span></button></div></div>;
+}
+
+function Thinking({ state }: { state: BrainCurrentState }) {
+  const thought = state.currentQuestion || state.thinking || state.tryingToUnderstand;
+  return <><blockquote className="thinking-quote">{thought ? `“${thought}”` : "Current thought not set yet."}</blockquote><div className="thought-meta"><span>{state.rabbitHoles.length ? "CURRENT RABBIT HOLE" : "OPEN CHANNEL"}</span><span>{state.rabbitHoles[0] || "waiting for signal"}</span></div></>;
 }
 
 function MobileHome({ onOpen }: { onOpen: (appId: AppId) => void }) {
