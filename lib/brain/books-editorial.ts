@@ -1,6 +1,6 @@
 import type { BrainBookSummary, BrainBooksIndex } from "./types";
 
-/** Public editorial decisions. Imported titles and source provenance remain unchanged. */
+/** Public editorial decisions. Exact source titles and provenance remain preserved in the Brain. */
 export const hiddenPublicBookSlugs = new Set(["100m-offers", "1929"]);
 
 export const bookDisplayTitleOverrides: Record<string, string> = {
@@ -10,11 +10,13 @@ export const bookDisplayTitleOverrides: Record<string, string> = {
   "collected-essays-of-joel-goldsmith": "Collected Essays of Joel Goldsmith",
   "eye-of-the-i": "Eye of the I",
   "going-to-pieces-without-falling-apart": "Going to Pieces Without Falling Apart",
+  "habits-of-a-healthy-brain": "Habits of a Happy Brain",
   "head-strong": "Head Strong",
   "i-am-the-word": "I Am the Word",
   "infinite-self": "Infinite Self",
   "kundalini-evolution-and-enlightenment": "Kundalini, Evolution and Enlightenment",
   "life-force": "Life Force",
+  "how-to-live-your-truth": "Live Your Truth",
   "light-radiation-and-you": "Light, Radiation, and You",
   "matrix-reimprinting-using-eft": "Matrix Reimprinting Using EFT",
   "no-boundary": "No Boundary",
@@ -22,6 +24,7 @@ export const bookDisplayTitleOverrides: Record<string, string> = {
   "owning-your-own-shadow": "Owning Your Own Shadow",
   "real-magic": "Real Magic",
   "the-art-of-pilgrimage": "The Art of Pilgrimage",
+  "the-awakened-mind": "Awakening the Mind",
   "the-book-of-love-and-creation": "The Book of Love and Creation",
   "the-dynamic-laws-of-prayer": "The Dynamic Laws of Prayer",
   "the-dynamic-laws-of-prosperity": "The Dynamic Laws of Prosperity",

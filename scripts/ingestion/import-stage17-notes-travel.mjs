@@ -18,7 +18,8 @@ const db = createClient(url, serviceKey, { auth: { persistSession: false, autoRe
 const publicDb = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
 const publicUpdate = JSON.parse(await readFile("data/brain/editorial-updates/2026-08-28-stage17.v1.json", "utf8"));
 const privateDraft = JSON.parse(await readFile("data/ingestion/stage17-private/somatic-inquiry-draft.v1.json", "utf8"));
-const notes = [...publicUpdate.publicNotes, privateDraft.note];
+const publicSlugs = new Set(publicUpdate.publicNotes.map((note) => note.slug));
+const notes = [...publicUpdate.publicNotes, ...(publicSlugs.has(privateDraft.note.slug) ? [] : [privateDraft.note])];
 const namespace = "cd16dcf0-a399-4c71-93bc-abaf07f31a65";
 
 async function upsert(table, rows, options = {}) {
@@ -69,18 +70,31 @@ await upsert("note_tag_links", notes.flatMap((note) => note.tags.map((label) => 
   note_entity_id: note.id,
   tag_id: uuidv5(`note-tag:${label}`, namespace),
 }))), { onConflict: "note_entity_id,tag_id" });
+for (const note of notes) {
+  const desiredTagIds = new Set(note.tags.map((label) => uuidv5(`note-tag:${label}`, namespace)));
+  const { data: existingLinks, error: linkReadError } = await db.from("note_tag_links").select("tag_id").eq("note_entity_id", note.id);
+  if (linkReadError) throw linkReadError;
+  const staleTagIds = existingLinks.map((link) => link.tag_id).filter((tagId) => !desiredTagIds.has(tagId));
+  if (staleTagIds.length) {
+    const { error: staleDeleteError } = await db.from("note_tag_links").delete().eq("note_entity_id", note.id).in("tag_id", staleTagIds);
+    if (staleDeleteError) throw staleDeleteError;
+  }
+}
 
-const { data: publicNote, error: publicNoteError } = await publicDb.from("brain_public_notes").select("slug,title,body_markdown").eq("slug", "when-back-in-the-us").maybeSingle();
-if (publicNoteError || !publicNote) throw publicNoteError || new Error("Published Note is not visible through the public-safe view.");
-const { data: leakedDraft, error: leakedDraftError } = await publicDb.from("brain_public_notes").select("slug").eq("slug", "somatic-inquiry-list");
-if (leakedDraftError) throw leakedDraftError;
-if (leakedDraft?.length) throw new Error("Protected somatic-inquiry draft leaked through the public view.");
+const { data: publicNotes, error: publicNoteError } = await publicDb.from("brain_public_notes").select("slug,title,body_markdown").in("slug", ["when-back-in-the-us", "somatic-inquiry-list"]);
+if (publicNoteError) throw publicNoteError;
+const publicNoteBySlug = new Map(publicNotes.map((note) => [note.slug, note]));
+for (const slug of ["when-back-in-the-us", "somatic-inquiry-list"]) {
+  if (!publicNoteBySlug.has(slug)) throw new Error(`Published Note is not visible through the public-safe view: ${slug}`);
+}
+const somaticBody = publicNoteBySlug.get("somatic-inquiry-list").body_markdown;
+if (!somaticBody.includes("## What I’ve noticed") || !somaticBody.includes("## Session notes")) {
+  throw new Error("Published somatic Note is missing its approved sections.");
+}
 
 console.log(JSON.stringify({
-  publishedNote: publicNote.slug,
-  publishedBodyLength: publicNote.body_markdown.length,
-  protectedDraft: "somatic-inquiry-list",
-  anonymousDraftExposure: false,
+  publishedNotes: publicNotes.map((note) => ({ slug: note.slug, bodyLength: note.body_markdown.length })),
+  somaticObservationCount: 5,
   travelDirectionRecorded: true,
   reconciledKnownCountries: publicUpdate.travelDirection.reconciledKnownLifetimeCount,
   assertedLifetimeCountries: publicUpdate.travelDirection.assertedLifetimeCountryCount,

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "brain-book-cover-local-overrides.v1",
+  "recordedAt": "2026-08-28",
+  "source": {
+    "authority": "Joe Burt",
+    "method": "Joe manually selected and supplied these cover files in a local Book covers folder.",
+    "upstreamImageSource": "unknown",
+    "exactReadEditionRequired": false
+  },
+  "covers": [
+    { "slug": "awake-but-sick", "originalFilename": "Awake But Sick.jpeg", "publicPath": "/book-covers/awake-but-sick.jpg", "mimeType": "image/jpeg", "width": 353, "height": 566, "byteSize": 19594, "sha256": "c33e4ae95c90ee10ff96de716c5e5aecdb560020e7cbf30cce0d6057ebe6ade3" },
+    { "slug": "a-fool-s-wisdom", "originalFilename": "a fools wisdom.jpeg", "publicPath": "/book-covers/a-fool-s-wisdom.jpg", "mimeType": "image/jpeg", "width": 353, "height": 566, "byteSize": 37795, "sha256": "1deb0927314a677644e924ac8d0f0714f3a35d6a469e020529b09530202ab57a" },
+    { "slug": "awakening-to-be-human", "originalFilename": "awakening to be human.jpeg", "publicPath": "/book-covers/awakening-to-be-human.jpg", "mimeType": "image/jpeg", "width": 177, "height": 284, "byteSize": 8622, "sha256": "ccef5546facc0f157ee2667865912730be052f8edc8f674bbb468be4e39123b4" },
+    { "slug": "be-your-own-healer", "originalFilename": "be your own healer.jpeg", "publicPath": "/book-covers/be-your-own-healer.jpg", "mimeType": "image/jpeg", "width": 181, "height": 279, "byteSize": 11507, "sha256": "29c4a2fe3dae43ba7a069cc34210d63f0d505df4ebb182d4e2aed1cbc3a44cb1" },
+    { "slug": "the-communication-course", "originalFilename": "communication course.jpeg", "publicPath": "/book-covers/the-communication-course.jpg", "mimeType": "image/jpeg", "width": 353, "height": 566, "byteSize": 27052, "sha256": "18c9aca563e8852f6fb5b13a557eb2a1c24bc09c6f0088fc55d076159bfb35f8" },
+    { "slug": "dirtbag-rich", "originalFilename": "dirtbag rich.jpeg", "publicPath": "/book-covers/dirtbag-rich.jpg", "mimeType": "image/jpeg", "width": 181, "height": 279, "byteSize": 8637, "sha256": "14f1817bf20d873a1026b4b5e03d8b4e6a91bfdae586d7eafd88f7c45c614c23" },
+    { "slug": "disciples-of-the-mysterium", "originalFilename": "disciples of the mysterium.jpeg", "publicPath": "/book-covers/disciples-of-the-mysterium.jpg", "mimeType": "image/jpeg", "width": 333, "height": 500, "byteSize": 37601, "sha256": "60c6544fc4a5061d49396637622e769d4fa7c5bd1bfdc93a683473a4b3c6d120" },
+    { "slug": "get-out-of-here-alive", "originalFilename": "get out of here alive.jpeg", "publicPath": "/book-covers/get-out-of-here-alive.jpg", "mimeType": "image/jpeg", "width": 225, "height": 225, "byteSize": 15303, "sha256": "4ff67b717419470d1800069ba0c753cd993c0418b27650274e9bc5918456a7db" },
+    { "slug": "habits-of-a-healthy-brain", "originalFilename": "habits of a happy brain.jpeg", "publicPath": "/book-covers/habits-of-a-healthy-brain.jpg", "mimeType": "image/jpeg", "width": 181, "height": 278, "byteSize": 17494, "sha256": "3bfc096317053fd3b15ca569b5f7ee94fdb1ca5eb826c346b0168aa0dd4c93a8" },
+    { "slug": "holographic-blood", "originalFilename": "holographic blood.jpeg", "publicPath": "/book-covers/holographic-blood.jpg", "mimeType": "image/jpeg", "width": 333, "height": 500, "byteSize": 21651, "sha256": "01da5a13e19bfe4676a8bcf5ff69dcc0c3fc1f772333a4c9556afde3d17e0c40" },
+    { "slug": "how-to-actually-live-longer", "originalFilename": "how to actually live longer.png", "publicPath": "/book-covers/how-to-actually-live-longer.png", "mimeType": "image/png", "width": 181, "height": 278, "byteSize": 6466, "sha256": "5a5049494aa5524df4f409ffeb2f999c3f6c7907951d5e674edfc66a056c71d2" },
+    { "slug": "how-to-live-your-truth", "originalFilename": "live your truth.jpeg", "publicPath": "/book-covers/how-to-live-your-truth.jpg", "mimeType": "image/jpeg", "width": 353, "height": 566, "byteSize": 38470, "sha256": "528e0eb55b6f35e98d8188066d8bd08f7e7ca8466a568b353a34b3975bcc67f7" },
+    { "slug": "love", "originalFilename": "love lao russel.jpeg", "publicPath": "/book-covers/love.jpg", "mimeType": "image/jpeg", "width": 317, "height": 475, "byteSize": 7369, "sha256": "45bc34a3fe4e41a3affe67b8b173cbc9dca05183aa87cf0b7e36a72d90354188" },
+    { "slug": "loving-awakening", "originalFilename": "loving awakening.jpeg", "publicPath": "/book-covers/loving-awakening.jpg", "mimeType": "image/jpeg", "width": 188, "height": 268, "byteSize": 8580, "sha256": "9776d82b968f872d4da1492dbfda6d867ec0f2bac1cec8d8077da1e579876c9a" },
+    { "slug": "the-man-of-zero", "originalFilename": "man of zero.jpeg", "publicPath": "/book-covers/the-man-of-zero.jpg", "mimeType": "image/jpeg", "width": 183, "height": 275, "byteSize": 10840, "sha256": "4b92169bfb1a2e83d21170b0392225b368ad5f9bc5c979e0426ccffc0e56cd7e" },
+    { "slug": "missing-saints-missing-miracles", "originalFilename": "missing saints missing miracles.jpeg", "publicPath": "/book-covers/missing-saints-missing-miracles.jpg", "mimeType": "image/jpeg", "width": 359, "height": 557, "byteSize": 36166, "sha256": "568ec05a54fbb686f918f6a3deeb58623aa834c3b77fecf838d217b728ee06d8" },
+    { "slug": "money-does-grow-on-trees", "originalFilename": "money does grow on trees.jpeg", "publicPath": "/book-covers/money-does-grow-on-trees.jpg", "mimeType": "image/jpeg", "width": 183, "height": 275, "byteSize": 6033, "sha256": "a07e738b4097821f43c4ddd58c42bb1c5f19df6431f18e6915387a01c203a23e" },
+    { "slug": "face-to-no-face-on-having-no-head", "originalFilename": "on having no head.jpeg", "publicPath": "/book-covers/face-to-no-face-on-having-no-head.jpg", "mimeType": "image/jpeg", "width": 181, "height": 279, "byteSize": 7755, "sha256": "f25626a41a0e0d02d00eafbf997a579b5eddfa103bd57a4104538bf98a7bde7f" },
+    { "slug": "outsmarting-reality", "originalFilename": "outsmarting reality.jpeg", "publicPath": "/book-covers/outsmarting-reality.jpg", "mimeType": "image/jpeg", "width": 183, "height": 275, "byteSize": 7244, "sha256": "0afe72897eee7738dfb4684dd07e233776cd7f4b375c8b780f4e8a38a64aa38c" },
+    { "slug": "overcoming-the-archon-through-alchemy", "originalFilename": "overcoming the archon.jpeg", "publicPath": "/book-covers/overcoming-the-archon-through-alchemy.jpg", "mimeType": "image/jpeg", "width": 250, "height": 400, "byteSize": 14319, "sha256": "33f442cf790d50c622e20ebee2078b90310d8d860a3bc50e076869380ce3fe24" },
+    { "slug": "pouring-concrete", "originalFilename": "pouring concrete.jpeg", "publicPath": "/book-covers/pouring-concrete.jpg", "mimeType": "image/jpeg", "width": 183, "height": 275, "byteSize": 14557, "sha256": "4ca980999adcddaf381d699866f485a714dd9fa53be2014060c570e27e591958" },
+    { "slug": "psychophysiologic-disorders", "originalFilename": "psdychophysiologica disorders.jpeg", "publicPath": "/book-covers/psychophysiologic-disorders.jpg", "mimeType": "image/jpeg", "width": 450, "height": 680, "byteSize": 54653, "sha256": "bdc8730c5931d6c524db27d054c8653fd86b723e1b5214ba3fbfe50482c28efc" },
+    { "slug": "i-reality-and-subjectivity", "originalFilename": "reality and subjectivity.jpeg", "publicPath": "/book-covers/i-reality-and-subjectivity.jpg", "mimeType": "image/jpeg", "width": 181, "height": 279, "byteSize": 2790, "sha256": "37e020594b379df0a6969427d6b3b495dc00e61c4f9189ecca837ccc7301ef91" },
+    { "slug": "reality-creation-technique", "originalFilename": "reality creation technique.jpeg", "publicPath": "/book-covers/reality-creation-technique.jpg", "mimeType": "image/jpeg", "width": 314, "height": 500, "byteSize": 18894, "sha256": "2db20205a12d2367c7d361cdaeb6617eb455e9e206ec495e62e3db554a69e6ba" },
+    { "slug": "the-art-of-listening-to-the-body", "originalFilename": "the art of listening to the body.jpeg", "publicPath": "/book-covers/the-art-of-listening-to-the-body.jpg", "mimeType": "image/jpeg", "width": 233, "height": 350, "byteSize": 6357, "sha256": "67fee206e07413aff3389df50e8d4cfc929b0a6ea3a330f1eb7f8aa96c23984e" },
+    { "slug": "the-awakened-mind", "originalFilename": "the awakened mind.jpeg", "publicPath": "/book-covers/the-awakened-mind.jpg", "mimeType": "image/jpeg", "width": 185, "height": 278, "byteSize": 9779, "sha256": "068379f3301c37de5314460b9227edcdf5f272b821d2c7ca742b5892b9aa4430" },
+    { "slug": "travel-light", "originalFilename": "travel light.jpeg", "publicPath": "/book-covers/travel-light.jpg", "mimeType": "image/jpeg", "width": 199, "height": 253, "byteSize": 9001, "sha256": "17e8d0166709fb677c97dd518e2a01818a50653ac25fc7d00ed7fdc2cb2aff40" },
+    { "slug": "your-guide-to-cellular-health", "originalFilename": "your guide to cellular health.jpeg", "publicPath": "/book-covers/your-guide-to-cellular-health.jpg", "mimeType": "image/jpeg", "width": 225, "height": 225, "byteSize": 13688, "sha256": "1edff7b3e675dcf362b142c921e8e0356b9e9a7762fe0fa355ff2e242693b2c2" }
+  ],
+  "titleCorrections": [
+    { "slug": "habits-of-a-healthy-brain", "sourceTitle": "Habits of a Healthy Brain", "canonicalTitle": "Habits of a Happy Brain", "evidence": "Joe correction confirmed by supplied cover", "confidence": 1 },
+    { "slug": "the-awakened-mind", "sourceTitle": "The Awakened Mind", "canonicalTitle": "Awakening the Mind", "evidence": "Joe correction confirmed by supplied cover", "confidence": 1 },
+    { "slug": "how-to-live-your-truth", "sourceTitle": "How to Live Your Truth", "canonicalTitle": "Live Your Truth", "evidence": "Supplied cover title", "confidence": 1 }
+  ],
+  "authorshipCorrections": [
+    { "slug": "awake-but-sick", "addAuthors": ["Toshi Matsunaga"], "evidence": "Supplied cover credits Scott Kiloby and Toshi Matsunaga", "confidence": 1 }
+  ],
+  "reviewItems": [
+    { "slug": "face-to-no-face-on-having-no-head", "question": "The Library source combines Face to No Face and On Having No Head, while the supplied cover represents only On Having No Head. Keep the combined source title until the source document is reviewed." },
+    { "slug": "a-fool-s-wisdom", "question": "The supplied cover credits Steven A. Young; existing Contacts material also uses Stephen Young. Resolve the preferred person identity before changing the author record." },
+    { "slug": "money-does-grow-on-trees", "question": "The supplied cover credits Esra B. Ogut, while the current Library record also credits Danijel Trstenjak. Retain both authors until a bibliographic source confirms whether the second credit belongs." },
+    { "slug": "pouring-concrete", "question": "The supplied cover credits Robert Harwood, while the current Library record says Bob Harwood. Treat this as a likely name normalization, but review before merging the author identity." }
+  ]
+}
