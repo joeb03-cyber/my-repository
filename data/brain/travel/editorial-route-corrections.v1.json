@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "brain-travel-editorial-route-corrections.v1",
+  "recordedAt": "2026-08-28",
+  "environment": "isolated-staging-only",
+  "corrections": [
+    {
+      "kind": "insert_visit",
+      "place": {
+        "slug": "vaduz",
+        "sourceName": "vaduz",
+        "name": "Vaduz",
+        "placeType": "locality",
+        "countryCode": "LI",
+        "countryName": "Liechtenstein",
+        "latitude": 47.141,
+        "longitude": 9.5209,
+        "coordinatesState": "editorial"
+      },
+      "visit": {
+        "visitKind": "visit_or_stay_unspecified",
+        "sourcePosition": 25,
+        "groupPosition": 2,
+        "chronologyIndex": 87,
+        "startYear": 2026,
+        "startMonth": 5,
+        "endYear": 2026,
+        "endMonth": 5,
+        "temporalPrecision": "month",
+        "sourceDateText": "May 2026",
+        "sourceValue": "Vaduz",
+        "sourceRawLine": "Joe direct correction: Vaduz, Liechtenstein, between Zürich and Innsbruck"
+      },
+      "routeContext": {
+        "after": "zurich",
+        "before": "innsbruck",
+        "sequence": ["zurich", "vaduz", "innsbruck"]
+      },
+      "provenance": {
+        "authority": "Joe Burt",
+        "assertion": "Visited the main city in Liechtenstein between Zürich and Innsbruck on the recent trip.",
+        "identityResolution": "Vaduz",
+        "confidence": 1
+      }
+    }
+  ]
+}
