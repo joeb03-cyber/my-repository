@@ -37,7 +37,7 @@ export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: Ap
 function Finder({ onOpenApp }: { onOpenApp: (appId: AppId) => void }) {
   const available: Array<{ id: AppId; label: string; detail: string }> = [
     { id: "library", label: "Books", detail: "166 public books" }, { id: "atlas", label: "Maps", detail: "43 countries" },
-    { id: "contacts", label: "Contacts", detail: "28 interesting humans" }, { id: "journal", label: "Notes", detail: "Writing & fragments" }, { id: "photos", label: "Photos", detail: "Travel archive" },
+    { id: "contacts", label: "Contacts", detail: "37 interesting humans" }, { id: "journal", label: "Notes", detail: "Writing & fragments" }, { id: "photos", label: "Photos", detail: "Travel archive" },
     { id: "laboratory", label: "Human", detail: "Operating manual" }, { id: "browser", label: "Browser", detail: "Rabbit holes" },
     { id: "practice", label: "Practice", detail: "Modalities" }, { id: "about", label: "Settings", detail: "About this human" },
   ];

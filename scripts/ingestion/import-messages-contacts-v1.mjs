@@ -19,6 +19,11 @@ const targets = [
   { name: "Steven Young", identity: "Former theoretical physicist, musician, and author of A Fool’s Wisdom, exploring alchemy and critiques of scientific authority.", sources: ["https://www.youtube.com/watch?v=YOeZcIOUMas", "/library/a-fool-s-wisdom"] },
   { name: "David R. Hawkins", identity: "Psychiatrist and spiritual teacher whose books explore surrender, nonduality, the ego, and a proposed map of consciousness.", sources: ["https://www.penguinrandomhouse.com/books/601456/transcending-the-levels-of-consciousness-by-david-r-hawkins-md-phd/"] },
   { name: "Gabor Maté", identity: "Physician and author whose work focuses on trauma, addiction, childhood development, authenticity, and stress-related illness.", sources: ["https://drgabormate.com/trauma/", "/library/myth-of-normal"] },
+  { name: "Rolf Potts", identity: "Travel writer, essayist, and author of Vagabonding, a guide to independent long-term travel.", sources: ["https://rolfpotts.com/", "/library/vagabonding"] },
+  { name: "Kevin Kelly", identity: "Writer, photographer, and founding executive editor of Wired, known for work on technology, optimism, and practical wisdom.", sources: ["https://kk.org/home/about", "/library/excellent-advice-for-living"] },
+  { name: "Richard Schwartz", identity: "Psychologist and founder of Internal Family Systems, a model of protective and wounded inner parts guided by a core Self.", sources: ["https://ifs-institute.com/", "/library/no-bad-parts"] },
+  { name: "Lynne McTaggart", identity: "Journalist and author who writes about consciousness, intention, and her experiments with focused group intention.", sources: ["https://lynnemctaggart.com/books/the-power-of-eight/", "/library/the-power-of-eight"] },
+  { name: "Paul Millerd", identity: "Writer and author of The Pathless Path, exploring alternatives to the default relationship with work and success.", sources: ["https://newsletter.pathlesspath.com/about", "https://shop.pathlesspath.com/products/pathless-path-hardcover"] },
 ];
 
 const { data: people, error: peopleError } = await db.from("people").select("entity_id,display_name,normalized_name,factual_identity");
@@ -26,8 +31,19 @@ if (peopleError) throw peopleError;
 const personByNormalized = new Map(people.map((person) => [normalize(person.display_name), person]));
 const published = [];
 for (const target of targets) {
-  const person = personByNormalized.get(normalize(target.name));
-  if (!person) throw new Error(`Existing Person entity not found for ${target.name}; refusing to invent a duplicate identity.`);
+  let person = personByNormalized.get(normalize(target.name));
+  if (!person) {
+    // A new Person is allowed only because Joe explicitly named every target in this Messages release.
+    const personId = uuidv5(`person:${normalize(target.name)}`, namespace);
+    const personSlug = `person-${normalize(target.name).replaceAll(" ", "-")}`;
+    const initials = target.name.split(/\s+/).map((part) => part[0]).join("").slice(0, 3).toUpperCase();
+    const { error: entityInsertError } = await db.from("entities").upsert({ id: personId, kind: "person", slug: personSlug, title: target.name, summary: null, visibility: "public", lifecycle_state: "active", editorial_state: "approved" }, { onConflict: "id" });
+    if (entityInsertError) throw entityInsertError;
+    const { error: personInsertError } = await db.from("people").upsert({ entity_id: personId, display_name: target.name, sort_name: target.name.split(/\s+/).at(-1), normalized_name: normalize(target.name), initials, factual_identity: target.identity, identity_review_state: "approved", contact_publication_state: "published" }, { onConflict: "entity_id" });
+    if (personInsertError) throw personInsertError;
+    person = { entity_id: personId, display_name: target.name, normalized_name: normalize(target.name), factual_identity: target.identity };
+    personByNormalized.set(normalize(target.name), person);
+  }
   const { error: personError } = await db.from("people").update({ contact_publication_state: "published", factual_identity: target.identity, identity_review_state: "approved" }).eq("entity_id", person.entity_id);
   if (personError) throw personError;
   const { error: entityError } = await db.from("entities").update({ visibility: "public", lifecycle_state: "active", editorial_state: "approved" }).eq("id", person.entity_id);
