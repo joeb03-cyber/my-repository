@@ -23,14 +23,21 @@ const publicRows = source.rabbitHoles.map((hole) => ({
   id: hole.id, slug: hole.slug, title: hole.title, central_question: hole.centralQuestion,
   short_intro: hole.shortIntro, current_take: hole.currentTake, status: hole.status, accent: hole.accent,
   publication_state: "published", visibility: "public", editorial_state: "approved", sort_order: hole.sortOrder,
-  provenance: { source: "stage15_private_research_plus_editorial_interview", interview_authoritative_for_joe_view: true },
+  provenance: {
+    source: "stage15_private_research_plus_editorial_interview",
+    interview_authoritative_for_joe_view: true,
+    ...(hole.slug === "light-biology" ? { editorial_update: "2026-08-28_user_supplied_levin_framing" } : {}),
+  },
 }));
 let result = await db.from("rabbit_holes").upsert([...publicRows,...draftRows], { onConflict: "id" });
 if (result.error) throw result.error;
 
 const blocks = source.rabbitHoles.flatMap((hole) => hole.blocks.map((block) => ({
   id: block.id, rabbit_hole_id: hole.id, block_type: block.type, heading: block.heading, body: block.body,
-  items: block.items, sort_order: block.sortOrder, provenance: { source: "curated_browser_v1" },
+  items: block.items, sort_order: block.sortOrder, provenance: {
+    source: "curated_browser_v1",
+    ...(hole.slug === "light-biology" ? { editorial_update: "2026-08-28_user_supplied_levin_framing" } : {}),
+  },
 })));
 const resources = source.rabbitHoles.flatMap((hole) => hole.resources.map((item) => ({
   id: item.id, rabbit_hole_id: hole.id, title: item.title, url: item.url, resource_type: item.resourceType,
