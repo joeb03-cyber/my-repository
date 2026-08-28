@@ -1,0 +1,26 @@
+# Local-only dependencies and build output
+node_modules/
+.next/
+out/
+build/
+coverage/
+
+# Local credentials and deployment metadata
+.env*
+.vercel/
+.git/
+
+# Private/local discovery and ingestion material. Public application data is
+# imported through guarded staging workflows, never from these workstation files.
+artifacts/
+data/ingestion/
+data/brain/books/
+data/brain/import-v1/
+data/brain/import-manifest.v1.json
+docs/BOOKS-INGESTION-DISCOVERY.md
+docs/BOOKS-PILOT-REVIEW.md
+scripts/ingestion/
+
+# Local planning and operating notes
+IMPLEMENTATION.md
+*.tsbuildinfo
