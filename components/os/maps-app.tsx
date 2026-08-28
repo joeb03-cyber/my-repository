@@ -49,6 +49,7 @@ export default function MapsApp() {
   const selectedVisit = (timeline?.visits || []).find((visit) => visit.id === selectedVisitId) || visibleLatestFirst[0];
   const selectedPlace = selectedVisit ? placeById.get(selectedVisit.placeId) : undefined;
   const uniqueMappedPlaces = Array.from(new Map(mappedVisits.map((visit) => [visit.placeId, placeById.get(visit.placeId) as TravelPlace])).values());
+  const currentPlace = timeline?.currentState?.location ? timeline.places.find((place) => place.name === timeline.currentState?.location.canonical_name) : undefined;
 
   if (error) return <div className="maps-state"><MapPin/><strong>Travel history is temporarily unavailable.</strong><span>The staging Brain did not respond.</span></div>;
   if (!timeline) return <div className="maps-state"><LocateFixed className="is-locating"/><strong>Opening the travel archive…</strong><span>Loading the staging Brain</span></div>;
@@ -70,7 +71,7 @@ export default function MapsApp() {
       </div>
     </aside>
     <section className="maps-canvas">
-      <div className="maps-toolbar"><span><MapPin/> Route since September 2023</span><div className="maps-map-count">{mappedVisits.length} mapped · {timeline.stats.unresolvedPlaces} labels awaiting coordinates</div></div>
+      <div className="maps-toolbar"><span><MapPin/> Route since September 2023</span><div className="maps-map-count">{currentPlace ? `Now · ${currentPlace.name}` : `${mappedVisits.length} mapped`} · {timeline.stats.unresolvedPlaces} labels awaiting coordinates</div></div>
       <div className="world-map" aria-label="World map of travel history">
         <img src="/maps/world-110m.svg" alt=""/>
         <svg viewBox="0 0 1000 500" preserveAspectRatio="none" role="img" aria-label="Chronological travel route">
@@ -80,6 +81,7 @@ export default function MapsApp() {
             return <line key={`${mappedVisits[index].id}-${visit.id}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y}/>;
           })}</g>
           <g className="journey-points">{uniqueMappedPlaces.map((place) => { const p=point(place); const isSelected=selectedPlace?.id===place.id; const choose=()=>{ const visit=[...visits].reverse().find((item)=>item.placeId===place.id); if(visit)setSelectedVisitId(visit.id); }; return <g key={place.id} role="button" tabIndex={0} aria-label={`${place.name}, ${place.countryName}`} onClick={choose} onKeyDown={(event)=>{if(event.key==="Enter"||event.key===" ")choose();}}><circle className={isSelected?"is-selected":""} cx={p.x} cy={p.y} r={isSelected?8:4}/></g>; })}</g>
+          {currentPlace?.latitude != null && currentPlace.longitude != null && (() => { const p = point(currentPlace); return <g className="journey-current" aria-label={`Current location: ${currentPlace.name}, ${currentPlace.countryName}`}><circle cx={p.x} cy={p.y} r="11"/><circle cx={p.x} cy={p.y} r="4"/></g>; })()}
         </svg>
         <div className="maps-compass" aria-hidden="true">N</div>
         {selectedVisit && selectedPlace && <article className="place-card">

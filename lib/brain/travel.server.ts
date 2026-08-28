@@ -30,11 +30,12 @@ export async function getTravelTimeline(): Promise<TravelTimeline> {
   const anonKey = process.env.BRAIN_SUPABASE_ANON_KEY;
   if (!url || !anonKey) throw new Error("Staging Brain travel reads require BRAIN_SUPABASE_URL and BRAIN_SUPABASE_ANON_KEY.");
   const client = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
-  const [placeRows, visitRows, overviewRows, movementRows] = await Promise.all([
+  const [placeRows, visitRows, overviewRows, movementRows, currentRows] = await Promise.all([
     allRows(client, "brain_public_places", "name"),
     allRows(client, "brain_public_travel_visits", "chronology_index"),
     allRows(client, "brain_public_travel_overview"),
     allRows(client, "brain_public_travel_movements", "source_position"),
+    allRows(client, "brain_public_current_state"),
   ]);
   const places: TravelPlace[] = placeRows.map((row) => ({
     id: row.id, slug: row.slug, sourceName: row.source_name, name: row.name, placeType: row.place_type,
@@ -50,13 +51,15 @@ export async function getTravelTimeline(): Promise<TravelTimeline> {
   }));
   const countries = Array.from(new Set(places.map((place) => place.countryName))).sort();
   const overview = overviewRows[0] || {};
+  const current = currentRows[0]?.state?.where;
   const unresolved = places.filter((place) => place.latitude == null).map((place) => place.sourceName);
   return {
     schemaVersion: "synergetic-travel-timeline.supabase.v1", generatedFrom: overview.source_url,
     sourceSnapshot: { id: overview.id, capturedOn: overview.captured_on, contentHash: overview.content_hash, intro: overview.intro || {} },
     stats: { sourceRecords: 101, visits: visits.length, movements: movementRows.length, uniquePlaces: places.length, countries: countries.length, resolvedPlaces: places.length - unresolved.length, unresolvedPlaces: unresolved.length },
     countries, places, visits, movements: movementRows,
-    review: { unresolvedPlaceLabels: unresolved, currentLocationConflict: { sourceLatest: "warsaw", existingOsNow: "Sarajevo", decision: "unresolved_do_not_overwrite_now" } },
+    currentState: current ? { location: { canonical_name: current.city, country_code: "BA", country_name: current.country, state: "approved", provenance: { authority: "Joe Burt", recorded_at: currentRows[0].last_confirmed_at } } } : undefined,
+    review: { unresolvedPlaceLabels: unresolved, currentLocationConflict: { sourceLatest: "warsaw", existingOsNow: current?.city || "Unreported", decision: "resolved_keep_chronology_and_now_separate" } },
     mapAttribution: "GeoNames geographical database, CC BY 4.0",
   };
 }

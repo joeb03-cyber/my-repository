@@ -1,11 +1,11 @@
 {
   "schemaVersion": "brain-current-state.local.v1",
-  "effectiveAt": "2026-08-27T12:00:00+02:00",
-  "lastConfirmedAt": "2026-08-27T12:00:00+02:00",
+  "effectiveAt": "2026-08-28T17:00:00+02:00",
+  "lastConfirmedAt": "2026-08-28T17:00:00+02:00",
   "where": {
-    "city": "Sarajevo",
+    "city": "Jajce",
     "country": "Bosnia and Herzegovina",
-    "coordinates": "43.8563° N · 18.4131° E"
+    "coordinates": "44.3420° N · 17.2706° E"
   },
   "reading": null,
   "thinking": null,

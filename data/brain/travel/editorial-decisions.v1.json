@@ -1,6 +1,6 @@
 {
   "schema_version": "synergetic-travel-editorial-decisions.v1",
-  "recorded_at": "2026-08-27",
+  "recorded_at": "2026-08-28",
   "authority": "Joe Burt",
   "place_identity_decisions": {
     "st. petersburg": {
@@ -50,9 +50,15 @@
   },
   "current_state": {
     "location": {
-      "canonical_name": "Sarajevo",
+      "canonical_name": "Jajce",
       "country_code": "BA",
       "country_name": "Bosnia and Herzegovina",
+      "latitude": 44.342029,
+      "longitude": 17.270593,
+      "provider": {
+        "name": "GeoNames",
+        "retrieved_at": "2026-08-28"
+      },
       "state": "approved"
     }
   }

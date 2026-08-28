@@ -29,9 +29,9 @@
     "sourceRecords": 101,
     "visits": 110,
     "movements": 1,
-    "uniquePlaces": 103,
-    "countries": 42,
-    "resolvedPlaces": 91,
+    "uniquePlaces": 104,
+    "countries": 43,
+    "resolvedPlaces": 92,
     "unresolvedPlaces": 12
   },
   "countries": [
@@ -39,6 +39,7 @@
     "Argentina",
     "Aruba",
     "Austria",
+    "Bosnia and Herzegovina",
     "Brazil",
     "Bulgaria",
     "Cambodia",
@@ -1416,6 +1417,19 @@
       "latitude": 18.50078,
       "longitude": -67.02435,
       "coordinatesState": "provider_candidate",
+      "reviewState": "approved"
+    },
+    {
+      "id": "df9f8e37-0889-5d22-b129-b40815618a53",
+      "slug": "jajce",
+      "sourceName": "Jajce",
+      "name": "Jajce",
+      "placeType": "populated_place",
+      "countryCode": "BA",
+      "countryName": "Bosnia and Herzegovina",
+      "latitude": 44.342029,
+      "longitude": 17.270593,
+      "coordinatesState": "editorial",
       "reviewState": "approved"
     }
   ],
@@ -3756,13 +3770,19 @@
   ],
   "currentState": {
     "location": {
-      "canonical_name": "Sarajevo",
+      "canonical_name": "Jajce",
       "country_code": "BA",
       "country_name": "Bosnia and Herzegovina",
+      "latitude": 44.342029,
+      "longitude": 17.270593,
+      "provider": {
+        "name": "GeoNames",
+        "retrieved_at": "2026-08-28"
+      },
       "state": "approved",
       "provenance": {
         "authority": "Joe Burt",
-        "recorded_at": "2026-08-27"
+        "recorded_at": "2026-08-28"
       }
     }
   },
@@ -3783,7 +3803,7 @@
     ],
     "currentLocationResolution": {
       "chronologyLatest": "warsaw",
-      "approvedNow": "Sarajevo",
+      "approvedNow": "Jajce",
       "decision": "resolved_keep_chronology_and_now_separate"
     }
   },

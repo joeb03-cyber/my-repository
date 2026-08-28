@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "stage16-editorial-update-v1",
+  "recordedAt": "2026-08-28",
+  "environment": "isolated-staging-only",
+  "books": [
+    {
+      "sourcePosition": 166,
+      "slug": "what-your-body-wants-you-to-know",
+      "title": "What Your Body Wants You to Know",
+      "originalTitle": "What Your Body Wants You To Know",
+      "author": "Lauren Hill",
+      "googleDocId": "1jn8fZj5DsVMb4giBTyl5g_9MxAzloM_kVGRRZ3UAxck",
+      "googleDocUrl": "https://docs.google.com/document/d/1jn8fZj5DsVMb4giBTyl5g_9MxAzloM_kVGRRZ3UAxck/edit?usp=sharing",
+      "sourceSnapshot": "what-your-body-wants-you-to-know.txt",
+      "retailUrl": "https://www.amazon.com/dp/1634897609?lv=shuf&channelId=500&plpRedirect=mhFallback",
+      "topicSlugs": []
+    },
+    {
+      "sourcePosition": 167,
+      "slug": "you-can-just-do-things",
+      "title": "You Can Just Do Things",
+      "originalTitle": "You Can Just Do Things",
+      "author": "Cate Hall",
+      "googleDocId": "1H2r9quv6u7ocpqv1ILfJuDOwqPCWBjEDW6ctx22UYYU",
+      "googleDocUrl": "https://docs.google.com/document/d/1H2r9quv6u7ocpqv1ILfJuDOwqPCWBjEDW6ctx22UYYU/edit?usp=sharing",
+      "sourceSnapshot": "you-can-just-do-things.txt",
+      "topicSlugs": ["creativity-purpose-work"]
+    },
+    {
+      "sourcePosition": 168,
+      "slug": "just-keep-buying",
+      "title": "Just Keep Buying",
+      "originalTitle": "Just Keep Buying",
+      "author": "Nick Maggiulli",
+      "googleDocId": "1YxRbR7lwVlcO1mXgpxI7O-cHcXbcB3YyRk3IcxKyJT4",
+      "googleDocUrl": "https://docs.google.com/document/d/1YxRbR7lwVlcO1mXgpxI7O-cHcXbcB3YyRk3IcxKyJT4/edit?usp=sharing",
+      "sourceSnapshot": "just-keep-buying.txt",
+      "topicSlugs": ["money-business-performance"]
+    }
+  ],
+  "contacts": {
+    "retire": ["Aleena Kanner"],
+    "correct": [
+      {
+        "name": "Madhava Setty",
+        "removeTopicSlugs": ["topic-health-longevity"],
+        "approveTopicSlugs": ["topic-society-culture-systems"],
+        "addTopic": {
+          "slug": "topic-truth-institutions-hidden-history",
+          "title": "Truth, Institutions & Hidden History",
+          "description": "Institutional narratives, contested history, and independent investigation."
+        },
+        "contextDomain": "Truth / Institutions / Hidden History",
+        "note": "Joe follows Madhava Setty primarily for independent and truther-oriented articles, including work about 9/11, rather than for health, biology, or longevity."
+      }
+    ],
+    "publishAuthorsWithAtLeastTwoPublicBooks": true
+  },
+  "currentLocation": {
+    "city": "Jajce",
+    "country": "Bosnia and Herzegovina",
+    "latitude": 44.342029,
+    "longitude": 17.270593,
+    "effectiveAt": "2026-08-28T17:00:00+02:00",
+    "source": "Joe direct update; coordinates matched to GeoNames"
+  }
+}

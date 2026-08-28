@@ -3,13 +3,13 @@
   "source_hash": "19135544962e7be9c0aa0c77be5236d2d075bea538863e71bb0d5d5140cc9967",
   "counts": {
     "travel_source_snapshots": 1,
-    "travel_places": 103,
+    "travel_places": 104,
     "travel_visits": 110,
     "travel_movements": 1
   },
   "artifact_hashes": {
-    "travel_source_snapshots": "3728b87dddf529e2100b074b3e2b93a0723fa160e989b9bbb2ad216a2133a02a",
-    "travel_places": "a61e7e58f3d9ebf885252cfbd14238e46cb74ce5e500e4920fcc60b97d0b87aa",
+    "travel_source_snapshots": "1e89e78abd9fa8deb3dc668878803211430fd6fa1ac09a58dda9af20d7187a1a",
+    "travel_places": "41d23f3c863a7ab7e7599339e7f6a1e2948dcd2dfd736901aafbcf0e6bd98b8a",
     "travel_visits": "48390b9b8a302d17aee5968603de54d3e47f24d866df46afc4563052d83d94f0",
     "travel_movements": "7f2a30d59b19b1d4015c75ebbdf062a2e282b8292f666f242c5c2e20a44d29c9"
   }

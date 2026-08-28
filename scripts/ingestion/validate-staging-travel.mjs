@@ -15,7 +15,7 @@ for (const [table, count] of Object.entries(expected)) {
   const { count: actual, error } = await service.from(table).select("*", { count: "exact", head: true });
   if (error || actual !== count) throw new Error(`${table}: expected ${count}, received ${actual}; ${error?.message || "count mismatch"}`);
 }
-for (const [view, count] of [["brain_public_places",103],["brain_public_travel_visits",110],["brain_public_travel_movements",1],["brain_public_photos",0]]) {
+for (const [view, count] of [["brain_public_places",104],["brain_public_travel_visits",110],["brain_public_travel_movements",1],["brain_public_photos",0]]) {
   const { count: actual, error } = await anon.from(view).select("*", { count: "exact", head: true });
   if (error || actual !== count) throw new Error(`${view}: expected anonymous count ${count}, received ${actual}; ${error?.message || "count mismatch"}`);
 }
@@ -31,5 +31,5 @@ if (approvedError || approvedRows?.length !== 6) throw new Error(`Approved trave
 for (const row of approvedRows) if (row.name !== approvedNames[row.source_name] || row.editorial_state !== "approved") throw new Error(`Editorial identity mismatch for ${row.source_name}`);
 const { data: sourceRows, error: sourceError } = await service.from("travel_source_snapshots").select("source_metadata").limit(1);
 const now = sourceRows?.[0]?.source_metadata?.editorial_decisions?.current_state?.location;
-if (sourceError || now?.canonical_name !== "Sarajevo" || now?.country_name !== "Bosnia and Herzegovina" || now?.state !== "approved") throw new Error("Approved NOW location is missing from protected travel provenance.");
-console.log(JSON.stringify({status:"valid",projectRef,counts:expected,anonymousViews:{places:103,visits:110,movements:1,photos:0},privatePhotoGpsExposed:false,approvedIdentityCorrections:6,approvedNow:"Sarajevo, Bosnia and Herzegovina"},null,2));
+if (sourceError || now?.canonical_name !== "Jajce" || now?.country_name !== "Bosnia and Herzegovina" || now?.state !== "approved") throw new Error("Approved NOW location is missing from protected travel provenance.");
+console.log(JSON.stringify({status:"valid",projectRef,counts:expected,anonymousViews:{places:104,visits:110,movements:1,photos:0},privatePhotoGpsExposed:false,approvedIdentityCorrections:6,approvedNow:"Jajce, Bosnia and Herzegovina"},null,2));

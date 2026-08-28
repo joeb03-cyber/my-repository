@@ -44,6 +44,29 @@ def main() -> None:
             "visibility": "public", "editorial_state": candidate["review"]["state"],
             "provenance": {"source_label": source_name, "country_assignment": "editorial_decision" if candidate["review"].get("editorial_decision") else "route_context_candidate", "geocoding": candidate["provider"], "review_flags": candidate["review"]["flags"], "editorial_decision": candidate["review"].get("editorial_decision")},
         })
+    current_location = decisions["current_state"]["location"]
+    if not any(place["name"] == current_location["canonical_name"] for place in places):
+        places.append({
+            "id": stable_id("place", current_location["canonical_name"].lower()),
+            "slug": slug(current_location["canonical_name"]),
+            "source_name": current_location["canonical_name"],
+            "name": current_location["canonical_name"],
+            "place_type": "populated_place",
+            "country_code": current_location["country_code"],
+            "country_name": current_location["country_name"],
+            "latitude": current_location["latitude"],
+            "longitude": current_location["longitude"],
+            "coordinates_state": "editorial",
+            "visibility": "public",
+            "editorial_state": "approved",
+            "provenance": {
+                "source_label": current_location["canonical_name"],
+                "source": "joe_current_location",
+                "authority": decisions["authority"],
+                "recorded_at": decisions["recorded_at"],
+                "geocoding": current_location["provider"],
+            },
+        })
     place_by_source = {place["source_name"]: place for place in places}
 
     visits, movements = [], []
@@ -93,7 +116,7 @@ def main() -> None:
         "stats": {"sourceRecords": inventory["record_count"], "visits": len(visits), "movements": len(movements), "uniquePlaces": len(places), "countries": len(countries), "resolvedPlaces": len(places)-len(unresolved), "unresolvedPlaces": len(unresolved)},
         "countries": countries, "places": public_places, "visits": public_visits,
         "movements": movements, "currentState": {"location": {**decisions["current_state"]["location"], "provenance": {"authority": decisions["authority"], "recorded_at": decisions["recorded_at"]}}},
-        "review": {"unresolvedPlaceLabels": unresolved, "currentLocationResolution": {"chronologyLatest": "warsaw", "approvedNow": "Sarajevo", "decision": "resolved_keep_chronology_and_now_separate"}},
+        "review": {"unresolvedPlaceLabels": unresolved, "currentLocationResolution": {"chronologyLatest": "warsaw", "approvedNow": current_location["canonical_name"], "decision": "resolved_keep_chronology_and_now_separate"}},
         "mapAttribution": "GeoNames geographical database, CC BY 4.0",
     }
     OUTPUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
