@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { HumanIndex } from "./human-types";
+import { simplifyHumanIndex } from "./human-editorial";
 
 async function localHuman(): Promise<HumanIndex> {
   return JSON.parse(await readFile(path.join(process.cwd(), "data/brain/human.v1.json"), "utf8"));
@@ -11,7 +12,7 @@ async function localHuman(): Promise<HumanIndex> {
 
 export async function getHumanIndex(): Promise<HumanIndex> {
   const local = await localHuman();
-  if (process.env.BRAIN_DATA_SOURCE !== "supabase") return local;
+  if (process.env.BRAIN_DATA_SOURCE !== "supabase") return simplifyHumanIndex(local);
   const url = process.env.BRAIN_SUPABASE_URL;
   const key = process.env.BRAIN_SUPABASE_ANON_KEY;
   if (!url || !key) throw new Error("Staging Brain environment is required.");
@@ -21,7 +22,7 @@ export async function getHumanIndex(): Promise<HumanIndex> {
     client.from("brain_public_human_relationships").select("*"),
   ]);
   if (error || linkError) throw new Error(error?.message || linkError?.message);
-  return {
+  return simplifyHumanIndex({
     ...local,
     schemaVersion: "brain-human.supabase.v1",
     entries: (rows || []).map((row: any) => ({
@@ -33,5 +34,5 @@ export async function getHumanIndex(): Promise<HumanIndex> {
         entityKind: link.entity_kind, label: link.relationship_label,
       })),
     })),
-  };
+  });
 }

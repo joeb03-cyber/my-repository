@@ -9,6 +9,7 @@ import MapsApp from "./maps-app";
 import ContactsApp from "./contacts-app";
 import NotesApp from "./notes-app";
 import HumanApp from "./human-app";
+import BrowserApp from "./browser-app";
 import { ActivityMonitorApp, ScreenTimeApp, SettingsApp, SoftwareUpdateApp, TerminalApp, TrashApp } from "./personality-apps";
 
 export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: AppId; onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (appId: AppId) => void }) {
@@ -20,7 +21,7 @@ export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: Ap
   if (appId === "messages") return <Messages />;
   if (appId === "journal") return <NotesApp />;
   if (appId === "photos") return <Photos />;
-  if (appId === "browser") return <Browser />;
+  if (appId === "browser") return <BrowserApp onBookOpen={onBookOpen} onOpenApp={onOpenApp} />;
   if (appId === "trash") return <TrashApp />;
   if (appId === "software") return <SoftwareUpdateApp />;
   if (appId === "activity") return <ActivityMonitorApp />;
@@ -55,11 +56,6 @@ function Reality() {
 
 function Photos() {
   return <div className="photos-app system-app"><div className="os-toolbar"><strong>Photos</strong><div className="os-segment"><button className="is-selected">Years</button><button>Months</button><button>All Photos</button></div><button className="toolbar-button">•••</button></div><div className="photos-hero"><div><span className="app-kicker">2026 · SARAJEVO</span><h2>A life, mostly outside.</h2><p>The wallpaper collection and travel archive will live here.</p></div></div><div className="photo-strip">{["coast","street","mountain","window","night"].map((name)=><div className={`photo-tile photo-tile--${name}`} key={name}/>)}</div></div>;
-}
-
-function Browser() {
-  const trails = ["Is consciousness fundamental?", "Cities built for walking", "The biology of awe", "Markets as collective psychology"];
-  return <div className="browser-app system-app"><div className="browser-toolbar"><div><button className="toolbar-button">‹</button><button className="toolbar-button">›</button></div><label className="browser-address"><span>⌕</span><input aria-label="Browser address" readOnly value="brain://rabbit-holes/current"/><button>↻</button></label><button className="toolbar-button">＋</button></div><div className="browser-page"><span className="app-kicker">CURRENT RABBIT HOLES</span><h2>Where attention has been wandering.</h2><div className="browser-trails">{trails.map((trail,index)=><button key={trail}><span>0{index+1}</span><strong>{trail}</strong><ChevronRight/></button>)}</div><p>This is not a general-purpose browser. It is a history of curiosity: research trails, saved resources, abandoned tabs, and questions that refuse to close.</p></div></div>;
 }
 
 function ArchiveApp() {

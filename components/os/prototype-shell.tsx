@@ -91,7 +91,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       const top = Math.max(0, ...current.map((win) => win.z)) + 1;
       if (existing) return current.map((win) => win.id === id ? { ...win, z: top, minimized: false, transition: win.minimized ? "reopening" : undefined } : win);
       const offset = current.filter((win) => win.kind === "app").length * 24;
-      const isLargeApp = appId === "library" || appId === "contacts" || appId === "journal" || appId === "about" || appId === "activity";
+      const isLargeApp = appId === "library" || appId === "contacts" || appId === "journal" || appId === "about" || appId === "activity" || appId === "browser";
       return [...current, { id, appId, kind: "app", title: appNames[appId], x: 135 + offset, y: 70 + offset, width: isLargeApp ? 900 : 720, height: isLargeApp ? 650 : 520, z: top, transition: "opening" }];
     });
     setLaunchingApp(appId);

@@ -8,7 +8,7 @@ export async function GET() {
   const auth = await getControlAdmin();
   if (!auth) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const db = auth.supabase;
-  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, booksIndex] = await Promise.all([
+  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult, booksIndex] = await Promise.all([
     db.from("entities").select("id,slug,title,summary,visibility,lifecycle_state,editorial_state").eq("kind", "note").neq("lifecycle_state", "archived").order("updated_at", { ascending: false }),
     db.from("brain_notes").select("entity_id,folder_id,excerpt,body_markdown,publication_state,pinned,source_published_at,published_at,editorial_notice,external_links,updated_at"),
     db.from("note_folders").select("id,slug,label,sort_order").order("sort_order"),
@@ -21,9 +21,15 @@ export async function GET() {
     db.from("human_entries").select("id,slug,section,relationship_state,entry_type,title,summary,current_take,supporting_details,publication_state,visibility,editorial_state,sort_order,updated_at").neq("publication_state", "archived").order("section").order("sort_order"),
     db.from("human_entry_entity_links").select("human_entry_id,entity_id,relationship_label,sort_order"),
     db.from("entities").select("id,slug,title,kind").eq("visibility", "public").eq("lifecycle_state", "active").eq("editorial_state", "approved").in("kind", ["book", "person", "source", "note"]).order("title"),
+    db.from("rabbit_holes").select("id,slug,title,central_question,short_intro,current_take,status,accent,publication_state,sort_order,updated_at").neq("publication_state","archived").order("sort_order"),
+    db.from("rabbit_hole_blocks").select("id,rabbit_hole_id,block_type,heading,body,items,sort_order").order("sort_order"),
+    db.from("rabbit_hole_resources").select("id,rabbit_hole_id,title,url,resource_type,note,public_role,evidence_layer,sort_order").order("sort_order"),
+    db.from("rabbit_hole_entity_links").select("rabbit_hole_id,entity_id,label,public_role,evidence_layer,sort_order").order("sort_order"),
+    db.from("rabbit_hole_links").select("from_rabbit_hole_id,to_rabbit_hole_id,label,sort_order").order("sort_order"),
+    db.from("rabbit_hole_human_links").select("rabbit_hole_id,human_entry_id,browser_label,human_label,sort_order").order("sort_order"),
     getBooksIndex(),
   ]);
-  const failure = [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult].find((result) => result.error);
+  const failure = [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult].find((result) => result.error);
   if (failure?.error) return NextResponse.json({ error: failure.error.message }, { status: 500 });
   const notesById = new Map((notesResult.data || []).map((note) => [note.entity_id, note]));
   const tagsById = new Map((tagsResult.data || []).map((tag) => [tag.id, tag.label]));
@@ -66,5 +72,14 @@ export async function GET() {
       relationships: (humanLinksResult.data || []).filter((link) => link.human_entry_id === entry.id).map((link) => ({ entityId: link.entity_id, label: link.relationship_label })),
     })),
     humanRelationshipOptions: relationshipOptionsResult.data || [],
+    browser: (rabbitResult.data || []).map((hole) => ({
+      id:hole.id, slug:hole.slug, title:hole.title, centralQuestion:hole.central_question, shortIntro:hole.short_intro,
+      currentTake:hole.current_take, status:hole.status, accent:hole.accent, publicationState:hole.publication_state, sortOrder:hole.sort_order,
+      blocks:(rabbitBlocksResult.data || []).filter((item)=>item.rabbit_hole_id===hole.id).map((item)=>({ id:item.id,type:item.block_type,heading:item.heading,body:item.body,items:item.items||[],sortOrder:item.sort_order })),
+      resources:(rabbitResourcesResult.data || []).filter((item)=>item.rabbit_hole_id===hole.id).map((item)=>({ id:item.id,title:item.title,url:item.url,resourceType:item.resource_type,note:item.note,publicRole:item.public_role,evidenceLayer:item.evidence_layer,sortOrder:item.sort_order })),
+      entities:(rabbitEntitiesResult.data || []).filter((item)=>item.rabbit_hole_id===hole.id).map((item)=>({ entityId:item.entity_id,label:item.label,publicRole:item.public_role,evidenceLayer:item.evidence_layer,sortOrder:item.sort_order })),
+      related:(rabbitLinksResult.data || []).filter((item)=>item.from_rabbit_hole_id===hole.id).map((item)=>({ rabbitHoleId:item.to_rabbit_hole_id,label:item.label,sortOrder:item.sort_order })),
+      humanLinks:(rabbitHumanResult.data || []).filter((item)=>item.rabbit_hole_id===hole.id).map((item)=>({ humanEntryId:item.human_entry_id,browserLabel:item.browser_label,humanLabel:item.human_label,sortOrder:item.sort_order })),
+    })),
   }, { headers: { "Cache-Control": "private, no-store" } });
 }

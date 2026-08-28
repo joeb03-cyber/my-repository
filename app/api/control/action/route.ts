@@ -183,6 +183,35 @@ export async function POST(request: Request) {
       const { error } = await db.from("human_entries").update({ publication_state: "archived", visibility: "private", editorial_state: "rejected" }).eq("id", input.id);
       if (error) throw error; return NextResponse.json({ ok: true });
     }
+    if (input.action === "save-rabbit-hole") {
+      const item = input.item || {}; const id = item.id || crypto.randomUUID();
+      const title = String(item.title || "").trim().slice(0, 180); const slug = String(item.slug || "").trim().toLowerCase();
+      const publicationState = item.publicationState === "published" ? "published" : "draft";
+      if (!title || !slugPattern.test(slug)) throw new Error("Add a title and a simple lowercase slug.");
+      if (publicationState === "published" && input.confirmPublish !== true) throw new Error("Publication must be explicitly confirmed.");
+      const status = ["open","paused","closed"].includes(item.status) ? item.status : "open";
+      const accent = ["ember","sun","violet","ocean","moss"].includes(item.accent) ? item.accent : "ember";
+      const { error } = await db.from("rabbit_holes").upsert({
+        id,slug,title,central_question:String(item.centralQuestion||"").trim().slice(0,500),short_intro:String(item.shortIntro||"").trim().slice(0,2000),current_take:String(item.currentTake||"").trim().slice(0,6000),status,accent,
+        publication_state:publicationState,visibility:publicationState==="published"?"public":"private",editorial_state:publicationState==="published"?"approved":"needs_review",sort_order:Number.isFinite(item.sortOrder)?item.sortOrder:100,
+        provenance:item.id?undefined:{source:"control_center",createdBy:auth.user.id},
+      });
+      if (error) throw error;
+      for (const table of ["rabbit_hole_blocks","rabbit_hole_resources","rabbit_hole_entity_links","rabbit_hole_links","rabbit_hole_human_links"]) { const { error:clear }=await db.from(table).delete().eq(table==="rabbit_hole_links"?"from_rabbit_hole_id":"rabbit_hole_id",id); if(clear)throw clear; }
+      const blocks=(Array.isArray(item.blocks)?item.blocks:[]).slice(0,30).map((block:any,index:number)=>({ id:block.id||crypto.randomUUID(),rabbit_hole_id:id,block_type:["narrative","experience","question","list","quote"].includes(block.type)?block.type:"narrative",heading:String(block.heading||"").slice(0,180),body:String(block.body||"").slice(0,12000),items:asStrings(block.items),sort_order:index*10+10,provenance:{source:"control_center"} }));
+      if(blocks.length){const {error:blockError}=await db.from("rabbit_hole_blocks").insert(blocks);if(blockError)throw blockError;}
+      const resources=[]; for(const resource of (Array.isArray(item.resources)?item.resources:[]).slice(0,30)){const links=safeLinks([{label:resource.title,url:resource.url}]);if(!links.length)continue;resources.push({id:resource.id||crypto.randomUUID(),rabbit_hole_id:id,title:String(resource.title||"").slice(0,180),url:links[0].url,resource_type:["book","paper","article","podcast","video","website"].includes(resource.resourceType)?resource.resourceType:"website",note:String(resource.note||"").slice(0,1000),public_role:resource.publicRole==="keep_going"?"keep_going":resource.publicRole==="context"?"context":"start_here",evidence_layer:["experience","practice","model","mechanism","experimental","review"].includes(resource.evidenceLayer)?resource.evidenceLayer:"model",sort_order:resources.length*10+10,provenance:{source:"control_center"}});}
+      if(resources.length){const {error:resourceError}=await db.from("rabbit_hole_resources").insert(resources);if(resourceError)throw resourceError;}
+      const requestedEntities=(Array.isArray(item.entities)?item.entities:[]).slice(0,30);if(requestedEntities.length){const ids=requestedEntities.map((link:any)=>String(link.entityId));const {data:allowed,error:allowedError}=await db.from("entities").select("id").in("id",ids).eq("visibility","public").eq("lifecycle_state","active").eq("editorial_state","approved");if(allowedError)throw allowedError;const allowedIds=new Set((allowed||[]).map((entity)=>entity.id));const rows=requestedEntities.filter((link:any)=>allowedIds.has(String(link.entityId))).map((link:any,index:number)=>({rabbit_hole_id:id,entity_id:String(link.entityId),label:String(link.label||"Related").slice(0,100),public_role:["person","book","source","note","keep_going"].includes(link.publicRole)?link.publicRole:"source",evidence_layer:"model",sort_order:index*10+10,provenance:{source:"control_center"}}));if(rows.length){const {error:linkError}=await db.from("rabbit_hole_entity_links").insert(rows);if(linkError)throw linkError;}}
+      const related=(Array.isArray(item.related)?item.related:[]).filter((link:any)=>link.rabbitHoleId&&link.rabbitHoleId!==id).slice(0,20).map((link:any,index:number)=>({from_rabbit_hole_id:id,to_rabbit_hole_id:String(link.rabbitHoleId),label:String(link.label||"Related").slice(0,120),sort_order:index*10+10,provenance:{source:"control_center"}}));if(related.length){const {error:relatedError}=await db.from("rabbit_hole_links").insert(related);if(relatedError)throw relatedError;}
+      const human=(Array.isArray(item.humanLinks)?item.humanLinks:[]).slice(0,20).map((link:any,index:number)=>({rabbit_hole_id:id,human_entry_id:String(link.humanEntryId),browser_label:String(link.browserLabel||"How this affects how I live").slice(0,120),human_label:String(link.humanLabel||"Explore why I think this").slice(0,120),sort_order:index*10+10,provenance:{source:"control_center"}}));if(human.length){const {error:humanError}=await db.from("rabbit_hole_human_links").insert(human);if(humanError)throw humanError;}
+      return NextResponse.json({ok:true,id,publicationState});
+    }
+    if (input.action === "archive-rabbit-hole") {
+      if (!input.id || input.confirm !== true) throw new Error("Archive confirmation required.");
+      const { error } = await db.from("rabbit_holes").update({publication_state:"archived",visibility:"private",editorial_state:"rejected"}).eq("id",input.id);
+      if(error)throw error; return NextResponse.json({ok:true});
+    }
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Save failed" }, { status: 400 });

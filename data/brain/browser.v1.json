@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "brain-browser.public.v1",
+  "title": "Browser",
+  "description": "Questions I kept following long after I meant to stop.",
+  "currentReading": {
+    "title": "Planetary Transits",
+    "note": "An open tab, not a published rabbit hole yet."
+  },
+  "rabbitHoles": [
+    {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "slug": "trauma-freeze-somatic-work",
+      "title": "Trauma, Freeze & Somatic Work",
+      "centralQuestion": "What if trauma is something the body is still doing, not just something that happened?",
+      "shortIntro": "This started with experience, not theory. Something happened in my body that I couldn't explain, so I went looking for models that could.",
+      "currentTake": "I think my nervous system gradually came out of a long freeze response. Repressed emotion and the completion of things my body could not do at the time seem central to what happened. I don't know how much was healing and how much was symptom management. That question is still open.",
+      "status": "open",
+      "accent": "ember",
+      "sortOrder": 10,
+      "publicationState": "published",
+      "blocks": [
+        {
+          "id": "11000000-0000-4000-8000-000000000001",
+          "type": "experience",
+          "heading": "Why I went down this rabbit hole",
+          "body": "When I was 16, I was in a car crash. Years later, during a very intense period of self-directed somatic work, my body began moving in ways that felt connected to an interrupted protective response from that accident. There was shaking, emotion, dry heaving, and a lot I did not consciously direct. Cannabis made bodily information accessible in a way analysis had not. Whether every interpretation I made was correct is a separate question. The experience itself was impossible for me to ignore.",
+          "items": [],
+          "sortOrder": 10
+        },
+        {
+          "id": "11000000-0000-4000-8000-000000000002",
+          "type": "narrative",
+          "heading": "The model that made sense of it",
+          "body": "Peter Levine's work gave me a useful frame: threat responses can remain incomplete, and the body may keep trying to finish them. Somatic Experiencing uses sensation, small doses of activation, and movement rather than treating trauma as only a story to understand. I have not worked formally with a Somatic Experiencing practitioner. I read Levine and used parts of the model in my own exploration.",
+          "items": [],
+          "sortOrder": 20
+        },
+        {
+          "id": "11000000-0000-4000-8000-000000000003",
+          "type": "list",
+          "heading": "Other tools that became part of the trail",
+          "body": "No single framework explains the whole thing for me.",
+          "items": [
+            "IFS and parts language have been useful in self-sessions and relationships.",
+            "Applied neurology and nerve work have sometimes been practically useful.",
+            "Breathwork helps change state; my current simple version is 4 seconds in and 6 seconds out.",
+            "Biofield Tuning may have been a catalyst in the larger process, though I don't know the mechanism."
+          ],
+          "sortOrder": 30
+        },
+        {
+          "id": "11000000-0000-4000-8000-000000000004",
+          "type": "question",
+          "heading": "The question I keep coming back to",
+          "body": "What is actually healing, and what is just symptom management? I think I have more capacity than I did before. I also think some things I called healing may have been temporary relief or a new explanation laid over the same problem. I don't have a clean answer.",
+          "items": [],
+          "sortOrder": 40
+        }
+      ],
+      "resources": [
+        {"id":"12000000-0000-4000-8000-000000000001","title":"Somatic Experiencing for posttraumatic stress disorder","url":"https://pubmed.ncbi.nlm.nih.gov/28585761/","resourceType":"paper","note":"A small randomized controlled study of Somatic Experiencing for PTSD.","publicRole":"start_here","evidenceLayer":"experimental","sortOrder":30},
+        {"id":"12000000-0000-4000-8000-000000000002","title":"Body- and movement-oriented interventions for PTSD","url":"https://pubmed.ncbi.nlm.nih.gov/37702005/","resourceType":"paper","note":"An updated meta-analysis. Useful for seeing the broader body-oriented evidence landscape.","publicRole":"keep_going","evidenceLayer":"review","sortOrder":40}
+      ],
+      "entities": [
+        {"entityId":"c2e6c86d-e587-5199-8d66-ab4323f9dd55","entitySlug":"in-an-unspoken-voice","entityTitle":"In an Unspoken Voice","entityKind":"book","label":"The clearest entry into Levine's model","publicRole":"book","sortOrder":10},
+        {"entityId":"d654e2cb-80bf-559d-8082-00ee40d35686","entitySlug":"person-peter-levine","entityTitle":"Peter Levine","entityKind":"person","label":"Somatic Experiencing","publicRole":"person","sortOrder":20},
+        {"entityId":"9262fc82-362c-594e-a89f-c6d71df43153","entitySlug":"person-irene-lyon","entityTitle":"Irene Lyon","entityKind":"person","label":"Applied nervous-system work","publicRole":"person","sortOrder":30},
+        {"entityId":"6a32e213-7015-5758-94dd-680ca1314724","entitySlug":"no-bad-parts","entityTitle":"No Bad Parts","entityKind":"book","label":"The parts-work branch","publicRole":"book","sortOrder":40}
+      ],
+      "related": [
+        {"slug":"parts-work-ifs","title":"Parts Work & IFS","label":"another model I use","publicationState":"draft","sortOrder":10},
+        {"slug":"polyvagal-autonomic-maps","title":"Polyvagal Theory & Autonomic Maps","label":"a useful map with open questions","publicationState":"draft","sortOrder":20},
+        {"slug":"stress-immunity-meaning","title":"Stress, Immunity, Expectation & Meaning","label":"where mind and body stop separating cleanly","publicationState":"draft","sortOrder":30},
+        {"slug":"the-biofield","title":"The Biofield","label":"a possible field-level layer","publicationState":"published","sortOrder":40}
+      ],
+      "humanLinks": [
+        {"humanEntryId":"human-life-worth-inhabiting","humanEntrySlug":"a-life-worth-inhabiting","humanEntryTitle":"A Life Worth Inhabiting","browserLabel":"How this changed the way I live","humanLabel":"Explore the somatic trail","sortOrder":10},
+        {"humanEntryId":"human-resonance-breathing","humanEntrySlug":"resonance-breathing","humanEntryTitle":"Resonance Breathing","browserLabel":"One practice I kept","humanLabel":"Why the nervous system matters to me","sortOrder":20}
+      ]
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "slug": "light-biology",
+      "title": "Light Biology",
+      "centralQuestion": "Is light doing much more than letting us see and making vitamin D?",
+      "shortIntro": "This rabbit hole starts with the body clock and keeps getting stranger: spectrum, red and near-infrared light, mitochondria, biophotons, and the possibility that light is part of how living systems organize themselves.",
+      "currentTake": "I'm quite convinced that the light environment matters far beyond vitamin D. Circadian timing is the solid foundation. I also think red and near-infrared light, mitochondria, and biophotons are going to become much bigger areas of research. I don't have a settled view on every mechanism.",
+      "status": "open",
+      "accent": "sun",
+      "sortOrder": 20,
+      "publicationState": "published",
+      "blocks": [
+        {"id":"21000000-0000-4000-8000-000000000001","type":"narrative","heading":"Bright days. Dark nights.","body":"The least strange part is already powerful. Light is a timing signal. Morning and daytime light help set the clock; artificial light at night can push it the wrong way. The exact effect depends on intensity, timing, spectrum, duration, previous light exposure, and the person. 'Blue light is bad' is too crude. Bright blue-enriched light can be useful during the day and disruptive at the wrong time.","items":[],"sortOrder":10},
+        {"id":"21000000-0000-4000-8000-000000000002","type":"experience","heading":"What I actually do","body":"I try to see outdoor light early, walk outside a lot, get sensible full-body midday sun without burning, and make night darker. I almost never wear sunglasses. I use amber blue-blocking glasses for at least an hour before bed, turn my phone red, and use a sleep mask when a room isn't dark. Those practices belong in Human; this page is the trail behind them.","items":[],"sortOrder":20},
+        {"id":"21000000-0000-4000-8000-000000000003","type":"narrative","heading":"Then it gets stranger","body":"Red and near-infrared light can affect cellular signaling and mitochondrial processes. Living systems also emit ultraweak photons. The open question is what those emissions mean. Detecting photons is not the same as showing they form a coherent communication system, but I think the broader possibility that light helps organize biology deserves serious attention.","items":[],"sortOrder":30},
+        {"id":"21000000-0000-4000-8000-000000000004","type":"question","heading":"Still open","body":"How much of photobiomodulation is local chemistry, how much is system-wide signaling, and do biophotons actually carry information in a meaningful way? I lean toward light being more organizational than the standard story allows. I don't know the specifics yet.","items":[],"sortOrder":40}
+      ],
+      "resources": [
+        {"id":"22000000-0000-4000-8000-000000000001","title":"Circadian Rhythms","url":"https://www.nigms.nih.gov/education/fact-sheets/Pages/circadian-rhythms","resourceType":"article","note":"A concise foundation for how light and internal clocks interact.","publicRole":"start_here","evidenceLayer":"review","sortOrder":10},
+        {"id":"22000000-0000-4000-8000-000000000002","title":"Evening use of light-emitting eReaders","url":"https://pubmed.ncbi.nlm.nih.gov/25535358/","resourceType":"paper","note":"A concrete crossover trial on melatonin, circadian timing, sleep, and alertness.","publicRole":"start_here","evidenceLayer":"experimental","sortOrder":20},
+        {"id":"22000000-0000-4000-8000-000000000003","title":"Recommendations for daytime, evening, and nighttime light","url":"https://pubmed.ncbi.nlm.nih.gov/35298459/","resourceType":"paper","note":"Practical consensus recommendations for a healthy light environment.","publicRole":"start_here","evidenceLayer":"review","sortOrder":30},
+        {"id":"22000000-0000-4000-8000-000000000004","title":"Mechanisms and mitochondrial redox signaling in photobiomodulation","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC5844808/","resourceType":"paper","note":"A useful map of proposed red and near-infrared mechanisms.","publicRole":"keep_going","evidenceLayer":"mechanism","sortOrder":40},
+        {"id":"22000000-0000-4000-8000-000000000005","title":"Introduction to human biophoton emission","url":"https://pubmed.ncbi.nlm.nih.gov/15947465/","resourceType":"paper","note":"An entry point into measured ultraweak photon emission from the body.","publicRole":"keep_going","evidenceLayer":"review","sortOrder":50}
+      ],
+      "entities": [
+        {"entityId":"2a674a82-cce3-5d5d-87a9-6c22fd9a8eb7","entitySlug":"light-radiation-and-you","entityTitle":"Light, Radiation, and You","entityKind":"book","label":"A historical branch of this trail","publicRole":"book","sortOrder":10},
+        {"entityId":"f43eaff5-5e17-5675-bbeb-700bb7737266","entitySlug":"person-jacob-liberman","entityTitle":"Jacob Liberman","entityKind":"person","label":"Light, vision, and consciousness","publicRole":"person","sortOrder":20}
+      ],
+      "related": [
+        {"slug":"circadian-light-environment","title":"Circadian Light Environment","label":"the strong foundation","publicationState":"draft","sortOrder":10},
+        {"slug":"photobiomodulation-biophotons","title":"Photobiomodulation & the Biophoton Frontier","label":"where the trail gets stranger","publicationState":"draft","sortOrder":20},
+        {"slug":"emf-symptoms-mechanisms","title":"EMF Symptoms, Mechanisms & Exposure","label":"the other side of the electrical environment","publicationState":"draft","sortOrder":30},
+        {"slug":"the-biofield","title":"The Biofield","label":"another possible organizing layer","publicationState":"published","sortOrder":40}
+      ],
+      "humanLinks": [
+        {"humanEntryId":"human-light-environment","humanEntrySlug":"light-is-the-main-signal","humanEntryTitle":"Light Is the Main Signal","browserLabel":"How this affects how I live","humanLabel":"Explore why I think this","sortOrder":10},
+        {"humanEntryId":"human-night-night","humanEntrySlug":"make-night-feel-like-night","humanEntryTitle":"Make Night Feel Like Night","browserLabel":"The nighttime practice","humanLabel":"Explore the light trail","sortOrder":20}
+      ]
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "slug": "the-biofield",
+      "title": "The Biofield",
+      "centralQuestion": "Is the biofield a real part of physiology—and if it is, what exactly is it?",
+      "shortIntro": "I don't think a person ends at the skin. I think there is a real field-level layer to human physiology, and Biofield Tuning gave me a way to explore it directly. The mechanism is much less settled for me than the phenomenon.",
+      "currentTake": "I believe the biofield is real, extends several feet around the body, and contains or gives access to a person's history. I think it helps organize physiology. I also think coherent sound can interact with distortions in that field. I'm less certain about exactly how it works, how permanent changes are, and how much conscious participation is required.",
+      "status": "open",
+      "accent": "violet",
+      "sortOrder": 30,
+      "publicationState": "published",
+      "blocks": [
+        {"id":"31000000-0000-4000-8000-000000000001","type":"narrative","heading":"What I mean by biofield","body":"I mean a field-level aspect of a living person: electrical, electromagnetic, acoustic, informational, or something our current categories do not describe very well. Eileen Day McKusick describes a plasma-like field several feet around the body, with distortions that correspond to a person's history. That map sounds unusual. In sessions, I have repeatedly found it surprisingly accurate.","items":[],"sortOrder":10},
+        {"id":"31000000-0000-4000-8000-000000000002","type":"experience","heading":"Why I take it seriously","body":"I received roughly fifteen Biofield Tuning sessions, studied McKusick's work extensively, paid practitioners to teach me informally, and began practicing on other people. I have seen people become very relaxed, feel unexpectedly light or euphoric, remember things, and make meaningful life changes afterward. Those experiences are why I think something real is happening. They do not tell me which explanation is correct.","items":[],"sortOrder":20},
+        {"id":"31000000-0000-4000-8000-000000000003","type":"list","heading":"Four different questions","body":"I try not to collapse these into one answer.","items":["Do people experience a benefit?","Do controlled studies find effects beyond attention, expectation, sound, rest, and context?","Can a relevant field or signal be measured reliably?","Does the proposed biofield map explain what happens in a session?"],"sortOrder":30},
+        {"id":"31000000-0000-4000-8000-000000000004","type":"question","heading":"What I still don't know","body":"I don't know whether the tuning fork is changing a field, changing attention and nervous-system state, creating a useful ritual, or doing several things at once. I don't know how permanent a session is without the person consciously changing anything. I still think the field is the most interesting place to look.","items":[],"sortOrder":40}
+      ],
+      "resources": [
+        {"id":"32000000-0000-4000-8000-000000000001","title":"Clinical studies of biofield therapies","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC4654788/","resourceType":"paper","note":"Shamini Jain and colleagues map the clinical research landscape and its methodological problems.","publicRole":"start_here","evidenceLayer":"review","sortOrder":20},
+        {"id":"32000000-0000-4000-8000-000000000002","title":"Biofield Tuning for anxiety","url":"https://clinicaltrials.gov/study/NCT06100406","resourceType":"paper","note":"A registered randomized trial. Direct intervention-specific research is still emerging.","publicRole":"keep_going","evidenceLayer":"experimental","sortOrder":30},
+        {"id":"32000000-0000-4000-8000-000000000003","title":"Research proceedings on field-mapping reliability","url":"https://ispsychophysics.org/wp-content/uploads/2025/01/FD24-Proceedings.pdf","resourceType":"paper","note":"A useful unresolved problem: practitioners did not show inter-rater reliability when locating proposed field perturbations.","publicRole":"keep_going","evidenceLayer":"experimental","sortOrder":40}
+      ],
+      "entities": [
+        {"entityId":"150ae276-f630-59d3-bdd7-79edf915373b","entitySlug":"tuning-the-human-biofield","entityTitle":"Tuning the Human Biofield","entityKind":"book","label":"The primary practitioner account","publicRole":"book","sortOrder":10},
+        {"entityId":"f36f1c56-df91-55fe-b16e-38a9bcb4bb36","entitySlug":"person-eileen-day-mckusick","entityTitle":"Eileen Day McKusick","entityKind":"person","label":"Biofield Tuning","publicRole":"person","sortOrder":20},
+        {"entityId":"4df2f189-9497-59e1-8b3e-d6ccb07153d4","entitySlug":"person-shamini-jain","entityTitle":"Shamini Jain","entityKind":"person","label":"Biofield research","publicRole":"person","sortOrder":30}
+      ],
+      "related": [
+        {"slug":"biofield-research-map","title":"Biofield Research Map","label":"what has actually been studied","publicationState":"draft","sortOrder":10},
+        {"slug":"biofield-tuning-sound","title":"Biofield Tuning & Sound","label":"the practice-specific trail","publicationState":"draft","sortOrder":20},
+        {"slug":"trauma-freeze-somatic-work","title":"Trauma, Freeze & Somatic Work","label":"where experience overlaps","publicationState":"published","sortOrder":30},
+        {"slug":"consciousness-nonlocality","title":"Consciousness & Non-Locality","label":"the larger ontology question","publicationState":"draft","sortOrder":40},
+        {"slug":"light-biology","title":"Light Biology","label":"another possible organizing signal","publicationState":"published","sortOrder":50}
+      ],
+      "humanLinks": [
+        {"humanEntryId":"human-life-worth-inhabiting","humanEntrySlug":"a-life-worth-inhabiting","humanEntryTitle":"A Life Worth Inhabiting","browserLabel":"The broader operating principle","humanLabel":"Explore the field-level trail","sortOrder":10}
+      ]
+    }
+  ]
+}

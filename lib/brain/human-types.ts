@@ -21,6 +21,7 @@ export type HumanEntry = {
   supportingDetails: string[];
   sortOrder: number;
   relationships: HumanRelationship[];
+  browserLinks?: Array<{ slug: string; title: string; label: string }>;
 };
 
 export type HumanIndex = {
