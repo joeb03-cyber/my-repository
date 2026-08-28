@@ -52,13 +52,14 @@
       "Italy",
       "Costa Rica",
       "Nicaragua",
-      "Vatican City"
+      "Vatican City",
+      "Liechtenstein"
     ],
     "existingRecentDatasetCountryCount": 43,
-    "newCountriesAddedByPre2023List": 13,
-    "reconciledKnownLifetimeCount": 56,
-    "unresolvedCountryCount": 1,
-    "countingNote": "Italy is already present in the post-2023 dataset. Vatican City was added from Joe's direct correction on 2026-08-28. The current dataset also counts territories or disputed-status destinations such as Aruba, Puerto Rico, Taiwan, and Kosovo as country-level map units; preserve this ambiguity until Joe supplies the final missing destination and approves a counting convention.",
+    "newCountriesAddedByPre2023List": 14,
+    "reconciledKnownLifetimeCount": 57,
+    "unresolvedCountryCount": 0,
+    "countingNote": "Italy is already present in the post-2023 dataset. Vatican City and Liechtenstein were added from Joe's direct corrections on 2026-08-28, reconciling the asserted lifetime total of 57. The current dataset counts territories or disputed-status destinations such as Aruba, Puerto Rico, Taiwan, and Kosovo as country-level map units; preserve that counting convention for the current 57-country total unless Joe later revises it.",
     "futureMapIdeas": [
       "Show all lifetime visited countries with subtle country shading.",
       "Keep the slow-travel route since September 2023 as the primary visual story.",
