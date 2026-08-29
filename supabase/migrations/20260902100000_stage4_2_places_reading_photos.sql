@@ -79,6 +79,18 @@ where l.role in ('reading', 'reading_secondary')
 
 grant select on public.brain_public_current_state_reading to anon, authenticated;
 
+-- A recent NOW edit predates the two-slot editor and retained the title but
+-- not its Book relationship. Restore only an exact, unique public-title match.
+insert into public.current_state_entity_links (snapshot_id, role, entity_id)
+select s.id, 'reading', (array_agg(e.id))[1]
+from public.current_state_snapshots s
+join public.entities e on lower(e.title) = lower(s.state ->> 'reading')
+  and e.kind = 'book' and e.visibility = 'public' and e.lifecycle_state <> 'archived'
+where s.publication_state = 'published'
+group by s.id
+having count(e.id) = 1
+on conflict (snapshot_id, role) do nothing;
+
 -- Joe identified these source-undated images by sight. Dates remain null.
 -- Bali and Helsinki connect to their known visit. Sayulita remains the public
 -- locality while its day-trip context connects to the Puerto Vallarta visit.
