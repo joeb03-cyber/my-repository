@@ -36,7 +36,7 @@ export interface BrainCurrentState {
   schemaVersion: string;
   effectiveAt: string;
   lastConfirmedAt: string;
-  where: { city: string; country: string; coordinates?: string | null };
+  where: { city: string; country: string; coordinates?: string | null; timezone?: string | null };
   reading: string | null;
   readingBook?: {
     id: string;

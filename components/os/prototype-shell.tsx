@@ -49,18 +49,21 @@ const brainBooks = refineBooksIndex(booksIndexJson as BrainBooksIndex).books;
 
 const initialWindows: WindowState[] = [
   { id: "currently", kind: "currently", title: "Currently", x: 18, y: 38, width: 200, height: 130, z: 1, resizable: false },
-  { id: "reading", kind: "reading", title: "Reading", x: 1045, y: 555, width: 245, height: 140, z: 2, resizable: false },
-  { id: "app-journal", kind: "app", appId: "journal", title: "Notes", x: 260, y: 58, width: 1040, height: 640, z: 3 },
+  { id: "reading", kind: "reading", title: "Reading", x: 0, y: 44, width: 245, height: 140, z: 2, resizable: false },
+  { id: "app-journal", kind: "app", appId: "journal", title: "Notes", x: 280, y: 58, width: 900, height: 640, z: 3 },
 ];
 
-function Clock() {
+function CurrentContext({ state }: { state: BrainCurrentState }) {
   const [now, setNow] = useState<Date | null>(null);
+  const [weather, setWeather] = useState<{ temperature: number; label: string } | null>(null);
   useEffect(() => {
     setNow(new Date());
     const interval = window.setInterval(() => setNow(new Date()), 30_000);
     return () => window.clearInterval(interval);
   }, []);
-  return <span>{now ? now.toLocaleString("en-US", { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "Right now"}</span>;
+  useEffect(() => { fetch("/api/brain/weather").then((response) => response.ok ? response.json() : Promise.reject()).then(setWeather).catch(() => setWeather(null)); }, [state.where.city]);
+  const time = now ? now.toLocaleTimeString("en-US", { timeZone: state.where.timezone || "Europe/Sarajevo", hour: "numeric", minute: "2-digit" }) : "Right now";
+  return <span title={weather ? `${weather.label} in ${state.where.city} · Open-Meteo` : `Local time in ${state.where.city}`}>{weather ? `${Math.round(weather.temperature)}° · ` : ""}{time}</span>;
 }
 
 export default function PrototypeShell({ children }: { children: React.ReactNode }) {
@@ -92,7 +95,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       const existing = current.find((win) => win.id === id);
       const top = Math.max(0, ...current.map((win) => win.z)) + 1;
       const isUtilityApp = appId === "terminal" || appId === "software" || appId === "screen-time";
-      const preferredWidth = Math.min(isUtilityApp ? 760 : 1120, window.innerWidth - 48);
+      const preferredWidth = Math.min(isUtilityApp ? 760 : appId === "journal" ? 920 : 960, window.innerWidth - 96);
       const preferredHeight = Math.min(isUtilityApp ? 520 : 680, window.innerHeight - 112);
       if (existing) return current.map((win) => {
         if (win.id !== id) return win;
@@ -294,7 +297,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           <button className={`status-icon ${statusPanel === "battery" ? "is-active" : ""}`} aria-label="Human Battery" title="Human Battery" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "battery" ? null : "battery"); }}><BatteryGlyph level={currentState.humanBattery.level} /></button>
           <button className={`status-icon ${statusPanel === "wifi" ? "is-active" : ""}`} aria-label="Innernet network" title="Innernet" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "wifi" ? null : "wifi"); }}><WifiGlyph /></button>
           <button className={`status-icon ${statusPanel === "update" ? "is-active" : ""}`} aria-label="Software Update" title="Software Update" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "update" ? null : "update"); }}><ControlGlyph /></button>
-          <Clock />
+          <CurrentContext state={currentState} />
           {statusPanel === "battery" && <StatusPopover title="Human Battery"><div className="battery-readout"><BatteryGlyph level={currentState.humanBattery.level}/><strong>{currentState.humanBattery.label}</strong></div><p>{currentState.humanBattery.note || "No check-in note."}</p><small>Manual check-in only · no health data inferred</small></StatusPopover>}
           {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Innernet</strong><small>Connected · full signal</small></span><i/></div><div className="network-row network-row--available network-row--weak"><WifiGlyph strength="weak"/><span><strong>Consensus Reality</strong><small>Available · weak signal</small></span></div><p className="popover-footnote">Networks are handcrafted interface copy.</p></StatusPopover>}
           {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>{osState.softwareUpdate.versionLabel}</span></div><strong>Synergetic Human is up to date</strong><p>{osState.softwareUpdate.new[0] || `Currently making: ${currentState.making || "Not reported"}`}</p><dl><div><dt>Exploring</dt><dd>{osState.softwareUpdate.currentlyExploring[0] || "Not reported"}</dd></div><div><dt>Performance</dt><dd>{osState.softwareUpdate.performance[0] || "Nominally strange"}</dd></div><div><dt>Known issue</dt><dd>{osState.softwareUpdate.knownIssues[0] || "None reported"}</dd></div></dl><button className="popover-action" onClick={() => { openApp("software"); closeMenus(); }}>Open Software Update…</button></StatusPopover>}

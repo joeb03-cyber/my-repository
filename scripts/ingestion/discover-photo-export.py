@@ -10,7 +10,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_SOURCE = ROOT.parent / "Synergetic-Human-Photos-Raw"
 DEFAULT_OUTPUT = ROOT / "artifacts/photo-inventory/raw-export-v1"
-METADATA = DEFAULT_OUTPUT / "exiftool.private.json"
 TIMELINE = ROOT / "data/brain/travel/travel-timeline.v1.json"
 ROUTE_CORRECTIONS = ROOT / "data/brain/travel/editorial-route-corrections.v1.json"
 GEONAMES = Path("/tmp/synergetic-geonames-cities500.zip")
@@ -107,12 +106,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--metadata", type=Path, help="Private ExifTool JSON for this source; defaults inside the selected output folder")
     args = parser.parse_args()
     source, output = args.source.resolve(), args.output.resolve()
     if not source.is_dir(): raise SystemExit(f"Source unavailable: {source}")
     if source == output or source in output.parents: raise SystemExit("Output must remain outside the immutable source folder")
     output.mkdir(parents=True, exist_ok=True)
-    metadata_rows = json.loads(METADATA.read_text())
+    metadata_path = (args.metadata or (output / "exiftool.private.json")).resolve()
+    metadata_rows = json.loads(metadata_path.read_text())
     by_name = {row["System:FileName"]: row for row in metadata_rows}
     files = sorted((path for path in source.iterdir() if path.is_file()), key=lambda path:path.name.casefold())
     with concurrent.futures.ThreadPoolExecutor(max_workers=min(8, os.cpu_count() or 4)) as pool:

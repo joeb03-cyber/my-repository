@@ -1,6 +1,6 @@
 {
   "schemaVersion": "brain-books-index.v1",
-  "bookCount": 165,
+  "bookCount": 166,
   "generatedFrom": "books-brain-v1/parser-0.2.0",
   "books": [
     {
@@ -5930,6 +5930,32 @@
       "importState": "complete",
       "metadataStatus": "catalog_matched",
       "reviewFlagCount": 14
+    },
+    {
+      "id": "12b11ebd-49b0-57ba-887e-07641b85f25c",
+      "slug": "cosmos-and-psyche",
+      "sourcePosition": 1000,
+      "title": "Cosmos and Psyche",
+      "originalTitle": "Cosmos and Psyche",
+      "subtitle": "Intimations of a New World View",
+      "authors": ["Richard Tarnas"],
+      "topics": [],
+      "cover": {
+        "status": "cached",
+        "public_path": "/book-covers/cosmos-and-psyche.jpg",
+        "source_url": "https://books.google.com/books/content?id=WjMaEAAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api",
+        "provider": "google_books",
+        "provider_id": "WjMaEAAAQBAJ",
+        "bytes": 27678,
+        "sha256": "aa2c3e81fe2345d229e0b936bd881cbd0a05aded095be9f447c7922d7b86022f",
+        "mime_type": "image/jpeg",
+        "width": 300,
+        "height": 453
+      },
+      "highlightCount": 0,
+      "importState": "incomplete",
+      "metadataStatus": "catalog_matched",
+      "reviewFlagCount": 0
     }
   ]
 }

@@ -5,9 +5,17 @@
   "where": {
     "city": "Jajce",
     "country": "Bosnia and Herzegovina",
-    "coordinates": "44.3420° N · 17.2706° E"
+    "coordinates": "44.3420° N · 17.2706° E",
+    "timezone": "Europe/Sarajevo"
   },
-  "reading": null,
+  "reading": "Cosmos and Psyche",
+  "readingBook": {
+    "id": "12b11ebd-49b0-57ba-887e-07641b85f25c",
+    "slug": "cosmos-and-psyche",
+    "title": "Cosmos and Psyche",
+    "authors": ["Richard Tarnas"],
+    "cover": "/book-covers/cosmos-and-psyche.jpg"
+  },
   "thinking": null,
   "rabbitHoles": [],
   "experiments": [],

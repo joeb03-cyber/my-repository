@@ -114,7 +114,7 @@ export async function POST(request: Request) {
       }
       const normalized = {
         schemaVersion: "brain-current-state.control.v1", effectiveAt: now, lastConfirmedAt: now,
-        where: { city: String(state.where?.city || "").trim(), country: String(state.where?.country || "").trim(), coordinates: String(state.where?.coordinates || "").trim() || null },
+        where: { city: String(state.where?.city || "").trim(), country: String(state.where?.country || "").trim(), coordinates: String(state.where?.coordinates || "").trim() || null, timezone: String(state.where?.timezone || "Europe/Sarajevo").trim() },
         reading: readingBook?.title || textOrNull(state.reading), thinking: textOrNull(state.thinking), rabbitHoles: asStrings(state.rabbitHoles), experiments: asStrings(state.experiments),
         training: textOrNull(state.training), eatingLately: textOrNull(state.eatingLately), listening: textOrNull(state.listening), tryingToUnderstand: textOrNull(state.tryingToUnderstand),
         making: textOrNull(state.making), currentQuestion: textOrNull(state.currentQuestion), currentThought: textOrNull(state.currentThought),

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "photos:curate": "python3 tools/photo-curation/server.py",
+    "photos:intake": "python3 scripts/ingestion/prepare-incremental-photo-intake.py",
     "photos:prepare": "python3 scripts/ingestion/build-curated-travel-photos.py && python3 scripts/ingestion/build-curated-photo-derivatives.py --force",
     "photos:import-staging": "node scripts/ingestion/import-curated-travel-photos.mjs"
   },

@@ -19,7 +19,7 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
 STATIC = Path(__file__).resolve().parent / "static"
-INVENTORY_DIR = ROOT / "artifacts/photo-inventory/raw-export-v1"
+INVENTORY_DIR = Path(os.environ.get("SYNERGETIC_PHOTO_INVENTORY", str(ROOT / "artifacts/photo-inventory/raw-export-v1"))).resolve()
 INVENTORY = INVENTORY_DIR / "logical-assets.private.jsonl"
 BURSTS = INVENTORY_DIR / "burst-candidates.private.json"
 SIMILAR = INVENTORY_DIR / "visual-similarity.private.json"
@@ -29,9 +29,9 @@ CURATION_DIR = ROOT / "artifacts/photo-curation/stage2"
 DATA_DIR = Path(os.environ.get("SYNERGETIC_PHOTO_CURATION_DATA", str(CURATION_DIR))).resolve()
 MANIFEST = DATA_DIR / "curation-manifest.private.json"
 EVENTS = DATA_DIR / "curation-events.private.jsonl"
-PREVIEWS = CURATION_DIR / "previews.private"
+PREVIEWS = Path(os.environ.get("SYNERGETIC_PHOTO_PREVIEWS", str(CURATION_DIR / "previews.private"))).resolve()
 THUMBNAILS = INVENTORY_DIR / "thumbnails.private"
-SOURCE = ROOT.parent / "Synergetic-Human-Photos-Raw"
+SOURCE = Path(os.environ.get("SYNERGETIC_PHOTO_SOURCE", str(ROOT.parent / "Synergetic-Human-Photos-Raw"))).resolve()
 LOCK = threading.Lock()
 STATUSES = {None, "keep", "maybe", "private"}
 
@@ -94,8 +94,8 @@ def load_travel() -> tuple[list[dict], dict[str, dict]]:
 VISITS, VISIT_BY_ID = load_travel()
 ASSET_ROWS = read_jsonl(INVENTORY)
 ASSET_BY_ID = {asset["logical_asset_id"]: asset for asset in ASSET_ROWS}
-if len(ASSET_BY_ID) != 728:
-    raise SystemExit(f"Expected 728 unique logical assets; found {len(ASSET_BY_ID)}")
+if len(ASSET_BY_ID) != len(ASSET_ROWS):
+    raise SystemExit("Logical photo asset identifiers must be unique")
 
 
 def load_group_flags() -> tuple[set[str], set[str]]:
