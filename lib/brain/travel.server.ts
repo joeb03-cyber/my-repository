@@ -65,7 +65,7 @@ export async function getTravelTimeline(): Promise<TravelTimeline> {
     groupPosition: row.group_position, chronologyIndex: row.chronology_index,
     start: { year: row.start_year, month: row.start_month }, end: { year: row.end_year, month: row.end_month },
     temporalPrecision: row.temporal_precision, sourceDateText: row.source_date_text,
-    sourceValue: row.source_value, sourceRawLine: row.source_raw_line, reviewState: row.editorial_state,
+    sourceValue: row.source_value, sourceRawLine: row.source_raw_line, publicBlurb: row.public_blurb || null, reviewState: row.editorial_state,
   }));
   const countries = Array.from(new Set(places.map((place) => place.countryName))).sort();
   const overview = overviewRows[0] || {};

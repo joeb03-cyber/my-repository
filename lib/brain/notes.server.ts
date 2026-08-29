@@ -61,18 +61,24 @@ export async function getCurrentState(): Promise<BrainCurrentState> {
   const { data, error } = await db.from("brain_public_current_state").select("*").limit(1).maybeSingle();
   if (error) throw new Error(`Supabase brain_public_current_state: ${error.message}`);
   if (!data) throw new Error("No public current-state snapshot is available.");
-  const { data: reading, error: readingError } = await db.from("brain_public_current_state_reading").select("*").eq("snapshot_id", data.id).maybeSingle();
+  const { data: readings, error: readingError } = await db.from("brain_public_current_state_reading").select("*").eq("snapshot_id", data.id);
   if (readingError) throw new Error(`Supabase brain_public_current_state_reading: ${readingError.message}`);
-  const linkedBook = reading ? (await getBooksIndex()).books.find((book) => book.id === reading.book_id) : null;
-  return {
-    schemaVersion: "brain-current-state.supabase.v1",
-    ...data.state,
-    readingBook: reading ? {
+  const books = (await getBooksIndex()).books;
+  const readingBooks = (readings || []).sort((a, b) => a.role === "reading" ? -1 : b.role === "reading" ? 1 : 0).map((reading) => {
+    const linkedBook = books.find((book) => book.id === reading.book_id);
+    return {
       id: reading.book_id,
       slug: reading.slug,
       title: linkedBook?.title || reading.title,
       authors: linkedBook?.authors || (reading.original_author ? [reading.original_author] : []),
       cover: linkedBook?.cover.public_path || (reading.cover_path ? (reading.cover_path.startsWith("/") ? reading.cover_path : `/${reading.cover_path}`) : null),
-    } : null,
+      role: reading.role as "reading" | "reading_secondary",
+    };
+  });
+  return {
+    schemaVersion: "brain-current-state.supabase.v1",
+    ...data.state,
+    readingBook: readingBooks.find((book) => book.role === "reading") || null,
+    readingBooks,
   } as BrainCurrentState;
 }

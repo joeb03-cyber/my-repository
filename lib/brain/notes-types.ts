@@ -45,6 +45,15 @@ export interface BrainCurrentState {
     authors: string[];
     cover: string | null;
   } | null;
+  readingSecondary?: string | null;
+  readingBooks?: Array<{
+    id: string;
+    slug: string;
+    title: string;
+    authors: string[];
+    cover: string | null;
+    role: "reading" | "reading_secondary";
+  }>;
   thinking: string | null;
   rabbitHoles: string[];
   experiments: string[];

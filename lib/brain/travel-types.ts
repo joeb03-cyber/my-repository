@@ -25,6 +25,7 @@ export interface TravelVisit {
   sourceDateText: string;
   sourceValue: string;
   sourceRawLine: string;
+  publicBlurb?: string | null;
   reviewState: string;
 }
 

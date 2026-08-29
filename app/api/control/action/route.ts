@@ -105,17 +105,24 @@ export async function POST(request: Request) {
     if (input.action === "save-current-state") {
       const state = input.state || {};
       const now = new Date().toISOString();
-      let readingBook: { id: string; title: string } | null = null;
-      if (state.readingBookId) {
-        const { data: book, error: bookError } = await db.from("brain_public_books").select("id,title").eq("id", String(state.readingBookId)).maybeSingle();
+      const requestedBooks = [
+        { role: "reading", id: state.readingBookId, fallback: state.reading },
+        { role: "reading_secondary", id: state.readingBookIdSecondary, fallback: state.readingSecondary },
+      ];
+      const readingBooks: Array<{ role: string; id: string; title: string }> = [];
+      for (const requested of requestedBooks) {
+        if (!requested.id) continue;
+        const { data: book, error: bookError } = await db.from("brain_public_books").select("id,title").eq("id", String(requested.id)).maybeSingle();
         if (bookError) throw bookError;
         if (!book) throw new Error("That linked Book is not available in the public Brain.");
-        readingBook = book;
+        readingBooks.push({ role: requested.role, ...book });
       }
+      const primaryBook = readingBooks.find((book) => book.role === "reading");
+      const secondaryBook = readingBooks.find((book) => book.role === "reading_secondary");
       const normalized = {
         schemaVersion: "brain-current-state.control.v1", effectiveAt: now, lastConfirmedAt: now,
         where: { city: String(state.where?.city || "").trim(), country: String(state.where?.country || "").trim(), coordinates: String(state.where?.coordinates || "").trim() || null, timezone: String(state.where?.timezone || "Europe/Sarajevo").trim() },
-        reading: readingBook?.title || textOrNull(state.reading), thinking: textOrNull(state.thinking), rabbitHoles: asStrings(state.rabbitHoles), experiments: asStrings(state.experiments),
+        reading: primaryBook?.title || textOrNull(state.reading), readingSecondary: secondaryBook?.title || textOrNull(state.readingSecondary), thinking: textOrNull(state.thinking), rabbitHoles: asStrings(state.rabbitHoles), experiments: asStrings(state.experiments),
         training: textOrNull(state.training), eatingLately: textOrNull(state.eatingLately), listening: textOrNull(state.listening), tryingToUnderstand: textOrNull(state.tryingToUnderstand),
         making: textOrNull(state.making), currentQuestion: textOrNull(state.currentQuestion), currentThought: textOrNull(state.currentThought),
         humanBattery: { level: typeof state.humanBattery?.level === "number" ? Math.max(0, Math.min(100, Math.round(state.humanBattery.level))) : null, label: String(state.humanBattery?.label || "Unreported").slice(0, 40), note: textOrNull(state.humanBattery?.note) },
@@ -123,14 +130,29 @@ export async function POST(request: Request) {
       const id = crypto.randomUUID();
       const { error } = await db.from("current_state_snapshots").insert({ id, effective_at: now, last_confirmed_at: now, publication_state: "draft", state: normalized, provenance: { source: "control_center", editedBy: auth.user.id } });
       if (error) throw error;
-      if (readingBook) {
-        const { error: linkError } = await db.from("current_state_entity_links").insert({ snapshot_id: id, role: "reading", entity_id: readingBook.id });
+      if (readingBooks.length) {
+        const { error: linkError } = await db.from("current_state_entity_links").insert(readingBooks.map((book) => ({ snapshot_id: id, role: book.role, entity_id: book.id })));
         if (linkError) throw linkError;
       }
       const { error: publishError } = await db.from("current_state_snapshots").update({ publication_state: "published" }).eq("id", id);
       if (publishError) throw publishError;
       await db.from("current_state_snapshots").update({ publication_state: "archived" }).neq("id", id).eq("publication_state", "published");
       return NextResponse.json({ ok: true, state: normalized });
+    }
+    if (input.action === "save-visit-reflection") {
+      const visit = input.visit || {};
+      const visitId = String(visit.id || "");
+      if (!/^[0-9a-f-]{36}$/i.test(visitId)) throw new Error("That visit could not be identified.");
+      const { data: publicVisit, error: visitError } = await db.from("brain_public_travel_visits").select("id").eq("id", visitId).maybeSingle();
+      if (visitError) throw visitError;
+      if (!publicVisit) throw new Error("That visit is not available in the public chronology.");
+      const publicBlurb = String(visit.publicBlurb || "").trim().slice(0, 2000) || null;
+      const { error } = await db.from("travel_visit_editorial").upsert({
+        visit_id: visitId, public_blurb: publicBlurb, visibility: "public", editorial_state: "approved",
+        provenance: { source: "control_center", editedBy: auth.user.id, preservesVisitChronology: true },
+      });
+      if (error) throw error;
+      return NextResponse.json({ ok: true, id: visitId });
     }
     if (input.action === "save-software-update") {
       const update = input.update || {};

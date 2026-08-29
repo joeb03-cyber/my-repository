@@ -41,6 +41,7 @@ export interface LivedVisit {
   start: { year: number; month: number };
   end: { year: number; month: number };
   sourceDateText?: string;
+  publicBlurb?: string | null;
   photoCount: number;
 }
 

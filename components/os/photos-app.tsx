@@ -12,6 +12,8 @@ export default function PhotosApp({ onOpenApp }: { onOpenApp: (appId: AppId) => 
   const { history, error } = useLivedHistory();
   const [selectedPhotoId, setSelectedPhotoId] = useState<string | null>(null);
   const [view, setView] = useState<"journey" | "places">("journey");
+  const [visibleSections, setVisibleSections] = useState(6);
+  useEffect(() => setVisibleSections(6), [view]);
   useEffect(() => {
     if (!history) return;
     const intent = readTravelNavigation("photos");
@@ -33,7 +35,7 @@ export default function PhotosApp({ onOpenApp }: { onOpenApp: (appId: AppId) => 
     if (!history) return [];
     const values = new Map<string, { key: string; place: string; country: string; photos: LivedPhoto[] }>();
     history.photos.forEach((photo) => {
-      const place = photo.visitPlace || photo.displayPlace || "Unplaced";
+      const place = photo.displayPlace || photo.visitPlace || "Unplaced";
       const key = `${photo.country || ""}:${place}`;
       if (!values.has(key)) values.set(key, { key, place, country: photo.country || "", photos: [] });
       values.get(key)!.photos.push(photo);
@@ -43,11 +45,14 @@ export default function PhotosApp({ onOpenApp }: { onOpenApp: (appId: AppId) => 
   if (error) return <div className="travel-state"><ImageIcon /><strong>Photos could not be opened.</strong><span>{error}</span></div>;
   if (!history) return <div className="travel-state"><span className="travel-spinner"/><strong>Developing the journey…</strong></div>;
   const viewerPhotos = history.photos;
+  const sections = view === "journey" ? chapters : placeGroups;
+  const hasMore = sections.length > visibleSections;
   return <div className="journey-photos system-app">
     <header className="journey-photos__toolbar"><div><strong>Photos</strong><span>{history.stats.photos} photographs from the road</span></div><div className="os-segment"><button className={view === "journey" ? "is-selected" : ""} onClick={() => setView("journey")}><CalendarDays /> Journey</button><button className={view === "places" ? "is-selected" : ""} onClick={() => setView("places")}><MapIcon /> Places</button></div></header>
     <main className="journey-photos__scroll">
       <section className="journey-photos__intro"><span>SEPTEMBER 2023 — NOW</span><h1>A life in motion.</h1><p>A chronological record of slow travel.</p></section>
-      {view === "journey" ? chapters.map((chapter) => <section className="photo-chapter" key={chapter.key}><header><div><h2>{chapter.title}</h2><p>{Array.from(chapter.places).slice(0, 4).join(" · ")}{chapter.places.size > 4 ? ` + ${chapter.places.size - 4} more` : ""}</p></div><span>{chapter.photos.length}</span></header><PhotoMosaic photos={chapter.photos} onOpen={setSelectedPhotoId}/></section>) : placeGroups.map((group) => <section className="photo-chapter" key={group.key}><header><div><h2>{group.place}</h2><p>{group.country}</p></div><span>{group.photos.length}</span></header><PhotoMosaic photos={group.photos} onOpen={setSelectedPhotoId}/></section>)}
+      {view === "journey" ? chapters.slice(0, visibleSections).map((chapter) => <section className="photo-chapter" key={chapter.key}><header><div><h2>{chapter.title}</h2><p>{Array.from(chapter.places).slice(0, 4).join(" · ")}{chapter.places.size > 4 ? ` + ${chapter.places.size - 4} more` : ""}</p></div><span>{chapter.photos.length}</span></header><PhotoMosaic photos={chapter.photos} onOpen={setSelectedPhotoId}/></section>) : placeGroups.slice(0, visibleSections).map((group) => <section className="photo-chapter" key={group.key}><header><div><h2>{group.place}</h2><p>{group.country}</p></div><span>{group.photos.length}</span></header><PhotoMosaic photos={group.photos} onOpen={setSelectedPhotoId}/></section>)}
+      {hasMore && <button className="photo-load-more" onClick={()=>setVisibleSections((count)=>count+6)}>Show more {view === "journey" ? "of the journey" : "places"} <span>{sections.length-visibleSections} remaining</span></button>}
     </main>
     {selectedPhotoId && <TravelPhotoViewer photos={viewerPhotos} photoId={selectedPhotoId} onChange={setSelectedPhotoId} onClose={() => setSelectedPhotoId(null)} onShowMap={(photo) => { sendTravelNavigation({ destination: "atlas", visitId: photo.visitId, photoId: photo.id }); onOpenApp("atlas"); }} />}
   </div>;

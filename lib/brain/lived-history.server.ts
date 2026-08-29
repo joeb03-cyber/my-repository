@@ -14,7 +14,7 @@ function localDerivativeUrl(photoId: string, size: "small" | "medium" | "large")
 
 function withPublicJourneyLabel(photo: LivedPhoto): LivedPhoto {
   const relationshipIsConfident = photo.relationshipState === "strong" || photo.relationshipState === "editorial_confident";
-  return relationshipIsConfident && photo.visitPlace
+  return relationshipIsConfident && photo.visitPlace && !photo.displayPlace
     ? { ...photo, displayPlace: photo.visitPlace }
     : photo;
 }
@@ -81,7 +81,7 @@ async function supabaseHistory(): Promise<LivedHistory> {
     return {
       id: visit.id, chronologyIndex: visit.chronologyIndex, placeId: visit.placeId,
       place: place.name, country: place.countryName, latitude: place.latitude, longitude: place.longitude,
-      start: visit.start, end: visit.end, sourceDateText: visit.sourceDateText, photoCount: counts.get(visit.id) || 0,
+      start: visit.start, end: visit.end, sourceDateText: visit.sourceDateText, publicBlurb: visit.publicBlurb || null, photoCount: counts.get(visit.id) || 0,
     };
   });
   const stage17 = await import("@/data/brain/editorial-updates/2026-08-28-stage17.v1.json");
