@@ -1,0 +1,10 @@
+/* Grid children need an explicit zero min-height or the 111-item chronology
+   expands the MapLibre canvas beyond the OS window instead of scrolling. */
+.journey-maps {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.journey-maps__rail,
+.journey-map {
+  min-height: 0;
+}

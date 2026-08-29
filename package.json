@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "photos:curate": "python3 tools/photo-curation/server.py",
+    "photos:prepare": "python3 scripts/ingestion/build-curated-travel-photos.py && python3 scripts/ingestion/build-curated-photo-derivatives.py --force",
+    "photos:import-staging": "node scripts/ingestion/import-curated-travel-photos.mjs"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",
@@ -29,6 +32,7 @@
     "emoji-mart": "^5.6.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.344.0",
+    "maplibre-gl": "^5.24.0",
     "next": "14.1.2",
     "next-themes": "^0.4.4",
     "react": "^18",
@@ -40,7 +44,9 @@
     "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "uuid": "^10.0.0"
+    "topojson-client": "^3.1.0",
+    "uuid": "^10.0.0",
+    "world-atlas": "^2.0.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.5",

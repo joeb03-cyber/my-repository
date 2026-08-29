@@ -49,6 +49,20 @@ export async function GET() {
     ? await db.from("current_state_entity_links").select("entity_id").eq("snapshot_id", currentResult.data.id).eq("role", "reading").maybeSingle()
     : { data: null, error: null };
   if (currentLinkResult.error) return NextResponse.json({ error: currentLinkResult.error.message }, { status: 500 });
+  const [photoPublications, photoRelationships, photoDerivatives, photoVisits, photoPlaces] = await Promise.all([
+    db.from("photo_publications").select("asset_id,visit_id,is_photos_visible,is_wallpaper_candidate,visibility,editorial_state,display_place,country_name,captured_on").order("captured_on"),
+    db.from("photo_visit_relationships").select("asset_id,visit_id,place_id,relationship_state").eq("active", true),
+    db.from("photo_derivatives").select("asset_id,storage_path").eq("variant", "small"),
+    db.from("brain_public_travel_visits").select("id,place_id,chronology_index,start_year,start_month"),
+    db.from("brain_public_places").select("id,name,country_name"),
+  ]);
+  const photoFeatureUnavailable = [photoPublications, photoRelationships, photoDerivatives].some((result) => result.error?.code === "42P01" || result.error?.code === "PGRST205");
+  const photoFailure = !photoFeatureUnavailable ? [photoPublications, photoRelationships, photoDerivatives, photoVisits, photoPlaces].find((result) => result.error) : null;
+  if (photoFailure?.error) return NextResponse.json({ error: photoFailure.error.message }, { status: 500 });
+  const photoRelationshipById = new Map((photoRelationships.data || []).map((row) => [row.asset_id, row]));
+  const photoDerivativeById = new Map((photoDerivatives.data || []).map((row) => [row.asset_id, row.storage_path]));
+  const photoPlaceById = new Map((photoPlaces.data || []).map((row) => [row.id, row]));
+  const storageBase = process.env.BRAIN_SUPABASE_URL || "";
   return NextResponse.json({
     admin: { displayName: auth.admin.display_name, email: auth.admin.email },
     notes,
@@ -81,5 +95,11 @@ export async function GET() {
       related:(rabbitLinksResult.data || []).filter((item)=>item.from_rabbit_hole_id===hole.id).map((item)=>({ rabbitHoleId:item.to_rabbit_hole_id,label:item.label,sortOrder:item.sort_order })),
       humanLinks:(rabbitHumanResult.data || []).filter((item)=>item.rabbit_hole_id===hole.id).map((item)=>({ humanEntryId:item.human_entry_id,browserLabel:item.browser_label,humanLabel:item.human_label,sortOrder:item.sort_order })),
     })),
+    photos: photoFeatureUnavailable ? [] : (photoPublications.data || []).map((photo) => {
+      const relationship: any = photoRelationshipById.get(photo.asset_id);
+      const storagePath = photoDerivativeById.get(photo.asset_id);
+      return { id: photo.asset_id, visitId: relationship?.visit_id || photo.visit_id, relationshipState: relationship?.relationship_state || "unresolved", visible: photo.is_photos_visible && photo.visibility === "public", wallpaper: photo.is_wallpaper_candidate, displayPlace: photo.display_place, country: photo.country_name, capturedOn: photo.captured_on, thumbnail: storagePath ? `${storageBase}/storage/v1/object/public/brain-public-media/${storagePath}` : "" };
+    }),
+    photoVisitOptions: (photoVisits.data || []).sort((a, b) => a.chronology_index - b.chronology_index).map((visit) => { const place: any = photoPlaceById.get(visit.place_id); return { id: visit.id, placeId: visit.place_id, label: `${place?.name || "Unknown"}, ${place?.country_name || ""} · ${visit.start_year}-${String(visit.start_month).padStart(2, "0")}` }; }),
   }, { headers: { "Cache-Control": "private, no-store" } });
 }

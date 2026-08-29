@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Synergetic Human — Photo Curation</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="loading" class="loading-screen"><div class="spinner"></div><p>Preparing the private collection…</p></div>
+  <div id="app" class="app-shell" hidden>
+    <aside class="sidebar" id="sidebar">
+      <header class="brand">
+        <div class="brand-mark">SH</div>
+        <div><strong>Photo Curation</strong><span>Private · This Mac only</span></div>
+      </header>
+      <section class="progress-card">
+        <div class="progress-copy"><span id="reviewedLabel">0 reviewed</span><span id="progressPercent">0%</span></div>
+        <div class="progress-track"><i id="progressBar"></i></div>
+        <div class="target-copy">Guidance: 150–250 Keep · 20–30 wallpapers</div>
+      </section>
+      <nav class="filter-list" id="filters" aria-label="Photo filters"></nav>
+      <div class="sidebar-heading"><span>Places & visits</span><button id="collapseSidebar" title="Hide sidebar">‹</button></div>
+      <div class="cluster-list" id="clusterList"></div>
+      <footer class="sidebar-footer"><span id="saveState">Saved locally</span><span id="revisionLabel">Revision 0</span></footer>
+    </aside>
+
+    <main class="main-area">
+      <header class="toolbar">
+        <button class="icon-button mobile-only" id="showSidebar" aria-label="Show places">☰</button>
+        <div class="toolbar-title"><strong id="pageTitle">All Photos</strong><span id="pageSubtitle">728 logical assets</span></div>
+        <div class="toolbar-spacer"></div>
+        <label class="search-field"><span>⌕</span><input id="searchInput" type="search" placeholder="Search places or dates" autocomplete="off"></label>
+        <div class="segmented" aria-label="View mode"><button id="gridMode" class="active">Grid</button><button id="reviewMode">Review</button></div>
+        <button class="icon-button" id="shortcutButton" title="Keyboard shortcuts">?</button>
+      </header>
+
+      <section id="gridView" class="grid-view"><div id="gridContent"></div></section>
+      <section id="reviewView" class="review-view" hidden>
+        <header class="review-header">
+          <button id="backToGrid" class="quiet-button">‹ Grid</button>
+          <div class="review-context"><strong id="reviewCluster"></strong><span id="reviewCounter"></span></div>
+          <label class="auto-advance"><input id="autoAdvance" type="checkbox" checked><span>Auto-advance</span></label>
+        </header>
+        <div class="stage">
+          <button id="previousPhoto" class="stage-arrow previous" aria-label="Previous photo">‹</button>
+          <div class="media-frame" id="mediaFrame"></div>
+          <button id="nextPhoto" class="stage-arrow next" aria-label="Next photo">›</button>
+          <div class="stage-badges" id="stageBadges"></div>
+        </div>
+        <div class="decision-bar">
+          <div class="status-controls" role="group" aria-label="Publication status">
+            <button class="decision keep" data-status="keep"><kbd>1</kbd><span>Keep</span></button>
+            <button class="decision maybe" data-status="maybe"><kbd>2</kbd><span>Maybe</span></button>
+            <button class="decision private" data-status="private"><kbd>3</kbd><span>Private</span></button>
+          </div>
+          <div class="secondary-controls">
+            <button id="wallpaperButton" class="secondary-decision"><kbd>W</kbd><span>Wallpaper</span><i>☆</i></button>
+            <button id="heroButton" class="secondary-decision"><kbd>H</kbd><span>Place Hero</span><i>◇</i></button>
+          </div>
+        </div>
+        <aside class="info-strip">
+          <div><span>Date</span><strong id="captureDate">—</strong></div>
+          <div><span>Place / visit</span><strong id="placeLabel">—</strong><small id="placeBasis"></small></div>
+          <div><span>Source</span><strong id="sourceKind">—</strong><small id="sourceFilename"></small></div>
+          <details class="correction-panel"><summary>Correct visit…</summary><label>Associate with a known visit<select id="visitSelect"><option value="">Use inferred association</option></select></label><p>This changes only this photo’s review relationship. It does not edit the travel history.</p></details>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="shortcutsDialog" class="shortcuts-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+    <h2>Review shortcuts</h2>
+    <div class="shortcut-grid">
+      <kbd>1</kbd><span>Keep</span><kbd>2</kbd><span>Maybe</span><kbd>3</kbd><span>Private</span>
+      <kbd>W</kbd><span>Toggle wallpaper</span><kbd>H</kbd><span>Toggle place hero</span>
+      <kbd>←</kbd><span>Previous</span><kbd>→</kbd><span>Next</span><kbd>G</kbd><span>Return to grid</span>
+    </div>
+    <p>Status shortcuts advance automatically when Auto-advance is on. Wallpaper and Hero never alter publication status.</p>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

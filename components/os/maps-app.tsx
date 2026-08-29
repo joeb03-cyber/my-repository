@@ -1,94 +1,148 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { CalendarDays, ChevronRight, LocateFixed, MapPin, Search } from "lucide-react";
-import type { TravelPlace, TravelTimeline, TravelVisit } from "@/lib/brain/travel-types";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { CalendarDays, ChevronLeft, ChevronRight, LocateFixed, MapPin, Search, X } from "lucide-react";
+import maplibregl, { type Map as MapLibreMap, type Marker } from "maplibre-gl";
+import { feature } from "topojson-client";
+import world from "world-atlas/countries-110m.json";
+import type { AppId } from "@/data/prototype";
+import type { LivedPhoto, LivedVisit } from "@/lib/brain/lived-history-types";
+import { readTravelNavigation, TRAVEL_NAVIGATION_EVENT, TravelPhotoViewer, useLivedHistory, type TravelNavigationIntent } from "./lived-history";
 
 const months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const fallbackYears = [2026, 2025, 2024, 2023];
+const countryAliases: Record<string, string> = {
+  "United States": "United States of America", "Dominican Republic": "Dominican Rep.",
+  "Bosnia and Herzegovina": "Bosnia and Herz.", "Czech Republic": "Czechia", "North Macedonia": "Macedonia",
+};
 
-function point(place: TravelPlace) {
-  return { x: ((place.longitude as number) + 180) / 360 * 1000, y: (90 - (place.latitude as number)) / 180 * 500 };
-}
-
-function rangeLabel(visit: TravelVisit) {
+function rangeLabel(visit: LivedVisit) {
   const start = `${months[visit.start.month]} ${visit.start.year}`;
   const end = `${months[visit.end.month]} ${visit.end.year}`;
   return start === end ? start : `${start} — ${end}`;
 }
 
-export default function MapsApp() {
-  const [timeline, setTimeline] = useState<TravelTimeline | null>(null);
-  const [error, setError] = useState(false);
-  const [year, setYear] = useState<number | "all">("all");
+function routeGeoJSON(visits: LivedVisit[]) {
+  const features: Array<Record<string, unknown>> = [];
+  for (let index = 1; index < visits.length; index += 1) {
+    const previous = visits[index - 1], current = visits[index];
+    if (previous.latitude == null || previous.longitude == null || current.latitude == null || current.longitude == null) continue;
+    if (Math.abs(previous.longitude - current.longitude) > 180) continue;
+    const toRadians = (value: number) => value * Math.PI / 180;
+    const toDegrees = (value: number) => value * 180 / Math.PI;
+    const a = [toRadians(previous.longitude), toRadians(previous.latitude)];
+    const b = [toRadians(current.longitude), toRadians(current.latitude)];
+    const angularDistance = Math.acos(Math.min(1, Math.max(-1, Math.sin(a[1]) * Math.sin(b[1]) + Math.cos(a[1]) * Math.cos(b[1]) * Math.cos(b[0] - a[0]))));
+    const coordinates = Array.from({ length: 17 }, (_, step) => {
+      const amount = step / 16;
+      if (angularDistance < 0.000001) return [previous.longitude!, previous.latitude!];
+      const scaleA = Math.sin((1 - amount) * angularDistance) / Math.sin(angularDistance);
+      const scaleB = Math.sin(amount * angularDistance) / Math.sin(angularDistance);
+      const x = scaleA * Math.cos(a[1]) * Math.cos(a[0]) + scaleB * Math.cos(b[1]) * Math.cos(b[0]);
+      const y = scaleA * Math.cos(a[1]) * Math.sin(a[0]) + scaleB * Math.cos(b[1]) * Math.sin(b[0]);
+      const z = scaleA * Math.sin(a[1]) + scaleB * Math.sin(b[1]);
+      return [toDegrees(Math.atan2(y, x)), toDegrees(Math.atan2(z, Math.sqrt(x * x + y * y)))];
+    });
+    features.push({ type: "Feature", properties: { from: previous.id, to: current.id }, geometry: { type: "LineString", coordinates } });
+  }
+  return { type: "FeatureCollection", features };
+}
+
+export default function MapsApp({ onOpenApp: _onOpenApp }: { onOpenApp?: (appId: AppId) => void }) {
+  const { history, error } = useLivedHistory();
+  const mapNode = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<MapLibreMap | null>(null);
+  const markersRef = useRef<Marker[]>([]);
   const [query, setQuery] = useState("");
+  const [year, setYear] = useState<number | "all">("all");
   const [selectedVisitId, setSelectedVisitId] = useState<string | null>(null);
+  const [selectedPhotoId, setSelectedPhotoId] = useState<string | null>(null);
+  const [mapReady, setMapReady] = useState(false);
+  const [mapFailed, setMapFailed] = useState(false);
+
+  const chooseVisit = useCallback((visitId: string, fly = true) => {
+    setSelectedVisitId(visitId);
+    const visit = history?.visits.find((candidate) => candidate.id === visitId);
+    if (fly && visit?.longitude != null && visit.latitude != null) mapRef.current?.easeTo({ center: [visit.longitude, visit.latitude], zoom: Math.max(mapRef.current.getZoom(), 4.4), duration: 850 });
+  }, [history]);
 
   useEffect(() => {
-    let active = true;
-    fetch("/api/brain/travel").then((response) => {
-      if (!response.ok) throw new Error("Travel timeline unavailable");
-      return response.json();
-    }).then((data) => { if (active) { setTimeline(data); setSelectedVisitId(data.visits[data.visits.length - 1]?.id ?? null); } }).catch(() => active && setError(true));
-    return () => { active = false; };
-  }, []);
+    if (!history) return;
+    const apply = (intent: TravelNavigationIntent | null) => {
+      if (!intent || intent.destination !== "atlas") return;
+      if (intent.visitId) chooseVisit(intent.visitId);
+    };
+    apply(readTravelNavigation("atlas"));
+    setSelectedVisitId((current) => current || history.visits.at(-1)?.id || null);
+    const handler = (event: Event) => apply((event as CustomEvent<TravelNavigationIntent>).detail);
+    window.addEventListener(TRAVEL_NAVIGATION_EVENT, handler);
+    return () => window.removeEventListener(TRAVEL_NAVIGATION_EVENT, handler);
+  }, [history, chooseVisit]);
 
-  const placeById = useMemo(() => new Map((timeline?.places || []).map((place) => [place.id, place])), [timeline]);
-  const visits = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return (timeline?.visits || []).filter((visit) => {
-      const place = placeById.get(visit.placeId);
-      return (year === "all" || visit.start.year === year || visit.end.year === year)
-        && (!normalized || `${place?.name} ${place?.countryName} ${visit.sourceValue}`.toLowerCase().includes(normalized));
+  useEffect(() => {
+    if (!history || !mapNode.current || mapRef.current) return;
+    const map = new maplibregl.Map({ container: mapNode.current, style: "https://tiles.openfreemap.org/styles/liberty", center: [18, 25], zoom: 1.45, minZoom: 1, attributionControl: false });
+    mapRef.current = map;
+    const resizeObserver = new ResizeObserver(() => map.resize());
+    resizeObserver.observe(mapNode.current);
+    map.addControl(new maplibregl.NavigationControl({ showCompass: true, visualizePitch: false }), "top-right");
+    map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: "Nomadic journey since Sep 2023 · sequence, not a GPS track" }), "bottom-right");
+    map.on("load", () => {
+      const countries = feature(world as any, (world as any).objects.countries) as any;
+      const visited = new Set(history.lifetimeCountries.map((name) => countryAliases[name] || name));
+      const highlighted = { type: "FeatureCollection" as const, features: countries.features.filter((country: any) => visited.has(String(country.properties?.name))) };
+      map.addSource("visited-countries", { type: "geojson", data: highlighted });
+      map.addLayer({ id: "visited-countries-fill", type: "fill", source: "visited-countries", paint: { "fill-color": "#6ba77b", "fill-opacity": 0.16 } });
+      map.addLayer({ id: "visited-countries-line", type: "line", source: "visited-countries", paint: { "line-color": "#45815b", "line-opacity": 0.35, "line-width": 0.7 } });
+      map.addSource("journey-route", { type: "geojson", data: routeGeoJSON(history.visits) });
+      map.addLayer({ id: "journey-route", type: "line", source: "journey-route", layout: { "line-cap": "round", "line-join": "round" }, paint: { "line-color": "#e05d46", "line-width": 2, "line-opacity": 0.62, "line-dasharray": [2, 2] } });
+      setMapReady(true);
     });
-  }, [timeline, placeById, year, query]);
-  const visibleLatestFirst = [...visits].sort((a, b) => a.sourcePosition - b.sourcePosition || a.groupPosition - b.groupPosition);
-  const mappedVisits = visits.filter((visit) => {
-    const place = placeById.get(visit.placeId); return place?.latitude != null && place.longitude != null;
-  });
-  const selectedVisit = (timeline?.visits || []).find((visit) => visit.id === selectedVisitId) || visibleLatestFirst[0];
-  const selectedPlace = selectedVisit ? placeById.get(selectedVisit.placeId) : undefined;
-  const uniqueMappedPlaces = Array.from(new Map(mappedVisits.map((visit) => [visit.placeId, placeById.get(visit.placeId) as TravelPlace])).values());
-  const currentPlace = timeline?.currentState?.location ? timeline.places.find((place) => place.name === timeline.currentState?.location.canonical_name) : undefined;
+    map.on("error", (event) => { if (!event.error?.message?.includes("glyph")) setMapFailed(true); });
+    return () => { resizeObserver.disconnect(); markersRef.current.forEach((marker) => marker.remove()); markersRef.current = []; map.remove(); mapRef.current = null; };
+  }, [history]);
 
-  if (error) return <div className="maps-state"><MapPin/><strong>Travel history is temporarily unavailable.</strong><span>The staging Brain did not respond.</span></div>;
-  if (!timeline) return <div className="maps-state"><LocateFixed className="is-locating"/><strong>Opening the travel archive…</strong><span>Loading the staging Brain</span></div>;
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!history || !map || !mapReady) return;
+    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current = history.visits.filter((visit) => visit.latitude != null && visit.longitude != null).map((visit) => {
+      const node = document.createElement("button");
+      node.className = `journey-marker${visit.id === selectedVisitId ? " is-selected" : ""}${visit.photoCount ? " has-photos" : ""}`;
+      node.type = "button"; node.title = `${visit.place}, ${visit.country}`; node.setAttribute("aria-label", node.title);
+      node.addEventListener("click", () => chooseVisit(visit.id));
+      return new maplibregl.Marker({ element: node, anchor: "center" }).setLngLat([visit.longitude!, visit.latitude!]).addTo(map);
+    });
+    const current = history.currentLocation;
+    if (current?.latitude != null && current.longitude != null) {
+      const node = document.createElement("div"); node.className = "journey-marker is-current"; node.title = `Now: ${current.canonical_name}`;
+      markersRef.current.push(new maplibregl.Marker({ element: node, anchor: "center" }).setLngLat([current.longitude, current.latitude]).addTo(map));
+    }
+  }, [history, mapReady, selectedVisitId, chooseVisit]);
 
-  return <div className="maps-app system-app">
-    <aside className="maps-sidebar">
-      <div className="maps-sidebar__head"><strong>Places</strong><span>{timeline.stats.visits} visits · {timeline.stats.countries} countries</span></div>
-      <label className="system-search maps-search"><Search/><input value={query} onChange={(event)=>setQuery(event.target.value)} aria-label="Search travel history" placeholder="Search places"/>{query && <button onClick={()=>setQuery("")} aria-label="Clear search">×</button>}</label>
-      <div className="maps-years" aria-label="Filter by year"><button className={year==="all"?"is-selected":""} onClick={()=>setYear("all")}>All</button>{fallbackYears.map((value)=><button key={value} className={year===value?"is-selected":""} onClick={()=>setYear(value)}>{value}</button>)}</div>
-      <div className="maps-timeline">
-        {visibleLatestFirst.map((visit, index) => {
-          const place = placeById.get(visit.placeId); if (!place) return null;
-          const previous = visibleLatestFirst[index-1]; const showYear = !previous || previous.start.year !== visit.start.year;
-          return <div key={visit.id}>{showYear && <span className="maps-year-label">{visit.start.year}</span>}<button className={selectedVisit?.id===visit.id?"is-selected":""} onClick={()=>setSelectedVisitId(visit.id)}>
-            <span className={`maps-pin-dot ${place.latitude==null?"is-unresolved":""}`}/><span><strong>{place.name}</strong><small>{visit.sourceDateText} · {place.countryName}</small></span><ChevronRight/>
-          </button></div>;
-        })}
-        {!visibleLatestFirst.length && <div className="maps-empty">No matching visits.</div>}
-      </div>
-    </aside>
-    <section className="maps-canvas">
-      <div className="maps-toolbar"><span><MapPin/> Route since September 2023</span><div className="maps-map-count">{currentPlace ? `Now · ${currentPlace.name}` : `${mappedVisits.length} mapped`} · {timeline.stats.unresolvedPlaces} labels awaiting coordinates</div></div>
-      <div className="world-map" aria-label="World map of travel history">
-        <img src="/maps/world-110m.svg" alt=""/>
-        <svg viewBox="0 0 1000 500" preserveAspectRatio="none" role="img" aria-label="Chronological travel route">
-          <g className="journey-route">{mappedVisits.slice(1).map((visit, index) => {
-            const a = point(placeById.get(mappedVisits[index].placeId) as TravelPlace); const b = point(placeById.get(visit.placeId) as TravelPlace);
-            if (Math.abs(a.x-b.x)>520) return null;
-            return <line key={`${mappedVisits[index].id}-${visit.id}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y}/>;
-          })}</g>
-          <g className="journey-points">{uniqueMappedPlaces.map((place) => { const p=point(place); const isSelected=selectedPlace?.id===place.id; const choose=()=>{ const visit=[...visits].reverse().find((item)=>item.placeId===place.id); if(visit)setSelectedVisitId(visit.id); }; return <g key={place.id} role="button" tabIndex={0} aria-label={`${place.name}, ${place.countryName}`} onClick={choose} onKeyDown={(event)=>{if(event.key==="Enter"||event.key===" ")choose();}}><circle className={isSelected?"is-selected":""} cx={p.x} cy={p.y} r={isSelected?8:4}/></g>; })}</g>
-          {currentPlace?.latitude != null && currentPlace.longitude != null && (() => { const p = point(currentPlace); return <g className="journey-current" aria-label={`Current location: ${currentPlace.name}, ${currentPlace.countryName}`}><circle cx={p.x} cy={p.y} r="11"/><circle cx={p.x} cy={p.y} r="4"/></g>; })()}
-        </svg>
-        <div className="maps-compass" aria-hidden="true">N</div>
-        {selectedVisit && selectedPlace && <article className="place-card">
-          <div className="place-card__pin"><MapPin/></div><div><span>{selectedPlace.countryName}</span><h2>{selectedPlace.name}</h2><p><CalendarDays/>{rangeLabel(selectedVisit)}</p><small>{selectedPlace.latitude == null ? "Coordinates awaiting review" : `${selectedPlace.placeType} · month-level source precision`}</small></div>
-        </article>}
-        <small className="map-attribution">Natural Earth · GeoNames CC BY 4.0</small>
-      </div>
-    </section>
+  const years = useMemo(() => history ? Array.from(new Set(history.visits.map((visit) => visit.start.year))).sort((a, b) => b - a) : [], [history]);
+  const filteredVisits = useMemo(() => {
+    const value = query.trim().toLowerCase();
+    return (history?.visits || []).filter((visit) => (year === "all" || visit.start.year === year || visit.end.year === year) && (!value || `${visit.place} ${visit.country}`.toLowerCase().includes(value))).sort((a, b) => b.chronologyIndex - a.chronologyIndex);
+  }, [history, query, year]);
+  const selectedVisit = history?.visits.find((visit) => visit.id === selectedVisitId) || null;
+  const visitPhotos = history?.photos.filter((photo) => photo.visitId === selectedVisit?.id) || [];
+  const photoIndex = history?.photos.findIndex((photo) => photo.id === selectedPhotoId) ?? -1;
+  const moveVisit = (delta: number) => {
+    if (!history || !selectedVisit) return;
+    const index = history.visits.findIndex((visit) => visit.id === selectedVisit.id);
+    const target = history.visits[Math.max(0, Math.min(history.visits.length - 1, index + delta))];
+    if (target) chooseVisit(target.id);
+  };
+
+  if (error) return <div className="travel-state"><MapPin /><strong>Maps could not be opened.</strong><span>{error}</span></div>;
+  if (!history) return <div className="travel-state"><LocateFixed className="is-locating"/><strong>Opening the journey…</strong></div>;
+  return <div className="journey-maps system-app">
+    <aside className="journey-maps__rail"><header><strong>Nomadic Journey</strong><span>{history.stats.visits} visits since Sep 2023 · {history.stats.lifetimeCountries} countries lifetime</span></header><label className="system-search"><Search/><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search places" aria-label="Search places"/>{query && <button onClick={() => setQuery("")} aria-label="Clear"><X/></button>}</label><div className="journey-years"><button className={year === "all" ? "is-selected" : ""} onClick={() => setYear("all")}>All</button>{years.map((value) => <button key={value} className={year === value ? "is-selected" : ""} onClick={() => setYear(value)}>{value}</button>)}</div><div className="journey-timeline">{filteredVisits.map((visit, index) => { const previous = filteredVisits[index - 1]; return <div key={visit.id}>{(!previous || previous.start.year !== visit.start.year) && <b>{visit.start.year}</b>}<button className={selectedVisitId === visit.id ? "is-selected" : ""} onClick={() => chooseVisit(visit.id)}><i className={visit.photoCount ? "has-photos" : ""}/><span><strong>{visit.place}</strong><small>{rangeLabel(visit)} · {visit.country}{visit.photoCount ? ` · ${visit.photoCount} photo${visit.photoCount === 1 ? "" : "s"}` : ""}</small></span></button></div>; })}</div></aside>
+    <section className="journey-map"><div ref={mapNode} className="journey-map__canvas"/>{mapFailed && <div className="journey-map__notice">The detailed map could not load. Your chronology remains available.</div>}{selectedVisit && <VisitDrawer visit={selectedVisit} photos={visitPhotos} onPhoto={setSelectedPhotoId} onPrevious={() => moveVisit(-1)} onNext={() => moveVisit(1)} />}</section>
+    {selectedPhotoId && photoIndex >= 0 && <TravelPhotoViewer photos={history.photos} photoId={selectedPhotoId} onChange={setSelectedPhotoId} onClose={() => setSelectedPhotoId(null)} />}
   </div>;
+}
+
+function VisitDrawer({ visit, photos, onPhoto, onPrevious, onNext }: { visit: LivedVisit; photos: LivedPhoto[]; onPhoto: (id: string) => void; onPrevious: () => void; onNext: () => void }) {
+  return <article className="visit-drawer"><header><div><span>{visit.country}</span><h2>{visit.place}</h2><p><CalendarDays /> {rangeLabel(visit)}</p></div><div><button onClick={onPrevious} aria-label="Previous visit"><ChevronLeft/></button><button onClick={onNext} aria-label="Next visit"><ChevronRight/></button></div></header>{photos.length > 0 ? <div className="visit-drawer__photos">{photos.slice(0, 8).map((photo) => <button key={photo.id} onClick={() => onPhoto(photo.id)} style={{ aspectRatio: photo.width && photo.height ? `${photo.width}/${photo.height}` : "4/3" }}><img src={photo.derivatives.small.url} alt="" loading="lazy"/></button>)}</div> : <p className="visit-drawer__empty">This visit is part of the route, but has no selected photographs.</p>}{photos.length > 8 && <small>+ {photos.length - 8} more photographs</small>}</article>;
 }

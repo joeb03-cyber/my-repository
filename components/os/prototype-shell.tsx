@@ -12,6 +12,7 @@ import type { BrainBookSummary, BrainBooksIndex } from "@/lib/brain/types";
 import { refineBooksIndex } from "@/lib/brain/books-editorial";
 import type { BrainCurrentState } from "@/lib/brain/notes-types";
 import type { BrainOsState } from "@/lib/brain/os-state-types";
+import type { LivedPhoto } from "@/lib/brain/lived-history-types";
 import AppContent from "./app-content";
 import { BookDetail } from "./library-app";
 import AppIcon, { type AppIconName } from "./app-icon";
@@ -67,6 +68,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const pathname = usePathname();
   const [windows, setWindows] = useState<WindowState[]>(initialWindows);
   const [wallpaperIndex, setWallpaperIndex] = useState(0);
+  const [curatedWallpapers, setCuratedWallpapers] = useState<LivedPhoto[]>([]);
   const [mobileBook, setMobileBook] = useState<BrainBookSummary | null>(null);
   const [launchingApp, setLaunchingApp] = useState<AppId | null>(null);
   const [activeMenu, setActiveMenu] = useState<"file" | "explore" | "view" | null>(null);
@@ -89,10 +91,19 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
     setWindows((current) => {
       const existing = current.find((win) => win.id === id);
       const top = Math.max(0, ...current.map((win) => win.z)) + 1;
-      if (existing) return current.map((win) => win.id === id ? { ...win, z: top, minimized: false, transition: win.minimized ? "reopening" : undefined } : win);
-      const offset = current.filter((win) => win.kind === "app").length * 24;
-      const isLargeApp = appId === "library" || appId === "contacts" || appId === "journal" || appId === "about" || appId === "activity" || appId === "browser";
-      return [...current, { id, appId, kind: "app", title: appNames[appId], x: 135 + offset, y: 70 + offset, width: isLargeApp ? 900 : 720, height: isLargeApp ? 650 : 520, z: top, transition: "opening" }];
+      const isUtilityApp = appId === "terminal" || appId === "software" || appId === "screen-time";
+      const preferredWidth = Math.min(isUtilityApp ? 760 : 1120, window.innerWidth - 48);
+      const preferredHeight = Math.min(isUtilityApp ? 520 : 680, window.innerHeight - 112);
+      if (existing) return current.map((win) => {
+        if (win.id !== id) return win;
+        const width = Math.max(win.width, preferredWidth);
+        const height = Math.max(win.height, preferredHeight);
+        return { ...win, x: Math.min(win.x, window.innerWidth - width - 24), y: Math.min(win.y, 54), width, height, z: top, minimized: false, transition: win.minimized ? "reopening" : undefined };
+      });
+      const cascade = (current.filter((win) => win.kind === "app").length % 4) * 16;
+      const x = Math.min(Math.max(24, (window.innerWidth - preferredWidth) / 2 + cascade), window.innerWidth - preferredWidth - 24);
+      const y = Math.min(48 + cascade, window.innerHeight - preferredHeight - 70);
+      return [...current, { id, appId, kind: "app", title: appNames[appId], x, y, width: preferredWidth, height: preferredHeight, z: top, transition: "opening" }];
     });
     setLaunchingApp(appId);
     window.setTimeout(() => {
@@ -125,14 +136,34 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
     } else setMobileBook(null);
   }, [pathname, openApp, openBook]);
 
+  const activeWallpapers = curatedWallpapers.length ? curatedWallpapers : wallpapers;
+
+  const advanceWallpaper = useCallback(() => setWallpaperIndex((index) => {
+    if (activeWallpapers.length < 2) return 0;
+    const placeKey = (wallpaper: (typeof activeWallpapers)[number]) => "derivatives" in wallpaper
+      ? `${wallpaper.displayPlace || wallpaper.visitPlace || wallpaper.id}|${wallpaper.country || ""}`.toLocaleLowerCase()
+      : `${wallpaper.location || wallpaper.id}`.toLocaleLowerCase();
+    const currentKey = placeKey(activeWallpapers[index % activeWallpapers.length]);
+    for (let offset = 1; offset < activeWallpapers.length; offset += 1) {
+      const candidate = (index + offset) % activeWallpapers.length;
+      if (placeKey(activeWallpapers[candidate]) !== currentKey) return candidate;
+    }
+    return (index + 1) % activeWallpapers.length;
+  }), [activeWallpapers]);
+
   useEffect(() => {
-    const interval = window.setInterval(() => setWallpaperIndex((index) => (index + 1) % wallpapers.length), 24_000);
+    const interval = window.setInterval(advanceWallpaper, 24_000);
     return () => window.clearInterval(interval);
-  }, []);
+  }, [advanceWallpaper]);
 
   useEffect(() => {
     fetch("/api/brain/current-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
     fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setOsState).catch(() => undefined);
+    fetch("/api/brain/travel-photos").then((response) => response.ok ? response.json() : Promise.reject()).then((history) => {
+      const isPhone = window.matchMedia("(max-width: 700px)").matches;
+      const selected = (history.photos as LivedPhoto[]).filter((photo) => photo.wallpaper && (isPhone ? photo.orientation === "portrait" : photo.orientation === "landscape"));
+      if (selected.length) { setWallpaperIndex(0); setCuratedWallpapers(selected); }
+    }).catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -178,7 +209,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       };
     }));
   }, []);
-  const currentWallpaper = wallpapers[wallpaperIndex];
+  const currentWallpaper = activeWallpapers[wallpaperIndex % activeWallpapers.length];
   const currentApp = routeApps[pathname.split("/")[1]];
   const openApps = useMemo(() => new Set(windows.filter((win) => win.kind === "app" && win.appId).map((win) => win.appId)), [windows]);
   const minimizedApps = useMemo(() => new Set(windows.filter((win) => win.kind === "app" && win.appId && win.minimized).map((win) => win.appId)), [windows]);
@@ -232,7 +263,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
 
   return (
     <main className="os-root">
-      {wallpapers.map((wallpaper, index) => <div key={wallpaper.id} className={`wallpaper ${wallpaper.className} ${index === wallpaperIndex ? "is-visible" : ""}`} aria-hidden="true" />)}
+      {activeWallpapers.map((wallpaper, index) => <div key={wallpaper.id} className={`wallpaper ${"className" in wallpaper ? wallpaper.className : "wallpaper--curated"} ${index === wallpaperIndex % activeWallpapers.length ? "is-visible" : ""}`} style={"derivatives" in wallpaper ? { backgroundImage: `linear-gradient(rgba(9,14,18,.08),rgba(9,14,18,.15)),url(${wallpaper.derivatives.large.url})` } : undefined} aria-hidden="true" />)}
       <header className="menu-bar">
         <div className="menu-left">
           <button className="menu-brand" aria-label="Synergetic Human home" title="Synergetic Human" onClick={() => { router.push("/"); closeMenus(); }}><span aria-hidden="true">S</span></button>
@@ -253,7 +284,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
               <MenuAction label="Terminal" onClick={() => { openApp("terminal"); closeMenus(); }} />
             </SystemMenu>
             <SystemMenu label="View" open={activeMenu === "view"} onToggle={() => setActiveMenu(activeMenu === "view" ? null : "view")}>
-              <MenuAction label="Next Wallpaper" shortcut="⌘→" onClick={() => { setWallpaperIndex((wallpaperIndex + 1) % wallpapers.length); closeMenus(); }} />
+              <MenuAction label="Next Wallpaper" shortcut="⌘→" onClick={() => { advanceWallpaper(); closeMenus(); }} />
               <MenuAction label="Reset Desktop" onClick={resetDesktop} />
             </SystemMenu>
           </nav>
@@ -291,7 +322,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
         )}
       </section>
 
-      <button className="wallpaper-caption" onClick={() => setWallpaperIndex((wallpaperIndex + 1) % wallpapers.length)} title="Next wallpaper"><span>●</span> {currentWallpaper.label} · {currentWallpaper.location}<small>{currentWallpaper.credit}</small></button>
+      <button className="wallpaper-caption" onClick={advanceWallpaper} title="Next wallpaper"><span>●</span> {"derivatives" in currentWallpaper ? ([currentWallpaper.displayPlace || currentWallpaper.visitPlace, currentWallpaper.country].filter(Boolean).join(" · ") || "Along the journey") : `${currentWallpaper.label} · ${currentWallpaper.location}`}<small>{"derivatives" in currentWallpaper ? "From Joe’s selected travel photographs" : currentWallpaper.credit}</small></button>
       <nav ref={dockRef} className="dock" aria-label="Applications" onPointerMove={magnifyDock} onPointerLeave={resetDockTransforms}>
         {apps.map(({ id, label, icon, separated }) => <span className={separated ? "dock-entry dock-entry--separated" : "dock-entry"} key={id}>
           <button className={`dock-item ${openApps.has(id) ? "is-open" : ""} ${minimizedApps.has(id) ? "is-minimized" : ""} ${launchingApp === id ? "is-launching" : ""}`} onClick={() => openApp(id)} aria-label={`${label}${minimizedApps.has(id) ? ", minimized" : ""}`}>

@@ -6,6 +6,7 @@ import type { AppId } from "@/data/prototype";
 import type { BrainBookSummary } from "@/lib/brain/types";
 import AppIcon, { iconForApp } from "./app-icon";
 import MapsApp from "./maps-app";
+import PhotosApp from "./photos-app";
 import ContactsApp from "./contacts-app";
 import NotesApp from "./notes-app";
 import HumanApp from "./human-app";
@@ -16,12 +17,12 @@ import { ActivityMonitorApp, ScreenTimeApp, SettingsApp, SoftwareUpdateApp, Term
 export default function AppContent({ appId, onBookOpen, onOpenApp }: { appId: AppId; onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (appId: AppId) => void }) {
   if (appId === "finder") return <Finder onOpenApp={onOpenApp} />;
   if (appId === "library") return <LibraryApp onBookOpen={onBookOpen} />;
-  if (appId === "atlas") return <MapsApp />;
+  if (appId === "atlas") return <MapsApp onOpenApp={onOpenApp} />;
   if (appId === "contacts") return <ContactsApp onBookOpen={onBookOpen} />;
   if (appId === "laboratory") return <HumanApp onOpenApp={onOpenApp} />;
   if (appId === "messages") return <MessagesApp />;
   if (appId === "journal") return <NotesApp />;
-  if (appId === "photos") return <Photos />;
+  if (appId === "photos") return <PhotosApp onOpenApp={onOpenApp} />;
   if (appId === "browser") return <BrowserApp onBookOpen={onBookOpen} onOpenApp={onOpenApp} />;
   if (appId === "trash") return <TrashApp />;
   if (appId === "software") return <SoftwareUpdateApp />;
@@ -48,10 +49,6 @@ function Finder({ onOpenApp }: { onOpenApp: (appId: AppId) => void }) {
 
 function Reality() {
   return <div className="reality-app app-placeholder"><div className="reality-orbit"><i/><i/><i/><Orbit/></div><div><span className="app-kicker">REALITY / CONSCIOUSNESS</span><h2>Things get less solid in here.</h2><p>Notes from the borderlands of perception, identity, awareness, anomalous experience, and whatever this is.</p><button>Enter carefully <ArrowUpRight/></button></div></div>;
-}
-
-function Photos() {
-  return <div className="photos-app system-app"><div className="os-toolbar"><strong>Photos</strong><div className="os-segment"><button className="is-selected">Years</button><button>Months</button><button>All Photos</button></div><button className="toolbar-button">•••</button></div><div className="photos-hero"><div><span className="app-kicker">2026 · JAJCE</span><h2>A life, mostly outside.</h2><p>The wallpaper collection and travel archive will live here.</p></div></div><div className="photo-strip">{["coast","street","mountain","window","night"].map((name)=><div className={`photo-tile photo-tile--${name}`} key={name}/>)}</div></div>;
 }
 
 function ArchiveApp() {

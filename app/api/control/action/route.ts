@@ -18,6 +18,34 @@ export async function POST(request: Request) {
   if (!input?.action) return NextResponse.json({ error: "Missing action" }, { status: 400 });
   const db = auth.supabase;
   try {
+    if (input.action === "save-photo-editorial") {
+      const photo = input.photo || {};
+      const id = String(photo.id || "");
+      if (!/^[0-9a-f-]{36}$/i.test(id)) throw new Error("That photograph could not be identified.");
+      let visit: { id: string; place_id: string } | null = null;
+      if (photo.visitId) {
+        const { data, error } = await db.from("brain_public_travel_visits").select("id,place_id").eq("id", String(photo.visitId)).maybeSingle();
+        if (error) throw error; if (!data) throw new Error("That visit is not available in the public travel chronology."); visit = data;
+      }
+      const { error: publicationError } = await db.from("photo_publications").update({
+        visit_id: visit?.id || null, place_id: visit?.place_id || null,
+        is_photos_visible: Boolean(photo.visible), visibility: photo.visible ? "public" : "private",
+        is_wallpaper_candidate: Boolean(photo.wallpaper), editorial_state: "approved",
+      }).eq("asset_id", id);
+      if (publicationError) throw publicationError;
+      const relationshipId = crypto.randomUUID();
+      const { error: draftError } = await db.from("photo_visit_relationships").insert({
+        id: relationshipId, asset_id: id, visit_id: visit?.id || null, place_id: visit?.place_id || null,
+        relationship_state: visit ? "editorial_confident" : "unresolved", relationship_method: visit ? "control_center_correction" : "control_center_unassigned",
+        active: false, provenance: { source: "control_center", editedBy: auth.user.id, preservesPriorAssertion: true },
+      });
+      if (draftError) throw draftError;
+      const { error: deactivateError } = await db.from("photo_visit_relationships").update({ active: false }).eq("asset_id", id).eq("active", true);
+      if (deactivateError) throw deactivateError;
+      const { error: activateError } = await db.from("photo_visit_relationships").update({ active: true }).eq("id", relationshipId);
+      if (activateError) throw activateError;
+      return NextResponse.json({ ok: true, id });
+    }
     if (input.action === "save-note") {
       const payload = input.note || {};
       const id = payload.id || crypto.randomUUID();

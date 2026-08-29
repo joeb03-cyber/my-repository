@@ -50,6 +50,10 @@ IMPLEMENTATION.md
 # remain workstation-only until an explicit editorial publication step.
 /artifacts/photo-inventory/
 
+# Private local photo curation decisions and review derivatives. These may
+# eventually feed an explicitly approved import, but never belong in Git.
+/artifacts/photo-curation/
+
 # Private Kortex/Eden archive discovery. These local reports can contain
 # sensitive filenames, excerpts, dates, and source metadata.
 /artifacts/private-archive-discovery/
