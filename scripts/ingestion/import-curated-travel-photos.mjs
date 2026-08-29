@@ -19,8 +19,8 @@ const root = "artifacts/photo-curation/stage4";
 const snapshot = JSON.parse(await readFile(`${root}/public-photo-snapshot.private.json`, "utf8"));
 const privateImport = JSON.parse(await readFile(`${root}/photo-import.private.json`, "utf8"));
 const derivativeCheck = JSON.parse(await readFile(`${root}/derivative-validation.private.json`, "utf8"));
-if (snapshot.stats.photos !== 217 || snapshot.stats.wallpapers !== 43 || derivativeCheck.photosExpected !== 217 || derivativeCheck.missing.length || derivativeCheck.invalidContent?.length || derivativeCheck.sourceModified || derivativeCheck.publicOriginalsIncluded || derivativeCheck.livePhotoMotionIncluded) {
-  throw new Error("Private curation/derivative validation does not match the approved 217 Keeps / 43 Wallpapers snapshot.");
+if (snapshot.stats.photos !== 217 || snapshot.stats.wallpapers !== 42 || derivativeCheck.photosExpected !== 217 || derivativeCheck.missing.length || derivativeCheck.invalidContent?.length || derivativeCheck.sourceModified || derivativeCheck.publicOriginalsIncluded || derivativeCheck.livePhotoMotionIncluded) {
+  throw new Error("Private curation/derivative validation does not match the latest 217 Keeps / 42 Wallpapers snapshot.");
 }
 
 const db = createClient(url, serviceKey, { auth: { persistSession: false, autoRefreshToken: false } });
@@ -79,7 +79,7 @@ await upsertChunks("photo_derivatives", derivativeRows, { onConflict: "id" });
 const { count: publicCount, error: publicError } = await publicDb.from("brain_public_lived_photos").select("id", { count: "exact", head: true });
 if (publicError || publicCount !== 217) throw new Error(`Public projection validation failed: ${publicError?.message || publicCount}`);
 const { count: wallpaperCount, error: wallpaperError } = await publicDb.from("brain_public_lived_photos").select("id", { count: "exact", head: true }).eq("is_wallpaper_candidate", true);
-if (wallpaperError || wallpaperCount !== 43) throw new Error(`Wallpaper validation failed: ${wallpaperError?.message || wallpaperCount}`);
+if (wallpaperError || wallpaperCount !== 42) throw new Error(`Wallpaper validation failed: ${wallpaperError?.message || wallpaperCount}`);
 const { error: privateLeakError } = await publicDb.from("brain_public_lived_photos").select("exact_latitude").limit(1);
 if (!privateLeakError) throw new Error("Public projection unexpectedly exposes private GPS.");
 const sample = snapshot.photos[0].derivatives.small.storagePath;

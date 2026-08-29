@@ -48,9 +48,9 @@ const routeApps: Record<string, AppId> = {
 const brainBooks = refineBooksIndex(booksIndexJson as BrainBooksIndex).books;
 
 const initialWindows: WindowState[] = [
-  { id: "currently", kind: "currently", title: "Currently", x: 42, y: 58, width: 200, height: 130, z: 1, resizable: false },
+  { id: "currently", kind: "currently", title: "Currently", x: 18, y: 38, width: 200, height: 130, z: 1, resizable: false },
   { id: "reading", kind: "reading", title: "Reading", x: 1045, y: 555, width: 245, height: 140, z: 2, resizable: false },
-  { id: "app-journal", kind: "app", appId: "journal", title: "Notes", x: 315, y: 92, width: 680, height: 500, z: 3 },
+  { id: "app-journal", kind: "app", appId: "journal", title: "Notes", x: 260, y: 58, width: 1040, height: 640, z: 3 },
 ];
 
 function Clock() {
