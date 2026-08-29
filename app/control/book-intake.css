@@ -1,0 +1,28 @@
+.new-book-intake {
+  display: grid;
+  gap: 10px;
+  margin-top: 7px;
+  padding: 13px;
+  border: 1px solid #e0e2e6;
+  border-radius: 11px;
+  background: #fafbfc;
+}
+.new-book-intake-head { display: flex; flex-direction: column; gap: 2px; }
+.new-book-intake-head strong { font-size: 11px; }
+.new-book-intake-head small, .intake-privacy { color: #85888d; font-size: 8px; line-height: 1.4; }
+.new-book-intake .control-field { margin: 0; }
+.add-library-book {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 8px;
+  background: #3478f6;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 650;
+}
+.add-library-book:disabled { opacity: .45; cursor: default; }
+.add-library-book svg { width: 13px; }

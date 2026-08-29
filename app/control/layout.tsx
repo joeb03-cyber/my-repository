@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./control.css";
+import "./book-intake.css";
 
 export const metadata: Metadata = {
   title: "Control Center · Synergetic Human",

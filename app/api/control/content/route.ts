@@ -8,7 +8,7 @@ export async function GET() {
   const auth = await getControlAdmin();
   if (!auth) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const db = auth.supabase;
-  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult, booksIndex] = await Promise.all([
+  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult, intakeResult, booksIndex] = await Promise.all([
     db.from("entities").select("id,slug,title,summary,visibility,lifecycle_state,editorial_state").eq("kind", "note").neq("lifecycle_state", "archived").order("updated_at", { ascending: false }),
     db.from("brain_notes").select("entity_id,folder_id,excerpt,body_markdown,publication_state,pinned,source_published_at,published_at,editorial_notice,external_links,updated_at"),
     db.from("note_folders").select("id,slug,label,sort_order").order("sort_order"),
@@ -27,6 +27,7 @@ export async function GET() {
     db.from("rabbit_hole_entity_links").select("rabbit_hole_id,entity_id,label,public_role,evidence_layer,sort_order").order("sort_order"),
     db.from("rabbit_hole_links").select("from_rabbit_hole_id,to_rabbit_hole_id,label,sort_order").order("sort_order"),
     db.from("rabbit_hole_human_links").select("rabbit_hole_id,human_entry_id,browser_label,human_label,sort_order").order("sort_order"),
+    db.from("book_intake_requests").select("id,book_entity_id,title,author,highlights_reference,metadata_status,cover_status,highlights_status,created_at").order("created_at", { ascending: false }).limit(50),
     getBooksIndex(),
   ]);
   const failure = [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult].find((result) => result.error);
@@ -74,6 +75,7 @@ export async function GET() {
       readingBookIdSecondary: currentLinkResult.data?.find((link) => link.role === "reading_secondary")?.entity_id || null,
     } : null,
     bookOptions: booksIndex.books.map((book) => ({ id: book.id, slug: book.slug, title: book.title, authors: book.authors, cover: book.cover.public_path })),
+    bookIntakes: intakeResult.error ? [] : intakeResult.data || [],
     softwareUpdate: updateResult.data ? {
       versionLabel: updateResult.data.version_label,
       new: updateResult.data.new_items,

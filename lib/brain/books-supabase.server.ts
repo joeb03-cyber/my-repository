@@ -41,6 +41,9 @@ function authorsFor(bookId: string, authorRows: Row[], fallback?: string | null)
 }
 
 function summary(row: Row, authorRows: Row[], topicRows: Row[]): BrainBookSummary {
+  const coverPath = row.cover_path?.startsWith("book-covers/control-center/")
+    ? `${process.env.BRAIN_SUPABASE_URL}/storage/v1/object/public/brain-public-media/${row.cover_path}`
+    : row.cover_path?.startsWith("http") ? row.cover_path : row.cover_path ? (row.cover_path.startsWith("/") ? row.cover_path : `/${row.cover_path}`) : null;
   return {
     id: row.id,
     slug: row.slug,
@@ -50,9 +53,9 @@ function summary(row: Row, authorRows: Row[], topicRows: Row[]): BrainBookSummar
     subtitle: row.subtitle,
     authors: authorsFor(row.id, authorRows, row.original_author),
     topics: topicsFor(row.id, topicRows),
-    cover: row.cover_path ? {
+    cover: coverPath ? {
       status: "cached",
-      public_path: row.cover_path.startsWith("/") ? row.cover_path : `/${row.cover_path}`,
+      public_path: coverPath,
       source_url: row.cover_source_url,
       provider: row.cover_provider,
       provider_id: row.cover_provider_id,

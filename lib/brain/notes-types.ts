@@ -38,6 +38,7 @@ export interface BrainCurrentState {
   lastConfirmedAt: string;
   where: { city: string; country: string; coordinates?: string | null; timezone?: string | null };
   reading: string | null;
+  readingAuthor?: string | null;
   readingBook?: {
     id: string;
     slug: string;
@@ -46,6 +47,7 @@ export interface BrainCurrentState {
     cover: string | null;
   } | null;
   readingSecondary?: string | null;
+  readingSecondaryAuthor?: string | null;
   readingBooks?: Array<{
     id: string;
     slug: string;

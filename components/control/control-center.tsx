@@ -12,7 +12,7 @@ type Link = { label: string; url: string };
 type Note = { id?: string; title: string; slug: string; excerpt: string; bodyMarkdown: string; publicationState: "draft" | "published"; pinned: boolean; folderSlug: string | null; tags: string[]; sourcePublishedAt: string | null; publishedAt: string | null; editorialNotice: string; externalLinks: Link[]; updatedAt?: string };
 type BookOption = { id: string; slug: string; title: string; authors: string[]; cover: string };
 type VisitOption = { id: string; placeId: string; label: string; publicBlurb: string; whereStayed: string; favoriteThings: string[]; foodDrink: string[] };
-type ControlData = { admin: { displayName: string; email: string }; notes: Note[]; folders: Array<{ id: string; slug: string; label: string }>; currentState: any; bookOptions: BookOption[]; softwareUpdate: any; trash: any[]; activity: any[]; human: any[]; humanRelationshipOptions: any[]; browser: any[]; photos: any[]; photoVisitOptions: VisitOption[] };
+type ControlData = { admin: { displayName: string; email: string }; notes: Note[]; folders: Array<{ id: string; slug: string; label: string }>; currentState: any; bookOptions: BookOption[]; bookIntakes: any[]; softwareUpdate: any; trash: any[]; activity: any[]; human: any[]; humanRelationshipOptions: any[]; browser: any[]; photos: any[]; photoVisitOptions: VisitOption[] };
 
 const blankNote = (): Note => ({ title: "", slug: "", excerpt: "", bodyMarkdown: "", publicationState: "draft", pinned: false, folderSlug: "ideas", tags: [], sourcePublishedAt: null, publishedAt: null, editorialNotice: "", externalLinks: [] });
 
@@ -122,17 +122,31 @@ function NowEditor({ state: initial, books, onBack, reload, notify }: { state: a
 }
 
 function ReadingBookPicker({ label, idKey, textKey, state, books, set }: { label: string; idKey: string; textKey: string; state: any; books: BookOption[]; set: (key: string, value: any) => void }) {
-  const linked = books.find((book) => book.id === state[idKey]);
+  const [created, setCreated] = useState<BookOption | null>(null);
+  const linked = books.find((book) => book.id === state[idKey]) || (created?.id === state[idKey] ? created : null);
   const [query, setQuery] = useState(linked?.title || "");
   const [open, setOpen] = useState(false);
+  const authorKey = `${textKey}Author`;
+  const initialParts = !state[idKey] && !state[authorKey] ? String(state[textKey] || "").match(/^(.+?)\s+by\s+([^,]+)$/i) : null;
+  const [newTitle, setNewTitle] = useState(initialParts?.[1]?.trim() || state[textKey] || "");
+  const [newAuthor, setNewAuthor] = useState(initialParts?.[2]?.trim() || state[authorKey] || "");
+  const [highlightsReference, setHighlightsReference] = useState("");
+  const [adding, setAdding] = useState(false);
   const matches = useMemo(() => {
     const needle = query.trim().toLowerCase();
     if (!needle) return books.slice(0, 8);
     return books.filter((book) => `${book.title} ${book.authors.join(" ")}`.toLowerCase().includes(needle)).slice(0, 8);
   }, [books, query]);
   const choose = (book: BookOption) => { set(idKey, book.id); set(textKey, book.title); setQuery(book.title); setOpen(false); };
-  const manual = () => { set(idKey, null); setQuery(""); setOpen(false); };
-  return <section className="reading-book-picker"><span>{label}</span>{linked ? <div className="linked-book-card"><img src={linked.cover} alt=""/><div><small>LINKED TO BOOKS</small><strong>{linked.title}</strong><span>{linked.authors.join(", ") || "Author not recorded"}</span></div><button type="button" onClick={manual}>Use free text</button></div> : <><label><Search/><input value={query} onFocus={() => setOpen(true)} onChange={(event) => { setQuery(event.target.value); setOpen(true); }} placeholder="Search Books…"/></label>{open && <div className="book-picker-results">{matches.map((book) => <button type="button" key={book.id} onClick={() => choose(book)}><img src={book.cover} alt=""/><span><strong>{book.title}</strong><small>{book.authors.join(", ") || "Author not recorded"}</small></span><BookOpen/></button>)}{!matches.length && <p>No matching Brain Book. Use the field below.</p>}</div>}<Field label="Or enter a book manually"><input value={state[textKey] || ""} onChange={(event) => { set(idKey, null); set(textKey, event.target.value); }} placeholder="Book title or leave blank"/></Field></>}</section>;
+  const manual = () => { set(idKey, null); setQuery(""); setOpen(false); setNewTitle(linked?.title || ""); setNewAuthor(linked?.authors.join(", ") || ""); };
+  async function addBook() {
+    setAdding(true);
+    const response = await fetch("/api/control/book-intake", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ title: newTitle, author: newAuthor, highlightsReference }) });
+    const result = await response.json(); setAdding(false);
+    if (!response.ok) return window.alert(result.error || "The book could not be added.");
+    setCreated(result.book); set(idKey, result.book.id); set(textKey, result.book.title); set(authorKey, result.book.authors[0] || newAuthor); setQuery(result.book.title); setOpen(false);
+  }
+  return <section className="reading-book-picker"><span>{label}</span>{linked ? <div className="linked-book-card"><img src={linked.cover} alt=""/><div><small>LINKED TO BOOKS</small><strong>{linked.title}</strong><span>{linked.authors.join(", ") || "Author not recorded"}</span></div><button type="button" onClick={manual}>Change book</button></div> : <><label><Search/><input value={query} onFocus={() => setOpen(true)} onChange={(event) => { setQuery(event.target.value); setOpen(true); }} placeholder="Search your Library…"/></label>{open && <div className="book-picker-results">{matches.map((book) => <button type="button" key={book.id} onClick={() => choose(book)}><img src={book.cover} alt=""/><span><strong>{book.title}</strong><small>{book.authors.join(", ") || "Author not recorded"}</small></span><BookOpen/></button>)}{!matches.length && <p>Not in your Library yet. Add it below.</p>}</div>}<div className="new-book-intake"><div className="new-book-intake-head"><strong>Add a new book</strong><small>This creates a real Library entry and looks for a lawful cover.</small></div><Field label="Title"><input value={newTitle} onChange={(event) => { setNewTitle(event.target.value); set(textKey, event.target.value); }} placeholder="Book title"/></Field><Field label="Author"><input value={newAuthor} onChange={(event) => { setNewAuthor(event.target.value); set(authorKey, event.target.value); }} placeholder="Author name"/></Field><Field label="Where should I find the highlights? · private"><textarea rows={2} value={highlightsReference} onChange={(event) => setHighlightsReference(event.target.value)} placeholder="Paste a Google Doc link, local folder/path, or a short instruction for later import."/></Field><button type="button" className="add-library-book" disabled={adding || !newTitle.trim() || !newAuthor.trim()} onClick={addBook}><BookOpen/>{adding ? "Finding the book…" : "Add to Library"}</button><small className="intake-privacy">Highlights are queued for later import and are never published from this field.</small></div></>}</section>;
 }
 
 function PlacesEditor({ visits, onBack, reload, notify }: { visits: VisitOption[]; onBack: () => void; reload: () => Promise<void>; notify: (value: string) => void }) {

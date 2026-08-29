@@ -390,8 +390,8 @@ function Currently({ state }: { state: BrainCurrentState }) {
 function Reading({ state, onOpen }: { state: BrainCurrentState; onOpen: (bookId?: string) => void }) {
   const linkedBooks = state.readingBooks?.length ? state.readingBooks : state.readingBook ? [{ ...state.readingBook, role: "reading" as const }] : [];
   const items = [
-    linkedBooks.find((book) => book.role === "reading") || (state.reading ? { id: "", title: state.reading, authors: [], cover: null } : null),
-    linkedBooks.find((book) => book.role === "reading_secondary") || (state.readingSecondary ? { id: "", title: state.readingSecondary, authors: [], cover: null } : null),
+    linkedBooks.find((book) => book.role === "reading") || (state.reading ? { id: "", title: state.reading, authors: state.readingAuthor ? [state.readingAuthor] : [], cover: null } : null),
+    linkedBooks.find((book) => book.role === "reading_secondary") || (state.readingSecondary ? { id: "", title: state.readingSecondary, authors: state.readingSecondaryAuthor ? [state.readingSecondaryAuthor] : [], cover: null } : null),
   ].filter(Boolean) as Array<{ id: string; title: string; authors: string[]; cover: string | null }>;
   if (!items.length) return <div className="reading-card reading-card--unset"><div className="reading-library-glyph"><BookOpen /></div><div><span className="eyebrow">READING STATE</span><h2>Not set yet</h2><p>Books are ready in the Library.</p><button onClick={() => onOpen()}>Open Books <span>↗</span></button></div></div>;
   return <div className={`reading-card reading-card--linked ${items.length > 1 ? "reading-card--multiple" : ""}`}><span className="eyebrow">READING NOW</span><div className="reading-card__books">{items.map((book, index)=><button key={book.id || `${book.title}-${index}`} className="reading-card__book" onClick={()=>onOpen(book.id || undefined)}>{book.cover ? <img className="book-cover" src={book.cover} alt={`Cover of ${book.title}`}/> : <div className="reading-library-glyph"><BookOpen /></div>}<span><strong>{book.title}</strong><small>{book.authors.length ? book.authors.join(", ") : "Current reading"}</small></span><i>↗</i></button>)}</div></div>;

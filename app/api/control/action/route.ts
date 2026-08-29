@@ -122,7 +122,9 @@ export async function POST(request: Request) {
       const normalized = {
         schemaVersion: "brain-current-state.control.v1", effectiveAt: now, lastConfirmedAt: now,
         where: { city: String(state.where?.city || "").trim(), country: String(state.where?.country || "").trim(), coordinates: String(state.where?.coordinates || "").trim() || null, timezone: String(state.where?.timezone || "Europe/Sarajevo").trim() },
-        reading: primaryBook?.title || textOrNull(state.reading), readingSecondary: secondaryBook?.title || textOrNull(state.readingSecondary), thinking: textOrNull(state.thinking), rabbitHoles: asStrings(state.rabbitHoles), experiments: asStrings(state.experiments),
+        reading: primaryBook?.title || textOrNull(state.reading), readingAuthor: primaryBook ? null : textOrNull(state.readingAuthor),
+        readingSecondary: secondaryBook?.title || textOrNull(state.readingSecondary), readingSecondaryAuthor: secondaryBook ? null : textOrNull(state.readingSecondaryAuthor),
+        thinking: textOrNull(state.thinking), rabbitHoles: asStrings(state.rabbitHoles), experiments: asStrings(state.experiments),
         training: textOrNull(state.training), eatingLately: textOrNull(state.eatingLately), listening: textOrNull(state.listening), tryingToUnderstand: textOrNull(state.tryingToUnderstand),
         making: textOrNull(state.making), currentQuestion: textOrNull(state.currentQuestion), currentThought: textOrNull(state.currentThought),
         humanBattery: { level: typeof state.humanBattery?.level === "number" ? Math.max(0, Math.min(100, Math.round(state.humanBattery.level))) : null, label: String(state.humanBattery?.label || "Unreported").slice(0, 40), note: textOrNull(state.humanBattery?.note) },
