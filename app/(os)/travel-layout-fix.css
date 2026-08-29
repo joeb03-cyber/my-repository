@@ -9,24 +9,14 @@
   min-height: 0;
 }
 
-/* Focused Stage 4.1 corrections, kept separate from the frozen OS primitives. */
-.os-window--reading {
-  position: fixed !important;
-  z-index: 4000 !important;
-  top: 44px !important;
-  right: 18px !important;
-  left: auto !important;
-}
-
-.os-window--reading .window-controls,
-.os-window--reading .window-grip,
-.os-window--reading .resize-handle { display: none; }
-
-/* Photo lightboxes are transient system-level controls, so they sit above the
-   persistent Reading widget while remaining below the menu popovers. */
-.os-window:has(.travel-viewer) { z-index: 4500 !important; }
-
-.travel-viewer {
+/* Photo lightboxes render through a body portal so Maps and Photos share one
+   viewport-level presentation instead of inheriting an app window's clipping. */
+.travel-viewer--portal {
+  position: fixed;
+  z-index: 4500;
+  inset: 28px 0 0;
+  width: auto;
+  height: auto;
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
 }
@@ -39,10 +29,12 @@
 
 .travel-viewer__image img {
   display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  position: absolute;
+  inset: 42px 65px 14px;
+  width: calc(100% - 130px);
+  height: calc(100% - 56px);
+  max-width: none;
+  max-height: none;
   object-fit: contain;
 }
 
@@ -51,15 +43,19 @@
 }
 
 @media (max-width: 700px) {
-  .travel-viewer {
-    inset: 0;
-    height: 100dvh;
-    max-height: 100dvh;
+  .travel-viewer--portal {
+    inset: 28px 0 0;
+    height: auto;
+    max-height: none;
     grid-template-rows: minmax(0, 1fr) auto;
-    padding-top: env(safe-area-inset-top);
   }
 
-  .travel-viewer__image { padding: 48px 8px 8px; }
+  .travel-viewer__image { padding: 0; }
+  .travel-viewer__image img {
+    inset: 48px 8px 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 56px);
+  }
   .travel-viewer footer {
     min-height: 0;
     padding: 8px max(13px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(13px, env(safe-area-inset-left));

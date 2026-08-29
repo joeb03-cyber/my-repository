@@ -12,11 +12,18 @@ function localDerivativeUrl(photoId: string, size: "small" | "medium" | "large")
   return `/api/brain/travel-photos/media/${photoId}?size=${size}&revision=stage4-heic-v2`;
 }
 
+function withPublicJourneyLabel(photo: LivedPhoto): LivedPhoto {
+  const relationshipIsConfident = photo.relationshipState === "strong" || photo.relationshipState === "editorial_confident";
+  return relationshipIsConfident && photo.visitPlace
+    ? { ...photo, displayPlace: photo.visitPlace }
+    : photo;
+}
+
 async function localHistory(): Promise<LivedHistory> {
   const snapshot = JSON.parse(await readFile(localPath, "utf8")) as LivedHistory;
   return {
     ...snapshot,
-    photos: snapshot.photos.map((photo) => ({
+    photos: snapshot.photos.map((photo) => withPublicJourneyLabel({
       ...photo,
       derivatives: {
         small: { ...photo.derivatives.small, url: localDerivativeUrl(photo.id, "small") },
@@ -43,7 +50,7 @@ async function supabaseHistory(): Promise<LivedHistory> {
     client.from("brain_public_lived_photos").select("*").order("capture_date", { ascending: true, nullsFirst: false }),
   ]);
   if (photoResult.error) throw new Error(`Supabase photos: ${photoResult.error.message}`);
-  const photos: LivedPhoto[] = (photoResult.data || []).map((row: any) => ({
+  const photos: LivedPhoto[] = (photoResult.data || []).map((row: any) => withPublicJourneyLabel({
     id: row.id,
     captureDate: row.capture_date,
     capturedYear: row.captured_year,

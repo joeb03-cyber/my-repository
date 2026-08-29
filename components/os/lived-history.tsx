@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, MapPin, X } from "lucide-react";
 import type { LivedHistory, LivedPhoto } from "@/lib/brain/lived-history-types";
 
@@ -73,12 +74,12 @@ export function TravelPhotoViewer({ photos, photoId, onClose, onChange, onShowMa
     return () => window.removeEventListener("keydown", handler);
   }, [move, onClose]);
   useEffect(() => setImageState("loading"), [photo?.id]);
-  if (!photo) return null;
+  if (!photo || typeof document === "undefined") return null;
   const place = [photo.displayPlace || photo.visitPlace, photo.country].filter(Boolean).join(", ");
-  return <div className="travel-viewer" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  return createPortal(<div className="travel-viewer travel-viewer--portal" role="dialog" aria-modal="true" aria-label="Photo viewer">
     <button className="travel-viewer__close" onClick={onClose} aria-label="Close photo"><X /></button>
     {photos.length > 1 && <><button className="travel-viewer__previous" onClick={() => move(-1)} aria-label="Previous photo"><ChevronLeft /></button><button className="travel-viewer__next" onClick={() => move(1)} aria-label="Next photo"><ChevronRight /></button></>}
     <div className={`travel-viewer__image is-${imageState}`}><img src={photo.derivatives.large.url} alt={place ? `Travel photograph from ${place}` : "Travel photograph"} onLoad={() => setImageState("loaded")} onError={() => setImageState("failed")} />{imageState !== "loaded" && <span>{imageState === "failed" ? "This photograph could not be loaded." : "Loading photograph…"}</span>}</div>
     <footer><div><strong>{place || "Somewhere along the way"}</strong><span>{photoDate(photo)}{photo.hasPrivateMotion ? " · Live Photo still" : ""}</span></div>{onShowMap && photo.visitId && <button onClick={() => onShowMap(photo)}><MapPin /> Show on Map</button>}</footer>
-  </div>;
+  </div>, document.body);
 }

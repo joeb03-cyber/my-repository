@@ -47,7 +47,7 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
 
   return <div className="library-app brain-library">
     <header className="library-head">
-      <div><span className="app-kicker">THE SYNERGETIC HUMAN BRAIN</span><h2>Books</h2><p>{index.bookCount} books · {index.books.reduce((sum, book) => sum + book.highlightCount, 0).toLocaleString()} readable passages</p></div>
+      <div><span className="app-kicker">THE SYNERGETIC HUMAN BRAIN</span><h2>Books</h2><p className="library-intro">Books I’ve read, with the passages I saved along the way.<small>These are mostly raw highlights, not polished notes or summaries.</small></p><p>{index.bookCount} books · {index.books.reduce((sum, book) => sum + book.highlightCount, 0).toLocaleString()} readable passages</p></div>
       <div className="library-head__actions">
         {process.env.NODE_ENV !== "production" && <button className="editorial-entry" onClick={() => setReviewOpen(true)}><SlidersHorizontal /> Review <span>{index.books.reduce((sum, book) => sum + book.reviewFlagCount, 0)}</span></button>}
         <label className="library-search"><Search /><input value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Escape") setQuery(""); }} placeholder="Search title, author, topic…" aria-label="Search Books" />{query && <button type="button" onClick={() => setQuery("")} aria-label="Clear Books search"><X /></button>}</label>

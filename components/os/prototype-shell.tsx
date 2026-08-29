@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { ArrowLeft, BookOpen } from "lucide-react";
+import { ArrowLeft, BookOpen, Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, CloudSun, Sun } from "lucide-react";
 import type { AppId } from "@/data/prototype";
 import { wallpapers } from "@/data/prototype";
 import booksIndexJson from "@/data/brain/books-index.v1.json";
@@ -53,17 +53,35 @@ const initialWindows: WindowState[] = [
   { id: "app-journal", kind: "app", appId: "journal", title: "Notes", x: 280, y: 58, width: 900, height: 640, z: 3 },
 ];
 
-function CurrentContext({ state }: { state: BrainCurrentState }) {
+type CurrentWeather = { temperature: number; label: string; code: number; unit?: string };
+
+function freshDesktopWindows() {
+  const viewportWidth = typeof window === "undefined" ? 1280 : window.innerWidth;
+  return initialWindows.map((win) => win.id === "reading"
+    ? { ...win, x: Math.max(8, viewportWidth - win.width - 18) }
+    : { ...win });
+}
+
+function WeatherGlyph({ weather }: { weather: CurrentWeather }) {
+  const Icon = weather.code === 0 ? Sun
+    : weather.code <= 2 ? CloudSun
+      : weather.code === 3 ? Cloud
+        : weather.code === 45 || weather.code === 48 ? CloudFog
+          : weather.code >= 71 && weather.code <= 77 ? CloudSnow
+            : weather.code >= 95 ? CloudLightning
+              : CloudRain;
+  return <Icon className="weather-glyph" aria-hidden="true" />;
+}
+
+function CurrentContext({ state, weather }: { state: BrainCurrentState; weather: CurrentWeather | null }) {
   const [now, setNow] = useState<Date | null>(null);
-  const [weather, setWeather] = useState<{ temperature: number; label: string } | null>(null);
   useEffect(() => {
     setNow(new Date());
     const interval = window.setInterval(() => setNow(new Date()), 30_000);
     return () => window.clearInterval(interval);
   }, []);
-  useEffect(() => { fetch("/api/brain/weather").then((response) => response.ok ? response.json() : Promise.reject()).then(setWeather).catch(() => setWeather(null)); }, [state.where.city]);
   const time = now ? now.toLocaleTimeString("en-US", { timeZone: state.where.timezone || "Europe/Sarajevo", hour: "numeric", minute: "2-digit" }) : "Right now";
-  return <span title={weather ? `${weather.label} in ${state.where.city} · Open-Meteo` : `Local time in ${state.where.city}`}>{weather ? `${Math.round(weather.temperature)}° · ` : ""}{time}</span>;
+  return <span className="current-context" title={weather ? `${weather.label} in ${state.where.city} · Open-Meteo` : `Local time in ${state.where.city}`}>{weather && <WeatherGlyph weather={weather} />}{weather ? `${Math.round(weather.temperature)}° · ` : ""}{time}</span>;
 }
 
 export default function PrototypeShell({ children }: { children: React.ReactNode }) {
@@ -77,6 +95,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const [activeMenu, setActiveMenu] = useState<"file" | "explore" | "view" | null>(null);
   const [statusPanel, setStatusPanel] = useState<"battery" | "wifi" | "update" | null>(null);
   const [currentState, setCurrentState] = useState<BrainCurrentState>(currentStateJson as BrainCurrentState);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(null);
+  const [libraryCount, setLibraryCount] = useState(brainBooks.length);
   const [osState, setOsState] = useState<BrainOsState>(osStateJson as BrainOsState);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const dockRef = useRef<HTMLElement>(null);
@@ -161,12 +181,20 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
 
   useEffect(() => {
     fetch("/api/brain/current-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
+    fetch("/api/brain/weather").then((response) => response.ok ? response.json() : Promise.reject()).then((value) => setCurrentWeather(value.unavailable ? null : value)).catch(() => setCurrentWeather(null));
+    fetch("/api/brain/books").then((response) => response.ok ? response.json() : Promise.reject()).then((value) => setLibraryCount(value.bookCount ?? value.books?.length ?? brainBooks.length)).catch(() => undefined);
     fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setOsState).catch(() => undefined);
     fetch("/api/brain/travel-photos").then((response) => response.ok ? response.json() : Promise.reject()).then((history) => {
       const isPhone = window.matchMedia("(max-width: 700px)").matches;
       const selected = (history.photos as LivedPhoto[]).filter((photo) => photo.wallpaper && (isPhone ? photo.orientation === "portrait" : photo.orientation === "landscape"));
       if (selected.length) { setWallpaperIndex(0); setCuratedWallpapers(selected); }
     }).catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    setWindows((current) => current.map((win) => win.id === "reading" && win.x === 0
+      ? { ...win, x: Math.max(8, window.innerWidth - win.width - 18) }
+      : win));
   }, []);
 
   useEffect(() => {
@@ -218,7 +246,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const minimizedApps = useMemo(() => new Set(windows.filter((win) => win.kind === "app" && win.appId && win.minimized).map((win) => win.appId)), [windows]);
   const topVisibleZ = Math.max(0, ...windows.filter((win) => !win.minimized).map((win) => win.z));
   const closeMenus = () => { setActiveMenu(null); setStatusPanel(null); setContextMenu(null); };
-  const resetDesktop = () => { setWindows(initialWindows.map((win) => ({ ...win }))); closeMenus(); router.push("/"); };
+  const resetDesktop = () => { setWindows(freshDesktopWindows()); closeMenus(); router.push("/"); };
   const closeActiveWindow = () => {
     const active = windows.find((win) => !win.minimized && win.z === topVisibleZ);
     if (active) closeWindow(active.id);
@@ -297,7 +325,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           <button className={`status-icon ${statusPanel === "battery" ? "is-active" : ""}`} aria-label="Human Battery" title="Human Battery" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "battery" ? null : "battery"); }}><BatteryGlyph level={currentState.humanBattery.level} /></button>
           <button className={`status-icon ${statusPanel === "wifi" ? "is-active" : ""}`} aria-label="Innernet network" title="Innernet" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "wifi" ? null : "wifi"); }}><WifiGlyph /></button>
           <button className={`status-icon ${statusPanel === "update" ? "is-active" : ""}`} aria-label="Software Update" title="Software Update" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "update" ? null : "update"); }}><ControlGlyph /></button>
-          <CurrentContext state={currentState} />
+          <CurrentContext state={currentState} weather={currentWeather} />
           {statusPanel === "battery" && <StatusPopover title="Human Battery"><div className="battery-readout"><BatteryGlyph level={currentState.humanBattery.level}/><strong>{currentState.humanBattery.label}</strong></div><p>{currentState.humanBattery.note || "No check-in note."}</p><small>Manual check-in only · no health data inferred</small></StatusPopover>}
           {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Innernet</strong><small>Connected · full signal</small></span><i/></div><div className="network-row network-row--available network-row--weak"><WifiGlyph strength="weak"/><span><strong>Consensus Reality</strong><small>Available · weak signal</small></span></div><p className="popover-footnote">Networks are handcrafted interface copy.</p></StatusPopover>}
           {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>{osState.softwareUpdate.versionLabel}</span></div><strong>Synergetic Human is up to date</strong><p>{osState.softwareUpdate.new[0] || `Currently making: ${currentState.making || "Not reported"}`}</p><dl><div><dt>Exploring</dt><dd>{osState.softwareUpdate.currentlyExploring[0] || "Not reported"}</dd></div><div><dt>Performance</dt><dd>{osState.softwareUpdate.performance[0] || "Nominally strange"}</dd></div><div><dt>Known issue</dt><dd>{osState.softwareUpdate.knownIssues[0] || "None reported"}</dd></div></dl><button className="popover-action" onClick={() => { openApp("software"); closeMenus(); }}>Open Software Update…</button></StatusPopover>}
@@ -305,6 +333,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       </header>
 
       <section className="desktop-stage" aria-label="Synergetic Human desktop" onPointerDown={closeMenus} onContextMenu={(event) => { event.preventDefault(); setActiveMenu(null); setContextMenu({ x: Math.min(event.clientX, window.innerWidth - 190), y: Math.min(event.clientY, window.innerHeight - 220) }); }}>
+        <button className="wallpaper-caption" onClick={(event) => { event.stopPropagation(); advanceWallpaper(); }} title="Next wallpaper"><span>●</span> {"derivatives" in currentWallpaper ? ([currentWallpaper.displayPlace || currentWallpaper.visitPlace, currentWallpaper.country].filter(Boolean).join(" · ") || "Along the journey") : `${currentWallpaper.label} · ${currentWallpaper.location}`}<small>{"derivatives" in currentWallpaper ? "From Joe’s selected travel photographs" : currentWallpaper.credit}</small></button>
         {windows.map((win) => <WindowFrame key={win.id} windowState={win} isActive={win.z === topVisibleZ} onFocus={focusWindow} onClose={closeWindow} onMinimize={minimizeWindow} onZoom={zoomWindow} onChange={updateWindow}>{renderWindowContent(win)}</WindowFrame>)}
         {contextMenu && <div className="desktop-context-menu" role="menu" style={{ left: contextMenu.x, top: contextMenu.y }} onPointerDown={(event) => event.stopPropagation()}>
           <MenuAction label="Open Finder" onClick={() => { openApp("finder"); closeMenus(); }} />
@@ -317,7 +346,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       </section>
 
       <section className="mobile-shell">
-        {pathname === "/" ? <MobileHome onOpen={(appId) => router.push(routes[appId] ?? `/${appId}`)} /> : (
+        {pathname === "/" ? <MobileHome state={currentState} bookCount={libraryCount} onOpen={(appId) => router.push(routes[appId] ?? `/${appId}`)} /> : (
           <div className="mobile-app-view">
             <header><button onClick={() => mobileBook ? setMobileBook(null) : router.push("/")}><ArrowLeft /></button><div><span>SYNERGETIC HUMAN</span><strong>{mobileBook?.title ?? appNames[currentApp] ?? "Application"}</strong></div></header>
             <div className="mobile-app-scroll">{mobileBook ? <BookDetail slug={mobileBook.slug} onBack={() => setMobileBook(null)} /> : <AppContent appId={currentApp} onBookOpen={setMobileBook} onOpenApp={(appId) => router.push(routes[appId] ?? `/${appId}`)} />}</div>
@@ -325,7 +354,6 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
         )}
       </section>
 
-      <button className="wallpaper-caption" onClick={advanceWallpaper} title="Next wallpaper"><span>●</span> {"derivatives" in currentWallpaper ? ([currentWallpaper.displayPlace || currentWallpaper.visitPlace, currentWallpaper.country].filter(Boolean).join(" · ") || "Along the journey") : `${currentWallpaper.label} · ${currentWallpaper.location}`}<small>{"derivatives" in currentWallpaper ? "From Joe’s selected travel photographs" : currentWallpaper.credit}</small></button>
       <nav ref={dockRef} className="dock" aria-label="Applications" onPointerMove={magnifyDock} onPointerLeave={resetDockTransforms}>
         {apps.map(({ id, label, icon, separated }) => <span className={separated ? "dock-entry dock-entry--separated" : "dock-entry"} key={id}>
           <button className={`dock-item ${openApps.has(id) ? "is-open" : ""} ${minimizedApps.has(id) ? "is-minimized" : ""} ${launchingApp === id ? "is-launching" : ""}`} onClick={() => openApp(id)} aria-label={`${label}${minimizedApps.has(id) ? ", minimized" : ""}`}>
@@ -369,8 +397,9 @@ function Thinking({ state }: { state: BrainCurrentState }) {
   return <><blockquote className="thinking-quote">{thought ? `“${thought}”` : "Current thought not set yet."}</blockquote><div className="thought-meta"><span>{state.rabbitHoles.length ? "CURRENT RABBIT HOLE" : "OPEN CHANNEL"}</span><span>{state.rabbitHoles[0] || "waiting for signal"}</span></div></>;
 }
 
-function MobileHome({ onOpen }: { onOpen: (appId: AppId) => void }) {
-  return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>Sarajevo</h1><p>22° · clear-ish</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>What if a website felt like entering someone’s mind mid-thought?</p></div></div><button className="mobile-reading" onClick={() => onOpen("library")}><AppIcon name="books"/><div><span className="app-kicker">BOOKS</span><strong>163 public books</strong><small>Highlights, sources, and connections</small></div></button><div className="mobile-app-grid">{apps.map((app)=><button key={app.id} onClick={()=>onOpen(app.id)}><AppIcon name={app.icon}/><strong>{app.label}</strong></button>)}</div></div>;
+function MobileHome({ state, bookCount, onOpen }: { state: BrainCurrentState; bookCount: number; onOpen: (appId: AppId) => void }) {
+  const thought = state.currentThought || state.currentQuestion || state.thinking || state.tryingToUnderstand || "Waiting for the next interesting question.";
+  return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>{state.where.city}</h1><p>{state.where.country}</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>{thought}</p></div></div><button className="mobile-reading" onClick={() => onOpen("library")}><AppIcon name="books"/><div><span className="app-kicker">BOOKS</span><strong>{bookCount} Books</strong><small>Highlights, sources, and connections</small></div></button><div className="mobile-app-grid">{apps.map((app)=><button key={app.id} onClick={()=>onOpen(app.id)}><AppIcon name={app.icon}/><strong>{app.label}</strong></button>)}</div></div>;
 }
 
 function SystemMenu({ label, open, onToggle, children }: { label: string; open: boolean; onToggle: () => void; children: React.ReactNode }) {
