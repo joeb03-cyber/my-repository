@@ -181,7 +181,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
 
   useEffect(() => {
     fetch("/api/brain/current-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
-    fetch("/api/brain/weather").then((response) => response.ok ? response.json() : Promise.reject()).then((value) => setCurrentWeather(value.unavailable ? null : value)).catch(() => setCurrentWeather(null));
+    fetch("/api/brain/weather?revision=stage4.1").then((response) => response.ok ? response.json() : Promise.reject()).then((value) => setCurrentWeather(value.unavailable ? null : value)).catch(() => setCurrentWeather(null));
     fetch("/api/brain/books").then((response) => response.ok ? response.json() : Promise.reject()).then((value) => setLibraryCount(value.bookCount ?? value.books?.length ?? brainBooks.length)).catch(() => undefined);
     fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setOsState).catch(() => undefined);
     fetch("/api/brain/travel-photos").then((response) => response.ok ? response.json() : Promise.reject()).then((history) => {
