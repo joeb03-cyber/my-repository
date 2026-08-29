@@ -22,7 +22,7 @@ function rangeLabel(visit: LivedVisit) {
 }
 
 function routeGeoJSON(visits: LivedVisit[]) {
-  const features: Array<Record<string, unknown>> = [];
+  const features: Array<{ type: "Feature"; properties: { from: string; to: string }; geometry: { type: "LineString"; coordinates: number[][] } }> = [];
   for (let index = 1; index < visits.length; index += 1) {
     const previous = visits[index - 1], current = visits[index];
     if (previous.latitude == null || previous.longitude == null || current.latitude == null || current.longitude == null) continue;
@@ -44,7 +44,7 @@ function routeGeoJSON(visits: LivedVisit[]) {
     });
     features.push({ type: "Feature", properties: { from: previous.id, to: current.id }, geometry: { type: "LineString", coordinates } });
   }
-  return { type: "FeatureCollection", features };
+  return { type: "FeatureCollection" as const, features };
 }
 
 export default function MapsApp({ onOpenApp: _onOpenApp }: { onOpenApp?: (appId: AppId) => void }) {
