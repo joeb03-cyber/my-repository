@@ -3,6 +3,7 @@ import PrototypeShell from "@/components/os/prototype-shell";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./os.css";
 import "./travel-layout-fix.css";
+import "./messages-polish.css";
 
 export const metadata: Metadata = {
   title: "Synergetic Human OS — Prototype",

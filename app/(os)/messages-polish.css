@@ -1,0 +1,13 @@
+.message-thread-end {
+  font-size: 8.5px;
+  line-height: 1.45;
+}
+.message-thread-end small {
+  display: block;
+  margin-top: 4px;
+  color: #adb0b3;
+  font-size: 7px;
+}
+.message-time {
+  letter-spacing: .2em;
+}

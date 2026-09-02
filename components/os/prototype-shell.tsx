@@ -96,6 +96,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const [statusPanel, setStatusPanel] = useState<"battery" | "wifi" | "update" | null>(null);
   const [currentState, setCurrentState] = useState<BrainCurrentState>(currentStateJson as BrainCurrentState);
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(null);
+  const [libraryBooks, setLibraryBooks] = useState<BrainBookSummary[]>(brainBooks);
   const [libraryCount, setLibraryCount] = useState(brainBooks.length);
   const [osState, setOsState] = useState<BrainOsState>(osStateJson as BrainOsState);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
@@ -153,11 +154,11 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
     const appId = routeApps[parts[0]];
     if (appId) openApp(appId, false);
     if (appId === "library" && parts[1]) {
-      const book = brainBooks.find((item) => item.slug === parts[1]);
+      const book = libraryBooks.find((item) => item.slug === parts[1]);
       if (book) { openBook(book, false); setMobileBook(book); }
       else setMobileBook(null);
     } else setMobileBook(null);
-  }, [pathname, openApp, openBook]);
+  }, [pathname, openApp, openBook, libraryBooks]);
 
   const activeWallpapers = curatedWallpapers.length ? curatedWallpapers : wallpapers;
 
@@ -182,7 +183,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   useEffect(() => {
     fetch("/api/brain/current-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
     fetch("/api/brain/weather?revision=stage4.1").then((response) => response.ok ? response.json() : Promise.reject()).then((value) => setCurrentWeather(value.unavailable ? null : value)).catch(() => setCurrentWeather(null));
-    fetch("/api/brain/books").then((response) => response.ok ? response.json() : Promise.reject()).then((value) => setLibraryCount(value.bookCount ?? value.books?.length ?? brainBooks.length)).catch(() => undefined);
+    fetch("/api/brain/books").then((response) => response.ok ? response.json() : Promise.reject()).then((value: BrainBooksIndex) => { setLibraryBooks(value.books || brainBooks); setLibraryCount(value.bookCount ?? value.books?.length ?? brainBooks.length); }).catch(() => undefined);
     fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setOsState).catch(() => undefined);
     fetch("/api/brain/travel-photos").then((response) => response.ok ? response.json() : Promise.reject()).then((history) => {
       const isPhone = window.matchMedia("(max-width: 700px)").matches;
@@ -282,7 +283,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const renderWindowContent = (win: WindowState) => {
     if (win.kind === "currently") return <Currently state={currentState} />;
     if (win.kind === "reading") return <Reading state={currentState} onOpen={(bookId) => {
-      const linked = bookId ? brainBooks.find((book) => book.id === bookId) : null;
+      const linked = bookId ? libraryBooks.find((book) => book.id === bookId) : null;
       if (linked) openBook(linked); else openApp("library");
     }} />;
     if (win.kind === "thinking") return <Thinking state={currentState} />;

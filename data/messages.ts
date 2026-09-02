@@ -10,6 +10,108 @@ export type GroundedConversation = {
   exchanges: MessageExchange[];
 };
 
+// These retain the grounded answers and sources while letting the questions
+// read like one curious conversation instead of a stack of interview prompts.
+const conversationalQuestionSets: Record<string, string[]> = {
+  "joe-hudson": [
+    "Okay, why does the emotion I keep dodging somehow keep finding me anyway?",
+    "So when I’m thinking a decision absolutely to death, what am I usually avoiding?",
+    "Could ‘being peaceful’ just be avoidance wearing expensive linen?",
+    "My inner critic says it has several notes. Do I hear it out or change the locks?",
+    "Please tell me I don’t need to discover one grand purpose before lunch.",
+    "And ambition—beautiful fuel, disguised self-rejection, or annoyingly both?",
+  ],
+  "ellen-langer": [
+    "You say mindfulness doesn’t require meditating on a mountain. What does it require?",
+    "How much can the story in my head actually affect the body carrying it around?",
+    "Give me one way to be less asleep at the wheel today.",
+    "Is the situation stressful, or am I adding some artisanal stress of my own?",
+    "When does a useful label quietly become a tiny prison?",
+  ],
+  "bruce-lipton": [
+    "Let’s start with the headline: are my genes actually the boss of me?",
+    "Then why does aggressively positive thinking so often accomplish absolutely nothing?",
+    "How do I spot programming I don’t remember downloading?",
+    "Why does the humble cell membrane get top billing in your version of biology?",
+  ],
+  "madhava-setty": [
+    "What was the first loose thread that made you question the official 9/11 story?",
+    "If experts disagree and I’m not an engineer, how do I think without outsourcing my brain?",
+    "What evidence still refuses to fit neatly inside the public account?",
+    "Why can asking a factual question feel like violating a social dress code?",
+    "How do you reject an official story without instantly marrying a counter-story?",
+    "Does a narrative really need a smoky back room, or can institutions maintain it all by themselves?",
+  ],
+  "andy-galpin": [
+    "Exercise advice now has the complexity of tax law. Where does a normal human begin?",
+    "Before I buy another powder, what nutrition basics are probably still doing most of the work?",
+    "How do I know whether I need another workout or, scientifically speaking, a nap?",
+    "Why can’t I just declare one exercise ‘the best’ and retire from thinking?",
+    "How much tracking is useful before I become a full-time administrator of my own hamstrings?",
+  ],
+  "steven-young": [
+    "How does a theoretical physicist end up wandering toward alchemy?",
+    "Where exactly does science end and scientism put on the lab coat?",
+    "Why should alchemy matter if my lead-to-gold side hustle is going badly?",
+    "Why does physically making something teach what another elegant theory can’t?",
+  ],
+  "david-hawkins": [
+    "What does surrender actually mean when I’m annoyed right now—not spiritually annoyed in a book?",
+    "How should I use the Map of Consciousness without turning life into a spiritual leaderboard?",
+    "Why can’t the intellect think its way to the end of the spiritual search? It seems offended.",
+    "Why would I cling to an emotion that clearly makes my afternoon worse?",
+    "Does forgiveness require pretending the thing was fine?",
+    "What makes spiritual practice real rather than an impressive pile of concepts?",
+  ],
+  "gabor-mate": [
+    "When you say trauma, do you mean the thing that happened or what happened inside me afterward?",
+    "Why would a child trade authenticity for attachment?",
+    "How do stress and emotion enter the illness conversation without becoming a cartoon explanation for everything?",
+    "What question is more useful than ‘What’s wrong with this addict?’",
+    "Is a boundary sometimes just the body saying no before the mouth catches up?",
+  ],
+  "rolf-potts": [
+    "What is vagabonding once we remove the backpack, the sepia filter, and the Instagram caption?",
+    "Do I need to be rich, or just less attached to owning seventeen very specific kitchen objects?",
+    "Why travel slowly when I could efficiently collect twelve landmarks before lunch?",
+    "What makes a better itinerary than a list of places I’m apparently required to care about?",
+    "Are loneliness, boredom, and getting lost bugs—or secretly half the operating system?",
+    "What should travel change when home eventually becomes a place again?",
+  ],
+  "kevin-kelly": [
+    "How do I disagree with someone without immediately drafting a closing argument?",
+    "What’s a decent way to stop robbing my future self for the convenience of present me?",
+    "What makes travel interesting after the novelty chemicals wear off?",
+    "Should creative work ever listen to the market, or politely pretend it can’t hear it?",
+    "My attention appears to have been acquired by several apps. What should I notice?",
+    "What matters more than talent when talent is feeling dramatic?",
+    "How do I become more myself without turning ‘being different’ into another costume?",
+  ],
+  "richard-schwartz": [
+    "Do I contain multitudes, or is my brain just running too many group chats?",
+    "‘No bad parts’ sounds generous. What about the part currently ruining everything?",
+    "Who—or what—is the Self in the middle of this crowded house?",
+    "Can you explain protectors and exiles without making my inner world need an org chart?",
+    "What does unblending look like when a part is very sure it is the entire company?",
+    "Can IFS help during an argument before everyone involved becomes a trial lawyer?",
+  ],
+  "lynne-mctaggart": [
+    "What actually happens in a Power of Eight group?",
+    "Is eight sacred, or did ‘Power of Seven-ish’ simply lose in the title meeting?",
+    "Walk me through a session without adding incense that isn’t strictly necessary.",
+    "Why might focusing on someone else’s healing change the person doing the focusing?",
+    "How does a curious skeptic try this without pretending to believe more than they do?",
+  ],
+  "paul-millerd": [
+    "What is the pathless path besides a phrase that makes my résumé nervous?",
+    "What exactly is the default path—and when did I apparently agree to it?",
+    "How do I know whether work has swallowed my identity and is now wearing my clothes?",
+    "Do I need to dramatically quit everything, or can I begin without a cinematic montage?",
+    "Where does money belong once it stops being the scoreboard?",
+    "How do you live with uncertainty when it refuses to provide quarterly guidance?",
+  ],
+};
+
 const initialGroundedConversations: GroundedConversation[] = [
   {
     slug: "joe-hudson", name: "Joe Hudson", initials: "JH", accent: "#d27a59",
@@ -487,4 +589,10 @@ export const groundedConversations: GroundedConversation[] = [
     exchanges: [...conversation.exchanges, ...(addedExchanges[conversation.slug] ?? [])],
   })),
   ...newGroundedConversations,
-];
+].map((conversation) => ({
+  ...conversation,
+  exchanges: conversation.exchanges.map((exchange, index) => ({
+    ...exchange,
+    question: conversationalQuestionSets[conversation.slug]?.[index] || exchange.question,
+  })),
+}));

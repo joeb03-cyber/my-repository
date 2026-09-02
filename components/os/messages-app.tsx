@@ -37,15 +37,15 @@ export default function MessagesApp() {
         <small>source-grounded reconstruction</small>
       </header>
       <div className="message-thread-scroll">
-        <div className="message-identity"><strong>{selected.name}</strong><p>{selected.identity}</p><span>Choose a thread below. Answers are concise syntheses of the linked material, not direct quotes or live AI.</span></div>
+        <div className="message-identity"><strong>{selected.name}</strong><p>{selected.identity}</p><span>An imaginary conversation assembled from things this person has actually written or said. Tap the sources when a thread gets interesting.</span></div>
         {selected.exchanges.map((exchange, index) => <article className="message-exchange" key={exchange.question}>
           <div className="message-bubble message-bubble--joe"><span>You</span><p>{exchange.question}</p></div>
           <div className="message-bubble message-bubble--person"><span>{selected.name}</span><p>{exchange.answer}</p>
             <div className="message-sources">{exchange.sources.map((source) => <a key={`${source.url}-${source.label}`} href={source.url} target={source.url.startsWith("/") ? undefined : "_blank"} rel={source.url.startsWith("/") ? undefined : "noreferrer"}><small>{source.kind}</small>{source.label}<ExternalLink/></a>)}</div>
           </div>
-          {index < selected.exchanges.length - 1 && <div className="message-time">source trail {index + 1}</div>}
+          {index < selected.exchanges.length - 1 && <div className="message-time">•••</div>}
         </article>)}
-        <div className="message-thread-end">Conversation assembled from reviewed source material · no answer generated on demand</div>
+        <div className="message-thread-end">That’s enough pretending the bookshelf has iMessage for now.<small>Answers remain source-grounded reconstructions, never live impersonation.</small></div>
       </div>
     </section>
   </div>;
