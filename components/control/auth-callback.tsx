@@ -10,26 +10,16 @@ export default function AuthCallback({ supabaseUrl, anonKey }: { supabaseUrl: st
   useEffect(() => {
     let active = true;
     async function finish() {
-      const fragment = new URLSearchParams(window.location.hash.slice(1));
-      const errorDescription = fragment.get("error_description");
-      if (errorDescription) throw new Error(errorDescription);
-      const accessToken = fragment.get("access_token");
-      const refreshToken = fragment.get("refresh_token");
-      const code = new URL(window.location.href).searchParams.get("code");
-      const supabase = createBrowserClient(supabaseUrl, anonKey, { auth: { flowType: "pkce", detectSessionInUrl: false } });
-      if (code) {
-        const { error } = await supabase.auth.exchangeCodeForSession(code);
-        if (error) throw error;
-        window.history.replaceState({}, document.title, "/control/auth/callback");
-      } else if (accessToken && refreshToken) {
-        // Complete any already-issued implicit link during the transition to PKCE.
-        const { error } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
-        if (error) throw error;
-        window.history.replaceState({}, document.title, "/control/auth/callback");
-      } else {
-        const { data } = await supabase.auth.getSession();
-        if (!data.session) throw new Error("This link is incomplete, expired, or has already been used.");
-      }
+      // Supabase Auth initializes as the browser client is created. For a PKCE
+      // callback it consumes the URL code and its verifier exactly once. Calling
+      // exchangeCodeForSession here as well would race that built-in exchange.
+      const supabase = createBrowserClient(supabaseUrl, anonKey, { auth: { flowType: "pkce", detectSessionInUrl: true } });
+      const { error: initializationError } = await supabase.auth.initialize();
+      window.history.replaceState({}, document.title, "/control/auth/callback");
+      if (initializationError) throw new Error("This sign-in link is invalid, expired, or has already been used.");
+
+      const { data, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError || !data.session) throw new Error("This sign-in link is incomplete, expired, or has already been used.");
       const response = await fetch("/api/control/content", { cache: "no-store" });
       if (!response.ok) throw new Error(response.status === 401 ? "This account is not authorized for Control Center." : "The private session could not be verified.");
       if (active) window.location.replace("/control");
