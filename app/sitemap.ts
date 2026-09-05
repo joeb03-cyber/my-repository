@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getNotesIndex } from "@/lib/brain/notes.server";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (process.env.SITE_ENV === "staging") return [];
   const base = process.env.NEXT_PUBLIC_SITE_URL || "https://synergetichuman.com";
