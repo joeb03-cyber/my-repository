@@ -6,8 +6,8 @@ import "./travel-layout-fix.css";
 import "./messages-polish.css";
 
 export const metadata: Metadata = {
-  title: "Synergetic Human OS — Prototype",
-  description: "A visual prototype of a personal operating system.",
+  title: "Synergetic Human OS",
+  description: "A personal operating system for a life in motion.",
   robots:
     process.env.SITE_ENV === "staging"
       ? { index: false, follow: false, nocache: true }

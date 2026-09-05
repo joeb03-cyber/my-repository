@@ -264,6 +264,48 @@ export async function POST(request: Request) {
       const { error } = await db.from("rabbit_holes").update({publication_state:"archived",visibility:"private",editorial_state:"rejected"}).eq("id",input.id);
       if(error)throw error; return NextResponse.json({ok:true});
     }
+    if (input.action === "save-conversation") {
+      const item = input.item || {}; const id = item.id || crypto.randomUUID();
+      const personName = String(item.personName || "").trim().slice(0, 160);
+      const title = String(item.title || personName).trim().slice(0, 180);
+      const slug = String(item.slug || "").trim().toLowerCase();
+      const publicationState = item.publicationState === "published" ? "published" : "draft";
+      const messages = (Array.isArray(item.messages) ? item.messages : []).slice(0, 40).map((message: any, index: number) => ({
+        id: message.id || crypto.randomUUID(), speakerRole: message.speakerRole === "guest" ? "guest" : "joe",
+        body: String(message.body || "").trim().slice(0, 12000), sortOrder: index * 10 + 10,
+        sources: (Array.isArray(message.sources) ? message.sources : []).slice(0, 10),
+      })).filter((message: any) => message.body);
+      if (!personName || !title || !slugPattern.test(slug)) throw new Error("Add a person, title, and simple lowercase slug.");
+      if (messages.length < 2 || messages[0].speakerRole !== "joe" || messages.some((message: any, index: number) => message.speakerRole !== (index % 2 === 0 ? "joe" : "guest"))) throw new Error("Keep the conversation in alternating You / Guest messages.");
+      if (publicationState === "published" && input.confirmPublish !== true) throw new Error("Publication must be explicitly confirmed.");
+      if (publicationState === "published" && messages.filter((message: any) => message.speakerRole === "guest").some((message: any) => !safeLinks(message.sources).length)) throw new Error("Each published guest reply needs at least one source.");
+      const { error: conversationError } = await db.from("message_conversations").upsert({
+        id, slug, title, person_name: personName, initials: String(item.initials || personName.split(/\s+/).map((part: string) => part[0]).join("").slice(0, 3)).toUpperCase(),
+        identity: String(item.identity || "").trim().slice(0, 500), preview: String(item.preview || "").trim().slice(0, 240), accent: /^#[0-9a-f]{6}$/i.test(String(item.accent || "")) ? item.accent : "#6f7f91",
+        publication_state: publicationState, visibility: publicationState === "published" ? "public" : "private", editorial_state: publicationState === "published" ? "approved" : "needs_review",
+        sort_order: Number.isFinite(item.sortOrder) ? item.sortOrder : 100,
+        provenance: item.id ? undefined : { source: "control_center", createdBy: auth.user.id, sourceGroundedReconstruction: true },
+      });
+      if (conversationError) throw conversationError;
+      const { data: oldMessages, error: oldError } = await db.from("conversation_messages").select("id").eq("conversation_id", id); if (oldError) throw oldError;
+      if (oldMessages?.length) { const { error } = await db.from("conversation_message_sources").delete().in("message_id", oldMessages.map((message) => message.id)); if (error) throw error; }
+      const { error: clearError } = await db.from("conversation_messages").delete().eq("conversation_id", id); if (clearError) throw clearError;
+      for (const message of messages) {
+        const messageId = crypto.randomUUID();
+        const { error } = await db.from("conversation_messages").insert({ id: messageId, conversation_id: id, speaker_role: message.speakerRole, body: message.body, sort_order: message.sortOrder, provenance: { source: "control_center", editedBy: auth.user.id, ...(message.speakerRole === "guest" ? { sourceGroundedReconstruction: true } : {}) } });
+        if (error) throw error;
+        if (message.speakerRole === "guest") {
+          const links = safeLinks(message.sources);
+          if (links.length) { const rows = links.map((link, index) => ({ id: crypto.randomUUID(), message_id: messageId, label: link.label, url: link.url, source_kind: ["book","interview","article","podcast","research"].includes(message.sources[index]?.kind) ? message.sources[index].kind : "article", sort_order: index * 10 + 10, provenance: { source: "control_center" } })); const { error: sourceError } = await db.from("conversation_message_sources").insert(rows); if (sourceError) throw sourceError; }
+        }
+      }
+      return NextResponse.json({ ok: true, id, publicationState });
+    }
+    if (input.action === "archive-conversation") {
+      if (!input.id || input.confirm !== true) throw new Error("Archive confirmation required.");
+      const { error } = await db.from("message_conversations").update({ publication_state: "archived", visibility: "private", editorial_state: "rejected" }).eq("id", input.id);
+      if (error) throw error; return NextResponse.json({ ok: true });
+    }
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Save failed" }, { status: 400 });

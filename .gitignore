@@ -57,3 +57,6 @@ IMPLEMENTATION.md
 # Private Kortex/Eden archive discovery. These local reports can contain
 # sensitive filenames, excerpts, dates, and source metadata.
 /artifacts/private-archive-discovery/
+
+# Private editorial audits may quote archived or unpublished Brain material.
+/docs/*.private.md

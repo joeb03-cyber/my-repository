@@ -15,8 +15,14 @@ export default function AuthCallback({ supabaseUrl, anonKey }: { supabaseUrl: st
       if (errorDescription) throw new Error(errorDescription);
       const accessToken = fragment.get("access_token");
       const refreshToken = fragment.get("refresh_token");
-      const supabase = createBrowserClient(supabaseUrl, anonKey, { auth: { flowType: "implicit", detectSessionInUrl: false } });
-      if (accessToken && refreshToken) {
+      const code = new URL(window.location.href).searchParams.get("code");
+      const supabase = createBrowserClient(supabaseUrl, anonKey, { auth: { flowType: "pkce", detectSessionInUrl: false } });
+      if (code) {
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
+        if (error) throw error;
+        window.history.replaceState({}, document.title, "/control/auth/callback");
+      } else if (accessToken && refreshToken) {
+        // Complete any already-issued implicit link during the transition to PKCE.
         const { error } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
         if (error) throw error;
         window.history.replaceState({}, document.title, "/control/auth/callback");

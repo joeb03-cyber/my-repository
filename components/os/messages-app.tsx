@@ -1,24 +1,28 @@
 "use client";
 
 import { ArrowLeft, ExternalLink, Search, Sparkles } from "lucide-react";
-import { useMemo, useState } from "react";
-import { groundedConversations } from "@/data/messages";
+import { useEffect, useMemo, useState } from "react";
+import { groundedConversations, type GroundedConversation } from "@/data/messages";
 
 export default function MessagesApp() {
+  const [items, setItems] = useState<GroundedConversation[]>(groundedConversations);
   const [selectedSlug, setSelectedSlug] = useState(groundedConversations[0].slug);
   const [query, setQuery] = useState("");
   const [mobileThreadOpen, setMobileThreadOpen] = useState(false);
   const conversations = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    if (!needle) return groundedConversations;
-    return groundedConversations.filter((item) => `${item.name} ${item.identity} ${item.preview}`.toLowerCase().includes(needle));
-  }, [query]);
-  const selected = groundedConversations.find((item) => item.slug === selectedSlug) || groundedConversations[0];
+    if (!needle) return items;
+    return items.filter((item) => `${item.name} ${item.identity} ${item.preview}`.toLowerCase().includes(needle));
+  }, [items, query]);
+  const selected = items.find((item) => item.slug === selectedSlug) || items[0];
+  useEffect(() => { fetch("/api/brain/messages").then((response) => response.json()).then((value) => { if (value.conversations?.length) { setItems(value.conversations); setSelectedSlug((current) => value.conversations.some((item: GroundedConversation) => item.slug === current) ? current : value.conversations[0].slug); } }).catch(() => {}); }, []);
   const choose = (slug: string) => { setSelectedSlug(slug); setMobileThreadOpen(true); };
+
+  if (!selected) return <div className="messages-app system-app"><div className="message-no-results">No published conversations yet.</div></div>;
 
   return <div className={`messages-app system-app ${mobileThreadOpen ? "is-thread-open" : ""}`}>
     <aside className="messages-list">
-      <div className="os-toolbar"><strong>Messages</strong><span>{groundedConversations.length} conversations</span></div>
+      <div className="os-toolbar"><strong>Messages</strong><span>{items.length} conversations</span></div>
       <label className="system-search"><Search/><input value={query} onChange={(event) => setQuery(event.target.value)} aria-label="Search Messages" placeholder="Search"/></label>
       <div className="message-disclosure"><Sparkles/><span>Source-grounded reconstructions—not the actual person.</span></div>
       <div className="message-conversation-list">

@@ -1,12 +1,3 @@
-import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "notes",
-    openGraph: {
-      images: [`/notes/api/og/?title=${encodeURIComponent("notes")}&emoji=${encodeURIComponent("✏️")}`],
-    },
-  };
-}
-
-export default async function Home() {}
+export default function LegacyNotesIndex() { redirect("/journal"); }

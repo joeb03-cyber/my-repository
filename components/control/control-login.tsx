@@ -12,7 +12,7 @@ export default function ControlLogin({ supabaseUrl, anonKey, initialError = "" }
   async function submit(event: React.FormEvent) {
     event.preventDefault();
     setStatus("sending"); setMessage("");
-    const supabase = createBrowserClient(supabaseUrl, anonKey, { auth: { flowType: "implicit", detectSessionInUrl: false } });
+    const supabase = createBrowserClient(supabaseUrl, anonKey, { auth: { flowType: "pkce", detectSessionInUrl: false } });
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
       options: { shouldCreateUser: false, emailRedirectTo: `${window.location.origin}/control/auth/callback` },

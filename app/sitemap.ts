@@ -1,29 +1,10 @@
-import { createClient } from '@/utils/supabase/server'
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { getNotesIndex } from "@/lib/brain/notes.server";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const supabase = createClient();
-
-    const { data: notes } = await supabase
-        .from('notes')
-        .select('slug, created_at')
-        .eq('public', true)
-        .order('created_at', { ascending: false });
-
-    const notesUrls = notes?.map((note) => ({
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/notes/${note.slug}`,
-        lastModified: new Date(note.created_at),
-    })) || [];
-
-    return [
-        {
-            url: process.env.NEXT_PUBLIC_SITE_URL!,
-            lastModified: new Date(),
-        },
-        {
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/notes`,
-            lastModified: new Date(),
-        },
-        ...notesUrls
-    ]
+  if (process.env.SITE_ENV === "staging") return [];
+  const base = process.env.NEXT_PUBLIC_SITE_URL || "https://synergetichuman.com";
+  const notes = await getNotesIndex();
+  const routes = ["", "/library", "/journal", "/atlas", "/photos", "/browser", "/laboratory", "/contacts", "/messages"];
+  return [...routes.map((route) => ({ url: `${base}${route}`, lastModified: new Date() })), ...notes.notes.map((note) => ({ url: `${base}/notes/${note.slug}`, lastModified: new Date(note.updatedAt) }))];
 }

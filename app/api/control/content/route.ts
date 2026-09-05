@@ -65,6 +65,14 @@ export async function GET() {
   const photoDerivativeById = new Map((photoDerivatives.data || []).map((row) => [row.asset_id, row.storage_path]));
   const photoPlaceById = new Map((photoPlaces.data || []).map((row) => [row.id, row]));
   const storageBase = process.env.BRAIN_SUPABASE_URL || "";
+  const [messageConversations, conversationMessages, conversationSources] = await Promise.all([
+    db.from("message_conversations").select("id,slug,title,person_name,initials,identity,preview,accent,publication_state,sort_order").neq("publication_state", "archived").order("sort_order"),
+    db.from("conversation_messages").select("id,conversation_id,speaker_role,body,sort_order,provenance").order("sort_order"),
+    db.from("conversation_message_sources").select("id,message_id,label,url,source_kind,sort_order,provenance").order("sort_order"),
+  ]);
+  const messagesUnavailable = [messageConversations, conversationMessages, conversationSources].some((result) => result.error?.code === "42P01" || result.error?.code === "PGRST205");
+  const messagesFailure = !messagesUnavailable ? [messageConversations, conversationMessages, conversationSources].find((result) => result.error) : null;
+  if (messagesFailure?.error) return NextResponse.json({ error: messagesFailure.error.message }, { status: 500 });
   return NextResponse.json({
     admin: { displayName: auth.admin.display_name, email: auth.admin.email },
     notes,
@@ -101,6 +109,16 @@ export async function GET() {
       entities:(rabbitEntitiesResult.data || []).filter((item)=>item.rabbit_hole_id===hole.id).map((item)=>({ entityId:item.entity_id,label:item.label,publicRole:item.public_role,evidenceLayer:item.evidence_layer,sortOrder:item.sort_order })),
       related:(rabbitLinksResult.data || []).filter((item)=>item.from_rabbit_hole_id===hole.id).map((item)=>({ rabbitHoleId:item.to_rabbit_hole_id,label:item.label,sortOrder:item.sort_order })),
       humanLinks:(rabbitHumanResult.data || []).filter((item)=>item.rabbit_hole_id===hole.id).map((item)=>({ humanEntryId:item.human_entry_id,browserLabel:item.browser_label,humanLabel:item.human_label,sortOrder:item.sort_order })),
+    })),
+    messages: messagesUnavailable ? [] : (messageConversations.data || []).map((conversation) => ({
+      id: conversation.id, slug: conversation.slug, title: conversation.title, personName: conversation.person_name,
+      initials: conversation.initials, identity: conversation.identity, preview: conversation.preview, accent: conversation.accent,
+      publicationState: conversation.publication_state, sortOrder: conversation.sort_order,
+      messages: (conversationMessages.data || []).filter((message) => message.conversation_id === conversation.id).map((message) => ({
+        id: message.id, speakerRole: message.speaker_role, body: message.body, sortOrder: message.sort_order,
+        sourceGrounded: message.speaker_role === "guest" ? message.provenance?.sourceGroundedReconstruction !== false : undefined,
+        sources: (conversationSources.data || []).filter((source) => source.message_id === message.id).map((source) => ({ id: source.id, label: source.label, url: source.url, kind: source.source_kind, sortOrder: source.sort_order })),
+      })),
     })),
     photos: photoFeatureUnavailable ? [] : (photoPublications.data || []).map((photo) => {
       const relationship: any = photoRelationshipById.get(photo.asset_id);

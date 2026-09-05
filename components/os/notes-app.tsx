@@ -20,7 +20,7 @@ export default function NotesApp() {
   useEffect(() => {
     fetch("/api/brain/notes")
       .then((response) => { if (!response.ok) throw new Error("Notes could not be loaded."); return response.json(); })
-      .then((data: BrainNotesIndex) => { setIndex(data); setSelectedId(data.notes[0]?.id || null); })
+      .then((data: BrainNotesIndex) => { const requested = new URLSearchParams(window.location.search).get("note"); const initial = data.notes.find((note) => note.slug === requested) || data.notes[0]; setIndex(data); setSelectedId(initial?.id || null); if (requested && initial) setMobilePane("reader"); })
       .catch((reason) => setError(reason instanceof Error ? reason.message : "Notes could not be loaded."));
   }, []);
 
