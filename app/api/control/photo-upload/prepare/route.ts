@@ -7,6 +7,7 @@ export async function POST(request: Request) {
   const auth = await getControlAdmin();
   if (!auth) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const input = await request.json().catch(() => null) as any;
+  if (input?.uploadMode !== "optimized_publish_v2") return NextResponse.json({ error: "Control Center was updated. Refresh the page, then choose the photo again." }, { status: 409 });
   const name = String(input?.name || "photo").slice(0, 180);
   const size = Number(input?.size || 0);
   const type = String(input?.type || "application/octet-stream").toLowerCase();

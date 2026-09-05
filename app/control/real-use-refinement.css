@@ -5,10 +5,13 @@
 
 .linked-book-actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 4px;
 }
 
-.linked-book-actions button {
+.linked-book-actions button,
+.linked-book-actions label {
   white-space: nowrap;
 }
 
@@ -17,7 +20,8 @@
     grid-column: 1 / -1;
   }
 
-  .linked-book-actions button {
-    flex: 1;
+  .linked-book-actions button,
+  .linked-book-actions label {
+    flex: 1 1 auto;
   }
 }

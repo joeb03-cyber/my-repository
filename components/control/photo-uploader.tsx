@@ -31,11 +31,13 @@ export default function PhotoUploader({ visits, reload, notify }: { visits: Visi
   async function upload(item: QueueItem) {
     change(item.id, { state: "uploading", progress: 0, error: undefined });
     try {
-      const response = await fetch("/api/control/photo-upload/prepare", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: item.file.name, size: item.file.size, type: item.file.type || "application/octet-stream" }) });
-      const prepared = await response.json(); if (!response.ok) throw new Error(prepared.error);
+      const response = await fetch("/api/control/photo-upload/prepare", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ uploadMode: "optimized_publish_v2", name: item.file.name, size: item.file.size, type: item.file.type || "application/octet-stream" }) });
+      const prepared = await response.json().catch(() => null); if (!response.ok) throw new Error(prepared?.error || "The upload could not start. Refresh Control Center and try again.");
+      if (prepared?.uploadMode !== "optimized_publish_v2" || !Array.isArray(prepared.derivatives)) throw new Error("Control Center changed while this page was open. Refresh it, then choose the photo again.");
       const totalBytes = item.derivatives.reduce((sum, derivative) => sum + derivative.byteSize, 0); const loadedByVariant = new Map<string, number>();
       await Promise.all(item.derivatives.map(async (derivative) => {
         const target = prepared.derivatives.find((value: any) => value.variant === derivative.variant);
+        if (!target?.signedUrl) throw new Error(`The ${derivative.variant} image could not be prepared. Refresh and retry this photo.`);
         await uploadSigned(target.signedUrl, derivative.blob, (loaded) => {
           loadedByVariant.set(derivative.variant, loaded);
           const uploaded = Array.from(loadedByVariant.values()).reduce((sum, value) => sum + value, 0);
@@ -43,9 +45,9 @@ export default function PhotoUploader({ visits, reload, notify }: { visits: Visi
         });
       }));
       const finalized = await fetch("/api/control/photo-upload/finalize", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ uploadMode: "optimized_publish_v2", assetId: prepared.assetId, originalName: item.file.name, originalType: item.file.type || "application/octet-stream", originalSize: item.file.size, originalLastModified: item.file.lastModified, width: item.width, height: item.height, capture: item.capture, visitId: item.visitId || null, isPublic: item.isPublic, isWallpaper: item.isWallpaper, derivatives: item.derivatives.map(({ variant, width, height, byteSize, sha256 }) => ({ variant, width, height, byteSize, sha256 })) }) });
-      const value = await finalized.json(); if (!finalized.ok) throw new Error(value.error);
+      const value = await finalized.json().catch(() => null); if (!finalized.ok) throw new Error(value?.error || "The photo uploaded, but could not be added. Retry this photo.");
       change(item.id, { state: "done", progress: 100 }); notify("Photo added"); await reload();
-    } catch (error) { change(item.id, { state: "error", error: error instanceof Error ? error.message : "Upload failed." }); }
+    } catch (error) { change(item.id, { state: "error", progress: 0, error: error instanceof Error && error.message ? error.message : "The photo could not be uploaded. Check the connection and retry it." }); }
   }
   async function uploadReady() {
     const ready = queue.filter((item) => item.state === "ready" || item.state === "error"); if (!ready.length) return;
