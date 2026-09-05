@@ -476,8 +476,8 @@ button:focus-visible, input:focus-visible { outline: none; }
 .window-controls { gap:7px; }
 .window-control { width:11px; height:11px; }
 .window-control svg { width:6px; height:6px; }
-.os-window--currently,.os-window--reading,.os-window--thinking { background:rgba(248,248,247,.84); }
-.os-window--currently .os-window__content,.os-window--reading .os-window__content,.os-window--thinking .os-window__content { overflow:hidden; }
+.os-window--currently,.os-window--reading,.os-window--recently-read,.os-window--thinking { background:rgba(248,248,247,.84); }
+.os-window--currently .os-window__content,.os-window--reading .os-window__content,.os-window--recently-read .os-window__content,.os-window--thinking .os-window__content { overflow:hidden; }
 
 .status-content { padding:11px 14px 8px; }
 .status-content h1 { margin:3px 0 0; font-size:22px; letter-spacing:-.045em; }
@@ -527,6 +527,12 @@ button:focus-visible, input:focus-visible { outline: none; }
 
 @media (max-width:800px) { .wallpaper-caption small { display:none; } }
 
+/* Focused real-use pass: one compact NOW surface plus canonical reading history. */
+.status-content--now dl{display:grid;grid-template-columns:1fr 1fr;gap:7px 10px;margin:9px 0 0;padding-top:8px;border-top:.5px solid rgba(60,60,67,.16)}
+.status-content--now dl>div{min-width:0}.status-content--now dt{color:#8a8e8e;font-size:5.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.status-content--now dd{display:-webkit-box;overflow:hidden;margin:2px 0 0;color:#4e5657;font-size:7.5px;line-height:1.22;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.reading-card__empty{margin:auto!important;color:#7d8182;font-size:8px!important}.reading-card--recent{background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,0))}
+
 @media (max-width:520px) {
   .os-root { overflow:hidden; }
   .menu-bar { height:28px; }
@@ -554,6 +560,18 @@ button:focus-visible, input:focus-visible { outline: none; }
   .mobile-app-view>header { height:54px; }
   .mobile-app-scroll { height:calc(100dvh - 82px); padding-bottom:58px; }
   .app-placeholder { min-height:calc(100dvh - 82px); }
+}
+
+@media (max-width:520px) {
+  .mobile-home{overflow:auto;padding-bottom:90px}
+  .mobile-reading-widgets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+  .mobile-reading-widgets .reading-card{min-width:0;min-height:126px;border:1px solid rgba(255,255,255,.46);border-radius:17px;background:rgba(246,246,246,.78);box-shadow:0 10px 28px rgba(0,0,0,.13);backdrop-filter:blur(24px)}
+  .mobile-reading-widgets .reading-card__books{grid-template-columns:1fr}
+  .mobile-reading-widgets .reading-card__book:nth-child(2){display:none}
+  .mobile-reading-widgets .reading-card__book{grid-template-columns:34px minmax(0,1fr)}
+  .mobile-reading-widgets .reading-card__book .book-cover{width:34px!important;min-width:34px!important;height:49px!important}
+  .mobile-reading-widgets .reading-card__book i{display:none}
+  .mobile-reading-widgets .reading-card__book small{white-space:normal}
 }
 
 /* Brain-backed Library vertical slice */

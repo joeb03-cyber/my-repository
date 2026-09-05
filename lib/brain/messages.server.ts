@@ -1,13 +1,10 @@
 import "server-only";
-import { createClient } from "@supabase/supabase-js";
 import { groundedConversations, type GroundedConversation } from "@/data/messages";
+import { publicBrainClient } from "./public-supabase.server";
 
 export async function getMessages(): Promise<GroundedConversation[]> {
   if (process.env.BRAIN_DATA_SOURCE !== "supabase") return groundedConversations;
-  const url = process.env.BRAIN_SUPABASE_URL;
-  const key = process.env.BRAIN_SUPABASE_ANON_KEY;
-  if (!url || !key) return groundedConversations;
-  const db = createClient(url, key, { auth: { persistSession: false } });
+  const db = publicBrainClient();
   const [conversations, messages, sources] = await Promise.all([
     db.from("brain_public_message_conversations").select("*").order("sort_order"),
     db.from("brain_public_conversation_messages").select("*").order("sort_order"),

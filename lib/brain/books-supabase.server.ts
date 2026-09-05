@@ -1,15 +1,12 @@
 import "server-only";
 
-import { createClient } from "@supabase/supabase-js";
 import type { BrainBookDetail, BrainBookSummary, BrainBooksIndex, BrainContentUnit, BrainPassageGroup, BrainTopic } from "./types";
+import { publicBrainClient } from "./public-supabase.server";
 
 type Row = Record<string, any>;
 
 function client() {
-  const url = process.env.BRAIN_SUPABASE_URL;
-  const anonKey = process.env.BRAIN_SUPABASE_ANON_KEY;
-  if (!url || !anonKey) throw new Error("BRAIN_SUPABASE_URL and BRAIN_SUPABASE_ANON_KEY are required when BRAIN_DATA_SOURCE=supabase");
-  return createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  return publicBrainClient();
 }
 
 async function rows(view: string, query?: (value: any) => any): Promise<Row[]> {

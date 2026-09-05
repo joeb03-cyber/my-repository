@@ -5,11 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { ArrowLeft, BookOpen, Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, CloudSun, Sun } from "lucide-react";
 import type { AppId } from "@/data/prototype";
 import { wallpapers } from "@/data/prototype";
-import booksIndexJson from "@/data/brain/books-index.v1.json";
-import currentStateJson from "@/data/brain/current-state.v1.json";
 import osStateJson from "@/data/brain/os-state.v1.json";
 import type { BrainBookSummary, BrainBooksIndex } from "@/lib/brain/types";
-import { refineBooksIndex } from "@/lib/brain/books-editorial";
 import type { BrainCurrentState } from "@/lib/brain/notes-types";
 import type { BrainOsState } from "@/lib/brain/os-state-types";
 import type { LivedPhoto } from "@/lib/brain/lived-history-types";
@@ -45,11 +42,18 @@ const routeApps: Record<string, AppId> = {
   practice: "practice", reality: "reality", archive: "archive",
   "software-update": "software", "activity-monitor": "activity", "screen-time": "screen-time", terminal: "terminal",
 };
-const brainBooks = refineBooksIndex(booksIndexJson as BrainBooksIndex).books;
+const emptyCurrentState: BrainCurrentState = {
+  schemaVersion: "brain-current-state.loading.v1", effectiveAt: "", lastConfirmedAt: "",
+  where: { city: "", country: "" }, reading: null, readingBooks: [], thinking: null,
+  rabbitHoles: [], experiments: [], training: null, eatingLately: null, listening: null,
+  tryingToUnderstand: null, making: null, currentQuestion: null, currentThought: null,
+  humanBattery: { level: null, label: "Unreported", note: null },
+};
 
 const initialWindows: WindowState[] = [
-  { id: "currently", kind: "currently", title: "Currently", x: 18, y: 38, width: 200, height: 130, z: 1, resizable: false },
+  { id: "currently", kind: "currently", title: "NOW", x: 18, y: 38, width: 244, height: 232, z: 1, resizable: false },
   { id: "reading", kind: "reading", title: "Reading", x: 0, y: 44, width: 292, height: 154, z: 2, resizable: false },
+  { id: "recently-read", kind: "recently-read", title: "Recently Read", x: 0, y: 210, width: 292, height: 154, z: 2, resizable: false },
   { id: "app-journal", kind: "app", appId: "journal", title: "Notes", x: 280, y: 58, width: 900, height: 640, z: 3 },
 ];
 
@@ -57,7 +61,7 @@ type CurrentWeather = { temperature: number; label: string; code: number; unit?:
 
 function freshDesktopWindows() {
   const viewportWidth = typeof window === "undefined" ? 1280 : window.innerWidth;
-  return initialWindows.map((win) => win.id === "reading"
+  return initialWindows.map((win) => win.id === "reading" || win.id === "recently-read"
     ? { ...win, x: Math.max(8, viewportWidth - win.width - 18) }
     : { ...win });
 }
@@ -94,10 +98,10 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const [launchingApp, setLaunchingApp] = useState<AppId | null>(null);
   const [activeMenu, setActiveMenu] = useState<"file" | "explore" | "view" | null>(null);
   const [statusPanel, setStatusPanel] = useState<"battery" | "wifi" | "update" | null>(null);
-  const [currentState, setCurrentState] = useState<BrainCurrentState>(currentStateJson as BrainCurrentState);
+  const [currentState, setCurrentState] = useState<BrainCurrentState>(emptyCurrentState);
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(null);
-  const [libraryBooks, setLibraryBooks] = useState<BrainBookSummary[]>(brainBooks);
-  const [libraryCount, setLibraryCount] = useState(brainBooks.length);
+  const [libraryBooks, setLibraryBooks] = useState<BrainBookSummary[]>([]);
+  const [libraryCount, setLibraryCount] = useState(0);
   const [osState, setOsState] = useState<BrainOsState>(osStateJson as BrainOsState);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const dockRef = useRef<HTMLElement>(null);
@@ -181,11 +185,11 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   }, [advanceWallpaper]);
 
   useEffect(() => {
-    fetch("/api/brain/current-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
+    fetch("/api/brain/current-state", { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
     fetch("/api/brain/weather?revision=stage4.1").then((response) => response.ok ? response.json() : Promise.reject()).then((value) => setCurrentWeather(value.unavailable ? null : value)).catch(() => setCurrentWeather(null));
-    fetch("/api/brain/books").then((response) => response.ok ? response.json() : Promise.reject()).then((value: BrainBooksIndex) => { setLibraryBooks(value.books || brainBooks); setLibraryCount(value.bookCount ?? value.books?.length ?? brainBooks.length); }).catch(() => undefined);
+    fetch("/api/brain/books", { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then((value: BrainBooksIndex) => { setLibraryBooks(value.books || []); setLibraryCount(value.bookCount ?? value.books?.length ?? 0); }).catch(() => undefined);
     fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setOsState).catch(() => undefined);
-    fetch("/api/brain/travel-photos").then((response) => response.ok ? response.json() : Promise.reject()).then((history) => {
+    fetch("/api/brain/travel-photos", { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then((history) => {
       const isPhone = window.matchMedia("(max-width: 700px)").matches;
       const selected = (history.photos as LivedPhoto[]).filter((photo) => photo.wallpaper && (isPhone ? photo.orientation === "portrait" : photo.orientation === "landscape"));
       if (selected.length) { setWallpaperIndex(0); setCuratedWallpapers(selected); }
@@ -193,7 +197,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   }, []);
 
   useEffect(() => {
-    setWindows((current) => current.map((win) => win.id === "reading" && win.x === 0
+    setWindows((current) => current.map((win) => (win.id === "reading" || win.id === "recently-read") && win.x === 0
       ? { ...win, x: Math.max(8, window.innerWidth - win.width - 18) }
       : win));
   }, []);
@@ -288,6 +292,11 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       else if (bookSlug) openBook({ id: bookId || bookSlug, slug: bookSlug, sourcePosition: 0, title: bookTitle || bookSlug, originalTitle: bookTitle || bookSlug, authors: [], topics: [], cover: { status: "placeholder", public_path: "" }, highlightCount: 0, importState: "incomplete", metadataStatus: "runtime_linked", reviewFlagCount: 0 });
       else openApp("library");
     }} />;
+    if (win.kind === "recently-read") return <RecentlyRead state={currentState} onOpen={(bookId, bookSlug, bookTitle) => {
+      const linked = libraryBooks.find((book) => book.id === bookId || book.slug === bookSlug);
+      if (linked) openBook(linked);
+      else if (bookSlug) openBook({ id: bookId || bookSlug, slug: bookSlug, sourcePosition: 0, title: bookTitle || bookSlug, originalTitle: bookTitle || bookSlug, authors: [], topics: [], cover: { status: "placeholder", public_path: "" }, highlightCount: 0, importState: "incomplete", metadataStatus: "runtime_linked", reviewFlagCount: 0 });
+    }} />;
     if (win.kind === "thinking") return <Thinking state={currentState} />;
     if (win.kind === "book") {
       return <BookDetail slug={win.payload || ""} />;
@@ -349,7 +358,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       </section>
 
       <section className="mobile-shell">
-        {pathname === "/" ? <MobileHome state={currentState} bookCount={libraryCount} onOpen={(appId) => router.push(routes[appId] ?? `/${appId}`)} /> : (
+        {pathname === "/" ? <MobileHome state={currentState} bookCount={libraryCount} onOpen={(appId) => router.push(routes[appId] ?? `/${appId}`)} onBookOpen={(book) => openBook(book)} /> : (
           <div className="mobile-app-view">
             <header><button onClick={() => mobileBook ? setMobileBook(null) : router.push("/")}><ArrowLeft /></button><div><span>SYNERGETIC HUMAN</span><strong>{mobileBook?.title ?? appNames[currentApp] ?? "Application"}</strong></div></header>
             <div className="mobile-app-scroll">{mobileBook ? <BookDetail slug={mobileBook.slug} onBack={() => setMobileBook(null)} /> : <AppContent appId={currentApp} onBookOpen={setMobileBook} onOpenApp={(appId) => router.push(routes[appId] ?? `/${appId}`)} />}</div>
@@ -387,7 +396,8 @@ function StatusPopover({ title, children }: { title: string; children: React.Rea
 }
 
 function Currently({ state }: { state: BrainCurrentState }) {
-  return <div className="status-content"><span className="eyebrow">CURRENT COORDINATES</span><h1>{state.where.city}</h1><p>{state.where.country}</p><div className="status-rule"/><small>{state.making ? `Making ${state.making}.` : "Current note not set."}</small><div className="coordinate-row"><span>{state.where.coordinates || "Coordinates not set"}</span></div></div>;
+  const details = [["Thinking", state.thinking], ["Making", state.making], ["Training", state.training], ["Eating", state.eatingLately], ["Listening", state.listening]].filter((entry) => entry[1]);
+  return <div className="status-content status-content--now"><span className="eyebrow">RIGHT NOW</span><h1>{state.where.city || "Somewhere"}</h1><p>{state.where.country || "Location loading…"}</p><dl>{details.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div>;
 }
 
 function Reading({ state, onOpen }: { state: BrainCurrentState; onOpen: (bookId?: string, bookSlug?: string, bookTitle?: string) => void }) {
@@ -400,14 +410,20 @@ function Reading({ state, onOpen }: { state: BrainCurrentState; onOpen: (bookId?
   return <div className={`reading-card reading-card--linked ${items.length > 1 ? "reading-card--multiple" : ""}`}><span className="eyebrow">READING NOW</span><div className="reading-card__books">{items.map((book, index)=><button key={book.id || `${book.title}-${index}`} className="reading-card__book" onClick={()=>onOpen(book.id || undefined, book.slug, book.title)}>{book.cover ? <img className="book-cover" src={book.cover} alt={`Cover of ${book.title}`}/> : <div className="reading-library-glyph"><BookOpen /></div>}<span><strong>{book.title}</strong><small>{book.authors.length ? book.authors.join(", ") : "Current reading"}</small></span><i>↗</i></button>)}</div></div>;
 }
 
+function RecentlyRead({ state, onOpen }: { state: BrainCurrentState; onOpen: (bookId?: string, bookSlug?: string, bookTitle?: string) => void }) {
+  const items = (state.readingBooks || []).filter((book) => book.role === "recently_read" || book.role === "recently_read_secondary").sort((a, b) => a.role === "recently_read" ? -1 : b.role === "recently_read" ? 1 : 0);
+  return <div className={`reading-card reading-card--linked reading-card--recent ${items.length > 1 ? "reading-card--multiple" : ""}`}><span className="eyebrow">RECENTLY READ</span>{items.length ? <div className="reading-card__books">{items.map((book) => <button key={book.id} className="reading-card__book" onClick={() => onOpen(book.id, book.slug, book.title)}>{book.cover ? <img className="book-cover" src={book.cover} alt={`Cover of ${book.title}`}/> : <div className="reading-library-glyph"><BookOpen /></div>}<span><strong>{book.title}</strong><small>{book.authors.join(", ") || "Author not recorded"}</small></span><i>↗</i></button>)}</div> : <p className="reading-card__empty">Choose two books in Control Center.</p>}</div>;
+}
+
 function Thinking({ state }: { state: BrainCurrentState }) {
-  const thought = state.currentThought || state.currentQuestion || state.thinking || state.tryingToUnderstand;
+  const thought = state.thinking;
   return <><blockquote className="thinking-quote">{thought ? `“${thought}”` : "Current thought not set yet."}</blockquote><div className="thought-meta"><span>{state.rabbitHoles.length ? "CURRENT RABBIT HOLE" : "OPEN CHANNEL"}</span><span>{state.rabbitHoles[0] || "waiting for signal"}</span></div></>;
 }
 
-function MobileHome({ state, bookCount, onOpen }: { state: BrainCurrentState; bookCount: number; onOpen: (appId: AppId) => void }) {
-  const thought = state.currentThought || state.currentQuestion || state.thinking || state.tryingToUnderstand || "Waiting for the next interesting question.";
-  return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>{state.where.city}</h1><p>{state.where.country}</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>{thought}</p></div></div><button className="mobile-reading" onClick={() => onOpen("library")}><AppIcon name="books"/><div><span className="app-kicker">BOOKS</span><strong>{bookCount} Books</strong><small>Highlights, sources, and connections</small></div></button><div className="mobile-app-grid">{apps.map((app)=><button key={app.id} onClick={()=>onOpen(app.id)}><AppIcon name={app.icon}/><strong>{app.label}</strong></button>)}</div></div>;
+function MobileHome({ state, bookCount, onOpen, onBookOpen }: { state: BrainCurrentState; bookCount: number; onOpen: (appId: AppId) => void; onBookOpen: (book: BrainBookSummary) => void }) {
+  const thought = state.thinking || "Waiting for the next interesting question.";
+  const openLinked = (bookId?: string, bookSlug?: string) => { const book = state.readingBooks?.find((item) => item.id === bookId || item.slug === bookSlug); if (book) onBookOpen({ ...book, sourcePosition: 0, originalTitle: book.title, topics: [], cover: { status: book.cover ? "cached" : "placeholder", public_path: book.cover || "/book-covers/placeholder.svg" }, highlightCount: 0, importState: "incomplete", metadataStatus: "linked", reviewFlagCount: 0 }); };
+  return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>{state.where.city}</h1><p>{state.where.country}</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>{thought}</p></div></div><div className="mobile-reading-widgets"><Reading state={state} onOpen={openLinked}/><RecentlyRead state={state} onOpen={openLinked}/></div><button className="mobile-reading" onClick={() => onOpen("library")}><AppIcon name="books"/><div><span className="app-kicker">BOOKS</span><strong>{bookCount} Books</strong><small>Highlights, sources, and connections</small></div></button><div className="mobile-app-grid">{apps.map((app)=><button key={app.id} onClick={()=>onOpen(app.id)}><AppIcon name={app.icon}/><strong>{app.label}</strong></button>)}</div></div>;
 }
 
 function SystemMenu({ label, open, onToggle, children }: { label: string; open: boolean; onToggle: () => void; children: React.ReactNode }) {

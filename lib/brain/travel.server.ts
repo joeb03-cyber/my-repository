@@ -1,9 +1,9 @@
 import "server-only";
 
-import { createClient } from "@supabase/supabase-js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { TravelPlace, TravelTimeline, TravelVisit } from "./travel-types";
+import { publicBrainClient } from "./public-supabase.server";
 
 const localPath = path.join(process.cwd(), "data/brain/travel/travel-timeline.v1.json");
 
@@ -44,10 +44,7 @@ async function allRows(client: any, view: string, order?: string) {
 
 export async function getTravelTimeline(): Promise<TravelTimeline> {
   if (process.env.BRAIN_DATA_SOURCE !== "supabase") return localTimeline();
-  const url = process.env.BRAIN_SUPABASE_URL;
-  const anonKey = process.env.BRAIN_SUPABASE_ANON_KEY;
-  if (!url || !anonKey) throw new Error("Staging Brain travel reads require BRAIN_SUPABASE_URL and BRAIN_SUPABASE_ANON_KEY.");
-  const client = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  const client = publicBrainClient();
   const [placeRows, visitRows, overviewRows, movementRows, currentRows] = await Promise.all([
     allRows(client, "brain_public_places", "name"),
     allRows(client, "brain_public_travel_visits", "chronology_index"),

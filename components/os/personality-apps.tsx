@@ -2,20 +2,19 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { Activity, ChevronRight, CircleDot, Clock3, Cpu, Gauge, MapPin, Minus, RotateCcw, Search, ShieldCheck, Sparkles, TerminalSquare, Trash2, X } from "lucide-react";
-import currentStateJson from "@/data/brain/current-state.v1.json";
 import osStateJson from "@/data/brain/os-state.v1.json";
 import type { BrainCurrentState } from "@/lib/brain/notes-types";
 import type { BrainActivityProcess, BrainOsState, BrainTrashItem } from "@/lib/brain/os-state-types";
 
 const localOsState = osStateJson as BrainOsState;
-const localCurrentState = currentStateJson as BrainCurrentState;
+const emptyCurrentState: BrainCurrentState = { schemaVersion:"loading", effectiveAt:"", lastConfirmedAt:"", where:{city:"",country:""}, reading:null, readingBooks:[], thinking:null, rabbitHoles:[], experiments:[], training:null, eatingLately:null, listening:null, tryingToUnderstand:null, making:null, currentQuestion:null, currentThought:null, humanBattery:{level:null,label:"Unreported",note:null} };
 
 function usePublicSystemState() {
   const [osState, setOsState] = useState(localOsState);
-  const [currentState, setCurrentState] = useState(localCurrentState);
+  const [currentState, setCurrentState] = useState(emptyCurrentState);
   useEffect(() => {
-    fetch("/api/brain/os-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setOsState).catch(() => undefined);
-    fetch("/api/brain/current-state").then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
+    fetch("/api/brain/os-state", { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then(setOsState).catch(() => undefined);
+    fetch("/api/brain/current-state", { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
   }, []);
   return { osState, currentState };
 }
@@ -119,7 +118,7 @@ export function TerminalApp() {
     if (command === "help") output = "Supported commands:\n  help\n  whoami\n  whereis joe\n  now\n  books\n  places\n  history\n  clear\n  cat consciousness.txt\n  sudo become-enlightened";
     else if (command === "whoami") output = "joe — human, reader, traveler, builder of this particular machine";
     else if (command === "whereis joe") output = `${currentState.where.city || "location unreported"}, ${currentState.where.country || "earth"}`;
-    else if (command === "now") output = [`reading: ${currentState.reading || "unreported"}`,`making: ${currentState.making || "unreported"}`,`thinking: ${currentState.thinking || currentState.currentThought || "unreported"}`].join("\n");
+    else if (command === "now") output = [`reading: ${currentState.reading || "unreported"}`,`making: ${currentState.making || "unreported"}`,`thinking: ${currentState.thinking || "unreported"}`].join("\n");
     else if (command === "books") { const response=await fetch("/api/brain/books"); const data=response.ok?await response.json():null; output=data?`${data.bookCount} books indexed.`:"Books are temporarily unavailable."; }
     else if (command === "places") { const response=await fetch("/api/brain/travel"); const data=response.ok?await response.json():null; output=data?`${data.stats.uniquePlaces} places across ${data.stats.countries || data.countries?.length || "several"} countries.`:"Places are temporarily unavailable."; }
     else if (command === "history") output = history.length ? history.join("\n") : "No previous commands in this session.";

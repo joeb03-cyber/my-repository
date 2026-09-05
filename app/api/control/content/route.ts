@@ -47,7 +47,7 @@ export async function GET() {
     };
   });
   const currentLinkResult = currentResult.data?.id
-    ? await db.from("current_state_entity_links").select("entity_id,role").eq("snapshot_id", currentResult.data.id).in("role", ["reading", "reading_secondary"])
+    ? await db.from("current_state_entity_links").select("entity_id,role").eq("snapshot_id", currentResult.data.id).in("role", ["reading", "reading_secondary", "recently_read", "recently_read_secondary"])
     : { data: [], error: null };
   if (currentLinkResult.error) return NextResponse.json({ error: currentLinkResult.error.message }, { status: 500 });
   const [photoPublications, photoRelationships, photoDerivatives, photoVisits, photoPlaces, visitEditorial] = await Promise.all([
@@ -81,6 +81,8 @@ export async function GET() {
       ...currentResult.data.state,
       readingBookId: currentLinkResult.data?.find((link) => link.role === "reading")?.entity_id || null,
       readingBookIdSecondary: currentLinkResult.data?.find((link) => link.role === "reading_secondary")?.entity_id || null,
+      recentlyReadBookId: currentLinkResult.data?.find((link) => link.role === "recently_read")?.entity_id || null,
+      recentlyReadBookIdSecondary: currentLinkResult.data?.find((link) => link.role === "recently_read_secondary")?.entity_id || null,
     } : null,
     bookOptions: booksIndex.books.map((book) => ({ id: book.id, slug: book.slug, title: book.title, authors: book.authors, cover: book.cover.public_path })),
     bookIntakes: intakeResult.error ? [] : intakeResult.data || [],

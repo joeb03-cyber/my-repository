@@ -1,10 +1,10 @@
 import "server-only";
 
-import { createClient } from "@supabase/supabase-js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { LivedHistory, LivedPhoto } from "./lived-history-types";
 import { getTravelTimeline } from "./travel.server";
+import { publicBrainClient } from "./public-supabase.server";
 
 const localPath = path.join(process.cwd(), "artifacts/photo-curation/stage4/public-photo-snapshot.private.json");
 
@@ -41,10 +41,7 @@ function publicStorageUrl(storagePath: string) {
 }
 
 async function supabaseHistory(): Promise<LivedHistory> {
-  const url = process.env.BRAIN_SUPABASE_URL;
-  const anonKey = process.env.BRAIN_SUPABASE_ANON_KEY;
-  if (!url || !anonKey) throw new Error("Staging Brain photo reads require Supabase public credentials.");
-  const client = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  const client = publicBrainClient();
   const [timeline, photoResult] = await Promise.all([
     getTravelTimeline(),
     client.from("brain_public_lived_photos").select("*").order("capture_date", { ascending: true, nullsFirst: false }),

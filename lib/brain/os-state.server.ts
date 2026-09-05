@@ -1,16 +1,13 @@
 import "server-only";
 
-import { createClient } from "@supabase/supabase-js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { BrainOsState } from "./os-state-types";
+import { publicBrainClient } from "./public-supabase.server";
 
 export async function getOsState(): Promise<BrainOsState> {
   if (process.env.BRAIN_DATA_SOURCE !== "supabase") return JSON.parse(await readFile(path.join(process.cwd(), "data/brain/os-state.v1.json"), "utf8"));
-  const url = process.env.BRAIN_SUPABASE_URL;
-  const key = process.env.BRAIN_SUPABASE_ANON_KEY;
-  if (!url || !key) throw new Error("Staging Brain environment is required.");
-  const client = createClient(url, key, { auth: { persistSession: false } });
+  const client = publicBrainClient();
   const [{ data: update, error: updateError }, { data: trash, error: trashError }, { data: activity, error: activityError }] = await Promise.all([
     client.from("brain_public_software_update").select("*").limit(1).maybeSingle(),
     client.from("brain_public_trash").select("*").order("sort_order"),

@@ -1,0 +1,23 @@
+.reading-pickers--recent {
+  margin-top: 3px;
+  background: #f4f5f7;
+}
+
+.linked-book-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.linked-book-actions button {
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .linked-book-actions {
+    grid-column: 1 / -1;
+  }
+
+  .linked-book-actions button {
+    flex: 1;
+  }
+}

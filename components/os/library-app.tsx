@@ -2,20 +2,18 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ExternalLink, Search, SlidersHorizontal, Star, X } from "lucide-react";
-import booksIndexJson from "@/data/brain/books-index.v1.json";
 import taxonomyJson from "@/data/brain/topic-taxonomy.v1.json";
 import { applyDetailDecision, applySummaryDecision, loadEditorialDecisions } from "@/lib/brain/editorial";
 import type { BrainBookDetail, BrainBookSummary, BrainBooksIndex, BrainEditorialDecisions, BrainTopic } from "@/lib/brain/types";
-import { refineBooksIndex } from "@/lib/brain/books-editorial";
 import { BookCover } from "./book-cover";
 import { EditorialReview } from "./library-editorial-review";
 
-const bundledIndex = refineBooksIndex(booksIndexJson as BrainBooksIndex);
+const loadingIndex: BrainBooksIndex = { schemaVersion: "brain-books.loading.v1", bookCount: 0, generatedFrom: "live Brain", books: [] };
 const taxonomy = taxonomyJson as { topics: Array<{ slug: string; label: string; bookCount: number }> };
 const allTopics: BrainTopic[] = taxonomy.topics.map((topic) => ({ ...topic, confidence: 1, editorialState: "suggested" }));
 
 export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary) => void }) {
-  const [index, setIndex] = useState<BrainBooksIndex>(bundledIndex);
+  const [index, setIndex] = useState<BrainBooksIndex>(loadingIndex);
   const [query, setQuery] = useState("");
   const [topic, setTopic] = useState("all");
   const [reviewOpen, setReviewOpen] = useState(false);
@@ -30,9 +28,9 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
 
   useEffect(() => {
     let active = true;
-    fetch("/api/brain/books").then((response) => response.ok ? response.json() : Promise.reject()).then((nextIndex: BrainBooksIndex) => {
+    fetch("/api/brain/books", { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then((nextIndex: BrainBooksIndex) => {
       if (active) setIndex(nextIndex);
-    }).catch(() => { /* Bundled snapshot remains a deliberate offline fallback. */ });
+    }).catch(() => { /* Keep the loading-safe empty state; never replace live editorial data with a stale bundle. */ });
     return () => { active = false; };
   }, []);
 
@@ -70,7 +68,7 @@ export function BookDetail({ slug, onBack }: { slug: string; onBack?: () => void
   useEffect(() => {
     let active = true;
     setRawBook(null); setError(false);
-    fetch(`/api/brain/books/${slug}${process.env.NODE_ENV !== "production" ? "?review=1" : ""}`).then((response) => response.ok ? response.json() : Promise.reject()).then((book) => { if (active) setRawBook(book); }).catch(() => { if (active) setError(true); });
+    fetch(`/api/brain/books/${slug}${process.env.NODE_ENV !== "production" ? "?review=1" : ""}`, { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then((book) => { if (active) setRawBook(book); }).catch(() => { if (active) setError(true); });
     return () => { active = false; };
   }, [slug]);
   useEffect(() => {

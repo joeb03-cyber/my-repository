@@ -1,18 +1,15 @@
 import "server-only";
 
-import { createClient } from "@supabase/supabase-js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { BrainCurrentState, BrainNote, BrainNotesIndex } from "./notes-types";
 import { getBooksIndex } from "./books.server";
+import { publicBrainClient } from "./public-supabase.server";
 
 type Row = Record<string, any>;
 
 function supabase() {
-  const url = process.env.BRAIN_SUPABASE_URL;
-  const anonKey = process.env.BRAIN_SUPABASE_ANON_KEY;
-  if (!url || !anonKey) throw new Error("Staging Brain environment variables are required.");
-  return createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  return publicBrainClient();
 }
 
 function note(row: Row): BrainNote {
@@ -72,12 +69,15 @@ export async function getCurrentState(): Promise<BrainCurrentState> {
       title: linkedBook?.title || reading.title,
       authors: linkedBook?.authors || (reading.original_author ? [reading.original_author] : []),
       cover: linkedBook?.cover.public_path || (reading.cover_path ? (reading.cover_path.startsWith("/") ? reading.cover_path : `/${reading.cover_path}`) : null),
-      role: reading.role as "reading" | "reading_secondary",
+      role: reading.role as "reading" | "reading_secondary" | "recently_read" | "recently_read_secondary",
     };
   });
   return {
     schemaVersion: "brain-current-state.supabase.v1",
     ...data.state,
+    // Retain the old value in the immutable snapshot, but expose only the
+    // canonical Thinking field to current public surfaces.
+    currentThought: null,
     readingBook: readingBooks.find((book) => book.role === "reading") || null,
     readingBooks,
   } as BrainCurrentState;

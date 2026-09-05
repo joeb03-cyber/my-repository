@@ -108,6 +108,8 @@ export async function POST(request: Request) {
       const requestedBooks = [
         { role: "reading", id: state.readingBookId, fallback: state.reading },
         { role: "reading_secondary", id: state.readingBookIdSecondary, fallback: state.readingSecondary },
+        { role: "recently_read", id: state.recentlyReadBookId, fallback: state.recentlyRead },
+        { role: "recently_read_secondary", id: state.recentlyReadBookIdSecondary, fallback: state.recentlyReadSecondary },
       ];
       const readingBooks: Array<{ role: string; id: string; title: string }> = [];
       for (const requested of requestedBooks) {
@@ -119,14 +121,17 @@ export async function POST(request: Request) {
       }
       const primaryBook = readingBooks.find((book) => book.role === "reading");
       const secondaryBook = readingBooks.find((book) => book.role === "reading_secondary");
+      const recentlyReadBook = readingBooks.find((book) => book.role === "recently_read");
+      const recentlyReadSecondaryBook = readingBooks.find((book) => book.role === "recently_read_secondary");
       const normalized = {
         schemaVersion: "brain-current-state.control.v1", effectiveAt: now, lastConfirmedAt: now,
         where: { city: String(state.where?.city || "").trim(), country: String(state.where?.country || "").trim(), coordinates: String(state.where?.coordinates || "").trim() || null, timezone: String(state.where?.timezone || "Europe/Sarajevo").trim() },
         reading: primaryBook?.title || textOrNull(state.reading), readingAuthor: primaryBook ? null : textOrNull(state.readingAuthor),
         readingSecondary: secondaryBook?.title || textOrNull(state.readingSecondary), readingSecondaryAuthor: secondaryBook ? null : textOrNull(state.readingSecondaryAuthor),
+        recentlyRead: recentlyReadBook?.title || null, recentlyReadSecondary: recentlyReadSecondaryBook?.title || null,
         thinking: textOrNull(state.thinking), rabbitHoles: asStrings(state.rabbitHoles), experiments: asStrings(state.experiments),
         training: textOrNull(state.training), eatingLately: textOrNull(state.eatingLately), listening: textOrNull(state.listening), tryingToUnderstand: textOrNull(state.tryingToUnderstand),
-        making: textOrNull(state.making), currentQuestion: textOrNull(state.currentQuestion), currentThought: textOrNull(state.currentThought),
+        making: textOrNull(state.making), currentQuestion: textOrNull(state.currentQuestion), currentThought: null,
         humanBattery: { level: typeof state.humanBattery?.level === "number" ? Math.max(0, Math.min(100, Math.round(state.humanBattery.level))) : null, label: String(state.humanBattery?.label || "Unreported").slice(0, 40), note: textOrNull(state.humanBattery?.note) },
       };
       const id = crypto.randomUUID();

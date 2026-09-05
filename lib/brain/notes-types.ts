@@ -54,7 +54,7 @@ export interface BrainCurrentState {
     title: string;
     authors: string[];
     cover: string | null;
-    role: "reading" | "reading_secondary";
+    role: "reading" | "reading_secondary" | "recently_read" | "recently_read_secondary";
   }>;
   thinking: string | null;
   rabbitHoles: string[];

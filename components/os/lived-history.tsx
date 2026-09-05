@@ -33,7 +33,7 @@ export function useLivedHistory() {
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     let active = true;
-    fetch("/api/brain/travel-photos").then((response) => {
+    fetch("/api/brain/travel-photos", { cache: "no-store" }).then((response) => {
       if (!response.ok) throw new Error("The lived-history archive is unavailable.");
       return response.json();
     }).then((value) => active && setHistory(value)).catch((reason) => active && setError(reason.message));
