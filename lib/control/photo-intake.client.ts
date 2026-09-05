@@ -9,7 +9,7 @@ export type PreparedPhoto = {
   height: number;
   capture: { date: string; instant: string | null; timezone: string | null; source: string; make?: string; model?: string; lens?: string; orientation?: number; latitude?: number; longitude?: number; altitude?: number };
   derivatives: Array<{ variant: "small" | "medium" | "large"; blob: Blob; width: number; height: number; byteSize: number; sha256: string }>;
-  originalSha256: string;
+  sourceByteSize: number;
 };
 
 const pad = (value: number) => String(value).padStart(2, "0");
@@ -30,14 +30,20 @@ async function loadImage(file: File) {
   return { source: image as CanvasImageSource, width: image.naturalWidth, height: image.naturalHeight, release: () => URL.revokeObjectURL(url) };
 }
 
-async function derivative(source: CanvasImageSource, width: number, height: number, max: number, variant: PreparedPhoto["derivatives"][number]["variant"]) {
+async function derivative(source: CanvasImageSource, width: number, height: number, max: number, variant: PreparedPhoto["derivatives"][number]["variant"], targetBytes: number) {
   const scale = Math.min(1, max / Math.max(width, height));
   const outputWidth = Math.max(1, Math.round(width * scale));
   const outputHeight = Math.max(1, Math.round(height * scale));
   const canvas = document.createElement("canvas");
   canvas.width = outputWidth; canvas.height = outputHeight;
   canvas.getContext("2d", { alpha: false })?.drawImage(source, 0, 0, outputWidth, outputHeight);
-  const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob((value) => value ? resolve(value) : reject(new Error("This browser could not create a WebP copy.")), "image/webp", .86));
+  let quality = variant === "large" ? .82 : variant === "medium" ? .78 : .74;
+  let blob: Blob;
+  do {
+    blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob((value) => value ? resolve(value) : reject(new Error("This browser could not create a WebP copy.")), "image/webp", quality));
+    if (blob.type !== "image/webp") throw new Error("This browser cannot create the optimized WebP publishing image. Update Safari or choose a JPEG from Photos.");
+    quality -= .08;
+  } while (blob.size > targetBytes && quality >= .42);
   return { variant, blob, width: outputWidth, height: outputHeight, byteSize: blob.size, sha256: await sha256(blob) };
 }
 
@@ -51,15 +57,15 @@ export async function preparePhoto(file: File): Promise<PreparedPhoto> {
   const captureSource = metadata.DateTimeOriginal || metadata.CreateDate ? "embedded_metadata" : "file_date_fallback";
   let loaded;
   try { loaded = await loadImage(file); } catch { throw new Error("This browser cannot decode that photo. On iPhone, choose the image from Photos or export it as JPEG first."); }
-  const derivatives = await Promise.all([
-    derivative(loaded.source, loaded.width, loaded.height, 480, "small"),
-    derivative(loaded.source, loaded.width, loaded.height, 1024, "medium"),
-    derivative(loaded.source, loaded.width, loaded.height, 1800, "large"),
-  ]);
+  // Keep peak memory predictable on phones: one canvas and WebP encode at a time.
+  const derivatives = [] as PreparedPhoto["derivatives"];
+  derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 480, "small", 140 * 1024));
+  derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 1024, "medium", 500 * 1024));
+  derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 1800, "large", 1500 * 1024));
   loaded.release();
   return {
     file, preview: URL.createObjectURL(derivatives[0].blob), width: loaded.width, height: loaded.height,
-    originalSha256: await sha256(file), derivatives,
+    sourceByteSize: file.size, derivatives,
     capture: {
       date: localDate(captured), instant: captured.toISOString(), timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || null,
       source: captureSource, make: metadata.Make, model: metadata.Model, lens: metadata.LensModel,
@@ -71,8 +77,22 @@ export async function preparePhoto(file: File): Promise<PreparedPhoto> {
   };
 }
 
-export async function uploadSigned(signedUrl: string, blob: Blob) {
+export async function uploadSigned(signedUrl: string, blob: Blob, onProgress?: (loaded: number, total: number) => void) {
   const body = new FormData(); body.append("cacheControl", "31536000"); body.append("", blob);
-  const response = await fetch(signedUrl, { method: "PUT", headers: { "x-upsert": "false" }, body });
-  if (!response.ok) throw new Error((await response.json().catch(() => null))?.message || "Upload failed.");
+  await new Promise<void>((resolve, reject) => {
+    const request = new XMLHttpRequest();
+    request.open("PUT", signedUrl);
+    request.setRequestHeader("x-upsert", "false");
+    request.upload.onprogress = (event) => onProgress?.(event.loaded, event.lengthComputable ? event.total : blob.size);
+    request.onerror = () => reject(new Error("Upload failed. Check the connection and retry this photo."));
+    request.onload = () => {
+      if (request.status >= 200 && request.status < 300) { onProgress?.(blob.size, blob.size); resolve(); }
+      else {
+        let message = "Upload failed.";
+        try { message = JSON.parse(request.responseText)?.message || message; } catch { /* Keep the useful fallback. */ }
+        reject(new Error(message));
+      }
+    };
+    request.send(body);
+  });
 }
