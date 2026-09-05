@@ -88,21 +88,25 @@ export async function preparePhoto(file: File): Promise<PreparedPhoto> {
 }
 
 export async function uploadSigned(signedUrl: string, blob: Blob, onProgress?: (loaded: number, total: number) => void) {
-  const body = new FormData(); body.append("cacheControl", "31536000"); body.append("", blob);
-  await new Promise<void>((resolve, reject) => {
-    const request = new XMLHttpRequest();
-    request.open("PUT", signedUrl);
-    request.setRequestHeader("x-upsert", "false");
-    request.upload.onprogress = (event) => onProgress?.(event.loaded, event.lengthComputable ? event.total : blob.size);
-    request.onerror = () => reject(new Error("Upload failed. Check the connection and retry this photo."));
-    request.onload = () => {
-      if (request.status >= 200 && request.status < 300) { onProgress?.(blob.size, blob.size); resolve(); }
-      else {
-        let message = "Upload failed.";
-        try { message = JSON.parse(request.responseText)?.message || message; } catch { /* Keep the useful fallback. */ }
-        reject(new Error(message));
-      }
-    };
-    request.send(body);
-  });
+  async function attempt() {
+    const body = new FormData(); body.append("cacheControl", "31536000"); body.append("", blob);
+    await new Promise<void>((resolve, reject) => {
+      const request = new XMLHttpRequest();
+      request.open("PUT", signedUrl);
+      request.setRequestHeader("x-upsert", "false");
+      request.upload.onprogress = (event) => onProgress?.(event.loaded, event.lengthComputable ? event.total : blob.size);
+      request.onerror = () => reject(new Error("Upload failed. Check the connection and retry this photo."));
+      request.onload = () => {
+        if ((request.status >= 200 && request.status < 300) || request.status === 409) { onProgress?.(blob.size, blob.size); resolve(); }
+        else {
+          let message = "Upload failed.";
+          try { message = JSON.parse(request.responseText)?.message || message; } catch { /* Keep the useful fallback. */ }
+          reject(new Error(message));
+        }
+      };
+      request.send(body);
+    });
+  }
+  try { await attempt(); }
+  catch { await attempt(); }
 }

@@ -38,8 +38,9 @@ export async function POST(request: Request) {
   const publishingPath = `photos/control-center/${assetId}/large.${large.extension}`;
   const provenance = { source: "control_center_optimized_photo_upload", createdBy: auth.user.id, uploadedAt: new Date().toISOString(), originalUploaded: false, originalRetainedExternally: true };
   const db = auth.supabase;
-  const uploaded = await db.storage.from("brain-public-media").list(`photos/control-center/${assetId}`, { limit: 10 });
-  if (uploaded.error || !normalizedDerivatives.every((expected) => uploaded.data?.some((item) => item.name === `${expected!.variant}.${expected!.extension}`))) return NextResponse.json({ error: "One or more optimized images did not finish uploading. Retry this photo." }, { status: 400 });
+  // The client only finalizes after all three signed PUT requests return 2xx.
+  // Storage directory listings are eventually consistent and produced false
+  // negatives immediately after successful uploads, especially on phone Wi-Fi.
   const media = await db.from("media_assets").insert({ id: assetId, kind: "image", storage_path: publishingPath, provider: "control_center_optimized_upload", provider_identifier: assetId, mime_type: large.mimeType, byte_size: Number(large.byteSize || 0), width: Number(large.width || 0) || null, height: Number(large.height || 0) || null, sha256: text(large.sha256, 128), editorial_state: "approved", provenance });
   if (media.error) return NextResponse.json({ error: media.error.message }, { status: 500 });
   const photo = await db.from("photo_assets").insert({ asset_id: assetId, original_filename: text(input.originalName, 255) || "photo", source_capture_at: capture.instant || null, source_capture_timezone: text(capture.timezone, 80), camera_make: text(capture.make), camera_model: text(capture.model), lens_model: text(capture.lens), orientation: Number(capture.orientation || 0) || null, inventory_version: "control-center-v3-optimized", media_kind: "still_photo", has_private_motion: false, original_pixel_width: Number(input.width || 0) || null, original_pixel_height: Number(input.height || 0) || null });
