@@ -32,9 +32,9 @@ export async function POST(request: Request) {
     const width = Math.max(1, Number(input?.width || 0));
     const height = Math.max(1, Number(input?.height || 0));
     const byteSize = Math.max(1, Number(input?.byteSize || 0));
-    const folder = `book-covers/control-center/manual/${bookId}`;
-    const uploaded = await auth.supabase.storage.from("brain-public-media").list(folder, { search: `${assetId}.webp`, limit: 1 });
-    if (uploaded.error || !uploaded.data?.some((item) => item.name === `${assetId}.webp`)) return NextResponse.json({ error: "The uploaded cover could not be verified." }, { status: 400 });
+    // Finalize is called only after the signed upload returns 2xx. Storage
+    // directory listings can lag immediately afterward and caused false
+    // verification failures for otherwise successful phone uploads.
     const { error: mediaError } = await auth.supabase.from("media_assets").insert({
       id: assetId, kind: "book_cover", storage_path: path, provider: "manual_control_center",
       provider_identifier: `${bookId}:${assetId}`, mime_type: "image/webp", byte_size: byteSize,

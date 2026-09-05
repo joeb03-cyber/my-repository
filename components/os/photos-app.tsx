@@ -12,8 +12,8 @@ export default function PhotosApp({ onOpenApp }: { onOpenApp: (appId: AppId) => 
   const { history, error } = useLivedHistory();
   const [selectedPhotoId, setSelectedPhotoId] = useState<string | null>(null);
   const [view, setView] = useState<"journey" | "places">("journey");
-  const [visibleSections, setVisibleSections] = useState(6);
-  useEffect(() => setVisibleSections(6), [view]);
+  const [visibleSections, setVisibleSections] = useState(3);
+  useEffect(() => setVisibleSections(3), [view]);
   useEffect(() => {
     if (!history) return;
     const intent = readTravelNavigation("photos");
