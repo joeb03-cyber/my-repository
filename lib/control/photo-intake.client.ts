@@ -8,7 +8,7 @@ export type PreparedPhoto = {
   width: number;
   height: number;
   capture: { date: string; instant: string | null; timezone: string | null; source: string; make?: string; model?: string; lens?: string; orientation?: number; latitude?: number; longitude?: number; altitude?: number };
-  derivatives: Array<{ variant: "small" | "medium" | "large"; blob: Blob; width: number; height: number; byteSize: number; sha256: string }>;
+  derivatives: Array<{ variant: "small" | "medium" | "large"; blob: Blob; width: number; height: number; byteSize: number; sha256: string; mimeType: "image/webp" | "image/jpeg"; extension: "webp" | "jpg" }>;
   sourceByteSize: number;
 };
 
@@ -38,13 +38,22 @@ async function derivative(source: CanvasImageSource, width: number, height: numb
   canvas.width = outputWidth; canvas.height = outputHeight;
   canvas.getContext("2d", { alpha: false })?.drawImage(source, 0, 0, outputWidth, outputHeight);
   let quality = variant === "large" ? .82 : variant === "medium" ? .78 : .74;
-  let blob: Blob;
+  let blob: Blob | null = null;
+  let mimeType: "image/webp" | "image/jpeg" = "image/webp";
   do {
-    blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob((value) => value ? resolve(value) : reject(new Error("This browser could not create a WebP copy.")), "image/webp", quality));
-    if (blob.type !== "image/webp") throw new Error("This browser cannot create the optimized WebP publishing image. Update Safari or choose a JPEG from Photos.");
+    blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, mimeType, quality));
+    if ((!blob || blob.type !== mimeType) && mimeType === "image/webp") {
+      // Some otherwise-current iPhone Safari versions can decode HEIC/JPEG but
+      // cannot encode WebP from canvas. JPEG keeps the upload lightweight and
+      // avoids sending the full camera original merely to publish a photograph.
+      mimeType = "image/jpeg";
+      quality = variant === "large" ? .84 : variant === "medium" ? .8 : .76;
+      blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, mimeType, quality));
+    }
+    if (!blob || blob.type !== mimeType) throw new Error("This browser could not create an optimized publishing copy. Update Safari or export the image as JPEG first.");
     quality -= .08;
   } while (blob.size > targetBytes && quality >= .42);
-  return { variant, blob, width: outputWidth, height: outputHeight, byteSize: blob.size, sha256: await sha256(blob) };
+  return { variant, blob, width: outputWidth, height: outputHeight, byteSize: blob.size, sha256: await sha256(blob), mimeType, extension: mimeType === "image/webp" ? "webp" as const : "jpg" as const };
 }
 
 export async function preparePhoto(file: File): Promise<PreparedPhoto> {
@@ -57,12 +66,13 @@ export async function preparePhoto(file: File): Promise<PreparedPhoto> {
   const captureSource = metadata.DateTimeOriginal || metadata.CreateDate ? "embedded_metadata" : "file_date_fallback";
   let loaded;
   try { loaded = await loadImage(file); } catch { throw new Error("This browser cannot decode that photo. On iPhone, choose the image from Photos or export it as JPEG first."); }
-  // Keep peak memory predictable on phones: one canvas and WebP encode at a time.
+  // Keep peak memory predictable on phones: one canvas encode at a time.
   const derivatives = [] as PreparedPhoto["derivatives"];
-  derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 480, "small", 140 * 1024));
-  derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 1024, "medium", 500 * 1024));
-  derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 1800, "large", 1500 * 1024));
-  loaded.release();
+  try {
+    derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 480, "small", 140 * 1024));
+    derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 1024, "medium", 500 * 1024));
+    derivatives.push(await derivative(loaded.source, loaded.width, loaded.height, 1800, "large", 1500 * 1024));
+  } finally { loaded.release(); }
   return {
     file, preview: URL.createObjectURL(derivatives[0].blob), width: loaded.width, height: loaded.height,
     sourceByteSize: file.size, derivatives,
