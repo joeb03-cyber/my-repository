@@ -146,6 +146,10 @@ export async function POST(request: Request) {
       await db.from("current_state_snapshots").update({ publication_state: "archived" }).neq("id", id).eq("publication_state", "published");
       return NextResponse.json({ ok: true, state: normalized });
     }
+    if (input.action === "save-journey-visit") {
+      const result = await saveJourneyVisit(db, auth.user.id, input.visit || {});
+      return NextResponse.json({ ok: true, ...result });
+    }
     if (input.action === "save-visit-reflection") {
       const visit = input.visit || {};
       const visitId = String(visit.id || "");
@@ -315,6 +319,87 @@ export async function POST(request: Request) {
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Save failed" }, { status: 400 });
   }
+}
+
+async function saveJourneyVisit(db: any, userId: string, value: any) {
+  const city = String(value.city || "").trim().slice(0, 120);
+  const country = String(value.country || "").trim().slice(0, 120);
+  const start = String(value.startMonth || "").match(/^(\d{4})-(\d{2})$/);
+  const end = String(value.endMonth || value.startMonth || "").match(/^(\d{4})-(\d{2})$/);
+  if (!city || !country || !start || !end) throw new Error("Add a city, country, and valid visit month.");
+  const startYear = Number(start[1]), startMonth = Number(start[2]), endYear = Number(end[1]), endMonth = Number(end[2]);
+  if (startMonth < 1 || startMonth > 12 || endMonth < 1 || endMonth > 12 || endYear * 12 + endMonth < startYear * 12 + startMonth) throw new Error("The visit dates are not valid.");
+
+  const clean = (text: string) => text.toLocaleLowerCase("en").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").trim();
+  const { data: countryPlaces, error: placeLookupError } = await db.from("travel_places").select("id,name,country_name,country_code,latitude,longitude").eq("visibility", "public");
+  if (placeLookupError) throw placeLookupError;
+  let place = (countryPlaces || []).find((item: any) => clean(item.name) === clean(city) && clean(item.country_name) === clean(country));
+  let countryCode = String(value.countryCode || "").trim().toUpperCase();
+  if (!countryCode) countryCode = (countryPlaces || []).find((item: any) => clean(item.country_name) === clean(country))?.country_code || "";
+  if (!/^[A-Z]{2}$/.test(countryCode)) throw new Error("For a new country, add its two-letter country code (for example BA or IT).");
+
+  const coordinateText = String(value.coordinates || "").trim();
+  let latitude: number | null = null, longitude: number | null = null;
+  if (coordinateText) {
+    const parts = coordinateText.split(",").map(Number);
+    if (parts.length !== 2 || !Number.isFinite(parts[0]) || !Number.isFinite(parts[1]) || Math.abs(parts[0]) > 90 || Math.abs(parts[1]) > 180) throw new Error("Coordinates should look like 43.34, 17.81.");
+    [latitude, longitude] = parts;
+  }
+
+  if (!place) {
+    const placeId = crypto.randomUUID();
+    const slugBase = `${city}-${country}`.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 70) || "place";
+    const { data: created, error } = await db.from("travel_places").insert({
+      id: placeId, slug: `${slugBase}-${placeId.slice(0, 6)}`, source_name: `${city} · Control Center · ${placeId.slice(0, 6)}`,
+      name: city, place_type: "populated_place", country_code: countryCode, country_name: country,
+      latitude, longitude, coordinates_state: latitude == null ? "unresolved" : "editorial",
+      visibility: "public", editorial_state: "approved",
+      provenance: { source: "control_center", createdBy: userId, preserveHistory: true },
+    }).select("id,name,country_name,country_code").single();
+    if (error) throw error;
+    place = created;
+  } else if (latitude != null && longitude != null && (place.latitude == null || place.longitude == null)) {
+    const { error } = await db.from("travel_places").update({ latitude, longitude, coordinates_state: "editorial" }).eq("id", place.id);
+    if (error) throw error;
+  }
+
+  const { data: duplicate, error: duplicateError } = await db.from("travel_visits").select("id").eq("place_id", place.id).eq("start_year", startYear).eq("start_month", startMonth).limit(1).maybeSingle();
+  if (duplicateError) throw duplicateError;
+  if (duplicate) return { id: duplicate.id, placeId: place.id, created: false };
+
+  const externalId = "control-center-journey";
+  const contentHash = "living-journey-v1";
+  let { data: snapshot, error: snapshotLookupError } = await db.from("travel_source_snapshots").select("id").eq("external_id", externalId).eq("content_hash", contentHash).maybeSingle();
+  if (snapshotLookupError) throw snapshotLookupError;
+  if (!snapshot) {
+    const { data: created, error } = await db.from("travel_source_snapshots").insert({
+      id: crypto.randomUUID(), source_url: "/control/places", external_id: externalId,
+      captured_on: new Date().toISOString().slice(0, 10), content_hash: contentHash,
+      snapshot_path: "control-center://journey", source_metadata: { kind: "living_editorial_source", owner: "Joe" },
+    }).select("id").single();
+    if (error) throw error;
+    snapshot = created;
+  }
+
+  const [{ data: lastChronology, error: chronologyError }, { data: lastSource, error: sourceError }] = await Promise.all([
+    db.from("travel_visits").select("chronology_index").order("chronology_index", { ascending: false }).limit(1).maybeSingle(),
+    db.from("travel_visits").select("source_position").order("source_position", { ascending: false }).limit(1).maybeSingle(),
+  ]);
+  if (chronologyError || sourceError) throw chronologyError || sourceError;
+  const id = crypto.randomUUID();
+  const dateText = startYear === endYear && startMonth === endMonth ? `${startYear}-${String(startMonth).padStart(2, "0")}` : `${startYear}-${String(startMonth).padStart(2, "0")} – ${endYear}-${String(endMonth).padStart(2, "0")}`;
+  const { error: visitError } = await db.from("travel_visits").insert({
+    id, source_snapshot_id: snapshot.id, place_id: place.id, visit_kind: "visit_or_stay_unspecified",
+    source_position: Number(lastSource?.source_position || 0) + 1, group_position: 1,
+    chronology_index: Number(lastChronology?.chronology_index || 0) + 1,
+    start_year: startYear, start_month: startMonth, end_year: endYear, end_month: endMonth,
+    temporal_precision: startYear === endYear && startMonth === endMonth ? "month" : "month_range",
+    source_date_text: dateText, source_value: city, source_raw_line: `Added in Control Center: ${city}, ${country} · ${dateText}`,
+    visibility: "public", editorial_state: "approved",
+    provenance: { source: "control_center", createdBy: userId, preservesPlaceVisitSeparation: true },
+  });
+  if (visitError) throw visitError;
+  return { id, placeId: place.id, created: true };
 }
 
 function textOrNull(value: unknown) {
