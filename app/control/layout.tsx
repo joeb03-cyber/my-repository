@@ -4,6 +4,7 @@ import "./book-intake.css";
 import "./consolidation.css";
 import "./real-use-refinement.css";
 import "./journey-editor.css";
+import "./books-control.css";
 
 export const metadata: Metadata = {
   title: "Control Center · Synergetic Human",

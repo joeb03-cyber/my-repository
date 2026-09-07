@@ -27,7 +27,7 @@ export async function GET() {
     db.from("rabbit_hole_entity_links").select("rabbit_hole_id,entity_id,label,public_role,evidence_layer,sort_order").order("sort_order"),
     db.from("rabbit_hole_links").select("from_rabbit_hole_id,to_rabbit_hole_id,label,sort_order").order("sort_order"),
     db.from("rabbit_hole_human_links").select("rabbit_hole_id,human_entry_id,browser_label,human_label,sort_order").order("sort_order"),
-    db.from("book_intake_requests").select("id,book_entity_id,title,author,highlights_reference,metadata_status,cover_status,highlights_status,created_at").order("created_at", { ascending: false }).limit(50),
+    db.from("book_intake_requests").select("id,book_entity_id,title,author,highlights_reference,metadata_status,cover_status,highlights_status,created_at,updated_at").order("created_at", { ascending: false }).limit(500),
     getBooksIndex(),
   ]);
   const failure = [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult].find((result) => result.error);

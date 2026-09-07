@@ -8,15 +8,16 @@ import PhotoUploader from "@/components/control/photo-uploader";
 import MessagesEditor from "@/components/control/messages-editor";
 import BookCoverOverride from "@/components/control/book-cover-override";
 
-type Module = "notes" | "now" | "places" | "photos" | "messages" | "browser" | "human" | "update" | "activity" | "trash";
+type Module = "notes" | "now" | "books" | "places" | "photos" | "messages" | "browser" | "human" | "update" | "activity" | "trash";
 type BlockType = "paragraph" | "heading1" | "heading2" | "bullet" | "quote";
 type Block = { id: string; type: BlockType; text: string };
 type Link = { label: string; url: string };
 type Note = { id?: string; title: string; slug: string; excerpt: string; bodyMarkdown: string; publicationState: "draft" | "published"; pinned: boolean; folderSlug: string | null; tags: string[]; sourcePublishedAt: string | null; publishedAt: string | null; editorialNotice: string; externalLinks: Link[]; updatedAt?: string };
 type BookOption = { id: string; slug: string; title: string; authors: string[]; cover: string };
+type BookIntake = { id: string; book_entity_id: string | null; title: string; author: string | null; highlights_reference: string | null; metadata_status: string; cover_status: string; highlights_status: string; created_at: string; updated_at?: string };
 type VisitOption = { id: string; placeId: string; label: string; publicBlurb: string; whereStayed: string; favoriteThings: string[]; foodDrink: string[] };
 type JourneyVisitDraft = { city: string; country: string; countryCode: string; coordinates: string; startMonth: string; endMonth: string };
-type ControlData = { admin: { displayName: string; email: string }; notes: Note[]; folders: Array<{ id: string; slug: string; label: string }>; currentState: any; bookOptions: BookOption[]; bookIntakes: any[]; softwareUpdate: any; trash: any[]; activity: any[]; human: any[]; humanRelationshipOptions: any[]; browser: any[]; messages: any[]; photos: any[]; photoVisitOptions: VisitOption[] };
+type ControlData = { admin: { displayName: string; email: string }; notes: Note[]; folders: Array<{ id: string; slug: string; label: string }>; currentState: any; bookOptions: BookOption[]; bookIntakes: BookIntake[]; softwareUpdate: any; trash: any[]; activity: any[]; human: any[]; humanRelationshipOptions: any[]; browser: any[]; messages: any[]; photos: any[]; photoVisitOptions: VisitOption[] };
 
 const blankNote = (): Note => ({ title: "", slug: "", excerpt: "", bodyMarkdown: "", publicationState: "draft", pinned: false, folderSlug: "ideas", tags: [], sourcePublishedAt: null, publishedAt: null, editorialNotice: "", externalLinks: [] });
 
@@ -48,12 +49,13 @@ export default function ControlCenter() {
   return <main className="control-center">
     <header className="control-topbar"><div className="control-brand"><span>S</span><div><strong>Control Center</strong><small>Synergetic Human</small></div></div><div className="control-user"><span><strong>{data.admin.displayName}</strong><small>Administrator</small></span><CircleUserRound/><form action="/control/logout" method="post"><button>Sign out</button></form></div></header>
     <aside className="control-nav">
-      <div><span>EDIT</span><NavButton id="notes" label="Notes" icon={<FileText/>} active={module === "notes"} onClick={() => { setModule("notes"); setMobileDetail(false); }}/><NavButton id="now" label="NOW" icon={<MapPin/>} active={module === "now"} onClick={() => { setModule("now"); setMobileDetail(true); }}/><NavButton id="places" label="Places" icon={<Map/>} active={module === "places"} onClick={() => { setModule("places"); setMobileDetail(true); }}/><NavButton id="photos" label="Photos" icon={<Images/>} active={module === "photos"} onClick={() => { setModule("photos"); setMobileDetail(true); }}/><NavButton id="messages" label="Messages" icon={<MessageCircle/>} active={module === "messages"} onClick={() => { setModule("messages"); setMobileDetail(true); }}/><NavButton id="browser" label="Browser" icon={<Compass/>} active={module === "browser"} onClick={() => { setModule("browser"); setMobileDetail(true); }}/><NavButton id="human" label="Human" icon={<HeartPulse/>} active={module === "human"} onClick={() => { setModule("human"); setMobileDetail(true); }}/><NavButton id="update" label="Software Update" icon={<RefreshCw/>} active={module === "update"} onClick={() => { setModule("update"); setMobileDetail(true); }}/><NavButton id="activity" label="Activity" icon={<Activity/>} active={module === "activity"} onClick={() => { setModule("activity"); setMobileDetail(true); }}/><NavButton id="trash" label="Trash" icon={<Trash2/>} active={module === "trash"} onClick={() => { setModule("trash"); setMobileDetail(true); }}/></div>
+      <div><span>EDIT</span><NavButton id="notes" label="Notes" icon={<FileText/>} active={module === "notes"} onClick={() => { setModule("notes"); setMobileDetail(false); }}/><NavButton id="now" label="NOW" icon={<MapPin/>} active={module === "now"} onClick={() => { setModule("now"); setMobileDetail(true); }}/><NavButton id="books" label="Books" icon={<BookOpen/>} active={module === "books"} onClick={() => { setModule("books"); setMobileDetail(true); }}/><NavButton id="places" label="Places" icon={<Map/>} active={module === "places"} onClick={() => { setModule("places"); setMobileDetail(true); }}/><NavButton id="photos" label="Photos" icon={<Images/>} active={module === "photos"} onClick={() => { setModule("photos"); setMobileDetail(true); }}/><NavButton id="messages" label="Messages" icon={<MessageCircle/>} active={module === "messages"} onClick={() => { setModule("messages"); setMobileDetail(true); }}/><NavButton id="browser" label="Browser" icon={<Compass/>} active={module === "browser"} onClick={() => { setModule("browser"); setMobileDetail(true); }}/><NavButton id="human" label="Human" icon={<HeartPulse/>} active={module === "human"} onClick={() => { setModule("human"); setMobileDetail(true); }}/><NavButton id="update" label="Software Update" icon={<RefreshCw/>} active={module === "update"} onClick={() => { setModule("update"); setMobileDetail(true); }}/><NavButton id="activity" label="Activity" icon={<Activity/>} active={module === "activity"} onClick={() => { setModule("activity"); setMobileDetail(true); }}/><NavButton id="trash" label="Trash" icon={<Trash2/>} active={module === "trash"} onClick={() => { setModule("trash"); setMobileDetail(true); }}/></div>
       <footer><a href="/" target="_blank">Open public OS <Eye/></a><small>Changes appear on staging after save.</small></footer>
     </aside>
     <section className={`control-workspace ${mobileDetail ? "shows-detail" : "shows-index"}`}>
       {module === "notes" && <NotesModule data={data} selected={selectedNote} setSelected={(note) => { setSelectedNote(note); setMobileDetail(true); }} onBack={() => setMobileDetail(false)} reload={load} notify={notify}/>}
       {module === "now" && <NowEditor state={data.currentState} books={data.bookOptions} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>}
+      {module === "books" && <BooksEditor books={data.bookOptions} intakes={data.bookIntakes} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>}
       {module === "places" && <PlacesEditor visits={data.photoVisitOptions || []} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>}
       {module === "photos" && <PhotosEditor items={data.photos || []} visits={data.photoVisitOptions || []} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>}
       {module === "messages" && <MessagesEditor items={data.messages || []} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>}
@@ -178,6 +180,59 @@ function ReadingBookPicker({ label, idKey, textKey, state, books, set, reload, n
     setCreated(result.book); set(idKey, result.book.id); set(textKey, result.book.title); set(authorKey, result.book.authors[0] || newAuthor); setQuery(result.book.title); setOpen(false);
   }
   return <section className="reading-book-picker"><span>{label}</span>{linked ? <div className="linked-book-card"><img src={linked.cover} alt={`Current cover of ${linked.title}`}/><div><small>LINKED TO BOOKS</small><strong>{linked.title}</strong><span>{linked.authors.join(", ") || "Author not recorded"}</span></div><div className="linked-book-actions"><BookCoverOverride book={linked} reload={reload} notify={notify}/><button type="button" onClick={change}>Change</button><button type="button" onClick={remove}>Remove</button></div></div> : <><label><Search/><input value={query} onFocus={() => setOpen(true)} onChange={(event) => { setQuery(event.target.value); setOpen(true); }} placeholder="Search your Library…"/></label>{open && <div className="book-picker-results">{matches.map((book) => <button type="button" key={book.id} onClick={() => choose(book)}><img src={book.cover} alt=""/><span><strong>{book.title}</strong><small>{book.authors.join(", ") || "Author not recorded"}</small></span><BookOpen/></button>)}{!matches.length && <p>Not in your Library yet. Add it below.</p>}</div>}{allowManual && <div className="new-book-intake"><div className="new-book-intake-head"><strong>Add a new book</strong><small>This creates a real Library entry and looks for a lawful cover.</small></div><Field label="Title"><input value={newTitle} onChange={(event) => { setNewTitle(event.target.value); set(textKey, event.target.value); }} placeholder="Book title"/></Field><Field label="Author"><input value={newAuthor} onChange={(event) => { setNewAuthor(event.target.value); set(authorKey, event.target.value); }} placeholder="Author name"/></Field><Field label="Where should I find the highlights? · private"><textarea rows={2} value={highlightsReference} onChange={(event) => setHighlightsReference(event.target.value)} placeholder="Paste a Google Doc link, local folder/path, or a short instruction for later import."/></Field><button type="button" className="add-library-book" disabled={adding || !newTitle.trim() || !newAuthor.trim()} onClick={addBook}><BookOpen/>{adding ? "Finding the book…" : "Add to Library"}</button><small className="intake-privacy">Highlights are queued for later import and are never published from this field.</small></div>}</>}</section>;
+}
+
+function BooksEditor({ books, intakes, onBack, reload, notify }: { books: BookOption[]; intakes: BookIntake[]; onBack: () => void; reload: () => Promise<void>; notify: (value: string) => void }) {
+  const [query, setQuery] = useState("");
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [reference, setReference] = useState("");
+  const [saving, setSaving] = useState(false);
+  const selected = books.find((book) => book.id === selectedId) || null;
+  const latestByBook = useMemo(() => {
+    const result = new globalThis.Map<string, BookIntake>();
+    for (const intake of intakes) if (intake.book_entity_id && !result.has(intake.book_entity_id)) result.set(intake.book_entity_id, intake);
+    return result;
+  }, [intakes]);
+  const latest = selected ? latestByBook.get(selected.id) || null : null;
+  const filtered = useMemo(() => {
+    const needle = query.trim().toLowerCase();
+    if (!needle) return books.slice(0, 20);
+    return books.filter((book) => `${book.title} ${book.authors.join(" ")}`.toLowerCase().includes(needle)).slice(0, 30);
+  }, [books, query]);
+  function choose(book: BookOption) {
+    setSelectedId(book.id);
+    setReference(latestByBook.get(book.id)?.highlights_reference || "");
+  }
+  async function save() {
+    if (!selected) return;
+    setSaving(true);
+    const response = await fetch("/api/control/book-highlights", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ bookEntityId: selected.id, highlightsReference: reference }) });
+    const result = await response.json();
+    setSaving(false);
+    if (!response.ok) return window.alert(result.error || "The highlights source could not be saved.");
+    notify(result.unchanged ? "That source is already attached" : "Highlights source queued");
+    await reload();
+  }
+  const statusLabel = latest?.highlights_status === "imported" ? "Imported" : latest?.highlights_status === "inaccessible" ? "Needs access" : latest?.highlights_status === "needs_review" ? "Needs review" : latest?.highlights_status === "queued" ? "Queued for import" : "No source attached";
+  return <EditorPage title="Books" subtitle="Connect private highlight documents to books already in your Library." onBack={onBack} action={<span/>}>
+    <p className="editorial-hint">Choose a canonical Book, then paste its Google Doc. The link stays private. Saving queues the source for a later reviewed import; it does not publish the document automatically.</p>
+    <div className="control-books-layout">
+      <section className="control-books-index">
+        <label className="control-photo-search"><Search/><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search your Library"/></label>
+        <div className="control-book-list">{filtered.map((book) => { const intake = latestByBook.get(book.id); return <button type="button" key={book.id} className={selectedId === book.id ? "is-selected" : ""} onClick={() => choose(book)}><img src={book.cover} alt=""/><span><strong>{book.title}</strong><small>{book.authors.join(", ") || "Author not recorded"}</small></span>{intake?.highlights_reference && <span className={`book-source-status is-${intake.highlights_status}`}>{intake.highlights_status === "imported" ? "Imported" : "Linked"}</span>}<ChevronRight/></button>; })}</div>
+      </section>
+      <section className="control-book-source">
+        {!selected ? <div className="control-book-source-empty"><BookOpen/><strong>Select a book</strong><p>You can attach or replace its highlights document here.</p></div> : <>
+          <header><img src={selected.cover} alt={`Cover of ${selected.title}`}/><div><small>CANONICAL LIBRARY BOOK</small><h2>{selected.title}</h2><p>{selected.authors.join(", ") || "Author not recorded"}</p><a href={`/library/${selected.slug}`} target="_blank">Open public Book <Eye/></a></div></header>
+          <div className="book-source-state"><span className={`is-${latest?.highlights_status || "empty"}`}>{statusLabel}</span>{latest?.created_at && <small>Last source update {new Date(latest.created_at).toLocaleDateString()}</small>}</div>
+          <Field label="Google Docs highlights link · private"><textarea rows={4} value={reference} onChange={(event) => setReference(event.target.value)} placeholder="https://docs.google.com/document/d/…"/></Field>
+          {latest?.highlights_reference && <p className="book-source-current">Current source: <a href={latest.highlights_reference} target="_blank" rel="noreferrer">Open Google Doc</a></p>}
+          <button type="button" className="primary book-source-save" disabled={saving || !reference.trim()} onClick={save}><Save/>{saving ? "Saving…" : latest?.highlights_reference ? "Save new source" : "Attach highlights source"}</button>
+          <p className="intake-privacy">Replacing a link preserves the earlier source record for provenance. Imported highlights remain unchanged until a separate import is reviewed.</p>
+        </>}
+      </section>
+    </div>
+  </EditorPage>;
 }
 
 function PlacesEditor({ visits, onBack, reload, notify }: { visits: VisitOption[]; onBack: () => void; reload: () => Promise<void>; notify: (value: string) => void }) {
