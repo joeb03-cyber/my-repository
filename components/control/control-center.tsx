@@ -187,6 +187,8 @@ function BooksEditor({ books, intakes, onBack, reload, notify }: { books: BookOp
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [reference, setReference] = useState("");
   const [saving, setSaving] = useState(false);
+  const [newBook, setNewBook] = useState<{ title: string; author: string; highlightsReference: string } | null>(null);
+  const [adding, setAdding] = useState(false);
   const selected = books.find((book) => book.id === selectedId) || null;
   const latestByBook = useMemo(() => {
     const result = new globalThis.Map<string, BookIntake>();
@@ -213,9 +215,30 @@ function BooksEditor({ books, intakes, onBack, reload, notify }: { books: BookOp
     notify(result.unchanged ? "That source is already attached" : "Highlights source queued");
     await reload();
   }
+  async function addBook() {
+    if (!newBook) return;
+    setAdding(true);
+    const response = await fetch("/api/control/book-intake", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newBook) });
+    const result = await response.json();
+    setAdding(false);
+    if (!response.ok) return window.alert(result.error || "The book could not be added.");
+    await reload();
+    setSelectedId(result.book.id);
+    setQuery(result.book.title);
+    setReference(newBook.highlightsReference);
+    setNewBook(null);
+    notify(result.existing ? "Existing Library book selected" : "Book added to Library");
+  }
   const statusLabel = latest?.highlights_status === "imported" ? "Imported" : latest?.highlights_status === "inaccessible" ? "Needs access" : latest?.highlights_status === "needs_review" ? "Needs review" : latest?.highlights_status === "queued" ? "Queued for import" : "No source attached";
-  return <EditorPage title="Books" subtitle="Connect private highlight documents to books already in your Library." onBack={onBack} action={<span/>}>
+  return <EditorPage title="Books" subtitle="Add books and connect their private highlight documents." onBack={onBack} action={<button className="primary" onClick={() => setNewBook({ title: "", author: "", highlightsReference: "" })}><Plus/> Add Book</button>}>
     <p className="editorial-hint">Choose a canonical Book, then paste its Google Doc. The link stays private. Saving queues the source for a later reviewed import; it does not publish the document automatically.</p>
+    {newBook && <section className="inline-sheet control-new-book-sheet">
+      <header><div><strong>Add a new Book</strong><small>Create its canonical Library entry and look for a real cover. Highlights are optional.</small></div><button type="button" onClick={() => setNewBook(null)} aria-label="Close"><X/></button></header>
+      <div className="editor-two"><Field label="Title"><input autoFocus value={newBook.title} onChange={(event) => setNewBook({ ...newBook, title: event.target.value })} placeholder="Book title"/></Field><Field label="Author"><input value={newBook.author} onChange={(event) => setNewBook({ ...newBook, author: event.target.value })} placeholder="Author name"/></Field></div>
+      <Field label="Google Docs highlights link · optional and private"><textarea rows={3} value={newBook.highlightsReference} onChange={(event) => setNewBook({ ...newBook, highlightsReference: event.target.value })} placeholder="https://docs.google.com/document/d/…"/></Field>
+      <button type="button" className="primary full" disabled={adding || !newBook.title.trim() || !newBook.author.trim()} onClick={addBook}><BookOpen/>{adding ? "Finding metadata and cover…" : "Add to Library"}</button>
+      <p className="intake-privacy">The Library entry appears immediately. If supplied, the document is privately queued for a later reviewed highlights import.</p>
+    </section>}
     <div className="control-books-layout">
       <section className="control-books-index">
         <label className="control-photo-search"><Search/><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search your Library"/></label>
@@ -223,7 +246,7 @@ function BooksEditor({ books, intakes, onBack, reload, notify }: { books: BookOp
       </section>
       <section className="control-book-source">
         {!selected ? <div className="control-book-source-empty"><BookOpen/><strong>Select a book</strong><p>You can attach or replace its highlights document here.</p></div> : <>
-          <header><img src={selected.cover} alt={`Cover of ${selected.title}`}/><div><small>CANONICAL LIBRARY BOOK</small><h2>{selected.title}</h2><p>{selected.authors.join(", ") || "Author not recorded"}</p><a href={`/library/${selected.slug}`} target="_blank">Open public Book <Eye/></a></div></header>
+          <header><img src={selected.cover} alt={`Cover of ${selected.title}`}/><div><small>CANONICAL LIBRARY BOOK</small><h2>{selected.title}</h2><p>{selected.authors.join(", ") || "Author not recorded"}</p><div className="control-book-quick-actions"><a href={`/library/${selected.slug}`} target="_blank">Open public Book <Eye/></a><BookCoverOverride book={selected} reload={reload} notify={notify}/></div></div></header>
           <div className="book-source-state"><span className={`is-${latest?.highlights_status || "empty"}`}>{statusLabel}</span>{latest?.created_at && <small>Last source update {new Date(latest.created_at).toLocaleDateString()}</small>}</div>
           <Field label="Google Docs highlights link · private"><textarea rows={4} value={reference} onChange={(event) => setReference(event.target.value)} placeholder="https://docs.google.com/document/d/…"/></Field>
           {latest?.highlights_reference && <p className="book-source-current">Current source: <a href={latest.highlights_reference} target="_blank" rel="noreferrer">Open Google Doc</a></p>}

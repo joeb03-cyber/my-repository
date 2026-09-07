@@ -6,6 +6,12 @@
 }
 
 .control-books-index { min-width: 0; }
+.control-new-book-sheet { margin: 0 0 18px; }
+.control-new-book-sheet > header > div { display: flex; flex-direction: column; gap: 3px; }
+.control-new-book-sheet > header small { color: #898b8f; font-size: 8px; }
+.control-new-book-sheet .editor-two { margin: 0 0 13px; }
+.control-new-book-sheet > .control-field { margin-bottom: 13px; }
+.control-new-book-sheet .intake-privacy { display: block; margin: 9px 0 0; color: #8b8d91; font-size: 8px; line-height: 1.45; }
 .control-book-list {
   max-height: calc(100dvh - 235px);
   overflow: auto;
@@ -106,8 +112,10 @@
 .control-book-source > header small { color: #3478f6; font-size: 7px; font-weight: 700; letter-spacing: .05em; }
 .control-book-source h2 { margin: 5px 0 2px; font-size: 20px; letter-spacing: -.035em; }
 .control-book-source > header p { margin: 0; color: #777a7e; font-size: 9px; }
-.control-book-source > header a { display: flex; align-items: center; gap: 4px; margin-top: auto; color: #1767d8; font-size: 8px; text-decoration: none; }
+.control-book-quick-actions { display: flex; align-items: center; gap: 8px; margin-top: auto; }
+.control-book-source > header a { display: flex; align-items: center; gap: 4px; color: #1767d8; font-size: 8px; text-decoration: none; }
 .control-book-source > header a svg { width: 11px; }
+.control-book-quick-actions button { padding: 5px 7px; border: 1px solid #d9dade; border-radius: 6px; background: #fff; color: #62656a; font-size: 8px; }
 .control-book-source > .control-field { margin: 16px 0 10px; }
 .control-book-source-empty { min-height: 290px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #8b8e92; text-align: center; }
 .control-book-source-empty svg { width: 35px; margin-bottom: 8px; }
