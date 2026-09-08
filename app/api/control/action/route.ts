@@ -287,7 +287,6 @@ export async function POST(request: Request) {
       if (!personName || !title || !slugPattern.test(slug)) throw new Error("Add a person, title, and simple lowercase slug.");
       if (messages.length < 2 || messages[0].speakerRole !== "joe" || messages.some((message: any, index: number) => message.speakerRole !== (index % 2 === 0 ? "joe" : "guest"))) throw new Error("Keep the conversation in alternating You / Guest messages.");
       if (publicationState === "published" && input.confirmPublish !== true) throw new Error("Publication must be explicitly confirmed.");
-      if (publicationState === "published" && messages.filter((message: any) => message.speakerRole === "guest").some((message: any) => !safeLinks(message.sources).length)) throw new Error("Each published guest reply needs at least one source.");
       const { error: conversationError } = await db.from("message_conversations").upsert({
         id, slug, title, person_name: personName, initials: String(item.initials || personName.split(/\s+/).map((part: string) => part[0]).join("").slice(0, 3)).toUpperCase(),
         identity: String(item.identity || "").trim().slice(0, 500), preview: String(item.preview || "").trim().slice(0, 240), accent: /^#[0-9a-f]{6}$/i.test(String(item.accent || "")) ? item.accent : "#6f7f91",
