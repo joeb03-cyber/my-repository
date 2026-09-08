@@ -11,3 +11,11 @@
 .message-time {
   letter-spacing: .2em;
 }
+
+.message-bubble > p {
+  white-space: pre-line;
+}
+
+.message-bubble > p + p {
+  margin-top: .85em;
+}
