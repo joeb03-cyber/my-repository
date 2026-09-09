@@ -4,9 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowUpRight, BookOpen, CalendarDays, ChevronRight, Clock3, Info, Mic2, Search, Users, X } from "lucide-react";
 import type { BrainBookSummary, BrainBooksIndex } from "@/lib/brain/types";
 import type { BrainContact, BrainPeopleSourcesIndex, BrainPodcastEpisode } from "@/lib/brain/people-types";
+import { useAppItem } from "@/lib/use-app-item";
 import { BookCover } from "./book-cover";
 
 export default function ContactsApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary) => void }) {
+  const { requested, select, active } = useAppItem("/contacts", "person");
   const [data, setData] = useState<BrainPeopleSourcesIndex | null>(null);
   const [books, setBooks] = useState<BrainBookSummary[]>([]);
   const [query, setQuery] = useState("");
@@ -29,6 +31,12 @@ export default function ContactsApp({ onBookOpen }: { onBookOpen: (book: BrainBo
     }).catch(() => setError(true));
   }, []);
 
+  useEffect(() => {
+    if (!active || !data) return;
+    const person = data.contacts.find((item) => item.slug === requested);
+    if (person) { setQuery(""); setTopic("all"); setSelectedId(person.id); }
+    else if (!requested && window.matchMedia("(max-width: 520px)").matches) setSelectedId(null);
+  }, [requested, data, active]);
   const topics = useMemo(() => {
     const counts = new Map<string, { label: string; count: number }>();
     data?.contacts.forEach((person) => person.topics.forEach((item) => {
@@ -48,8 +56,8 @@ export default function ContactsApp({ onBookOpen }: { onBookOpen: (book: BrainBo
   }, [data, query, topic]);
 
   useEffect(() => {
-    if (selectedId && filtered.length && !filtered.some((person) => person.id === selectedId)) setSelectedId(filtered[0].id);
-  }, [filtered, selectedId]);
+    if (!requested && selectedId && filtered.length && !filtered.some((person) => person.id === selectedId)) setSelectedId(filtered[0].id);
+  }, [filtered, selectedId, requested]);
 
   const selected = data?.contacts.find((person) => person.id === selectedId) || null;
   const episode = data?.podcastEpisodes.find((item) => item.id === episodeId) || null;
@@ -59,7 +67,9 @@ export default function ContactsApp({ onBookOpen }: { onBookOpen: (book: BrainBo
   };
 
   if (error) return <div className="contacts-state"><Users/><strong>Contacts could not be opened.</strong><span>The public Brain view is temporarily unavailable.</span></div>;
-  if (!data) return <div className="contacts-state"><Users className="is-loading"/><strong>Opening Contacts…</strong><span>Reading public-safe People and Source metadata.</span></div>;
+  if (!data) return <div className="contacts-state"><Users className="is-loading"/><strong>Opening Contacts…</strong></div>;
+
+  if (requested && !data.contacts.some((person) => person.slug === requested)) return <div className="contacts-state">This contact is not available.<button onClick={() => select(null)}>All Contacts</button></div>;
 
   return <div className={`contacts-app ${selected ? "has-mobile-selection" : ""}`}>
     <aside className="contacts-groups">
@@ -74,12 +84,12 @@ export default function ContactsApp({ onBookOpen }: { onBookOpen: (book: BrainBo
     <section className="contacts-list-pane">
       <div className="contacts-list-title"><strong>{topic === "all" ? "All Contacts" : topics.find((item) => item.slug === topic)?.label}</strong><span>{filtered.length}</span></div>
       <label className="contacts-search"><Search/><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search" aria-label="Search Contacts"/>{query && <button onClick={() => setQuery("")} aria-label="Clear search">×</button>}</label>
-      <div className="contacts-list-scroll">{filtered.map((person) => <button key={person.id} className={person.id === selectedId ? "is-selected" : ""} onClick={() => setSelectedId(person.id)}>
+      <div className="contacts-list-scroll">{filtered.map((person) => <button key={person.id} className={person.id === selectedId ? "is-selected" : ""} onClick={() => { setSelectedId(person.id); select(person.slug); }}>
         <PersonAvatar person={person} size="small"/><span><strong>{person.displayName}</strong><small>{person.topics[0]?.label || "Contact"}</small></span><ChevronRight/>
       </button>)}{!filtered.length && <p className="contacts-no-results">No matching contacts.</p>}</div>
     </section>
 
-    <ContactDetail person={selected} onBack={() => setSelectedId(null)} onOpenBook={openBook} onOpenEpisode={setEpisodeId}/>
+    <ContactDetail person={selected} onBack={() => { setSelectedId(null); select(null); }} onOpenBook={openBook} onOpenEpisode={setEpisodeId}/>
     {episode && <PodcastDetail episode={episode} onClose={() => setEpisodeId(null)}/>}
   </div>;
 }
@@ -95,7 +105,7 @@ function PersonAvatar({ person, size }: { person: BrainContact; size: "small" | 
 function ContactDetail({ person, onBack, onOpenBook, onOpenEpisode }: { person: BrainContact | null; onBack: () => void; onOpenBook: (id: string) => void; onOpenEpisode: (id: string) => void }) {
   if (!person) return <section className="contact-detail contact-detail--empty"><Users/><strong>Select a contact</strong></section>;
   return <section className="contact-detail">
-    <div className="contact-detail-toolbar"><button className="contact-mobile-back" onClick={onBack}><ArrowLeft/> Contacts</button><button aria-label="Contact actions">•••</button></div>
+    <div className="contact-detail-toolbar"><button className="contact-mobile-back" onClick={onBack}><ArrowLeft/> Contacts</button></div>
     <div className="contact-detail-scroll">
       <header className="contact-profile"><PersonAvatar person={person} size="large"/><div><h1>{person.displayName}</h1>{person.factualIdentity && <p>{person.factualIdentity}</p>}<div className="contact-topic-pills">{person.topics.map((item) => <span key={item.slug}>{item.label}</span>)}</div>{person.portrait?.sourceUrl && <a className="contact-portrait-credit" href={person.portrait.sourceUrl} target="_blank" rel="noreferrer">Photo: {person.portrait.attribution} · {person.portrait.license}</a>}</div></header>
 
@@ -107,7 +117,7 @@ function ContactDetail({ person, onBack, onOpenBook, onOpenEpisode }: { person: 
         <span className="podcast-source-icon"><Mic2/></span><span><small>{item.showTitle}</small><strong>{item.title}</strong><em>{formatDate(item.publicationDate)}{item.durationSeconds ? ` · ${formatDuration(item.durationSeconds)}` : ""}</em></span><ChevronRight/>
       </button>)}</div></ContactSection>}
 
-      {!person.books.length && !person.podcastAppearances.length && <div className="contact-sparse"><span>Connections are still being assembled.</span><p>Books, conversations, and other paths into this person’s work will appear here as the archive is reconciled.</p></div>}
+      {!person.books.length && !person.podcastAppearances.length && <div className="contact-sparse"><span>No linked books or episodes yet.</span></div>}
     </div>
   </section>;
 }
@@ -128,7 +138,7 @@ function PodcastDetail({ episode, onClose }: { episode: BrainPodcastEpisode; onC
         {episode.publicationDate && <><dt><CalendarDays/> Date</dt><dd>{formatDate(episode.publicationDate)}</dd></>}
         {episode.durationSeconds && <><dt><Clock3/> Duration</dt><dd>{formatDuration(episode.durationSeconds)}</dd></>}
       </dl>
-      <div className="podcast-privacy-note"><Info/><p><strong>Public metadata only</strong><span>No private archive summary, transcript, or personal note is included.</span></p></div>
+
       {episode.publicProvenanceLabel && <p className="podcast-provenance">{episode.publicProvenanceLabel}</p>}
       <a href={episode.originalUrl} target="_blank" rel="noreferrer">Open original episode <ArrowUpRight/></a>
     </article>

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import PrototypeShell from "@/components/os/prototype-shell";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -18,7 +19,7 @@ export default function OSLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <PrototypeShell>{children}</PrototypeShell>
+        <Suspense><PrototypeShell>{children}</PrototypeShell></Suspense>
       </body>
     </html>
   );

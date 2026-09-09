@@ -1,34 +1,23 @@
 "use client";
 
 import { ArrowLeft, ExternalLink, Search, Sparkles } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import { groundedConversations, type GroundedConversation } from "@/data/messages";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useAppItem } from "@/lib/use-app-item";
+import { type GroundedConversation } from "@/data/messages";
 
-function messageParagraphs(body: string) {
-  const explicit = body.split(/\r?\n\s*\r?\n/).filter((paragraph) => paragraph.length > 0);
-  if (explicit.length > 1 || body.length < 700 || /\r?\n/.test(body)) return explicit.length ? explicit : [body];
-  const paragraphs: string[] = [];
-  const boundary = /[.!?]["'’”)]?(?:\s+|$)/g;
-  let start = 0;
-  let match: RegExpExecArray | null;
-  while ((match = boundary.exec(body))) {
-    const end = match.index + match[0].length;
-    if (end - start >= 520) {
-      paragraphs.push(body.slice(start, end).trim());
-      start = end;
-    }
-  }
-  if (start < body.length) paragraphs.push(body.slice(start).trim());
-  return paragraphs.length > 1 ? paragraphs : [body];
-}
+import { messageParagraphs } from "@/lib/message-paragraphs";
 
 function MessageBody({ body }: { body: string }) {
   return <>{messageParagraphs(body).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</>;
 }
 
 export default function MessagesApp() {
-  const [items, setItems] = useState<GroundedConversation[]>(groundedConversations);
-  const [selectedSlug, setSelectedSlug] = useState(groundedConversations[0].slug);
+  const { requested, select, active } = useAppItem("/messages", "conversation");
+  const threadRef = useRef<HTMLDivElement>(null);
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+  const [items, setItems] = useState<GroundedConversation[]>([]);
+  const [selectedSlug, setSelectedSlug] = useState("");
   const [query, setQuery] = useState("");
   const [mobileThreadOpen, setMobileThreadOpen] = useState(false);
   const conversations = useMemo(() => {
@@ -37,9 +26,23 @@ export default function MessagesApp() {
     return items.filter((item) => `${item.name} ${item.identity} ${item.preview}`.toLowerCase().includes(needle));
   }, [items, query]);
   const selected = items.find((item) => item.slug === selectedSlug) || items[0];
-  useEffect(() => { fetch("/api/brain/messages").then((response) => response.json()).then((value) => { if (value.conversations?.length) { setItems(value.conversations); setSelectedSlug((current) => value.conversations.some((item: GroundedConversation) => item.slug === current) ? current : value.conversations[0].slug); } }).catch(() => {}); }, []);
-  const choose = (slug: string) => { setSelectedSlug(slug); setMobileThreadOpen(true); };
+  useEffect(() => {
+    fetch("/api/brain/messages", { cache: "no-store" })
+      .then((response) => { if (!response.ok) throw new Error(); return response.json(); })
+      .then((value) => { if (!Array.isArray(value.conversations)) throw new Error(); setItems(value.conversations); setSelectedSlug(value.conversations[0]?.slug || ""); setLoaded(true); })
+      .catch(() => setError(true));
+  }, []);
+  useEffect(() => {
+    if (!active) return;
+    if (requested && items.some((item) => item.slug === requested)) { setQuery(""); setSelectedSlug(requested); setMobileThreadOpen(true); }
+    else if (!requested) setMobileThreadOpen(false);
+  }, [requested, items, active]);
+  useEffect(() => { threadRef.current?.scrollTo({ top: 0 }); }, [selectedSlug]);
+  const choose = (slug: string) => { setSelectedSlug(slug); setMobileThreadOpen(true); select(slug); };
 
+  if (error) return <div className="message-no-results" role="status">Messages could not be loaded. Please try again later.</div>;
+  if (!loaded) return <div className="message-no-results" role="status">Opening Messages…</div>;
+  if (requested && !items.some((item) => item.slug === requested)) return <div className="message-no-results">This conversation is no longer available.<button onClick={() => select(null)}>All conversations</button></div>;
   if (!selected) return <div className="messages-app system-app"><div className="message-no-results">No published conversations yet.</div></div>;
 
   return <div className={`messages-app system-app ${mobileThreadOpen ? "is-thread-open" : ""}`}>
@@ -57,17 +60,17 @@ export default function MessagesApp() {
     </aside>
     <section className="message-thread">
       <header>
-        <button className="message-back" onClick={() => setMobileThreadOpen(false)} aria-label="Back to conversations"><ArrowLeft/></button>
+        <button className="message-back" onClick={() => { setMobileThreadOpen(false); select(null); }} aria-label="Back to conversations"><ArrowLeft/></button>
         <span className="message-avatar" style={{ background: selected.accent }}>{selected.initials}</span>
         <strong>{selected.name}</strong>
         <small>source-grounded reconstruction</small>
       </header>
-      <div className="message-thread-scroll">
+      <div className="message-thread-scroll" ref={threadRef}>
         <div className="message-identity"><strong>{selected.name}</strong><p>{selected.identity}</p><span>An imaginary conversation assembled from things this person has actually written or said. Tap the sources when a thread gets interesting.</span></div>
         {selected.exchanges.map((exchange, index) => <article className="message-exchange" key={exchange.question}>
           <div className="message-bubble message-bubble--joe"><span>You</span><MessageBody body={exchange.question}/></div>
           <div className="message-bubble message-bubble--person"><span>{selected.name}</span><MessageBody body={exchange.answer}/>
-            <div className="message-sources">{exchange.sources.map((source) => <a key={`${source.url}-${source.label}`} href={source.url} target={source.url.startsWith("/") ? undefined : "_blank"} rel={source.url.startsWith("/") ? undefined : "noreferrer"}><small>{source.kind}</small>{source.label}<ExternalLink/></a>)}</div>
+            {!!exchange.sources.length && <div className="message-sources">{exchange.sources.map((source) => <a key={`${source.url}-${source.label}`} href={source.url} target={source.url.startsWith("/") ? undefined : "_blank"} rel={source.url.startsWith("/") ? undefined : "noreferrer"}><small>{source.kind}</small>{source.label}<ExternalLink/></a>)}</div>}
           </div>
           {index < selected.exchanges.length - 1 && <div className="message-time">•••</div>}
         </article>)}

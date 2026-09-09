@@ -14,6 +14,7 @@ const allTopics: BrainTopic[] = taxonomy.topics.map((topic) => ({ ...topic, conf
 
 export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary) => void }) {
   const [index, setIndex] = useState<BrainBooksIndex>(loadingIndex);
+  const [loadState, setLoadState] = useState<"loading" | "loaded" | "error">("loading");
   const [query, setQuery] = useState("");
   const [topic, setTopic] = useState("all");
   const [reviewOpen, setReviewOpen] = useState(false);
@@ -29,8 +30,8 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
   useEffect(() => {
     let active = true;
     fetch("/api/brain/books", { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then((nextIndex: BrainBooksIndex) => {
-      if (active) setIndex(nextIndex);
-    }).catch(() => { /* Keep the loading-safe empty state; never replace live editorial data with a stale bundle. */ });
+      if (active) { setIndex(nextIndex); setLoadState("loaded"); }
+    }).catch(() => { if (active) setLoadState("error"); });
     return () => { active = false; };
   }, []);
 
@@ -40,6 +41,8 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
     return matchesText && (topic === "all" || book.topics.some((item) => item.slug === topic));
   }), [query, topic, decisions, index.books]);
   const topicCounts = useMemo(() => new Map(allTopics.map((item) => [item.slug, index.books.filter((book) => book.topics.some((topicItem) => topicItem.slug === item.slug)).length])), [index.books]);
+
+  if (loadState !== "loaded") return <div className="book-detail-state" role="status">{loadState === "error" ? "Books could not be loaded. Please try again later." : "Opening Books…"}</div>;
 
   if (reviewOpen) return <EditorialReview books={index.books} topics={allTopics} onClose={() => setReviewOpen(false)} onOpenBook={onBookOpen} />;
 
@@ -83,10 +86,10 @@ export function BookDetail({ slug, onBack }: { slug: string; onBack?: () => void
 
   return <article className="book-detail brain-book-detail">
     {onBack && <button className="mobile-back-inline" onClick={onBack}><ArrowLeft /> Books</button>}
-    <header className="book-detail__hero"><BookCover book={book} compact /><div><span className="app-kicker">BOOK {String(book.sourcePosition).padStart(3, "0")} · {book.highlightCount} PASSAGES</span><h2>{book.title}</h2>{book.subtitle && <p className="book-subtitle">{book.subtitle}</p>}<p className="book-author">{book.authors.join(", ")}</p><div className="tag-list">{book.topics.map((topic) => <em key={topic.slug}>{topic.label}</em>)}</div></div></header>
+    <header className="book-detail__hero"><BookCover book={book} compact /><div><span className="app-kicker">BOOK · {book.highlightCount} PASSAGES</span><h2>{book.title}</h2>{book.subtitle && <p className="book-subtitle">{book.subtitle}</p>}<p className="book-author">{book.authors.join(", ")}</p><div className="tag-list">{book.topics.map((topic) => <em key={topic.slug}>{topic.label}</em>)}</div></div></header>
     {book.standouts.length > 0 && <><section className="standout-section"><Star /><div><span className="app-kicker">STARRED PASSAGES</span><h3>What stayed with me</h3></div></section><div className="standout-list">{book.standouts.map((unit) => <blockquote key={unit.id}><span>0{unit.standoutRank}</span>{unit.text}</blockquote>)}</div></>}
-    <div className="detail-columns"><section className="highlight-reader"><span className="app-kicker">COMPLETE HIGHLIGHTS · SOURCE ORDER</span>
-      {!book.readerUnits.length && <div className="book-incomplete"><strong>Highlights are not available yet.</strong><p>The book belongs in Books while its source document remains missing or inaccessible.</p></div>}
+    <div className="detail-columns"><section className="highlight-reader"><span className="app-kicker">HIGHLIGHTS</span>
+      {!book.readerUnits.length && <div className="book-incomplete"><strong>No highlights shared yet.</strong></div>}
       {(book.passageGroups || []).map((group) => group.kind === "structure" ? group.units.map((unit) => unit.kind === "chapter_label" ? <h3 key={unit.id}>{unit.text}</h3> : <h4 key={unit.id}>{unit.text}</h4>) : <blockquote className={`passage-group ${group.units.length > 1 ? "is-grouped" : ""}`} key={group.id} data-group-confidence={group.confidence}>{group.units.map((unit) => <div className={`passage-paragraph passage-paragraph--${unit.kind} ${unit.listStyle === "numbered" ? "is-numbered" : ""}`} key={unit.id} id={unit.sourceUnitKey}><p>{unit.text}</p>{unit.locator?.raw && <cite>{unit.locator.raw}</cite>}</div>)}</blockquote>)}
     </section><aside>
       {book.relatedBooks.length > 0 && <Relation title="Related books" items={book.relatedBooks.map((item) => ({ label: item.title, href: `/library/${item.slug}` }))} />}

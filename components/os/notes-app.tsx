@@ -4,12 +4,14 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ChevronRight, ExternalLink, FileText, Folder, FolderOpen, Pin, Search, Tag } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useAppItem } from "@/lib/use-app-item";
 import type { BrainNote, BrainNotesIndex } from "@/lib/brain/notes-types";
 
 type Collection = "all" | "latest" | "pinned" | string;
 type MobilePane = "folders" | "list" | "reader";
 
 export default function NotesApp() {
+  const { requested, select, active } = useAppItem("/journal", "note");
   const [index, setIndex] = useState<BrainNotesIndex | null>(null);
   const [collection, setCollection] = useState<Collection>("all");
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -24,6 +26,12 @@ export default function NotesApp() {
       .catch((reason) => setError(reason instanceof Error ? reason.message : "Notes could not be loaded."));
   }, []);
 
+  useEffect(() => {
+    if (!active || !index) return;
+    const note = index.notes.find((item) => item.slug === requested);
+    if (note) { setQuery(""); setCollection("all"); setSelectedId(note.id); setMobilePane("reader"); }
+    else if (!requested) setMobilePane("list");
+  }, [requested, index, active]);
   const notes = useMemo(() => {
     const source = index?.notes || [];
     const normalized = query.trim().toLowerCase();
@@ -35,26 +43,28 @@ export default function NotesApp() {
   }, [collection, index, query]);
 
   useEffect(() => {
-    if (notes.length && !notes.some((note) => note.id === selectedId)) setSelectedId(notes[0].id);
-  }, [notes, selectedId]);
+    if (!requested && notes.length && !notes.some((note) => note.id === selectedId)) setSelectedId(notes[0].id);
+  }, [notes, selectedId, requested]);
 
   const selected = index?.notes.find((note) => note.id === selectedId) || notes[0];
   const chooseCollection = (value: Collection) => { setCollection(value); setMobilePane("list"); };
-  const chooseNote = (note: BrainNote) => { setSelectedId(note.id); setMobilePane("reader"); };
+  const chooseNote = (note: BrainNote) => { setSelectedId(note.id); setMobilePane("reader"); select(note.slug); };
 
   if (error) return <div className="notes-state"><FileText/><strong>Notes are resting.</strong><span>{error}</span></div>;
   if (!index) return <div className="notes-state"><span className="notes-spinner"/><strong>Opening Notes…</strong></div>;
 
+  if (requested && !index.notes.some((note) => note.slug === requested)) return <div className="notes-state">This note is not available.<button onClick={() => select(null)}>All Notes</button></div>;
+
   return (
     <div className={`notes-app notes-app--mobile-${mobilePane}`}>
       <aside className="notes-folders">
-        <div className="notes-sidebar-title"><strong>Notes</strong><button aria-label="New note unavailable in public preview" title="Publishing editor comes next">⌑</button></div>
+        <div className="notes-sidebar-title"><strong>Notes</strong></div>
         <FolderButton label="All Notes" count={index.notes.length} active={collection === "all"} onClick={() => chooseCollection("all")} icon="all" />
         <FolderButton label="Latest" count={index.notes.length} active={collection === "latest"} onClick={() => chooseCollection("latest")} icon="latest" />
         <FolderButton label="Pinned" count={index.notes.filter((note) => note.pinned).length} active={collection === "pinned"} onClick={() => chooseCollection("pinned")} icon="pinned" />
         <span className="notes-folder-heading">Folders</span>
         {index.folders.map((folder) => <FolderButton key={folder.id} label={folder.label} count={index.notes.filter((note) => note.folderSlug === folder.slug).length} active={collection === folder.slug} onClick={() => chooseCollection(folder.slug)} />)}
-        <footer><span>iCloud</span><small>{index.notes.length} published notes</small></footer>
+        <footer><span>Joe’s Notes</span><small>{index.notes.length} published notes</small></footer>
       </aside>
 
       <section className="notes-list-pane">
@@ -75,12 +85,12 @@ export default function NotesApp() {
       <article className="notes-reader">
         {selected ? <>
           <header className="notes-reader-toolbar">
-            <button className="notes-reader-back" onClick={() => setMobilePane("list")}><ArrowLeft/> Notes</button>
+            <button className="notes-reader-back" onClick={() => { setMobilePane("list"); select(null); }}><ArrowLeft/> Notes</button>
             <span>{formatLongDate(selected.sourcePublishedAt || selected.updatedAt)}</span>
-            <div><button title="Pinned" aria-label={selected.pinned ? "Pinned note" : "Note is not pinned"}><Pin className={selected.pinned ? "is-active" : ""}/></button><button title="Tags" aria-label="Show tags"><Tag/></button></div>
+            <div>{selected.pinned && <span title="Pinned note"><Pin className="is-active"/></span>}</div>
           </header>
           <div className="notes-document">
-            {selected.editorialNotice && <aside className="notes-editorial-notice">{selected.editorialNotice}</aside>}
+            {selected.editorialNotice && !selected.editorialNotice.startsWith("Migrated from the legacy About page.") && <aside className="notes-editorial-notice">{selected.editorialNotice}</aside>}
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{selected.bodyMarkdown}</ReactMarkdown>
             {!!selected.tags.length && <div className="notes-tags">{selected.tags.map((tag) => <span key={tag}>#{tag}</span>)}</div>}
             {!!selected.externalLinks.length && <div className="notes-links">{selected.externalLinks.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label}<ExternalLink/></a>)}</div>}

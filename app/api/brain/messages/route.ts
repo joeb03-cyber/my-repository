@@ -4,5 +4,9 @@ import { getMessages } from "@/lib/brain/messages.server";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  return NextResponse.json({ conversations: await getMessages() }, { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300" } });
+  try {
+    return NextResponse.json({ conversations: await getMessages() }, { headers: { "Cache-Control": "no-store" } });
+  } catch {
+    return NextResponse.json({ error: "Messages could not be loaded." }, { status: 503, headers: { "Cache-Control": "no-store" } });
+  }
 }

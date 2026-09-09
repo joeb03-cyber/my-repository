@@ -3,9 +3,11 @@ import { getControlAdmin } from "@/lib/brain/control-auth.server";
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const asStrings = (value: unknown) => Array.isArray(value) ? value.map(String).map((item) => item.trim()).filter(Boolean).slice(0, 30) : [];
-const safeLinks = (value: unknown) => Array.isArray(value) ? value.flatMap((item: any) => {
+const safeLinks = (value: unknown, allowLocal = false) => Array.isArray(value) ? value.flatMap((item: any) => {
   try {
-    const url = new URL(String(item.url));
+    const raw = String(item.url).trim();
+    if (allowLocal && /^\/(?!\/)[^\\\s]*$/.test(raw)) return [{ label: String(item.label || raw).slice(0, 100), url: raw }];
+    const url = new URL(raw);
     if (!['http:', 'https:'].includes(url.protocol)) return [];
     return [{ label: String(item.label || url.hostname).slice(0, 100), url: url.toString() }];
   } catch { return []; }
@@ -303,11 +305,23 @@ export async function POST(request: Request) {
         const { error } = await db.from("conversation_messages").insert({ id: messageId, conversation_id: id, speaker_role: message.speakerRole, body: message.body, sort_order: message.sortOrder, provenance: { source: "control_center", editedBy: auth.user.id, ...(message.speakerRole === "guest" ? { sourceGroundedReconstruction: true } : {}) } });
         if (error) throw error;
         if (message.speakerRole === "guest") {
-          const links = safeLinks(message.sources);
-          if (links.length) { const rows = links.map((link, index) => ({ id: crypto.randomUUID(), message_id: messageId, label: link.label, url: link.url, source_kind: ["book","interview","article","podcast","research"].includes(message.sources[index]?.kind) ? message.sources[index].kind : "article", sort_order: index * 10 + 10, provenance: { source: "control_center" } })); const { error: sourceError } = await db.from("conversation_message_sources").insert(rows); if (sourceError) throw sourceError; }
+          const links = message.sources.flatMap((source: any) => safeLinks([source], true).map((link) => ({ ...link, kind: ["book","interview","article","podcast","research"].includes(source.kind) ? source.kind : "article" })));
+          if (links.length) { const rows = links.map((link: { label: string; url: string; kind: string }, index: number) => ({ id: crypto.randomUUID(), message_id: messageId, label: link.label, url: link.url, source_kind: link.kind, sort_order: index * 10 + 10, provenance: { source: "control_center" } })); const { error: sourceError } = await db.from("conversation_message_sources").insert(rows); if (sourceError) throw sourceError; }
         }
       }
       return NextResponse.json({ ok: true, id, publicationState });
+    }
+    if (input.action === "delete-conversation") {
+      if (input.confirm !== true) throw new Error("Delete confirmation required.");
+      if (typeof input.id !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(input.id)) {
+        throw new Error("That conversation could not be identified.");
+      }
+      // Existing ON DELETE CASCADE removes only this conversation's messages
+      // and their citation rows. Shared people/entities are never deleted.
+      const { data, error } = await db.from("message_conversations").delete().eq("id", input.id).select("id").maybeSingle();
+      if (error) throw error;
+      if (!data) return NextResponse.json({ error: "Conversation not found." }, { status: 404 });
+      return NextResponse.json({ ok: true, id: data.id });
     }
     if (input.action === "archive-conversation") {
       if (!input.id || input.confirm !== true) throw new Error("Archive confirmation required.");

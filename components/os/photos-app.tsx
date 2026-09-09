@@ -54,7 +54,7 @@ export default function PhotosApp({ onOpenApp }: { onOpenApp: (appId: AppId) => 
       {view === "journey" ? chapters.slice(0, visibleSections).map((chapter) => <section className="photo-chapter" key={chapter.key}><header><div><h2>{chapter.title}</h2><p>{Array.from(chapter.places).slice(0, 4).join(" · ")}{chapter.places.size > 4 ? ` + ${chapter.places.size - 4} more` : ""}</p></div><span>{chapter.photos.length}</span></header><PhotoMosaic photos={chapter.photos} onOpen={setSelectedPhotoId}/></section>) : placeGroups.slice(0, visibleSections).map((group) => <section className="photo-chapter" key={group.key}><header><div><h2>{group.place}</h2><p>{group.country}</p></div><span>{group.photos.length}</span></header><PhotoMosaic photos={group.photos} onOpen={setSelectedPhotoId}/></section>)}
       {hasMore && <button className="photo-load-more" onClick={()=>setVisibleSections((count)=>count+6)}>Show more {view === "journey" ? "of the journey" : "places"} <span>{sections.length-visibleSections} remaining</span></button>}
     </main>
-    {selectedPhotoId && <TravelPhotoViewer photos={viewerPhotos} photoId={selectedPhotoId} onChange={setSelectedPhotoId} onClose={() => setSelectedPhotoId(null)} onShowMap={(photo) => { sendTravelNavigation({ destination: "atlas", visitId: photo.visitId, photoId: photo.id }); onOpenApp("atlas"); }} />}
+    {selectedPhotoId && <TravelPhotoViewer photos={viewerPhotos} photoId={selectedPhotoId} onChange={setSelectedPhotoId} onClose={() => setSelectedPhotoId(null)} onShowMap={(photo) => { setSelectedPhotoId(null); sendTravelNavigation({ destination: "atlas", visitId: photo.visitId, photoId: photo.id }); onOpenApp("atlas"); }} />}
   </div>;
 }
 

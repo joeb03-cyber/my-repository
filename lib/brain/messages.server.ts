@@ -10,7 +10,8 @@ export async function getMessages(): Promise<GroundedConversation[]> {
     db.from("brain_public_conversation_messages").select("*").order("sort_order"),
     db.from("brain_public_conversation_sources").select("*").order("sort_order"),
   ]);
-  if (conversations.error || messages.error || sources.error || !conversations.data?.length) return groundedConversations;
+  if (conversations.error || messages.error || sources.error) throw new Error("Conversations could not be loaded.");
+  if (!conversations.data?.length) return [];
   return conversations.data.map((conversation: any) => {
     const thread = (messages.data || []).filter((message: any) => message.conversation_id === conversation.id);
     const exchanges = [];

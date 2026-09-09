@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, BookOpen, Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, CloudSun, Sun } from "lucide-react";
 import type { AppId } from "@/data/prototype";
 import { wallpapers } from "@/data/prototype";
-import osStateJson from "@/data/brain/os-state.v1.json";
+import { emptyOsState } from "@/lib/brain/empty-os-state";
 import type { BrainBookSummary, BrainBooksIndex } from "@/lib/brain/types";
 import type { BrainCurrentState } from "@/lib/brain/notes-types";
 import type { BrainOsState } from "@/lib/brain/os-state-types";
@@ -90,6 +90,7 @@ function CurrentContext({ state, weather }: { state: BrainCurrentState; weather:
 export default function PrototypeShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
+  const search = useSearchParams().toString();
   const [windows, setWindows] = useState<WindowState[]>(initialWindows);
   const [wallpaperIndex, setWallpaperIndex] = useState(0);
   const [curatedWallpapers, setCuratedWallpapers] = useState<LivedPhoto[]>([]);
@@ -101,7 +102,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(null);
   const [libraryBooks, setLibraryBooks] = useState<BrainBookSummary[]>([]);
   const [libraryCount, setLibraryCount] = useState(0);
-  const [osState, setOsState] = useState<BrainOsState>(osStateJson as BrainOsState);
+  const [osState, setOsState] = useState<BrainOsState>(emptyOsState);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
   const dockRef = useRef<HTMLElement>(null);
   const dockAnimationRef = useRef<number | null>(null);
@@ -161,7 +162,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       if (book) { openBook(book, false); setMobileBook(book); }
       else setMobileBook(null);
     } else setMobileBook(null);
-  }, [pathname, openApp, openBook, libraryBooks]);
+  }, [pathname, search, openApp, openBook, libraryBooks]);
 
   const activeWallpapers = curatedWallpapers.length ? curatedWallpapers : wallpapers;
 
@@ -222,7 +223,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const closeWindow = useCallback((id: string) => {
     setWindows((current) => current.map((win) => win.id === id ? { ...win, transition: "closing" } : win));
     window.setTimeout(() => setWindows((current) => current.filter((win) => win.id !== id)), 170);
-    if (id === `app-${pathname.split("/")[1]}`) window.setTimeout(() => router.push("/"), 170);
+    if (id === `app-${routeApps[pathname.split("/")[1]]}`) window.setTimeout(() => router.push("/"), 170);
     else if (id.startsWith("book-") && pathname.startsWith("/library/")) window.setTimeout(() => router.push("/library"), 170);
   }, [pathname, router]);
   const minimizeWindow = useCallback((id: string) => {
@@ -303,12 +304,12 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       {activeWallpapers.map((wallpaper, index) => <div key={wallpaper.id} className={`wallpaper ${"className" in wallpaper ? wallpaper.className : "wallpaper--curated"} ${index === wallpaperIndex % activeWallpapers.length ? "is-visible" : ""}`} style={"derivatives" in wallpaper ? { backgroundImage: `linear-gradient(rgba(9,14,18,.08),rgba(9,14,18,.15)),url(${wallpaper.derivatives.large.url})` } : undefined} aria-hidden="true" />)}
       <header className="menu-bar">
         <div className="menu-left">
-          <button className="menu-brand" aria-label="Synergetic Human home" title="Synergetic Human" onClick={() => { router.push("/"); closeMenus(); }}><span aria-hidden="true">S</span></button>
+          <button className="menu-brand" aria-label="Synergetic Human home" title="Synergetic Human" onClick={resetDesktop}><span aria-hidden="true">S</span></button>
           <strong className="menu-app-name">{currentApp ? appNames[currentApp] : "Synergetic Human"}</strong>
           <nav className="system-menus" aria-label="System menus">
             <SystemMenu label="File" open={activeMenu === "file"} onToggle={() => setActiveMenu(activeMenu === "file" ? null : "file")}>
-              <MenuAction label="Open Books" shortcut="⌘L" onClick={() => { openApp("library"); closeMenus(); }} />
-              <MenuAction label="Close Active Window" shortcut="⌘W" onClick={closeActiveWindow} />
+              <MenuAction label="Open Books" onClick={() => { openApp("library"); closeMenus(); }} />
+              <MenuAction label="Close Active Window" onClick={closeActiveWindow} />
             </SystemMenu>
             <SystemMenu label="Explore" open={activeMenu === "explore"} onToggle={() => setActiveMenu(activeMenu === "explore" ? null : "explore")}>
               <MenuAction label="Finder" onClick={() => { openApp("finder"); closeMenus(); }} />
@@ -321,7 +322,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
               <MenuAction label="Terminal" onClick={() => { openApp("terminal"); closeMenus(); }} />
             </SystemMenu>
             <SystemMenu label="View" open={activeMenu === "view"} onToggle={() => setActiveMenu(activeMenu === "view" ? null : "view")}>
-              <MenuAction label="Next Wallpaper" shortcut="⌘→" onClick={() => { advanceWallpaper(); closeMenus(); }} />
+              <MenuAction label="Next Wallpaper" onClick={() => { advanceWallpaper(); closeMenus(); }} />
               <MenuAction label="Reset Desktop" onClick={resetDesktop} />
             </SystemMenu>
           </nav>
@@ -333,7 +334,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           <button className={`status-icon ${statusPanel === "update" ? "is-active" : ""}`} aria-label="Software Update" title="Software Update" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "update" ? null : "update"); }}><ControlGlyph /></button>
           <CurrentContext state={currentState} weather={currentWeather} />
           {statusPanel === "battery" && <StatusPopover title="Human Battery"><div className="battery-readout"><BatteryGlyph level={currentState.humanBattery.level}/><strong>{currentState.humanBattery.label}</strong></div><p>{currentState.humanBattery.note || "No check-in note."}</p><small>Manual check-in only · no health data inferred</small></StatusPopover>}
-          {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Innernet</strong><small>Connected · full signal</small></span><i/></div><div className="network-row network-row--available network-row--weak"><WifiGlyph strength="weak"/><span><strong>Consensus Reality</strong><small>Available · weak signal</small></span></div><p className="popover-footnote">Networks are handcrafted interface copy.</p></StatusPopover>}
+          {statusPanel === "wifi" && <StatusPopover title="Wi-Fi"><div className="network-row"><WifiGlyph/><span><strong>Innernet</strong><small>Connected · full signal</small></span><i/></div><div className="network-row network-row--available network-row--weak"><WifiGlyph strength="weak"/><span><strong>Consensus Reality</strong><small>Available · weak signal</small></span></div></StatusPopover>}
           {statusPanel === "update" && <StatusPopover title="Software Update"><div className="update-orb">S<span>{osState.softwareUpdate.versionLabel}</span></div><strong>Synergetic Human is up to date</strong><p>{osState.softwareUpdate.new[0] || `Currently making: ${currentState.making || "Not reported"}`}</p><dl><div><dt>Exploring</dt><dd>{osState.softwareUpdate.currentlyExploring[0] || "Not reported"}</dd></div><div><dt>Performance</dt><dd>{osState.softwareUpdate.performance[0] || "Nominally strange"}</dd></div><div><dt>Known issue</dt><dd>{osState.softwareUpdate.knownIssues[0] || "None reported"}</dd></div></dl><button className="popover-action" onClick={() => { openApp("software"); closeMenus(); }}>Open Software Update…</button></StatusPopover>}
         </div>
       </header>
@@ -354,8 +355,8 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
       <section className="mobile-shell">
         {pathname === "/" ? <MobileHome state={currentState} bookCount={libraryCount} onOpen={(appId) => router.push(routes[appId] ?? `/${appId}`)} onBookOpen={(book) => openBook(book)} /> : (
           <div className="mobile-app-view">
-            <header><button onClick={() => mobileBook ? setMobileBook(null) : router.push("/")}><ArrowLeft /></button><div><span>SYNERGETIC HUMAN</span><strong>{mobileBook?.title ?? appNames[currentApp] ?? "Application"}</strong></div></header>
-            <div className="mobile-app-scroll">{mobileBook ? <BookDetail slug={mobileBook.slug} onBack={() => setMobileBook(null)} /> : <AppContent appId={currentApp} onBookOpen={setMobileBook} onOpenApp={(appId) => router.push(routes[appId] ?? `/${appId}`)} />}</div>
+            <header><button aria-label={mobileBook ? "Back to Books" : "Back to home"} onClick={() => mobileBook ? router.push("/library") : router.push("/")}><ArrowLeft /></button><div><span>SYNERGETIC HUMAN</span><strong>{mobileBook?.title ?? appNames[currentApp] ?? "Application"}</strong></div></header>
+            <div className="mobile-app-scroll">{mobileBook ? <BookDetail slug={mobileBook.slug} onBack={() => router.push("/library")} /> : <AppContent appId={currentApp} onBookOpen={(book) => { setMobileBook(book); router.push(`/library/${book.slug}`); }} onOpenApp={(appId) => router.push(routes[appId] ?? `/${appId}`)} />}</div>
           </div>
         )}
       </section>
@@ -398,7 +399,7 @@ function Reading({ state, onOpen }: { state: BrainCurrentState; onOpen: (bookId?
   const linkedBooks = state.readingBooks?.length ? state.readingBooks : state.readingBook ? [{ ...state.readingBook, role: "reading" as const }] : [];
   const now = [linkedBooks.find((book) => book.role === "reading"), linkedBooks.find((book) => book.role === "reading_secondary")].filter(Boolean) as typeof linkedBooks;
   const recent = [linkedBooks.find((book) => book.role === "recently_read"), linkedBooks.find((book) => book.role === "recently_read_secondary")].filter(Boolean) as typeof linkedBooks;
-  if (!now.length && !recent.length) return <div className="reading-card reading-card--unset"><div className="reading-library-glyph"><BookOpen /></div><div><span className="eyebrow">READING</span><h2>Not set yet</h2><p>Choose books in Control Center.</p><button onClick={() => onOpen()}>Open Books <span>↗</span></button></div></div>;
+  if (!now.length && !recent.length) return <div className="reading-card reading-card--unset"><div className="reading-library-glyph"><BookOpen /></div><div><span className="eyebrow">READING</span><h2>Not set yet</h2><p>No current reading shared yet.</p><button onClick={() => onOpen()}>Open Books <span>↗</span></button></div></div>;
   const books = (items: typeof linkedBooks, quiet = false) => items.length ? <div className={`reading-card__books ${items.length > 1 ? "is-multiple" : ""}`}>{items.map((book) => <button key={book.id} className="reading-card__book" onClick={() => onOpen(book.id, book.slug, book.title)}>{book.cover ? <img className="book-cover" src={book.cover} alt={`Cover of ${book.title}`}/> : <div className="reading-library-glyph"><BookOpen /></div>}<span><strong>{book.title}</strong><small>{book.authors.join(", ") || "Author not recorded"}</small></span><i>↗</i></button>)}</div> : <p className="reading-card__empty">{quiet ? "Nothing recorded yet." : "Choose a current book."}</p>;
   return <div className="reading-card reading-card--linked reading-card--combined"><span className="eyebrow">READING</span><section className="reading-card__section reading-card__section--now"><b>Now</b>{books(now)}</section><section className="reading-card__section reading-card__section--recent"><b>Recently Read</b>{books(recent, true)}</section></div>;
 }
@@ -410,7 +411,7 @@ function Thinking({ state }: { state: BrainCurrentState }) {
 
 function MobileHome({ state, bookCount, onOpen, onBookOpen }: { state: BrainCurrentState; bookCount: number; onOpen: (appId: AppId) => void; onBookOpen: (book: BrainBookSummary) => void }) {
   const thought = state.thinking || "Waiting for the next interesting question.";
-  const openLinked = (bookId?: string, bookSlug?: string) => { const book = state.readingBooks?.find((item) => item.id === bookId || item.slug === bookSlug); if (book) onBookOpen({ ...book, sourcePosition: 0, originalTitle: book.title, topics: [], cover: { status: book.cover ? "cached" : "placeholder", public_path: book.cover || "/book-covers/placeholder.svg" }, highlightCount: 0, importState: "incomplete", metadataStatus: "linked", reviewFlagCount: 0 }); };
+  const openLinked = (bookId?: string, bookSlug?: string) => { const book = (state.readingBooks?.length ? state.readingBooks : state.readingBook ? [state.readingBook] : []).find((item) => item.id === bookId || item.slug === bookSlug); if (!book) return onOpen("library"); onBookOpen({ ...book, sourcePosition: 0, originalTitle: book.title, topics: [], cover: { status: book.cover ? "cached" : "placeholder", public_path: book.cover || "/book-covers/placeholder.svg" }, highlightCount: 0, importState: "incomplete", metadataStatus: "linked", reviewFlagCount: 0 }); };
   return <div className="mobile-home"><div className="mobile-widget-row"><div className="mobile-now"><span className="app-kicker">CURRENTLY</span><h1>{state.where.city}</h1><p>{state.where.country}</p></div><div className="mobile-thought"><span className="app-kicker">THINKING</span><p>{thought}</p></div></div><div className="mobile-reading-widget"><Reading state={state} onOpen={openLinked}/></div><button className="mobile-reading" onClick={() => onOpen("library")}><AppIcon name="books"/><div><span className="app-kicker">BOOKS</span><strong>{bookCount} Books</strong><small>Highlights, sources, and connections</small></div></button><div className="mobile-app-grid">{apps.map((app)=><button key={app.id} onClick={()=>onOpen(app.id)}><AppIcon name={app.icon}/><strong>{app.label}</strong></button>)}</div></div>;
 }
 

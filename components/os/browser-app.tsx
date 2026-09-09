@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Bookmark, ChevronRight, Clock3, Compass, FileText, Search, Sparkles, UserRound, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronRight, Clock3, Compass, FileText, Search, Sparkles, UserRound, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import localBrowser from "@/data/brain/browser.v1.json";
@@ -11,7 +11,9 @@ import type { BrowserIndex, RabbitHole, RabbitHoleBlock, RabbitHoleEntityLink } 
 export default function BrowserApp({ onBookOpen, onOpenApp }: { onBookOpen: (book: BrainBookSummary) => void; onOpenApp: (id: AppId) => void }) {
   const router = useRouter();
   const pathname = usePathname();
-  const routeSlug = pathname.split("/").filter(Boolean)[1] || null;
+  const pathSlug = pathname.startsWith("/browser/") ? pathname.split("/")[2] : null;
+  const [routeSlug, setRouteSlug] = useState<string | null>(pathSlug);
+  useEffect(() => { if (pathname === "/browser" || pathname.startsWith("/browser/")) setRouteSlug(pathSlug); }, [pathname, pathSlug]);
   const [data, setData] = useState<BrowserIndex>(localBrowser as BrowserIndex);
   const [books, setBooks] = useState<BrainBookSummary[]>([]);
   const [tabs, setTabs] = useState<string[]>(routeSlug ? [routeSlug] : []);
@@ -64,8 +66,8 @@ export default function BrowserApp({ onBookOpen, onOpenApp }: { onBookOpen: (boo
       const book = books.find((item) => item.id === link.entityId || item.slug === link.entitySlug);
       if (book) onBookOpen(book);
       else router.push(`/library/${link.entitySlug}`);
-    } else if (link.entityKind === "person") onOpenApp("contacts");
-    else if (link.entityKind === "note") router.push(`/notes/${link.entitySlug}`);
+    } else if (link.entityKind === "person") router.push(`/contacts?person=${encodeURIComponent(link.entitySlug)}`);
+    else if (link.entityKind === "note") router.push(`/journal?note=${encodeURIComponent(link.entitySlug)}`);
     else if (link.entitySlug) window.open(link.entitySlug, "_blank", "noopener,noreferrer");
   }
 
@@ -78,7 +80,7 @@ export default function BrowserApp({ onBookOpen, onOpenApp }: { onBookOpen: (boo
       <div className="browser-controls">
         <button aria-label="Back" title="Back" onClick={() => router.back()}><ArrowLeft/></button><button aria-label="Forward" title="Forward" onClick={() => router.forward()}><ArrowRight/></button>
         <label className={`browser-omnibox ${searchOpen ? "is-searching" : ""}`}><Search/><input aria-label="Search Browser" value={query} onFocus={() => setSearchOpen(true)} onChange={(event) => { setQuery(event.target.value); setSearchOpen(true); }} placeholder={selected ? `brain://browser/${selected.slug}` : "Search Joe's Browser"}/>{query && <button onClick={() => setQuery("")} aria-label="Clear"><X/></button>}</label>
-        <button aria-label="Bookmarks" title="Bookmarks"><Bookmark/></button>
+
       </div>
       {searchOpen && <div className="browser-search-results"><header><strong>{query ? "Search results" : "Open rabbit holes"}</strong><button onClick={() => setSearchOpen(false)}>Done</button></header>{results.map((hole) => <button key={hole.slug} onClick={() => openHole(hole.slug)}><i className={`is-${hole.accent}`}/><span><strong>{hole.title}</strong><small>{hole.centralQuestion}</small></span><ChevronRight/></button>)}{!results.length && <p>No published trail matches that search.</p>}</div>}
     </header>
@@ -95,21 +97,22 @@ function BrowserLanding({ data, openHole }: { data: BrowserIndex; openHole: (slu
 }
 
 function RabbitHolePage({ hole, openHole, openEntity, onOpenApp }: { hole: RabbitHole; openHole: (slug: string) => void; openEntity: (link: RabbitHoleEntityLink) => void; onOpenApp: (id: AppId) => void }) {
+  const router = useRouter();
   const startHere = [...hole.entities.filter((item) => item.publicRole === "book"), ...hole.resources.filter((item) => item.publicRole === "start_here")];
   const people = hole.entities.filter((item) => item.entityKind === "person");
   const keepGoing = hole.resources.filter((item) => item.publicRole === "keep_going");
   return <article className={`rabbit-page is-${hole.accent}`}>
-    <header className="rabbit-hero"><div className="rabbit-path"><span>Browser</span><ChevronRight/><span>Open tab</span></div><span className="rabbit-status"><i/> Still open</span><h1>{hole.title}</h1><p className="rabbit-question">{hole.centralQuestion}</p><p className="rabbit-intro">{hole.shortIntro}</p></header>
+    <header className="rabbit-hero"><div className="rabbit-path"><span>Browser</span><ChevronRight/><span>Open tab</span></div><span className="rabbit-status"><i/> {hole.status === "open" ? "Still open" : hole.status === "paused" ? "Paused" : "Closed"}</span><h1>{hole.title}</h1><p className="rabbit-question">{hole.centralQuestion}</p><p className="rabbit-intro">{hole.shortIntro}</p></header>
     <div className="rabbit-content-grid"><div className="rabbit-story">
       <section className="rabbit-current-take"><span>WHERE I’M CURRENTLY LEANING</span><p>{hole.currentTake}</p></section>
       {hole.blocks.sort((a,b) => a.sortOrder-b.sortOrder).map((block) => <RabbitBlock block={block} key={block.id}/>)}
     </div><aside className="rabbit-side">
       {!!startHere.length && <section><h2><Sparkles/> Start here</h2>{startHere.map((item: any) => "entityKind" in item ? <button className="rabbit-source" key={item.entitySlug} onClick={() => openEntity(item)}><SourceIcon kind={item.entityKind}/><span><strong>{item.entityTitle}</strong><small>{item.label}</small></span><ChevronRight/></button> : <a className="rabbit-source" key={item.id} href={item.url} target="_blank" rel="noreferrer"><SourceIcon kind={item.resourceType}/><span><strong>{item.title}</strong><small>{item.note}</small></span><ArrowUpRight/></a>)}</section>}
       {!!people.length && <section><h2><UserRound/> People</h2>{people.map((person) => <button className="rabbit-person" onClick={() => openEntity(person)} key={person.entitySlug}><span>{person.entityTitle.split(" ").map((part) => part[0]).slice(0,2).join("")}</span><div><strong>{person.entityTitle}</strong><small>{person.label}</small></div><ChevronRight/></button>)}</section>}
-      {!!hole.humanLinks.length && <section className="rabbit-human-links"><h2>How this affects how I live</h2>{hole.humanLinks.map((link) => <button key={link.humanEntrySlug} onClick={() => onOpenApp("laboratory")}><span><strong>{link.humanEntryTitle}</strong><small>{link.browserLabel}</small></span><ChevronRight/></button>)}</section>}
+      {!!hole.humanLinks.length && <section className="rabbit-human-links"><h2>How this affects how I live</h2>{hole.humanLinks.map((link) => <button key={link.humanEntrySlug} onClick={() => router.push(`/laboratory?entry=${encodeURIComponent(link.humanEntrySlug)}`)}><span><strong>{link.humanEntryTitle}</strong><small>{link.browserLabel}</small></span><ChevronRight/></button>)}</section>}
     </aside></div>
     {!!keepGoing.length && <section className="rabbit-reading-list"><header><span>KEEP GOING</span><h2>Further down the trail</h2></header><div>{keepGoing.map((resource) => <a key={resource.id} href={resource.url} target="_blank" rel="noreferrer"><small>{resource.resourceType}</small><strong>{resource.title}</strong><p>{resource.note}</p><ArrowUpRight/></a>)}</div></section>}
-    <section className="rabbit-connections"><header><span>CONNECTED TABS</span><h2>That connects to this other thing…</h2></header><div className="rabbit-trail-map">{hole.related.sort((a,b) => a.sortOrder-b.sortOrder).map((link, index) => <button key={link.slug} className={link.publicationState === "published" ? "is-published" : "is-draft"} onClick={() => link.publicationState === "published" && openHole(link.slug)}><i>{String(index + 1).padStart(2,"0")}</i><span><strong>{link.title}</strong><small>{link.label}</small></span><em>{link.publicationState === "published" ? "Open →" : "Still exploring"}</em></button>)}</div></section>
+    <section className="rabbit-connections"><header><span>CONNECTED TABS</span><h2>That connects to this other thing…</h2></header><div className="rabbit-trail-map">{hole.related.sort((a,b) => a.sortOrder-b.sortOrder).map((link, index) => <button key={link.slug} disabled={link.publicationState !== "published"} className={link.publicationState === "published" ? "is-published" : "is-draft"} onClick={() => link.publicationState === "published" && openHole(link.slug)}><i>{String(index + 1).padStart(2,"0")}</i><span><strong>{link.title}</strong><small>{link.label}</small></span><em>{link.publicationState === "published" ? "Open →" : "Still exploring"}</em></button>)}</div></section>
   </article>;
 }
 

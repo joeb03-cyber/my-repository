@@ -63,3 +63,14 @@
   .travel-viewer__previous,
   .travel-viewer__next { bottom: max(62px, calc(52px + env(safe-area-inset-bottom))); }
 }
+
+@media (max-width: 700px) {
+  .journey-maps.shows-results .journey-timeline {
+    display: block;
+    max-height: 34dvh;
+    overflow-y: auto;
+  }
+  .journey-timeline button { min-height: 44px; }
+  .journey-timeline strong { font-size: 13px; }
+  .journey-timeline small { font-size: 10px; }
+}
