@@ -19,6 +19,7 @@
 }
 
 .now-journey-link > label input { margin-top: 2px; }
+.now-journey-link > label > svg { width: 14px; height: 14px; margin-top: 1px; color: #3778c2; flex: 0 0 auto; }
 .now-journey-link > label span { display: flex; flex-direction: column; gap: 2px; }
 .now-journey-link strong { font-size: 10px; }
 .now-journey-link small { color: #7f8388; font-size: 8px; }

@@ -13,13 +13,15 @@ const weatherLabels: Record<number, string> = {
 
 export async function GET() {
   const state = await getCurrentState();
-  if (state.where.city !== "Jajce" || state.where.country !== "Bosnia and Herzegovina") {
+  const coordinates = String(state.where.coordinates || "").split(",").map((part) => Number(part.trim()));
+  const [latitude, longitude] = coordinates;
+  if (coordinates.length !== 2 || !Number.isFinite(latitude) || !Number.isFinite(longitude) || Math.abs(latitude) > 90 || Math.abs(longitude) > 180) {
     return NextResponse.json({ unavailable: true }, { status: 503 });
   }
   try {
     const endpoint = new URL("https://api.open-meteo.com/v1/forecast");
     endpoint.search = new URLSearchParams({
-      latitude: "44.3420", longitude: "17.2706", current: "temperature_2m,weather_code",
+      latitude: String(latitude), longitude: String(longitude), current: "temperature_2m,weather_code",
       timezone: state.where.timezone || "Europe/Sarajevo",
     }).toString();
     const response = await fetch(endpoint, { next: { revalidate: 900 } });

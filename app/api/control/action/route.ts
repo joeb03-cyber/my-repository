@@ -107,6 +107,18 @@ export async function POST(request: Request) {
     if (input.action === "save-current-state") {
       const state = input.state || {};
       const now = new Date().toISOString();
+      // A location change is one Control Center action: establish/reuse its
+      // canonical Place and append the Visit before publishing NOW. This keeps
+      // a failed Journey write from leaving NOW pointing at a destination that
+      // does not exist in the lived-history model.
+      const journey = input.syncLocationToJourney === true
+        ? await saveJourneyVisit(db, auth.user.id, {
+            ...(input.journeyVisit || {}),
+            city: state.where?.city,
+            country: state.where?.country,
+            coordinates: state.where?.coordinates,
+          })
+        : null;
       const requestedBooks = [
         { role: "reading", id: state.readingBookId, fallback: state.reading },
         { role: "reading_secondary", id: state.readingBookIdSecondary, fallback: state.readingSecondary },
@@ -127,7 +139,12 @@ export async function POST(request: Request) {
       const recentlyReadSecondaryBook = readingBooks.find((book) => book.role === "recently_read_secondary");
       const normalized = {
         schemaVersion: "brain-current-state.control.v1", effectiveAt: now, lastConfirmedAt: now,
-        where: { city: String(state.where?.city || "").trim(), country: String(state.where?.country || "").trim(), coordinates: String(state.where?.coordinates || "").trim() || null, timezone: String(state.where?.timezone || "Europe/Sarajevo").trim() },
+        where: {
+          city: journey?.placeName || String(state.where?.city || "").trim(),
+          country: journey?.countryName || String(state.where?.country || "").trim(),
+          coordinates: String(state.where?.coordinates || "").trim() || journey?.coordinates || null,
+          timezone: String(state.where?.timezone || "Europe/Sarajevo").trim(),
+        },
         reading: primaryBook?.title || textOrNull(state.reading), readingAuthor: primaryBook ? null : textOrNull(state.readingAuthor),
         readingSecondary: secondaryBook?.title || textOrNull(state.readingSecondary), readingSecondaryAuthor: secondaryBook ? null : textOrNull(state.readingSecondaryAuthor),
         recentlyRead: recentlyReadBook?.title || null, recentlyReadSecondary: recentlyReadSecondaryBook?.title || null,
@@ -146,7 +163,7 @@ export async function POST(request: Request) {
       const { error: publishError } = await db.from("current_state_snapshots").update({ publication_state: "published" }).eq("id", id);
       if (publishError) throw publishError;
       await db.from("current_state_snapshots").update({ publication_state: "archived" }).neq("id", id).eq("publication_state", "published");
-      return NextResponse.json({ ok: true, state: normalized });
+      return NextResponse.json({ ok: true, state: normalized, journey });
     }
     if (input.action === "save-journey-visit") {
       const result = await saveJourneyVisit(db, auth.user.id, input.visit || {});
@@ -343,13 +360,19 @@ async function saveJourneyVisit(db: any, userId: string, value: any) {
   const startYear = Number(start[1]), startMonth = Number(start[2]), endYear = Number(end[1]), endMonth = Number(end[2]);
   if (startMonth < 1 || startMonth > 12 || endMonth < 1 || endMonth > 12 || endYear * 12 + endMonth < startYear * 12 + startMonth) throw new Error("The visit dates are not valid.");
 
-  const clean = (text: string) => text.toLocaleLowerCase("en").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").trim();
+  const clean = (text: string) => text.toLocaleLowerCase("en").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim();
   const { data: countryPlaces, error: placeLookupError } = await db.from("travel_places").select("id,name,country_name,country_code,latitude,longitude").eq("visibility", "public");
   if (placeLookupError) throw placeLookupError;
-  let place = (countryPlaces || []).find((item: any) => clean(item.name) === clean(city) && clean(item.country_name) === clean(country));
   let countryCode = String(value.countryCode || "").trim().toUpperCase();
-  if (!countryCode) countryCode = (countryPlaces || []).find((item: any) => clean(item.country_name) === clean(country))?.country_code || "";
+  const knownCountry = (countryPlaces || []).find((item: any) =>
+    clean(item.country_name) === clean(country) || (countryCode && item.country_code === countryCode)
+  );
+  if (!countryCode) countryCode = knownCountry?.country_code || "";
   if (!/^[A-Z]{2}$/.test(countryCode)) throw new Error("For a new country, add its two-letter country code (for example BA or IT).");
+  const canonicalCountry = knownCountry?.country_name || country;
+  let place = (countryPlaces || []).find((item: any) =>
+    clean(item.name) === clean(city) && (clean(item.country_name) === clean(canonicalCountry) || item.country_code === countryCode)
+  );
 
   const coordinateText = String(value.coordinates || "").trim();
   let latitude: number | null = null, longitude: number | null = null;
@@ -361,24 +384,32 @@ async function saveJourneyVisit(db: any, userId: string, value: any) {
 
   if (!place) {
     const placeId = crypto.randomUUID();
-    const slugBase = `${city}-${country}`.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 70) || "place";
+    const slugBase = `${city}-${canonicalCountry}`.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 70) || "place";
     const { data: created, error } = await db.from("travel_places").insert({
       id: placeId, slug: `${slugBase}-${placeId.slice(0, 6)}`, source_name: `${city} · Control Center · ${placeId.slice(0, 6)}`,
-      name: city, place_type: "populated_place", country_code: countryCode, country_name: country,
+      name: city, place_type: "populated_place", country_code: countryCode, country_name: canonicalCountry,
       latitude, longitude, coordinates_state: latitude == null ? "unresolved" : "editorial",
       visibility: "public", editorial_state: "approved",
       provenance: { source: "control_center", createdBy: userId, preserveHistory: true },
-    }).select("id,name,country_name,country_code").single();
+    }).select("id,name,country_name,country_code,latitude,longitude").single();
     if (error) throw error;
     place = created;
   } else if (latitude != null && longitude != null && (place.latitude == null || place.longitude == null)) {
     const { error } = await db.from("travel_places").update({ latitude, longitude, coordinates_state: "editorial" }).eq("id", place.id);
     if (error) throw error;
+    place = { ...place, latitude, longitude };
   }
 
   const { data: duplicate, error: duplicateError } = await db.from("travel_visits").select("id").eq("place_id", place.id).eq("start_year", startYear).eq("start_month", startMonth).limit(1).maybeSingle();
   if (duplicateError) throw duplicateError;
-  if (duplicate) return { id: duplicate.id, placeId: place.id, created: false };
+  const placeResult = () => ({
+    placeId: place.id,
+    placeName: place.name,
+    countryName: place.country_name,
+    countryCode: place.country_code,
+    coordinates: place.latitude != null && place.longitude != null ? `${place.latitude}, ${place.longitude}` : null,
+  });
+  if (duplicate) return { id: duplicate.id, ...placeResult(), created: false };
 
   const externalId = "control-center-journey";
   const contentHash = "living-journey-v1";
@@ -407,12 +438,12 @@ async function saveJourneyVisit(db: any, userId: string, value: any) {
     chronology_index: Number(lastChronology?.chronology_index || 0) + 1,
     start_year: startYear, start_month: startMonth, end_year: endYear, end_month: endMonth,
     temporal_precision: startYear === endYear && startMonth === endMonth ? "month" : "month_range",
-    source_date_text: dateText, source_value: city, source_raw_line: `Added in Control Center: ${city}, ${country} · ${dateText}`,
+    source_date_text: dateText, source_value: city, source_raw_line: `Added in Control Center: ${city}, ${canonicalCountry} · ${dateText}`,
     visibility: "public", editorial_state: "approved",
     provenance: { source: "control_center", createdBy: userId, preservesPlaceVisitSeparation: true },
   });
   if (visitError) throw visitError;
-  return { id, placeId: place.id, created: true };
+  return { id, ...placeResult(), created: true };
 }
 
 function textOrNull(value: unknown) {

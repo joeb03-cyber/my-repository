@@ -67,13 +67,17 @@ export async function getTravelTimeline(): Promise<TravelTimeline> {
   const countries = Array.from(new Set(places.map((place) => place.countryName))).sort();
   const overview = overviewRows[0] || {};
   const current = currentRows[0]?.state?.where;
+  const currentPlace = current ? places.find((place) =>
+    place.name.toLocaleLowerCase("en") === String(current.city || "").trim().toLocaleLowerCase("en")
+    && place.countryName.toLocaleLowerCase("en") === String(current.country || "").trim().toLocaleLowerCase("en")
+  ) : undefined;
   const unresolved = places.filter((place) => place.latitude == null).map((place) => place.sourceName);
   return withRecentJourney({
     schemaVersion: "synergetic-travel-timeline.supabase.v1", generatedFrom: overview.source_url,
     sourceSnapshot: { id: overview.id, capturedOn: overview.captured_on, contentHash: overview.content_hash, intro: overview.intro || {} },
     stats: { sourceRecords: 101, visits: visits.length, movements: movementRows.length, uniquePlaces: places.length, countries: countries.length, resolvedPlaces: places.length - unresolved.length, unresolvedPlaces: unresolved.length },
     countries, places, visits, movements: movementRows,
-    currentState: current ? { location: { canonical_name: current.city, country_code: "BA", country_name: current.country, state: "approved", provenance: { authority: "Joe Burt", recorded_at: currentRows[0].last_confirmed_at } } } : undefined,
+    currentState: current ? { location: { canonical_name: current.city, country_code: currentPlace?.countryCode || "", country_name: current.country, state: currentPlace ? "approved" : "needs_review", provenance: { authority: "Joe Burt", recorded_at: currentRows[0].last_confirmed_at } } } : undefined,
     review: { unresolvedPlaceLabels: unresolved, currentLocationConflict: { sourceLatest: "warsaw", existingOsNow: current?.city || "Unreported", decision: "resolved_keep_chronology_and_now_separate" } },
     mapAttribution: "GeoNames geographical database, CC BY 4.0",
   });
