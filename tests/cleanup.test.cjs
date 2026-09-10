@@ -91,6 +91,13 @@ test('long unformatted drafts retain their words while receiving existing readab
   assert.deepEqual(messageParagraphs('<script>plain text</script>'), ['<script>plain text</script>']);
 });
 
+test('Notes remains dock-launchable but is not open on a fresh desktop', () => {
+  const shell = fs.readFileSync(path.join(root, 'components/os/prototype-shell.tsx'), 'utf8');
+  const initialWindows = shell.slice(shell.indexOf('const initialWindows'), shell.indexOf('type CurrentWeather'));
+  assert.doesNotMatch(initialWindows, /appId:\s*["']journal["']/);
+  assert.match(shell, /id:\s*["']journal["']/);
+});
+
 test('saving Messages preserves local book citations and each surviving source kind', async () => {
   const inserted = [];
   const db = { from: (table) => ({

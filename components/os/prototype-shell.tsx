@@ -53,7 +53,6 @@ const emptyCurrentState: BrainCurrentState = {
 const initialWindows: WindowState[] = [
   { id: "currently", kind: "currently", title: "NOW", x: 18, y: 38, width: 244, height: 232, z: 1, resizable: false },
   { id: "reading", kind: "reading", title: "Reading", x: 0, y: 44, width: 312, height: 216, z: 2, resizable: false },
-  { id: "app-journal", kind: "app", appId: "journal", title: "Notes", x: 280, y: 58, width: 900, height: 640, z: 3 },
 ];
 
 type CurrentWeather = { temperature: number; label: string; code: number; unit?: string };
