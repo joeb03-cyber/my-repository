@@ -21,12 +21,12 @@ function loadRoute(db) {
   return module.exports.POST;
 }
 
-function mockBrain() {
+function mockBrain(options = {}) {
   const calls = [];
-  const place = { id: "place-konjic", name: "Konjic", country_name: "Bosnia and Herzegovina", country_code: "BA", latitude: 43.65, longitude: 17.96 };
+  const place = options.place || { id: "place-konjic", name: "Konjic", country_name: "Bosnia and Herzegovina", country_code: "BA", latitude: 43.65, longitude: 17.96 };
   function result(table, operation, terminal) {
     if (table === "travel_places" && operation === "select") return { data: [place], error: null };
-    if (table === "travel_visits" && operation === "select" && terminal === "maybeSingle") return { data: { id: "visit-konjic" }, error: null };
+    if (table === "travel_visits" && operation === "select" && terminal === "maybeSingle") return { data: { id: options.visitId || "visit-konjic" }, error: null };
     return { data: null, error: null };
   }
   const db = {
@@ -91,11 +91,41 @@ test("ordinary NOW edits do not touch Journey when location is unchanged", async
   assert.equal((await response.json()).journey, null);
 });
 
+test("punctuation variants reuse the same canonical Place and Visit", async () => {
+  const { db, calls } = mockBrain({
+    place: { id: "place-vernet", name: "Vernet Les-Bains", country_name: "France", country_code: "FR", latitude: null, longitude: null },
+    visitId: "visit-vernet",
+  });
+  const POST = loadRoute(db);
+  const response = await POST(new Request("http://localhost/api/control/action", {
+    method: "POST",
+    body: JSON.stringify({ action: "save-journey-visit", visit: { city: "Vernet-Les-Bains", country: "France", startMonth: "2026-09", endMonth: "2026-09" } }),
+  }));
+  assert.equal(response.status, 200);
+  const body = await response.json();
+  assert.equal(body.placeId, "place-vernet");
+  assert.equal(body.id, "visit-vernet");
+  assert.equal(body.created, false);
+  assert.equal(calls.some((call) => call[0] === "insert" && call[1] === "travel_places"), false);
+  assert.equal(calls.some((call) => call[0] === "insert" && call[1] === "travel_visits"), false);
+});
+
 test("NOW client submits the location and Journey update through one server action", () => {
   const source = fs.readFileSync(path.join(root, "components/control/control-center.tsx"), "utf8");
   const nowEditor = source.slice(source.indexOf("function NowEditor"), source.indexOf("function ReadingBookPicker"));
   assert.match(nowEditor, /action\(\{ action: "save-current-state", state, syncLocationToJourney: locationChanged, journeyVisit: journey \}\)/);
   assert.doesNotMatch(nowEditor, /action\(\{ action: "save-journey-visit"/);
+  assert.match(nowEditor, /identityChanged \? \{ coordinates: "", timezone \}/);
+});
+
+test("mistaken visits are recoverably archived rather than physically deleted", () => {
+  const route = fs.readFileSync(path.join(root, "app/api/control/action/route.ts"), "utf8");
+  const archiveAction = route.slice(route.indexOf('input.action === "archive-journey-visit"'), route.indexOf('input.action === "save-visit-reflection"'));
+  assert.match(archiveAction, /visibility: "excluded", editorial_state: "rejected"/);
+  assert.match(archiveAction, /photographs attached/);
+  assert.doesNotMatch(archiveAction, /\.delete\(/);
+  const control = fs.readFileSync(path.join(root, "components/control/control-center.tsx"), "utf8");
+  assert.match(control, /Remove mistaken visit/);
 });
 
 test("weather and Maps no longer contain location-specific Jajce/Bosnia fallbacks", () => {

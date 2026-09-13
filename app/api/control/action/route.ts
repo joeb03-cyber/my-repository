@@ -169,6 +169,38 @@ export async function POST(request: Request) {
       const result = await saveJourneyVisit(db, auth.user.id, input.visit || {});
       return NextResponse.json({ ok: true, ...result });
     }
+    if (input.action === "archive-journey-visit") {
+      const visitId = String(input.id || "");
+      if (input.confirm !== true || !/^[0-9a-f-]{36}$/i.test(visitId)) throw new Error("Remove confirmation required.");
+      const { data: visit, error: visitError } = await db.from("travel_visits").select("id,place_id,provenance").eq("id", visitId).maybeSingle();
+      if (visitError) throw visitError;
+      if (!visit) throw new Error("That Journey visit could not be found.");
+      const [{ count: publicationCount, error: publicationError }, { count: relationshipCount, error: relationshipError }] = await Promise.all([
+        db.from("photo_publications").select("asset_id", { count: "exact", head: true }).or(`visit_id.eq.${visitId},place_id.eq.${visit.place_id}`),
+        db.from("photo_visit_relationships").select("id", { count: "exact", head: true }).eq("active", true).or(`visit_id.eq.${visitId},place_id.eq.${visit.place_id}`),
+      ]);
+      if (publicationError || relationshipError) throw publicationError || relationshipError;
+      if ((publicationCount || 0) + (relationshipCount || 0) > 0) throw new Error("This visit has photographs attached. Reassign them before removing the visit.");
+      const { error: archiveError } = await db.from("travel_visits").update({
+        visibility: "excluded", editorial_state: "rejected",
+        provenance: { ...(visit.provenance || {}), removedFromPublicJourney: true, removedBy: auth.user.id, removedAt: new Date().toISOString(), removalReason: "mistaken_control_center_visit" },
+      }).eq("id", visitId);
+      if (archiveError) throw archiveError;
+      const { count: remainingCount, error: remainingError } = await db.from("travel_visits").select("id", { count: "exact", head: true }).eq("place_id", visit.place_id).eq("visibility", "public").neq("editorial_state", "rejected");
+      if (remainingError) throw remainingError;
+      if (!remainingCount) {
+        const { data: place, error: placeError } = await db.from("travel_places").select("provenance").eq("id", visit.place_id).maybeSingle();
+        if (placeError) throw placeError;
+        if (place?.provenance?.source === "control_center") {
+          const { error: placeArchiveError } = await db.from("travel_places").update({
+            visibility: "excluded", editorial_state: "rejected",
+            provenance: { ...place.provenance, removedFromPublicJourney: true, removedBy: auth.user.id, removedAt: new Date().toISOString() },
+          }).eq("id", visit.place_id);
+          if (placeArchiveError) throw placeArchiveError;
+        }
+      }
+      return NextResponse.json({ ok: true, id: visitId, preserved: true });
+    }
     if (input.action === "save-visit-reflection") {
       const visit = input.visit || {};
       const visitId = String(visit.id || "");
@@ -360,7 +392,7 @@ async function saveJourneyVisit(db: any, userId: string, value: any) {
   const startYear = Number(start[1]), startMonth = Number(start[2]), endYear = Number(end[1]), endMonth = Number(end[2]);
   if (startMonth < 1 || startMonth > 12 || endMonth < 1 || endMonth > 12 || endYear * 12 + endMonth < startYear * 12 + startMonth) throw new Error("The visit dates are not valid.");
 
-  const clean = (text: string) => text.toLocaleLowerCase("en").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim();
+  const clean = (text: string) => text.toLocaleLowerCase("en").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
   const { data: countryPlaces, error: placeLookupError } = await db.from("travel_places").select("id,name,country_name,country_code,latitude,longitude").eq("visibility", "public");
   if (placeLookupError) throw placeLookupError;
   let countryCode = String(value.countryCode || "").trim().toUpperCase();
