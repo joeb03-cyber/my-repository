@@ -26,6 +26,7 @@ function mockBrain(options = {}) {
   const place = options.place || { id: "place-konjic", name: "Konjic", country_name: "Bosnia and Herzegovina", country_code: "BA", latitude: 43.65, longitude: 17.96 };
   function result(table, operation, terminal) {
     if (table === "travel_places" && operation === "select") return { data: [place], error: null };
+    if (table === "travel_places" && operation === "update" && terminal === "single") return { data: { id: place.id }, error: null };
     if (table === "travel_visits" && operation === "select" && terminal === "maybeSingle") return { data: { id: options.visitId || "visit-konjic" }, error: null };
     return { data: null, error: null };
   }
@@ -41,6 +42,7 @@ function mockBrain(options = {}) {
         neq(...args) { calls.push(["neq", table, ...args]); return query; },
         limit(...args) { calls.push(["limit", table, ...args]); return query; },
         maybeSingle: async () => result(table, operation, "maybeSingle"),
+        single: async () => result(table, operation, "single"),
         then(resolve, reject) { return Promise.resolve(result(table, operation, "await")).then(resolve, reject); },
       };
       return query;
@@ -110,10 +112,33 @@ test("punctuation variants reuse the same canonical Place and Visit", async () =
   assert.equal(calls.some((call) => call[0] === "insert" && call[1] === "travel_visits"), false);
 });
 
+test("a confirmed map place repairs an existing Place without losing provenance or adding a duplicate Visit", async () => {
+  const { db, calls } = mockBrain({
+    place: { id: "place-ferrat", name: "Saint-Jean-Cap-Ferrat", country_name: "France", country_code: "FA", latitude: null, longitude: null, provenance: { source: "control_center", preserveHistory: true } },
+    visitId: "visit-ferrat",
+  });
+  const POST = loadRoute(db);
+  const response = await POST(new Request("http://localhost/api/control/action", { method: "POST", body: JSON.stringify({
+    action: "save-journey-visit", visit: {
+      city: "Saint-Jean-Cap-Ferrat", country: "France", countryCode: "FR", coordinates: "43.6899651, 7.3327399",
+      startMonth: "2026-09", endMonth: "2026-09",
+      verification: { name: "Saint-Jean-Cap-Ferrat", country: "France", countryCode: "FR", latitude: 43.6899651, longitude: 7.3327399, sourceId: "relation/174957" },
+    },
+  }) }));
+  assert.equal(response.status, 200);
+  assert.equal((await response.json()).created, false);
+  const patch = calls.find((call) => call[0] === "update" && call[1] === "travel_places")?.[2];
+  assert.equal(patch.country_code, "FR");
+  assert.equal(patch.latitude, 43.6899651);
+  assert.equal(patch.provenance.preserveHistory, true);
+  assert.equal(patch.provenance.geoVerification.sourceId, "relation/174957");
+  assert.equal(calls.some((call) => call[0] === "insert" && call[1] === "travel_visits"), false);
+});
+
 test("NOW client submits the location and Journey update through one server action", () => {
   const source = fs.readFileSync(path.join(root, "components/control/control-center.tsx"), "utf8");
   const nowEditor = source.slice(source.indexOf("function NowEditor"), source.indexOf("function ReadingBookPicker"));
-  assert.match(nowEditor, /action\(\{ action: "save-current-state", state, syncLocationToJourney: locationChanged, journeyVisit: journey \}\)/);
+  assert.match(nowEditor, /action\(\{ action: "save-current-state", state, syncLocationToJourney, journeyVisit: journey \}\)/);
   assert.doesNotMatch(nowEditor, /action\(\{ action: "save-journey-visit"/);
   assert.match(nowEditor, /identityChanged \? \{ coordinates: "", timezone \}/);
 });

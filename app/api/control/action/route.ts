@@ -393,15 +393,22 @@ async function saveJourneyVisit(db: any, userId: string, value: any) {
   if (startMonth < 1 || startMonth > 12 || endMonth < 1 || endMonth > 12 || endYear * 12 + endMonth < startYear * 12 + startMonth) throw new Error("The visit dates are not valid.");
 
   const clean = (text: string) => text.toLocaleLowerCase("en").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
-  const { data: countryPlaces, error: placeLookupError } = await db.from("travel_places").select("id,name,country_name,country_code,latitude,longitude").eq("visibility", "public");
+  const verification = value.verification || null;
+  if (verification) {
+    if (clean(String(verification.name || "")) !== clean(city) || clean(String(verification.country || "")) !== clean(country)
+      || !/^(node|way|relation)\/\d+$/.test(String(verification.sourceId || ""))
+      || !/^[A-Z]{2}$/.test(String(verification.countryCode || ""))) throw new Error("The confirmed map place no longer matches these fields. Find and confirm it again.");
+    const verifiedCoordinates = `${Number(verification.latitude)}, ${Number(verification.longitude)}`;
+    if (String(value.coordinates || "").trim() !== verifiedCoordinates) throw new Error("The coordinates changed after confirmation. Find and confirm the place again.");
+  }
+  const { data: countryPlaces, error: placeLookupError } = await db.from("travel_places").select("id,name,country_name,country_code,latitude,longitude,provenance").eq("visibility", "public");
   if (placeLookupError) throw placeLookupError;
-  let countryCode = String(value.countryCode || "").trim().toUpperCase();
-  const knownCountry = (countryPlaces || []).find((item: any) =>
-    clean(item.country_name) === clean(country) || (countryCode && item.country_code === countryCode)
-  );
+  let countryCode = verification ? String(verification.countryCode) : String(value.countryCode || "").trim().toUpperCase();
+  const knownCountry = (countryPlaces || []).find((item: any) => clean(item.country_name) === clean(country))
+    || (countryPlaces || []).find((item: any) => countryCode && item.country_code === countryCode);
   if (!countryCode) countryCode = knownCountry?.country_code || "";
   if (!/^[A-Z]{2}$/.test(countryCode)) throw new Error("For a new country, add its two-letter country code (for example BA or IT).");
-  const canonicalCountry = knownCountry?.country_name || country;
+  const canonicalCountry = verification ? country : knownCountry?.country_name || country;
   let place = (countryPlaces || []).find((item: any) =>
     clean(item.name) === clean(city) && (clean(item.country_name) === clean(canonicalCountry) || item.country_code === countryCode)
   );
@@ -422,17 +429,22 @@ async function saveJourneyVisit(db: any, userId: string, value: any) {
       name: city, place_type: "populated_place", country_code: countryCode, country_name: canonicalCountry,
       latitude, longitude, coordinates_state: latitude == null ? "unresolved" : "editorial",
       visibility: "public", editorial_state: "approved",
-      provenance: { source: "control_center", createdBy: userId, preserveHistory: true },
-    }).select("id,name,country_name,country_code,latitude,longitude").single();
+      provenance: { source: "control_center", createdBy: userId, preserveHistory: true,
+        ...(verification ? { geoVerification: { source: "OpenStreetMap Nominatim", sourceId: verification.sourceId, confirmedAt: new Date().toISOString() } } : {}) },
+    }).select("id,name,country_name,country_code,latitude,longitude,provenance").single();
     if (error) throw error;
     place = created;
-  } else if (latitude != null && longitude != null && (place.latitude == null || place.longitude == null)) {
-    const { error } = await db.from("travel_places").update({ latitude, longitude, coordinates_state: "editorial" }).eq("id", place.id);
+  } else if (verification || (latitude != null && longitude != null && (place.latitude == null || place.longitude == null))) {
+    const patch = verification
+      ? { latitude, longitude, country_code: countryCode, country_name: canonicalCountry, coordinates_state: "editorial",
+          provenance: { ...(place.provenance || {}), geoVerification: { source: "OpenStreetMap Nominatim", sourceId: verification.sourceId, confirmedAt: new Date().toISOString() } } }
+      : { latitude, longitude, coordinates_state: "editorial" };
+    const { error } = await db.from("travel_places").update(patch).eq("id", place.id);
     if (error) throw error;
-    place = { ...place, latitude, longitude };
+    place = { ...place, latitude, longitude, country_code: countryCode, country_name: canonicalCountry };
   }
 
-  const { data: duplicate, error: duplicateError } = await db.from("travel_visits").select("id").eq("place_id", place.id).eq("start_year", startYear).eq("start_month", startMonth).limit(1).maybeSingle();
+  const { data: duplicate, error: duplicateError } = await db.from("travel_visits").select("id").eq("place_id", place.id).eq("start_year", startYear).eq("start_month", startMonth).eq("visibility", "public").neq("editorial_state", "rejected").limit(1).maybeSingle();
   if (duplicateError) throw duplicateError;
   const placeResult = () => ({
     placeId: place.id,
