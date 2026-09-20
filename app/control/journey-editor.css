@@ -33,6 +33,8 @@
 
 .journey-visit-sheet { margin-bottom: 45px; }
 .journey-visit-sheet .editor-two { margin: 0 0 15px; }
+.journey-make-current { display: flex; align-items: center; gap: 7px; margin: 12px 0; font-size: 10px; color: #33383e; cursor: pointer; }
+.journey-make-current input { accent-color: #3478f6; }
 
 .place-verification { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 13px; border: 1px solid #d9e0e9; border-radius: 11px; background: #f8fafc; }
 .place-verification > strong { font-size: 11px; }
@@ -51,6 +53,7 @@
 .place-verification__results button { border: 0; background: transparent; cursor: pointer; }
 .place-verification__confirmed { width: 100%; display: flex; align-items: flex-start; gap: 8px; padding: 9px; border: 1px solid #b9d8c6; border-radius: 8px; background: #f1fbf4; }
 .place-verification__confirmed > b { color: #287a47; font-size: 9px; }
+.place-verification__confirmed > button { padding: 0; border: 0; background: transparent; color: #2467aa; font-size: 9px; cursor: pointer; }
 .place-verification__confirmed a { color: #2467aa; }
 .place-verification__error { color: #a34139 !important; }
 

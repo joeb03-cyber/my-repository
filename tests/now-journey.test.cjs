@@ -143,6 +143,15 @@ test("NOW client submits the location and Journey update through one server acti
   assert.match(nowEditor, /identityChanged \? \{ coordinates: "", timezone \}/);
 });
 
+test("Places can explicitly make a confirmed visit current through the same NOW action", () => {
+  const source = fs.readFileSync(path.join(root, "components/control/control-center.tsx"), "utf8");
+  const placesEditor = source.slice(source.indexOf("function PlacesEditor"), source.indexOf("function PhotosEditor"));
+  assert.match(placesEditor, /I am here now — update NOW too/);
+  assert.match(placesEditor, /action: "save-current-state"/);
+  assert.match(placesEditor, /syncLocationToJourney: true/);
+  assert.match(placesEditor, /if \(!adding\.verification\)/);
+});
+
 test("mistaken visits are recoverably archived rather than physically deleted", () => {
   const route = fs.readFileSync(path.join(root, "app/api/control/action/route.ts"), "utf8");
   const archiveAction = route.slice(route.indexOf('input.action === "archive-journey-visit"'), route.indexOf('input.action === "save-visit-reflection"'));
