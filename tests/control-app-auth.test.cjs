@@ -12,9 +12,15 @@ test("Home Screen login verifies the emailed OTP inside the same browser context
   assert.match(login, /verifyOtp\(\{ email: email\.trim\(\), token, type: "email" \}\)/);
   assert.match(login, /autoComplete="one-time-code"/);
   assert.match(login, /inputMode="numeric"/);
-  assert.match(login, /fetch\("\/api\/control\/content", \{ cache: "no-store" \}\)/);
-  assert.match(login, /await supabase\.auth\.signOut\(\)/);
+  assert.match(login, /supabase\.auth\.getSession\(\)/);
+  assert.doesNotMatch(login, /fetch\("\/api\/control\/content"/);
   assert.match(login, /window\.location\.replace\("\/control"\)/);
+});
+
+test("SMTP failures are not mislabeled as an unauthorized administrator", () => {
+  const login = read("components/control/control-login.tsx");
+  assert.match(login, /The sign-in email could not be delivered/);
+  assert.doesNotMatch(login, /That address is not authorized for this Control Center/);
 });
 
 test("requesting a code cannot create another administrator", () => {

@@ -21,8 +21,10 @@ export default function ControlLogin({ supabaseUrl, anonKey, initialError = "" }
     if (error) {
       setStatus("error");
       setMessage(error.status === 429 || error.code === "over_email_send_rate_limit"
-        ? "Please wait a minute before requesting another sign-in link."
-        : "That address is not authorized for this Control Center.");
+        ? "Please wait a minute before requesting another sign-in email."
+        : error.code === "user_not_found"
+          ? "That email is not the Control Center administrator."
+          : "The sign-in email could not be delivered. Please try again shortly.");
     }
     else setStatus("sent");
   }
@@ -39,13 +41,14 @@ export default function ControlLogin({ supabaseUrl, anonKey, initialError = "" }
       setMessage("That code is invalid, expired, or has already been used. Request a new one if needed.");
       return;
     }
-    const response = await fetch("/api/control/content", { cache: "no-store" });
-    if (!response.ok) {
-      await supabase.auth.signOut();
+    const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError || !sessionData.session) {
       setStatus("sent");
-      setMessage(response.status === 401 ? "This account is not authorized for Control Center." : "The private session could not be verified.");
+      setMessage("The private session could not be established. Request a fresh code and try again.");
       return;
     }
+    // Give the SSR cookie bridge and middleware one clean navigation to refresh
+    // and authorize the new session. /control still enforces the admin allowlist.
     window.location.replace("/control");
   }
 
