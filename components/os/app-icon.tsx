@@ -2,7 +2,6 @@ import type { AppId } from "@/data/prototype";
 import { useId } from "react";
 
 export type AppIconName =
-  | "finder"
   | "books"
   | "maps"
   | "messages"
@@ -16,7 +15,6 @@ export type AppIconName =
   | "practice";
 
 export const iconForApp: Partial<Record<AppId, AppIconName>> = {
-  finder: "finder",
   library: "books",
   atlas: "maps",
   messages: "messages",
@@ -36,7 +34,6 @@ export default function AppIcon({ name }: { name: AppIconName }) {
 
 function IconArtwork({ name }: { name: AppIconName }) {
   const id = useId().replace(/:/g, "");
-  if (name === "finder") return <FinderIcon id={id} />;
   if (name === "books") return <BooksIcon id={id} />;
   if (name === "maps") return <MapsIcon id={id} />;
   if (name === "messages") return <MessagesIcon id={id} />;
@@ -51,23 +48,6 @@ function IconArtwork({ name }: { name: AppIconName }) {
 }
 
 const IconSvg = ({ children }: { children: React.ReactNode }) => <svg className="native-icon-artwork" viewBox="0 0 64 64" role="presentation">{children}</svg>;
-
-function FinderIcon({ id }: { id: string }) {
-  return <IconSvg>
-    <defs>
-      <linearGradient id={`${id}-bg`} x1="8" y1="5" x2="55" y2="59"><stop stopColor="#b7f2ee"/><stop offset=".46" stopColor="#69cbd9"/><stop offset="1" stopColor="#4089d1"/></linearGradient>
-      <linearGradient id={`${id}-right`} x1="35" y1="2" x2="47" y2="62"><stop stopColor="#7fc7f3"/><stop offset="1" stopColor="#4d75d5"/></linearGradient>
-      <radialGradient id={`${id}-glow`} cx="0" cy="0" r="1" gradientTransform="translate(18 9) rotate(56) scale(34 31)"><stop stopColor="white" stopOpacity=".72"/><stop offset="1" stopColor="white" stopOpacity="0"/></radialGradient>
-    </defs>
-    <rect width="64" height="64" rx="14" fill={`url(#${id}-bg)`}/>
-    <path d="M32 0h18c7.7 0 14 6.3 14 14v36c0 7.7-6.3 14-14 14H32z" fill={`url(#${id}-right)`}/>
-    <rect width="64" height="64" rx="14" fill={`url(#${id}-glow)`}/>
-    <path className="v-line finder-seam" d="M32 4c-.2 10.8-2.9 18.6-7.6 24.6"/>
-    <path className="v-line finder-face" d="M16.7 25.2c1.5-1.5 3.2-2.2 5.2-2.2M41.7 23c2.1 0 3.9.8 5.4 2.3M18 39.1c3.6 4 8.3 6 14.1 6 5.6 0 10.2-1.9 13.8-5.8"/>
-    <ellipse cx="21" cy="29.5" rx="1.35" ry="1.75" fill="#173b61"/><ellipse cx="43" cy="29.5" rx="1.35" ry="1.75" fill="#173b61"/>
-    <path d="M0 50c18 7 43 7.5 64-.6V64H0z" fill="#164d87" opacity=".09"/>
-  </IconSvg>;
-}
 
 function BooksIcon({ id }: { id: string }) {
   return <IconSvg>

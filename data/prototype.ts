@@ -1,5 +1,4 @@
 export type AppId =
-  | "finder"
   | "library"
   | "atlas"
   | "laboratory"

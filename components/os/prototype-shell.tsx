@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ArrowLeft, BookOpen, Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, CloudSun, Sun } from "lucide-react";
+import { ArrowLeft, BookOpen, Cloud, CloudFog, CloudLightning, CloudRain, CloudSnow, CloudSun, Search, Sun } from "lucide-react";
 import type { AppId } from "@/data/prototype";
 import { wallpapers } from "@/data/prototype";
 import { emptyOsState } from "@/lib/brain/empty-os-state";
@@ -14,9 +14,9 @@ import AppContent from "./app-content";
 import { BookDetail } from "./library-app";
 import AppIcon, { type AppIconName } from "./app-icon";
 import WindowFrame, { type WindowState } from "./window-frame";
+import Spotlight from "./spotlight";
 
 const apps: ReadonlyArray<{ id: AppId; label: string; icon: AppIconName; route: string; separated?: boolean }> = [
-  { id: "finder", label: "Finder", icon: "finder", route: "/finder" },
   { id: "library", label: "Books", icon: "books", route: "/library" },
   { id: "atlas", label: "Maps", icon: "maps", route: "/atlas" },
   { id: "messages", label: "Messages", icon: "messages", route: "/messages" },
@@ -30,14 +30,14 @@ const apps: ReadonlyArray<{ id: AppId; label: string; icon: AppIconName; route: 
 ] as const;
 
 const appNames: Record<AppId, string> = {
-  finder: "Finder", library: "Books", atlas: "Maps", messages: "Messages", contacts: "Contacts", journal: "Notes",
+  library: "Books", atlas: "Maps", messages: "Messages", contacts: "Contacts", journal: "Notes",
   photos: "Photos", laboratory: "Human", browser: "Browser", about: "Settings", trash: "Trash",
   practice: "Practice", reality: "Reality", archive: "Archive",
   software: "Software Update", activity: "Activity Monitor", "screen-time": "Screen Time", terminal: "Terminal",
 };
 const routes: Partial<Record<AppId, string>> = { ...Object.fromEntries(apps.map((app) => [app.id, app.route])), software: "/software-update", activity: "/activity-monitor", "screen-time": "/screen-time", terminal: "/terminal" };
 const routeApps: Record<string, AppId> = {
-  finder: "finder", library: "library", atlas: "atlas", messages: "messages", contacts: "contacts", journal: "journal",
+  library: "library", atlas: "atlas", messages: "messages", contacts: "contacts", journal: "journal",
   photos: "photos", laboratory: "laboratory", browser: "browser", about: "about", trash: "trash",
   practice: "practice", reality: "reality", archive: "archive",
   "software-update": "software", "activity-monitor": "activity", "screen-time": "screen-time", terminal: "terminal",
@@ -103,6 +103,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
   const [libraryCount, setLibraryCount] = useState(0);
   const [osState, setOsState] = useState<BrainOsState>(emptyOsState);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
+  const [spotlightOpen, setSpotlightOpen] = useState(false);
   const dockRef = useRef<HTMLElement>(null);
   const dockAnimationRef = useRef<number | null>(null);
 
@@ -182,6 +183,16 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
     const interval = window.setInterval(advanceWallpaper, 24_000);
     return () => window.clearInterval(interval);
   }, [advanceWallpaper]);
+
+  useEffect(() => {
+    const openSpotlight = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLocaleLowerCase() === "k") {
+        event.preventDefault(); setSpotlightOpen((open) => !open);
+      }
+    };
+    window.addEventListener("keydown", openSpotlight);
+    return () => window.removeEventListener("keydown", openSpotlight);
+  }, []);
 
   useEffect(() => {
     fetch("/api/brain/current-state", { cache: "no-store" }).then((response) => response.ok ? response.json() : Promise.reject()).then(setCurrentState).catch(() => undefined);
@@ -311,7 +322,6 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
               <MenuAction label="Close Active Window" onClick={closeActiveWindow} />
             </SystemMenu>
             <SystemMenu label="Explore" open={activeMenu === "explore"} onToggle={() => setActiveMenu(activeMenu === "explore" ? null : "explore")}>
-              <MenuAction label="Finder" onClick={() => { openApp("finder"); closeMenus(); }} />
               <MenuAction label="Books" onClick={() => { openApp("library"); closeMenus(); }} />
               <MenuAction label="Maps" onClick={() => { openApp("atlas"); closeMenus(); }} />
               <MenuAction label="Contacts" onClick={() => { openApp("contacts"); closeMenus(); }} />
@@ -328,6 +338,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
         </div>
         <div className="menu-status">
           <span className="menu-location">{currentState.where.city}</span>
+          <button className="status-icon spotlight-trigger" aria-label="Search Synergetic Human" title="Search · ⌘K" onClick={() => { closeMenus(); setSpotlightOpen(true); }}><Search/></button>
           <button className={`status-icon ${statusPanel === "battery" ? "is-active" : ""}`} aria-label="Human Battery" title="Human Battery" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "battery" ? null : "battery"); }}><BatteryGlyph level={currentState.humanBattery.level} /></button>
           <button className={`status-icon ${statusPanel === "wifi" ? "is-active" : ""}`} aria-label="Innernet network" title="Innernet" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "wifi" ? null : "wifi"); }}><WifiGlyph /></button>
           <button className={`status-icon ${statusPanel === "update" ? "is-active" : ""}`} aria-label="Software Update" title="Software Update" onClick={() => { setActiveMenu(null); setStatusPanel(statusPanel === "update" ? null : "update"); }}><ControlGlyph /></button>
@@ -342,7 +353,6 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
         <button className="wallpaper-caption" onClick={(event) => { event.stopPropagation(); advanceWallpaper(); }} title="Next wallpaper"><span>●</span> {"derivatives" in currentWallpaper ? ([currentWallpaper.displayPlace || currentWallpaper.visitPlace, currentWallpaper.country].filter(Boolean).join(" · ") || "Along the journey") : `${currentWallpaper.label} · ${currentWallpaper.location}`}<small>{"derivatives" in currentWallpaper ? "From Joe’s selected travel photographs" : currentWallpaper.credit}</small></button>
         {windows.map((win) => <WindowFrame key={win.id} windowState={win} isActive={win.z === topVisibleZ} onFocus={focusWindow} onClose={closeWindow} onMinimize={minimizeWindow} onZoom={zoomWindow} onChange={updateWindow}>{renderWindowContent(win)}</WindowFrame>)}
         {contextMenu && <div className="desktop-context-menu" role="menu" style={{ left: contextMenu.x, top: contextMenu.y }} onPointerDown={(event) => event.stopPropagation()}>
-          <MenuAction label="Open Finder" onClick={() => { openApp("finder"); closeMenus(); }} />
           <MenuAction label="Open Books" onClick={() => { openApp("library"); closeMenus(); }} />
           <MenuAction label="Open Maps" onClick={() => { openApp("atlas"); closeMenus(); }} />
           <MenuAction label="Open Terminal" onClick={() => { openApp("terminal"); closeMenus(); }} />
@@ -367,6 +377,7 @@ export default function PrototypeShell({ children }: { children: React.ReactNode
           </button>
         </span>)}
       </nav>
+      <Spotlight open={spotlightOpen} onClose={() => setSpotlightOpen(false)} onNavigate={(route) => router.push(route)} />
       <div className="route-placeholder" aria-hidden="true">{children}</div>
     </main>
   );

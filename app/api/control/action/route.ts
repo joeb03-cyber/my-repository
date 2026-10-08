@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getControlAdmin } from "@/lib/brain/control-auth.server";
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const asStrings = (value: unknown) => Array.isArray(value) ? value.map(String).map((item) => item.trim()).filter(Boolean).slice(0, 30) : [];
 const safeLinks = (value: unknown, allowLocal = false) => Array.isArray(value) ? value.flatMap((item: any) => {
   try {
@@ -12,6 +13,13 @@ const safeLinks = (value: unknown, allowLocal = false) => Array.isArray(value) ?
     return [{ label: String(item.label || url.hostname).slice(0, 100), url: url.toString() }];
   } catch { return []; }
 }).slice(0, 20) : [];
+const optionalUrl = (value: unknown) => {
+  const raw = String(value || "").trim();
+  if (!raw) return null;
+  const url = new URL(raw);
+  if (!["http:", "https:"].includes(url.protocol)) throw new Error("Links must begin with http:// or https://.");
+  return url.toString().slice(0, 2000);
+};
 
 export async function POST(request: Request) {
   const auth = await getControlAdmin();
@@ -20,6 +28,67 @@ export async function POST(request: Request) {
   if (!input?.action) return NextResponse.json({ error: "Missing action" }, { status: 400 });
   const db = auth.supabase;
   try {
+    if (input.action === "save-capture") {
+      const item = input.item || {};
+      const id = item.id ? String(item.id) : crypto.randomUUID();
+      if (!uuidPattern.test(id)) throw new Error("That capture could not be identified.");
+      const kinds = ["moment", "travel", "idea", "observation", "question", "link", "to_try", "other"];
+      const body = String(item.body || "").trim().slice(0, 20000);
+      const occurredOn = /^\d{4}-\d{2}-\d{2}$/.test(String(item.occurredOn || "")) ? String(item.occurredOn) : new Date().toISOString().slice(0, 10);
+      if (!body) throw new Error("Write at least one thing worth remembering.");
+      let visitId: string | null = null;
+      if (item.visitId) {
+        if (!uuidPattern.test(String(item.visitId))) throw new Error("That Journey visit could not be identified.");
+        const { data: visit, error: visitError } = await db.from("brain_public_travel_visits").select("id").eq("id", String(item.visitId)).maybeSingle();
+        if (visitError) throw visitError;
+        if (!visit) throw new Error("That Journey visit is no longer available.");
+        visitId = visit.id;
+      }
+      const { error } = await db.from("capture_inbox").upsert({
+        id, created_by: auth.user.id, capture_kind: kinds.includes(item.captureKind) ? item.captureKind : "moment",
+        title: String(item.title || "").trim().slice(0, 180) || null, body, occurred_on: occurredOn,
+        visit_id: visitId, source_url: optionalUrl(item.sourceUrl), tags: asStrings(item.tags).slice(0, 12).map((tag) => tag.slice(0, 60)),
+        status: item.status === "kept" ? "kept" : "inbox",
+      });
+      if (error) throw error;
+      return NextResponse.json({ ok: true, id });
+    }
+    if (input.action === "archive-capture") {
+      const id = String(input.id || "");
+      if (!uuidPattern.test(id)) throw new Error("That capture could not be identified.");
+      const { error } = await db.from("capture_inbox").update({ status: input.archive === false ? "inbox" : "archived" }).eq("id", id).eq("created_by", auth.user.id);
+      if (error) throw error;
+      return NextResponse.json({ ok: true, id });
+    }
+    if (input.action === "save-podcast-capture") {
+      const item = input.item || {};
+      const id = item.id ? String(item.id) : crypto.randomUUID();
+      if (!uuidPattern.test(id)) throw new Error("That podcast note could not be identified.");
+      const episodeTitle = String(item.episodeTitle || "").trim().slice(0, 240);
+      if (!episodeTitle) throw new Error("Add the episode title first.");
+      const states = ["queued", "listening", "finished"];
+      const listenedOn = /^\d{4}-\d{2}-\d{2}$/.test(String(item.listenedOn || "")) ? String(item.listenedOn) : null;
+      const { error } = await db.from("podcast_episode_captures").upsert({
+        id, created_by: auth.user.id, episode_title: episodeTitle,
+        show_name: String(item.showName || "").trim().slice(0, 180) || null,
+        guest_names: asStrings(item.guestNames).slice(0, 12).map((name) => name.slice(0, 160)),
+        episode_url: optionalUrl(item.episodeUrl), listened_on: listenedOn,
+        listening_state: states.includes(item.listeningState) ? item.listeningState : "finished",
+        takeaways: String(item.takeaways || "").trim().slice(0, 30000),
+        memorable_moments: asStrings(item.memorableMoments).slice(0, 30).map((moment) => moment.slice(0, 2000)),
+        why_saved: String(item.whySaved || "").trim().slice(0, 4000),
+        tags: asStrings(item.tags).slice(0, 20).map((tag) => tag.slice(0, 60)), status: "active",
+      });
+      if (error) throw error;
+      return NextResponse.json({ ok: true, id });
+    }
+    if (input.action === "archive-podcast-capture") {
+      const id = String(input.id || "");
+      if (!uuidPattern.test(id)) throw new Error("That podcast note could not be identified.");
+      const { error } = await db.from("podcast_episode_captures").update({ status: input.archive === false ? "active" : "archived" }).eq("id", id).eq("created_by", auth.user.id);
+      if (error) throw error;
+      return NextResponse.json({ ok: true, id });
+    }
     if (input.action === "save-photo-editorial") {
       const photo = input.photo || {};
       const id = String(photo.id || "");

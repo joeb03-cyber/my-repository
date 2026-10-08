@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Activity, Archive, ArrowDown, ArrowLeft, ArrowUp, BookOpen, Check, ChevronRight, CircleUserRound, Compass, Eye, FilePlus2, FileText, HeartPulse, Images, ListPlus, Map, MapPin, MessageCircle, Pin, Plus, RefreshCw, Save, Search, Trash2, X } from "lucide-react";
+import { Activity, Archive, ArrowDown, ArrowLeft, ArrowUp, BookOpen, Check, ChevronRight, CircleUserRound, Compass, Eye, FilePlus2, FileText, Headphones, HeartPulse, Images, Inbox, ListPlus, Map, MapPin, MessageCircle, Pin, Plus, RefreshCw, Save, Search, Trash2, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import PhotoUploader from "@/components/control/photo-uploader";
 import MessagesEditor from "@/components/control/messages-editor";
 import BookCoverOverride from "@/components/control/book-cover-override";
+import CaptureInbox, { type CaptureItem } from "@/components/control/capture-inbox";
+import PodcastCaptures, { type PodcastCapture } from "@/components/control/podcast-captures";
 
-type Module = "notes" | "now" | "books" | "places" | "photos" | "messages" | "browser" | "human" | "update" | "activity" | "trash";
+type Module = "capture" | "podcasts" | "notes" | "now" | "books" | "places" | "photos" | "messages" | "browser" | "human" | "update" | "activity" | "trash";
 type BlockType = "paragraph" | "heading1" | "heading2" | "bullet" | "quote";
 type Block = { id: string; type: BlockType; text: string };
 type Link = { label: string; url: string };
@@ -18,13 +20,13 @@ type BookIntake = { id: string; book_entity_id: string | null; title: string; au
 type VisitOption = { id: string; placeId: string; label: string; publicBlurb: string; whereStayed: string; favoriteThings: string[]; foodDrink: string[] };
 type VerifiedPlace = { name: string; country: string; countryCode: string; latitude: number; longitude: number; label: string; sourceId: string };
 type JourneyVisitDraft = { city: string; country: string; countryCode: string; coordinates: string; startMonth: string; endMonth: string; verification?: VerifiedPlace };
-type ControlData = { admin: { displayName: string; email: string }; notes: Note[]; folders: Array<{ id: string; slug: string; label: string }>; currentState: any; bookOptions: BookOption[]; bookIntakes: BookIntake[]; softwareUpdate: any; trash: any[]; activity: any[]; human: any[]; humanRelationshipOptions: any[]; browser: any[]; messages: any[]; photos: any[]; photoVisitOptions: VisitOption[] };
+type ControlData = { admin: { displayName: string; email: string }; captures: CaptureItem[]; podcastCaptures: PodcastCapture[]; notes: Note[]; folders: Array<{ id: string; slug: string; label: string }>; currentState: any; bookOptions: BookOption[]; bookIntakes: BookIntake[]; softwareUpdate: any; trash: any[]; activity: any[]; human: any[]; humanRelationshipOptions: any[]; browser: any[]; messages: any[]; photos: any[]; photoVisitOptions: VisitOption[] };
 
 const blankNote = (): Note => ({ title: "", slug: "", excerpt: "", bodyMarkdown: "", publicationState: "draft", pinned: false, folderSlug: "ideas", tags: [], sourcePublishedAt: null, publishedAt: null, editorialNotice: "", externalLinks: [] });
 
 export default function ControlCenter() {
   const [data, setData] = useState<ControlData | null>(null);
-  const [module, setModule] = useState<Module>("notes");
+  const [module, setModule] = useState<Module>("capture");
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const [mobileDetail, setMobileDetail] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -50,11 +52,19 @@ export default function ControlCenter() {
   return <main className="control-center">
     <header className="control-topbar"><div className="control-brand"><span>S</span><div><strong>Control Center</strong><small>Synergetic Human</small></div></div><div className="control-user"><span><strong>{data.admin.displayName}</strong><small>Administrator</small></span><CircleUserRound/><form action="/control/logout" method="post"><button>Sign out</button></form></div></header>
     <aside className="control-nav">
-      <div><span>EDIT</span><NavButton id="notes" label="Notes" icon={<FileText/>} active={module === "notes"} onClick={() => { setModule("notes"); setMobileDetail(false); }}/><NavButton id="now" label="NOW" icon={<MapPin/>} active={module === "now"} onClick={() => { setModule("now"); setMobileDetail(true); }}/><NavButton id="books" label="Books" icon={<BookOpen/>} active={module === "books"} onClick={() => { setModule("books"); setMobileDetail(true); }}/><NavButton id="places" label="Places" icon={<Map/>} active={module === "places"} onClick={() => { setModule("places"); setMobileDetail(true); }}/><NavButton id="photos" label="Photos" icon={<Images/>} active={module === "photos"} onClick={() => { setModule("photos"); setMobileDetail(true); }}/><NavButton id="messages" label="Messages" icon={<MessageCircle/>} active={module === "messages"} onClick={() => { setModule("messages"); setMobileDetail(true); }}/><NavButton id="browser" label="Browser" icon={<Compass/>} active={module === "browser"} onClick={() => { setModule("browser"); setMobileDetail(true); }}/><NavButton id="human" label="Human" icon={<HeartPulse/>} active={module === "human"} onClick={() => { setModule("human"); setMobileDetail(true); }}/><NavButton id="update" label="Software Update" icon={<RefreshCw/>} active={module === "update"} onClick={() => { setModule("update"); setMobileDetail(true); }}/><NavButton id="activity" label="Activity" icon={<Activity/>} active={module === "activity"} onClick={() => { setModule("activity"); setMobileDetail(true); }}/><NavButton id="trash" label="Trash" icon={<Trash2/>} active={module === "trash"} onClick={() => { setModule("trash"); setMobileDetail(true); }}/></div>
+      <div><span>CAPTURE</span><NavButton id="capture" label="Capture" icon={<Inbox/>} active={module === "capture"} onClick={() => { setModule("capture"); setMobileDetail(true); }}/><NavButton id="podcasts" label="Podcasts" icon={<Headphones/>} active={module === "podcasts"} onClick={() => { setModule("podcasts"); setMobileDetail(true); }}/><NavButton id="notes" label="Notes" icon={<FileText/>} active={module === "notes"} onClick={() => { setModule("notes"); setMobileDetail(false); }}/><NavButton id="now" label="NOW" icon={<MapPin/>} active={module === "now"} onClick={() => { setModule("now"); setMobileDetail(true); }}/><NavButton id="books" label="Books" icon={<BookOpen/>} active={module === "books"} onClick={() => { setModule("books"); setMobileDetail(true); }}/><NavButton id="places" label="Places" icon={<Map/>} active={module === "places"} onClick={() => { setModule("places"); setMobileDetail(true); }}/><NavButton id="photos" label="Photos" icon={<Images/>} active={module === "photos"} onClick={() => { setModule("photos"); setMobileDetail(true); }}/><NavButton id="messages" label="Messages" icon={<MessageCircle/>} active={module === "messages"} onClick={() => { setModule("messages"); setMobileDetail(true); }}/><NavButton id="browser" label="Browser" icon={<Compass/>} active={module === "browser"} onClick={() => { setModule("browser"); setMobileDetail(true); }}/><NavButton id="human" label="Human" icon={<HeartPulse/>} active={module === "human"} onClick={() => { setModule("human"); setMobileDetail(true); }}/><NavButton id="update" label="Software Update" icon={<RefreshCw/>} active={module === "update"} onClick={() => { setModule("update"); setMobileDetail(true); }}/><NavButton id="activity" label="Activity" icon={<Activity/>} active={module === "activity"} onClick={() => { setModule("activity"); setMobileDetail(true); }}/><NavButton id="trash" label="Trash" icon={<Trash2/>} active={module === "trash"} onClick={() => { setModule("trash"); setMobileDetail(true); }}/></div>
       <footer><a href="/" target="_blank">Open public OS <Eye/></a><small>Published changes appear on the public OS.</small></footer>
     </aside>
     <section className={`control-workspace ${mobileDetail ? "shows-detail" : "shows-index"}`}>
-      {module === "notes" && <NotesModule data={data} selected={selectedNote} setSelected={(note) => { setSelectedNote(note); setMobileDetail(true); }} onBack={() => setMobileDetail(false)} reload={load} notify={notify}/>}
+      {module === "capture" && (
+        <CaptureInbox items={data.captures || []} visits={data.photoVisitOptions || []} reload={load} notify={notify}/>
+      )}
+      {module === "podcasts" && (
+        <PodcastCaptures items={data.podcastCaptures || []} reload={load} notify={notify}/>
+      )}
+      {module === "notes" && (
+        <NotesModule data={data} selected={selectedNote} setSelected={(note) => { setSelectedNote(note); setMobileDetail(true); }} onBack={() => setMobileDetail(false)} reload={load} notify={notify}/>
+      )}
       {module === "now" && <NowEditor state={data.currentState} books={data.bookOptions} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>}
       {module === "books" && <BooksEditor books={data.bookOptions} intakes={data.bookIntakes} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>}
       {module === "places" && <PlacesEditor visits={data.photoVisitOptions || []} currentState={data.currentState} onBack={() => { setMobileDetail(false); setModule("notes"); }} reload={load} notify={notify}/>}

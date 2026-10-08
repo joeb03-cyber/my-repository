@@ -8,7 +8,7 @@ export async function GET() {
   const auth = await getControlAdmin();
   if (!auth) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const db = auth.supabase;
-  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult, intakeResult, booksIndex] = await Promise.all([
+  const [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult, intakeResult, captureResult, podcastCaptureResult, booksIndex] = await Promise.all([
     db.from("entities").select("id,slug,title,summary,visibility,lifecycle_state,editorial_state").eq("kind", "note").neq("lifecycle_state", "archived").order("updated_at", { ascending: false }),
     db.from("brain_notes").select("entity_id,folder_id,excerpt,body_markdown,publication_state,pinned,source_published_at,published_at,editorial_notice,external_links,updated_at"),
     db.from("note_folders").select("id,slug,label,sort_order").order("sort_order"),
@@ -28,6 +28,8 @@ export async function GET() {
     db.from("rabbit_hole_links").select("from_rabbit_hole_id,to_rabbit_hole_id,label,sort_order").order("sort_order"),
     db.from("rabbit_hole_human_links").select("rabbit_hole_id,human_entry_id,browser_label,human_label,sort_order").order("sort_order"),
     db.from("book_intake_requests").select("id,book_entity_id,title,author,highlights_reference,metadata_status,cover_status,highlights_status,created_at,updated_at").order("created_at", { ascending: false }).limit(500),
+    db.from("capture_inbox").select("id,capture_kind,title,body,occurred_on,visit_id,source_url,tags,status,created_at,updated_at").order("occurred_on", { ascending: false }).order("created_at", { ascending: false }).limit(500),
+    db.from("podcast_episode_captures").select("id,episode_title,show_name,guest_names,episode_url,listened_on,listening_state,takeaways,memorable_moments,why_saved,tags,status,created_at,updated_at").order("listened_on", { ascending: false, nullsFirst: false }).order("created_at", { ascending: false }).limit(500),
     getBooksIndex(),
   ]);
   const failure = [entitiesResult, notesResult, foldersResult, tagsResult, linksResult, currentResult, updateResult, trashResult, activityResult, humanResult, humanLinksResult, relationshipOptionsResult, rabbitResult, rabbitBlocksResult, rabbitResourcesResult, rabbitEntitiesResult, rabbitLinksResult, rabbitHumanResult].find((result) => result.error);
@@ -73,6 +75,9 @@ export async function GET() {
   const messagesUnavailable = [messageConversations, conversationMessages, conversationSources].some((result) => result.error?.code === "42P01" || result.error?.code === "PGRST205");
   const messagesFailure = !messagesUnavailable ? [messageConversations, conversationMessages, conversationSources].find((result) => result.error) : null;
   if (messagesFailure?.error) return NextResponse.json({ error: messagesFailure.error.message }, { status: 500 });
+  const captureFeatureUnavailable = [captureResult, podcastCaptureResult].some((result) => result.error?.code === "42P01" || result.error?.code === "PGRST205");
+  const captureFailure = !captureFeatureUnavailable ? [captureResult, podcastCaptureResult].find((result) => result.error) : null;
+  if (captureFailure?.error) return NextResponse.json({ error: captureFailure.error.message }, { status: 500 });
   return NextResponse.json({
     admin: { displayName: auth.admin.display_name, email: auth.admin.email },
     notes,
@@ -121,6 +126,17 @@ export async function GET() {
         sourceGrounded: message.speaker_role === "guest" ? message.provenance?.sourceGroundedReconstruction !== false : undefined,
         sources: (conversationSources.data || []).filter((source) => source.message_id === message.id).map((source) => ({ id: source.id, label: source.label, url: source.url, kind: source.source_kind, sortOrder: source.sort_order })),
       })),
+    })),
+    captures: captureFeatureUnavailable ? [] : (captureResult.data || []).map((item) => ({
+      id: item.id, captureKind: item.capture_kind, title: item.title || "", body: item.body,
+      occurredOn: item.occurred_on, visitId: item.visit_id, sourceUrl: item.source_url || "",
+      tags: item.tags || [], status: item.status, createdAt: item.created_at, updatedAt: item.updated_at,
+    })),
+    podcastCaptures: captureFeatureUnavailable ? [] : (podcastCaptureResult.data || []).map((item) => ({
+      id: item.id, episodeTitle: item.episode_title, showName: item.show_name || "", guestNames: item.guest_names || [],
+      episodeUrl: item.episode_url || "", listenedOn: item.listened_on, listeningState: item.listening_state,
+      takeaways: item.takeaways || "", memorableMoments: item.memorable_moments || [], whySaved: item.why_saved || "",
+      tags: item.tags || [], status: item.status, createdAt: item.created_at, updatedAt: item.updated_at,
     })),
     photos: photoFeatureUnavailable ? [] : (photoPublications.data || []).map((photo) => {
       const relationship: any = photoRelationshipById.get(photo.asset_id);
