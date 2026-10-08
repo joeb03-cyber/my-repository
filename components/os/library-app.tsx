@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ExternalLink, Search, SlidersHorizontal, Star, X } from "lucide-react";
 import taxonomyJson from "@/data/brain/topic-taxonomy.v1.json";
 import { applyDetailDecision, applySummaryDecision, loadEditorialDecisions } from "@/lib/brain/editorial";
@@ -11,14 +11,43 @@ import { EditorialReview } from "./library-editorial-review";
 const loadingIndex: BrainBooksIndex = { schemaVersion: "brain-books.loading.v1", bookCount: 0, generatedFrom: "live Brain", books: [] };
 const taxonomy = taxonomyJson as { topics: Array<{ slug: string; label: string; bookCount: number }> };
 const allTopics: BrainTopic[] = taxonomy.topics.map((topic) => ({ ...topic, confidence: 1, editorialState: "suggested" }));
+const libraryBrowseStateKey = "synergetic-human.library-browse-state.v1";
+
+type LibraryBrowseState = { scrollTop: number; query: string; topic: string };
+
+function readLibraryBrowseState(): LibraryBrowseState | null {
+  try {
+    const saved = JSON.parse(window.sessionStorage.getItem(libraryBrowseStateKey) || "null");
+    if (!saved || typeof saved.scrollTop !== "number") return null;
+    return { scrollTop: Math.max(0, saved.scrollTop), query: typeof saved.query === "string" ? saved.query : "", topic: typeof saved.topic === "string" ? saved.topic : "all" };
+  } catch { return null; }
+}
+
+function writeLibraryBrowseState(state: LibraryBrowseState) {
+  try { window.sessionStorage.setItem(libraryBrowseStateKey, JSON.stringify(state)); } catch { /* Browsing still works when session storage is unavailable. */ }
+}
 
 export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary) => void }) {
+  const shelfRef = useRef<HTMLDivElement>(null);
+  const savedBrowseState = useRef<LibraryBrowseState | null>(null);
+  const restoredScroll = useRef(false);
   const [index, setIndex] = useState<BrainBooksIndex>(loadingIndex);
   const [loadState, setLoadState] = useState<"loading" | "loaded" | "error">("loading");
   const [query, setQuery] = useState("");
   const [topic, setTopic] = useState("all");
+  const [browseStateReady, setBrowseStateReady] = useState(false);
   const [reviewOpen, setReviewOpen] = useState(false);
   const [decisions, setDecisions] = useState<BrainEditorialDecisions>({});
+
+  useEffect(() => {
+    const saved = readLibraryBrowseState();
+    savedBrowseState.current = saved;
+    if (saved) {
+      setQuery(saved.query);
+      if (saved.topic === "all" || allTopics.some((item) => item.slug === saved.topic)) setTopic(saved.topic);
+    }
+    setBrowseStateReady(true);
+  }, []);
 
   useEffect(() => {
     const reload = () => setDecisions(loadEditorialDecisions());
@@ -42,11 +71,50 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
   }), [query, topic, decisions, index.books]);
   const topicCounts = useMemo(() => new Map(allTopics.map((item) => [item.slug, index.books.filter((book) => book.topics.some((topicItem) => topicItem.slug === item.slug)).length])), [index.books]);
 
+  const shelfScroller = useCallback(() => shelfRef.current?.closest<HTMLElement>(".os-window__content, .mobile-app-scroll") || null, []);
+  const rememberShelf = useCallback(() => {
+    const scroller = shelfScroller();
+    writeLibraryBrowseState({ scrollTop: scroller?.scrollTop || 0, query, topic });
+  }, [query, shelfScroller, topic]);
+
+  useEffect(() => {
+    if (!browseStateReady || loadState !== "loaded" || restoredScroll.current) return;
+    restoredScroll.current = true;
+    const saved = savedBrowseState.current;
+    if (!saved) return;
+    let frame = 0;
+    let request = 0;
+    const restore = () => {
+      const scroller = shelfScroller();
+      if (!scroller) return;
+      const maximum = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+      scroller.scrollTop = Math.min(saved.scrollTop, maximum);
+      // Covers can change the grid height just after the data renders. A
+      // second frame keeps the remembered shelf position stable on mobile.
+      if (frame++ < 1) request = requestAnimationFrame(restore);
+    };
+    request = requestAnimationFrame(restore);
+    return () => cancelAnimationFrame(request);
+  }, [browseStateReady, loadState, shelfScroller]);
+
+  useEffect(() => {
+    if (loadState !== "loaded") return;
+    const scroller = shelfScroller();
+    if (!scroller) return;
+    let request = 0;
+    const save = () => {
+      cancelAnimationFrame(request);
+      request = requestAnimationFrame(rememberShelf);
+    };
+    scroller.addEventListener("scroll", save, { passive: true });
+    return () => { scroller.removeEventListener("scroll", save); cancelAnimationFrame(request); };
+  }, [loadState, rememberShelf, shelfScroller]);
+
   if (loadState !== "loaded") return <div className="book-detail-state" role="status">{loadState === "error" ? "Books could not be loaded. Please try again later." : "Opening Books…"}</div>;
 
   if (reviewOpen) return <EditorialReview books={index.books} topics={allTopics} onClose={() => setReviewOpen(false)} onOpenBook={onBookOpen} />;
 
-  return <div className="library-app brain-library">
+  return <div ref={shelfRef} className="library-app brain-library">
     <header className="library-head">
       <div><span className="app-kicker">THE SYNERGETIC HUMAN BRAIN</span><h2>Books</h2><p className="library-intro">Books I’ve read, with the passages I saved along the way.<small>These are mostly raw highlights, not polished notes or summaries.</small></p><p>{index.bookCount} books · {index.books.reduce((sum, book) => sum + book.highlightCount, 0).toLocaleString()} readable passages</p></div>
       <div className="library-head__actions">
@@ -58,7 +126,7 @@ export function LibraryApp({ onBookOpen }: { onBookOpen: (book: BrainBookSummary
       <button className={topic === "all" ? "is-active" : ""} onClick={() => setTopic("all")} aria-pressed={topic === "all"}>All</button>
       {taxonomy.topics.filter((item) => topicCounts.get(item.slug)).map((item) => <button key={item.slug} className={topic === item.slug ? "is-active" : ""} onClick={() => setTopic(item.slug)} aria-pressed={topic === item.slug}>{item.label}<span>{topicCounts.get(item.slug)}</span></button>)}
     </div><span className="library-result-count" aria-live="polite">{books.length} {books.length === 1 ? "book" : "books"}</span></div>
-    <div className="book-grid brain-book-grid">{books.map((book) => <button className="book-tile" key={book.slug} onClick={() => onBookOpen(book)}><BookCover book={book} /><strong title={book.title}>{book.title}</strong><span>{book.authors.join(", ")}</span><div className="tag-list">{book.topics.slice(0, 2).map((item) => <em key={item.slug}>{item.label}</em>)}</div></button>)}</div>
+    <div className="book-grid brain-book-grid">{books.map((book) => <button className="book-tile" key={book.slug} onClick={() => { rememberShelf(); onBookOpen(book); }}><BookCover book={book} /><strong title={book.title}>{book.title}</strong><span>{book.authors.join(", ")}</span><div className="tag-list">{book.topics.slice(0, 2).map((item) => <em key={item.slug}>{item.label}</em>)}</div></button>)}</div>
     {!books.length && <div className="library-empty">Nothing on this shelf—try a different thought.</div>}
   </div>;
 }
