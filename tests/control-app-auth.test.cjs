@@ -12,6 +12,8 @@ test("Home Screen login verifies the emailed OTP inside the same browser context
   assert.match(login, /verifyOtp\(\{ email: email\.trim\(\), token, type: "email" \}\)/);
   assert.match(login, /autoComplete="one-time-code"/);
   assert.match(login, /inputMode="numeric"/);
+  assert.match(login, /maxLength=\{10\}/);
+  assert.doesNotMatch(login, /six-digit/i);
   assert.match(login, /supabase\.auth\.getSession\(\)/);
   assert.doesNotMatch(login, /fetch\("\/api\/control\/content"/);
   assert.match(login, /window\.location\.replace\("\/control"\)/);

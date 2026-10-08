@@ -31,8 +31,8 @@ export default function ControlLogin({ supabaseUrl, anonKey, initialError = "" }
 
   async function verify(event: React.FormEvent) {
     event.preventDefault();
-    const token = code.replace(/\D/g, "").slice(0, 6);
-    if (token.length !== 6) { setMessage("Enter the six-digit code from the newest email."); return; }
+    const token = code.replace(/\D/g, "").slice(0, 10);
+    if (token.length < 6) { setMessage("Enter the sign-in code from the newest email."); return; }
     setStatus("verifying"); setMessage("");
     const supabase = createBrowserClient(supabaseUrl, anonKey, { auth: { flowType: "pkce", detectSessionInUrl: false } });
     const { error } = await supabase.auth.verifyOtp({ email: email.trim(), token, type: "email" });
@@ -66,9 +66,9 @@ export default function ControlLogin({ supabaseUrl, anonKey, initialError = "" }
       {status === "sent" || status === "verifying" ? <form className="login-code" onSubmit={verify}>
         <div className="login-code__icon"><KeyRound/></div>
         <strong>Enter your email code</strong>
-        <p>We sent a six-digit code to <b>{email}</b>. Enter it here so this Home Screen app keeps the session.</p>
-        <label>Six-digit code<input autoFocus type="text" autoComplete="one-time-code" inputMode="numeric" pattern="[0-9]*" maxLength={6} value={code} onChange={(event) => setCode(event.target.value.replace(/\D/g, "").slice(0, 6))} placeholder="000000" aria-label="Six-digit email code"/></label>
-        <button disabled={status === "verifying" || code.length !== 6}>{status === "verifying" ? "Opening…" : <>Open Control Center <ArrowRight/></>}</button>
+        <p>We sent a sign-in code to <b>{email}</b>. Enter it here so this Home Screen app keeps the session.</p>
+        <label>Sign-in code<input autoFocus type="text" autoComplete="one-time-code" inputMode="numeric" pattern="[0-9]*" maxLength={10} value={code} onChange={(event) => setCode(event.target.value.replace(/\D/g, "").slice(0, 10))} placeholder="Enter code" aria-label="Email sign-in code"/></label>
+        <button disabled={status === "verifying" || code.length < 6}>{status === "verifying" ? "Opening…" : <>Open Control Center <ArrowRight/></>}</button>
         {message && <small role="alert">{message}</small>}
         <button type="button" className="login-code__back" onClick={startOver}><ArrowLeft/> Start over</button>
         <em>The email link still works when you request it from ordinary Safari or a desktop browser.</em>
